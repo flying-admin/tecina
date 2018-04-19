@@ -12,7 +12,7 @@ class Allergen extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'lang',
+
     ];
 
 }
