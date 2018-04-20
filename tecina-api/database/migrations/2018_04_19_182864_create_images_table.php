@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWinesWineTypesTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateWinesWineTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wines_wine_types', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->integer('id_dish')->unsigned();
+            $table->string('name');
+
+            $table->foreign('id_dish')
+                ->references('id')->on('dishes')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,6 +31,6 @@ class CreateWinesWineTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wines_wine_types');
+        Schema::dropIfExists('images');
     }
 }

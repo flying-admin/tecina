@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWineTypesTranslationsTable extends Migration
+class CreateHighlightsTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,23 @@ class CreateWineTypesTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wine_types_translations', function (Blueprint $table) {
+        Schema::create('highlights_translations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_wine_types')->unsigned();
+            $table->integer('id_highlight')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
+            $table->string('description');
 
-            $table->unique(['id_wine_types','id_language']);
+            $table->unique(['id_highlight','id_language']);
 
-            $table->foreign('id_wine_types')
-                ->references('id')->on('wine_types')
+            $table->foreign('id_highlight')
+                ->references('id')->on('highlights')
                 ->onDelete('cascade');
 
             $table->foreign('id_language')
                 ->references('id')->on('languages')
                 ->onDelete('cascade');
+
         });
     }
 
@@ -38,6 +40,6 @@ class CreateWineTypesTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wine_types_translations');
+        Schema::dropIfExists('highlights_translations');
     }
 }

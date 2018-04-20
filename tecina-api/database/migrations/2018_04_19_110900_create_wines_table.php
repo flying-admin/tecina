@@ -15,7 +15,17 @@ class CreateWinesTable extends Migration
     {
         Schema::create('wines', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('image')->nullable();
+            $table->string('name');
+            $table->integer('id_wine_type')->unsigned()->nullable();
+            $table->integer('id_do')->unsigned()->nullable();
+            $table->string('year')->nullable();
+
+            $table->foreign('id_wine_type')
+                ->references('id')->on('wine_types');
+
+            $table->foreign('id_do')
+                ->references('id')->on('do');
         });
     }
 

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Allergen extends Model
+class Images extends Model
 {
     /**
      * Indicates if the model should be timestamped.
@@ -13,10 +13,12 @@ class Allergen extends Model
      */
     public $timestamps = false;
 
-
-    public function getTranslate() {
-        return $this->belongsToMany('App\language', 'allergen_translations')->withPivot('name', 'description');
-    }
-
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_dish','name'
+    ];
 }

@@ -14,8 +14,18 @@ class CreateAllergensDishesTable extends Migration
     public function up()
     {
         Schema::create('allergens_dishes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id_allergen')->unsigned();
+            $table->integer('id_dish')->unsigned();
+
+            $table->primary(['id_allergen', 'id_dish']);
+
+            $table->foreign('id_allergen')
+                ->references('id')->on('allergens')
+                ->onDelete('cascade');
+
+            $table->foreign('id_dish')
+                ->references('id')->on('dishes')
+                ->onDelete('cascade');
         });
     }
 

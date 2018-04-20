@@ -15,8 +15,6 @@ class CreateWineTypesTable extends Migration
     {
         Schema::create('wine_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->timestamps();
         });
     }
 

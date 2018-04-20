@@ -16,14 +16,18 @@ class CreateAllergensTranslationsTable extends Migration
         Schema::create('allergens_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_allergen')->unsigned();
-            $table->string('locale')->index();
+            $table->integer('id_language')->unsigned();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
 
-            $table->unique(['id_allergen','locale']);
+            $table->unique(['id_allergen','id_language']);
 
             $table->foreign('id_allergen')
                 ->references('id')->on('allergens')
+                ->onDelete('cascade');
+
+            $table->foreign('id_language')
+                ->references('id')->on('languages')
                 ->onDelete('cascade');
         });
     }

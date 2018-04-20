@@ -14,8 +14,18 @@ class CreateWinesWineVarietiesTable extends Migration
     public function up()
     {
         Schema::create('wines_wine_varieties', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id_wine')->unsigned();
+            $table->integer('id_wine_variety')->unsigned();
+
+            $table->primary(['id_wine', 'id_wine_variety']);
+
+            $table->foreign('id_wine')
+                ->references('id')->on('wines')
+                ->onDelete('cascade');
+
+            $table->foreign('id_wine_variety')
+                ->references('id')->on('wine_varieties')
+                ->onDelete('cascade');
         });
     }
 

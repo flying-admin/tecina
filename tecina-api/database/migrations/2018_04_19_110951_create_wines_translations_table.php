@@ -16,15 +16,17 @@ class CreateWinesTranslationsTable extends Migration
         Schema::create('wines_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_wine')->unsigned();
-            $table->string('locale')->index();
-            $table->string('name');
+            $table->integer('id_language')->unsigned();
             $table->string('description');
-            $table->string('year');
 
-            $table->unique(['id_wine','locale']);
+            $table->unique(['id_wine','id_language']);
 
             $table->foreign('id_wine')
                 ->references('id')->on('wines')
+                ->onDelete('cascade');
+
+            $table->foreign('id_language')
+                ->references('id')->on('languages')
                 ->onDelete('cascade');
         });
     }

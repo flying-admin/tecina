@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDoWinesTable extends Migration
+class CreateHighlightsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDoWinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('do_wines', function (Blueprint $table) {
+        Schema::create('highlights', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('image');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateDoWinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('do_wines');
+        Schema::dropIfExists('highlights');
     }
 }

@@ -14,8 +14,18 @@ class CreateDishesFoodTypesTable extends Migration
     public function up()
     {
         Schema::create('dishes_food_types', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id_food_type')->unsigned();
+            $table->integer('id_dish')->unsigned();
+
+            $table->primary(['id_food_type', 'id_dish']);
+
+            $table->foreign('id_food_type')
+                ->references('id')->on('food_types')
+                ->onDelete('cascade');
+
+            $table->foreign('id_dish')
+                ->references('id')->on('dishes')
+                ->onDelete('cascade');
         });
     }
 

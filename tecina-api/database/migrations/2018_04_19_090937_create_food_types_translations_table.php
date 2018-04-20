@@ -16,13 +16,17 @@ class CreateFoodTypesTranslationsTable extends Migration
         Schema::create('food_types_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_food_type')->unsigned();
-            $table->string('locale')->index();
+            $table->integer('id_language')->unsigned();
             $table->string('name');
 
-            $table->unique(['id_food_type','locale']);
+            $table->unique(['id_food_type','id_language']);
 
             $table->foreign('id_food_type')
                 ->references('id')->on('food_types')
+                ->onDelete('cascade');
+
+            $table->foreign('id_language')
+                ->references('id')->on('languages')
                 ->onDelete('cascade');
         });
     }

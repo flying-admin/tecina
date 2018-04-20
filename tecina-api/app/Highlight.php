@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dish extends Model
+class Highlight extends Model
 {
     /**
      * Indicates if the model should be timestamped.
@@ -13,16 +13,14 @@ class Dish extends Model
      */
     public $timestamps = false;
 
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'ingredients'
+        'image'
     ];
-
 
     public function getTranslate() {
         return $this->belongsToMany('App\language', 'dishes_translations')->withPivot('name', 'description');

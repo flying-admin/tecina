@@ -16,14 +16,18 @@ class CreateDishesTranslationsTable extends Migration
         Schema::create('dishes_translations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_dish')->unsigned();
-            $table->string('locale')->index();
+            $table->integer('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 
-            $table->unique(['id_dish','locale']);
+            $table->unique(['id_dish','id_language']);
 
             $table->foreign('id_dish')
                 ->references('id')->on('dishes')
+                ->onDelete('cascade');
+
+            $table->foreign('id_language')
+                ->references('id')->on('languages')
                 ->onDelete('cascade');
         });
     }

@@ -14,8 +14,18 @@ class CreateMenusWinesTable extends Migration
     public function up()
     {
         Schema::create('menus_wines', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->integer('id_wine')->unsigned();
+            $table->integer('id_menu')->unsigned();
+
+            $table->primary(['id_wine', 'id_menu']);
+
+            $table->foreign('id_wine')
+                ->references('id')->on('wines')
+                ->onDelete('cascade');
+
+            $table->foreign('id_menu')
+                ->references('id')->on('menus')
+                ->onDelete('cascade');
         });
     }
 
