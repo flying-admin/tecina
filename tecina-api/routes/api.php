@@ -26,3 +26,38 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //        Route::post('get_user_details', 'APIController@get_user_details');
 //    });
 //});
+
+
+//Route::group(['middleware' => ['api' ,'cors']], function () {
+//
+//    Route::group(['middleware' => 'jwt-auth'], function () {
+//        Route::resources([
+//            'dish' => 'DishController',
+//        ]);
+//    });
+//
+//});
+
+
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+
+});
+
+Route::group(['middleware' => 'auth:api'], function () {
+
+    Route::resources([
+        'dish' => 'DishController',
+    ]);
+
+});

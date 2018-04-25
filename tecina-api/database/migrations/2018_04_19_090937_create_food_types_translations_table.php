@@ -14,12 +14,11 @@ class CreateFoodTypesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('food_types_translations', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('id_food_type')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
 
-            $table->unique(['id_food_type','id_language']);
+            $table->primary(['id_food_type','id_language'],'food_type_language_primary');
 
             $table->foreign('id_food_type')
                 ->references('id')->on('food_types')

@@ -13,10 +13,24 @@ class Allergen extends Model
      */
     public $timestamps = false;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'icon'
+    ];
+
 
     public function getTranslate() {
-        return $this->belongsToMany('App\language', 'allergen_translations')->withPivot('name', 'description');
+        return $this->belongsToMany('App\Language', 'allergen_translations')->withPivot('name', 'description');
     }
 
+
+    // A Allergen appears in many dishes
+    public function dishes(){
+        return $this->belongsToMany('App\Dish', 'allergens_dishes');
+    }
 
 }

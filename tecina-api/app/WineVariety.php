@@ -12,4 +12,14 @@ class WineVariety extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    public function getTranslate() {
+        return $this->belongsToMany('App\Language', 'wine_types_translations')->withPivot( 'name');
+    }
+
+    // A wine variety appears in many wines
+    public function wineVarieties(){
+        return $this->belongsToMany('App\Wine', 'wines_wine_varieties');
+    }
 }

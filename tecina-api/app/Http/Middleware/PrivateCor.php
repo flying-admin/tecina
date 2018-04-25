@@ -26,6 +26,7 @@ class PrivateCor
                 header('Access-Control-Allow-Origin: ' . $origin);
                 header('Access-Control-Allow-Headers: Origin, Content-Type');
             }
+
         }
 
         return $next($request);

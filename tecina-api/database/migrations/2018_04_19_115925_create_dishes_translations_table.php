@@ -14,13 +14,12 @@ class CreateDishesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('dishes_translations', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('id_dish')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 
-            $table->unique(['id_dish','id_language']);
+            $table->primary(['id_dish','id_language'],'dish_language_primary');
 
             $table->foreign('id_dish')
                 ->references('id')->on('dishes')

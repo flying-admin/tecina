@@ -14,13 +14,12 @@ class CreateMenusTranslationsTable extends Migration
     public function up()
     {
         Schema::create('menus_translations', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('id_menu')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 
-            $table->unique(['id_menu','id_language']);
+            $table->primary(['id_menu','id_language'],'menu_language_primary');
 
             $table->foreign('id_menu')
                 ->references('id')->on('menus')

@@ -14,6 +14,12 @@ class Category extends Model
     public $timestamps = false;
 
     public function getTranslate() {
-        return $this->belongsToMany('App\language', 'categories_translations')->withPivot('name', 'description');
+        return $this->belongsToMany('App\Language', 'categories_translations')->withPivot('name', 'description');
+    }
+
+
+    // A category appears in many dishes
+    public function dishes(){
+        return $this->belongsToMany('App\Dish', 'categories_dishes');
     }
 }

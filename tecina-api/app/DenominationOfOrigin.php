@@ -29,4 +29,10 @@ class DenominationOfOrigin extends Model
      * @var bool
      */
     public $timestamps = false;
+
+
+    // A DOO has many wines
+    public function wines(){
+        return $this->hasMany('App\Wine');
+    }
 }

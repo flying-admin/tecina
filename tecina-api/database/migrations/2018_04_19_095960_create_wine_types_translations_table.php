@@ -14,14 +14,13 @@ class CreateWineTypesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('wine_types_translations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_wine_types')->unsigned();
+            $table->integer('id_wine_type')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
 
-            $table->unique(['id_wine_types','id_language']);
+            $table->primary(['id_wine_type','id_language'], 'wine_type_language_primary');
 
-            $table->foreign('id_wine_types')
+            $table->foreign('id_wine_type')
                 ->references('id')->on('wine_types')
                 ->onDelete('cascade');
 
