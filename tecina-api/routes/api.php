@@ -41,7 +41,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group([
 
-    'middleware' => 'api',
+    'middleware' => ['api' ,'cors'],
     'prefix' => 'auth'
 
 ], function ($router) {
@@ -54,7 +54,7 @@ Route::group([
 
 });
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'api'], function () {
 
     Route::resources([
         'dish' => 'DishController',

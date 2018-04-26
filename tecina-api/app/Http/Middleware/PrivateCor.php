@@ -17,7 +17,7 @@ class PrivateCor
     {
         //Here we put our client domains
         // http://albanafmeti.com/2016/using-laravel-passport-with-an-angular2-client-app/
-        $trusted_domains = ["http://angular2.techalin.com:3000", "http://another-domain.com"];
+        $trusted_domains = ["http://localhost:4200", "http://another-domain.com"];
 
         if(isset($request->server()['HTTP_ORIGIN'])) {
             $origin = $request->server()['HTTP_ORIGIN'];
