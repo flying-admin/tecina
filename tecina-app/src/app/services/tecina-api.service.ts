@@ -24,26 +24,25 @@ export class TecinaApiService {
 
 
   constructor( public http:HttpClient) {
-    
+    console.log('servicio activo');
   }
 
   getToken(){
-    let url = 'http://127.0.0.1:8000/api/auth/login';
+    let url = 'http://tecina-api.local/api/auth/login';
     let body = {
       email:'api@tecina.es',
       password: 'admin123'
     };
 
-    return this.http.post(url,body, this.httpOptions ).map( (resp:any) => { return resp.access_token}); 
+    return this.http.post(url,body, this.httpOptions ).map( (resp:any) => { return resp.access_token }); 
   }
 
   getHighlights(){
-    
-    this.getToken().subscribe(token => { return this.token = token});
+    let my_token = '';
+    this.getToken().subscribe(token => { console.log(token) });
     let url = '';
     let body = [];
-      
-    console.log(this.token);
+    
     //this.http.post(url,body, this.httpOptionsAuth ).subscribe( resp => { console.log(resp)} ) ;
   }
 

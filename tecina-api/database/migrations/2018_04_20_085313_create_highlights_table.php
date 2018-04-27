@@ -16,6 +16,7 @@ class CreateHighlightsTable extends Migration
         Schema::create('highlights', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image');
+            $table->integer('order')->unsigned()->unique()->nullable();
         });
     }
 

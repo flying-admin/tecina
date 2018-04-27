@@ -18,6 +18,7 @@ class HighlightsTableSeeder extends Seeder
         for ($i = 0 ; $i < $cant ; $i++){
             DB::table('highlights')->insert([
                 'image' => 'highlight_' .($i + 1). '.jpg',
+                'order' => ($i + 1)
             ]);
         }
 
