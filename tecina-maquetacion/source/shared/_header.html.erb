@@ -1,0 +1,81 @@
+<%
+  extra_classes ||= ''
+%>
+
+<header class="header <%= extra_classes %>">
+  <div class="header--inner">
+    <div class="header__menu">
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="./assets/images/shared/logo.png" alt="Tasca Fandango" class="header__menu__logo">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="header__menu__nav header__menu__nav--left">
+            <ul>
+              <li>
+                <a>Entrantes frios<span>(12)</span></a>
+              </li>
+              <li>
+                <a>Entrantes calientes<span>(06)</span></a>
+              </li>
+              <li>
+                <a>Pescados<span>(04)</span></a>
+              </li>
+              <li>
+                <a>Carnes<span>(06)</span></a>
+              </li>
+              <li>
+                <a>Postres<span>(03)</span></a>
+              </li>
+            </ul>
+          </div>
+          <div class="header__menu__nav header__menu__nav--left">
+            <ul>
+              <li>
+                <a>Menus<span>(05)</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <div class="header__menu__nav">
+            <ul>
+              <li>
+                <a>Carta de Vinos<span>(05)</span></a>
+              </li>
+              <li class="header__menu__nav__feature">
+                <a href="" class="feat">
+                  <div class="feat__image">
+                    <img src="./assets/images/shared/menu-bottle.png" alt="">
+                  </div>
+                  <p class="feat__text">
+                    <span class="feat__text__name">Jean Leon<br>3055 Rosé</span>
+                    <span class="feat__text__info">D. O. Penedés<br>Variedad: Pinot NOIR</span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header__bar">
+      <a class="header__bar__burguer" data-toggle=".header">
+        <span></span>
+      </a>
+      <div class="header__bar__langs">
+        <ul>
+          <li><a href="" >ES</a></li>
+          <li><a href="">EN</a></li>
+          <li><a href="" class="active">GE</a></li>
+          <li><a href="">IT</a></li>
+        </ul>
+      </div>
+      <div class="header__bar__tag" data-toggle=".header">
+        <span>Ver Carta</span>
+      </div>
+    </div>
+  </div>
+</header>

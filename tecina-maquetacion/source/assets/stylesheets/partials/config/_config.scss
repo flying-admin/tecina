@@ -1,0 +1,37 @@
+//Grid
+$flexboxgrid-grid-columns: 12;
+$flexboxgrid-gutter-width: 30px;
+$flexboxgrid-outer-margin: 30px;
+$flexboxgrid-breakpoints:
+  xxs 0px 100%,
+  xs 480px 100%,
+  sm 768px 100%,
+  md 991px 990px,
+  lg 1200px 1120px,
+  xl 1440px 1220px;
+
+//Colors
+$white: #FFF;
+$black: #000;
+$blackish: #141414;
+$grey: #000;
+$darkgrey: #2c2c2c;
+$lightgrey: #000;
+$primary: #BA2A2A;
+$primary-darken: darken(#BA2A2A, 15%);
+$primary-lighten: lighten(#BA2A2A, 15%);
+$secondary: #000;
+$secondary-darken: darken(#000, 15%);
+$secondary-lighten: lighten(#000, 15%);
+$rose: #F9CEB3;
+
+
+//Fonts
+$font_default: "Lato", sans-serif;
+
+
+// Standard transitions
+$transition: 0.5s cubic-bezier(0.6, 0, 0.4, 1.0) 0s;
+$transition-short: 0.3s cubic-bezier(0.6, 0, 0.4, 1.0) 0s;
+$transition-long: 0.7s cubic-bezier(0.6, 0, 0.4, 1.0) 0s;
+$transition-extra: 1s cubic-bezier(0.6, 0, 0.4, 1.0) 0s;
