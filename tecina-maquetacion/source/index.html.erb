@@ -9,8 +9,13 @@ layout: layout
 
 <div class="content-wrapper">
 
-  <%= partial("modules/module", :locals => {
-    :extra_classes => ''
+  <%= partial("modules/intro", :locals => {
+    :extra_classes => '',
+    :dish => {
+      :name => 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
+      :image => './assets/images/content/home/intro_dish.png',
+      :category => 'Entrantes frios'
+    }
   }) %>
 
 </div>

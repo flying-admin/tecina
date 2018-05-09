@@ -37,7 +37,17 @@ img {
 }
 
 .content-wrapper {
+  display: block;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all $transition;
 
+  .header--expanded & {
+    margin-left: 25vw;
+  }
 }
 
 .container {
@@ -55,6 +65,14 @@ img {
 }
 
 /* ========== HELPERS ========== */
+
+.no-gutters {
+  margin: 0 !important;
+
+  [class^=col]{
+    padding: 0 !important
+  }
+}
 
 .content-align-left {
   text-align: left;

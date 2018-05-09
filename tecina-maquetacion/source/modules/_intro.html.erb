@@ -1,0 +1,31 @@
+<%
+  extra_classes ||= ""
+  dish ||= ""
+%>
+
+<div class="intro <%= extra_classes %>">
+  <div class="container container--wide">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="./assets/images/shared/logo.png" alt="Tasca Fandango" class="intro__logo">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="<%= dish[:image] %>" alt="Tasca Fandango" class="intro__dish-image">
+      </div>
+    </div>
+    <div class="row end-xs no-gutters">
+      <div class="col-xs-6">
+        <div class="intro__dish-info">
+          <p class="intro__dish-info__category"><%= dish[:category] %></p>
+          <p class="intro__dish-info__name"><%= dish[:name] %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="intro__start" data-toggle=".header">
+    <p>Toca la pantalla<br>para comenzar</p>
+    <img src="./assets/images/content/home/intro_start.png" alt="">
+  </a>
+</div>

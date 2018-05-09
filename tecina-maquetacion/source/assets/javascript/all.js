@@ -2,11 +2,12 @@ var Project = {};
 
 Project.init = function(){
   // Header Init
-  $('.header').find('[data-toggle]').on('click', function(){
+  $('body').find('[data-toggle]').on('click', function(){
     var elem = $(this);
     var selector = elem.data('toggle');
-    $(selector).toggleClass('header--expanded');
-    $('body').toggleClass('header--expanded');
+    var selectorName = selector.substring(1);
+    $(selector).toggleClass(selectorName + '--expanded');
+    $('body').toggleClass(selectorName + '--expanded');
   });
 
 };
