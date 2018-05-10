@@ -10,6 +10,18 @@ Project.init = function(){
     $('body').toggleClass(selectorName + '--expanded');
   });
 
+  var intro = $('.intro');
+  if (intro.length){
+    var mySwiper = new Swiper('.intro__slider', {
+      speed: 500,
+      loop: true,
+      autoplay: {
+        delay: 7000,
+        disableOnInteraction: false,
+      }
+    });
+  }
+
 };
 
 $(function(){

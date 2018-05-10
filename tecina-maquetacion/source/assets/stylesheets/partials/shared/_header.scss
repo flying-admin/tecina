@@ -5,7 +5,7 @@
   left: 0;
   bottom: 0;
   width: 0;
-  z-index: 2;
+  z-index: 10;
 
   &--inner {
     display: flex;
@@ -52,6 +52,8 @@
 
       &__langs {
         ul li a {
+          pointer-events: all;
+
           &.active {
             background-color: white;
           }
@@ -158,6 +160,7 @@
             padding: 0;
             margin: 0;
             overflow: hidden;
+            pointer-events: none;
 
             &.active {
               display: block;
