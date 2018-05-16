@@ -1,0 +1,149 @@
+.dishes {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 90px 82px 60px;
+  margin: 0;
+  transition: $transition;
+
+  &__title {
+    display: block;
+    position: fixed;
+    left: 82px;
+    top: 30px;
+    right: 82px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    padding-left: 143px;
+    font-family: $font_default;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 77px;
+    color: $white;
+    text-transform: uppercase;
+    z-index: 2;
+
+    img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 33px;
+      width: 77px;
+      height: auto;
+    }
+  }
+
+  &__slider {
+    display: block;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+
+    &__item {
+      padding: 0 100px
+    }
+
+    &__nav {
+
+    }
+  }
+
+  &__row {
+    @include flexbox;
+    @include flex-wrap(nowrap);
+    @include justify-content(space-around);
+    @include align-items(stretch);
+    @include align-content(stretch);
+
+    &__dish {
+      @include flex-basis(33.33%);
+      padding: 60px 40px 20px;
+      text-decoration: none;
+
+      &__name {
+        display: block;
+        position: relative;
+        width: 100%;
+        min-height: 96px;
+        font-family: $font_default;
+        color: $white;
+        text-transform: uppercase;
+
+        &--number {
+          position: absolute;
+          top: 0;
+          left: -33px;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 28px;
+        }
+        &--text {
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+
+      &__image {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 220px;
+        margin: 0 auto;
+      }
+
+      &__allergens {
+        display: block;
+        @include flexbox;
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include justify-content(flex-start);
+        @include align-items(stretch);
+        @include align-content(stretch);
+
+        // &::before,
+        // &::after {
+        //   content: '';
+        //   display: block;
+        //   width: 100%;
+        //   clear: both;
+        // }
+
+        li {
+          display: block;
+          position: relative;
+          margin-right: 5px;
+          padding-bottom: 30px;
+          @include flex-basis(100% / 7);
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: $primary;
+          }
+
+          span {
+            display: inline-block;
+            padding: 5px;
+            font-size: 42px;
+            line-height: 42px;
+            background-color: $white;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+}

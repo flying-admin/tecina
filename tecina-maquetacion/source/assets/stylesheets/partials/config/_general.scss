@@ -21,6 +21,8 @@ img {
   height: 100vh;
   background-color: mix($black, $white, 83%);
   overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   &::before {
     content: '';

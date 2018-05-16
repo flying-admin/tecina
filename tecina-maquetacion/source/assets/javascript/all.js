@@ -22,6 +22,22 @@ Project.init = function(){
     });
   }
 
+  var dishes = $('.dishes');
+  if (dishes.length){
+    var mySwiper = new Swiper('.dishes__slider', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 2,
+      navigation: {
+        prevEl: '.dishes__slider__nav--prev',
+        nextEl: '.dishes__slider__nav--next',
+        disabledClass: 'dishes__slider__nav--disabled'
+      },
+    });
+  }
+
 };
 
 $(function(){
