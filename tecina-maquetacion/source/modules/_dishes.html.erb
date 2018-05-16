@@ -1,0 +1,59 @@
+<%
+  extra_classes ||= ""
+  title ||= ""
+  dishes ||= ""
+  n_dish = 1
+%>
+
+<div class="dishes <%= extra_classes %>">
+
+  <p href="" class="dishes__title">
+    <img src="./assets/images/shared/logo_mini.png" alt="Tasca Fandango">
+    <span><%= title %></span>
+  </p>
+
+  <div class="swiper-container dishes__slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+
+      <% dishes.each_slice(3).to_a.each do |dishes_sub| %>
+        <div class="swiper-slide dishes__slider__item">
+          <div class="dishes__row">
+            <% dishes_sub.each do |dish| %>
+              <a href="<%= dish[:link] %>" class="dishes__row__dish">
+                <p class="dishes__row__dish__name">
+                  <span class="dishes__row__dish__name--number">
+                    <% if n_dish < 10 %>
+                      0<%= n_dish %>
+                    <% else %>
+                      <%= n_dish %>
+                    <% end %>
+                  </span>
+                  <span class="dishes__row__dish__name--text"><%= dish[:name] %></span>
+                </p>
+                <img src="<%= dish[:image] %>" alt="Tasca Fandango" class="dishes__row__dish__image">
+                <ul class="dishes__row__dish__allergens">
+                  <% i = 0 %>
+                  <% while i < 7 do %>
+                    <li>
+                      <% if dish[:allergens].to_a[i] %>
+                        <span class="icon-<%= dish[:allergens].to_a[i] %>"></span>
+                      <% end %>
+                    </li>
+                    <% i = i + 1 %>
+                  <% end %>
+                </ul>
+              </a>
+              <% n_dish = n_dish + 1 %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="swiper-button-prev dishes__slider__nav dishes__slider__nav--prev"></div>
+    <div class="swiper-button-next dishes__slider__nav dishes__slider__nav--next"></div>
+  </div>
+
+</div>

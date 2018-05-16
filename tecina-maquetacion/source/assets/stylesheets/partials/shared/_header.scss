@@ -1,0 +1,520 @@
+.header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 10;
+
+  &--inner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(80px - 50vw);
+    height: 100vh;
+    width: 50vw;
+    background-color: $blackish;
+    transition: all $transition;
+  }
+
+  &--expanded {
+    .header--inner {
+      left: 0;
+      border-right: 1px solid rgba($white, 0.1);
+      box-shadow: 20px 0 20px rgba($black, 0.15);
+    }
+    .header__bar {
+      background-color: transparent;
+
+      &__burguer {
+        &::after{
+          opacity: 0;
+        }
+        span {
+          background-color: transparent;
+        }
+        span::before,
+        span::after {
+          background-color: $primary;
+          transform-origin: 50% 50%;
+        }
+        span::before {
+          top:0;
+          transform: rotate(-45deg);
+        }
+        span::after {
+          bottom:0;
+          transform: rotate(45deg);
+        }
+      }
+
+      &__langs {
+        ul li a {
+          pointer-events: all;
+
+          &.active {
+            background-color: white;
+          }
+          &:not(.active) {
+            opacity: 1;
+            visibility: visible;
+            height: 50px;
+          }
+        }
+      }
+
+      &__tag {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__bar {
+    display: block;
+    position: relative;
+    width: 82px;
+    height: 100vh;
+    padding: 0;
+    background-color: $primary;
+    transition: all $transition;
+
+    &__burguer {
+      display: block;
+      position: relative;
+      padding: 31px 26px;
+      transition: all $transition;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 0;
+        height: 1px;
+        background-color: $darkgrey;
+      }
+
+      span {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 5px;
+        margin: 0;
+        background-color: $darkgrey;
+        transition: all $transition;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background-color: $darkgrey;
+          transition: all $transition;
+        }
+
+        &::before {
+          top: -11px;
+        }
+
+        &::after {
+          bottom: -11px;
+        }
+      }
+    }
+
+    &__langs {
+      display: block;
+      width: 100%;
+      padding: 5px 0;
+      margin: 0;
+
+      ul {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          padding: 0;
+          margin: 0;
+
+          a {
+            display: block;
+            width: 100%;
+            height: 50px;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            color: $darkgrey;
+            transition: all $transition;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            pointer-events: none;
+
+            &.active {
+              display: block;
+            }
+            &:not(.active) {
+              color: $white;
+              opacity: 0;
+              visibility: hidden;
+              height: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &__tag {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 100%;
+      transform-origin: 0 100%;
+      transform: rotate(-90deg);
+      padding: 16px 0;
+      transition: all $transition;
+      opacity: 1;
+      visibility: visible;
+      cursor: pointer;
+
+      span {
+        display: block;
+        white-space: nowrap;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 50px;
+        text-transform: uppercase;
+        color: $darkgrey;
+        padding-left: 25px;
+        border-left: 10px solid $darkgrey;
+      }
+    }
+  }
+
+  &__menu {
+    display: block;
+    position: relative;
+    width: calc(50vw - 80px);
+    height: 100vh;
+    padding: 50px 0 0 82px;
+
+    &__logo {
+      display: block;
+      max-width: 140px;
+    }
+
+    &__nav {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 50px 0 0;
+
+      & + .header__menu__nav {
+        padding: 40px 0 0;
+      }
+
+      &--left {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 0;
+          bottom: 0px;
+          width: 1px;
+          height: auto;
+          background-color: rgba($white, 0.3);
+        }
+
+        & + .header__menu__nav--left {
+          &::after {
+            top: 0;
+          }
+        }
+      }
+
+      ul {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          margin: 0;
+          padding: 0 0 30px;
+
+          a {
+            display: block;
+            position: relative;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 32px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: $white;
+
+            span {
+              display: inline-block;
+              position: relative;
+              top: -10px;
+              font-size: 16px;
+              line-height: 18px;
+              color: $primary;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+
+      & &__feature {
+
+        .feat {
+          display: flex;
+          text-decoration: none;
+
+          &__image {
+            display: block;
+            position: relative;
+            width: 136px;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom:0;
+              transform: scale(3.5);
+              background-image: url("../images/shared/feat-shadow.png");
+              background-position: 50% 50%;
+              background-size: contain;
+              background-repeat: no-repeat;
+              z-index: 1;
+              pointer-events: none;
+            }
+
+            img {
+              display: block;
+              position: relative;
+              width: auto;
+              max-width: 100%;
+              z-index: 2;
+            }
+          }
+
+          &__text {
+            display: block;
+            position: relative;
+            width: calc(100% - 136px);
+            opacity: 0.67;
+            padding: 10px 0;
+            z-index: 2;
+
+            &__name,
+            &__info {
+              display: block;
+              font-size: 18px;
+              line-height: 24px;
+              margin: 0 0 15px;
+              top: 0;
+            }
+            &__name {
+              font-weight: 400;
+              color: $primary;
+              text-transform: uppercase;
+            }
+            &__info {
+              font-weight: 300;
+              color: $white;
+              text-transform: none;
+            }
+          }
+        }
+      }
+    }
+
+    &__filter {
+      display: block;
+      position: relative;
+      padding: 55px 0 0;
+      margin: 0;
+
+      &__title {
+        display: block;
+        font-family: $font_default;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 16px;
+        color: $rose;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0 0 26px;
+
+        &--main {
+          font-weight: 700;
+          margin: 0 0 18px;
+        }
+      }
+
+      &__alergen {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          clear: both;
+        }
+
+        li {
+          display: block;
+          width: 33.3%;
+          float: left;
+          padding-right: 18px;
+          padding-bottom: 8px;
+
+          label {
+            display: block;
+            position: relative;
+
+            &::before,
+            &::after {
+              content: '';
+              display: block;
+              width: 100%;
+              clear: both;
+            }
+
+            img {
+              display: inline-block;
+              width: 40px;
+              height: 40px;
+              float: left;
+              padding: 2px;
+              background-color: $rose;
+              border-radius: 50%;
+              margin-right: 18px;
+            }
+
+            span {
+              display: inline-block;
+              height: 40px;
+              max-width: calc(100% - 58px);
+              font-family: $font_default;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 40px;
+              color: $rose;
+
+              &.double {
+                line-height: 20px;
+              }
+            }
+          }
+
+          input {
+            display: block;
+            position: absolute;
+            height: 1px;
+            width: 1px;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: -1;
+
+            &:checked {
+              & + label {
+                img {
+                  background-color: $white;
+                }
+                span {
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__food {
+        display: block;
+        position: relative;
+
+        li {
+          display: block;
+          position: relative;
+
+          input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 1px;
+            opacity: 0;
+            z-index: -1;
+          }
+
+          label {
+            display: block;
+            position: relative;
+            font-family: $font_default;
+            font-size: 16px;
+            line-height: 16px;
+            color: $rose;
+            padding: 0 0 16px 25px;
+            white-space: nowrap;
+            transition: all $transition;
+
+            &::before,
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 16px;
+              width: 16px;
+              border-radius: 50%;
+              transition: all $transition;
+            }
+
+            &::before {
+              background-color: $rose;
+            }
+            &::after {
+              background-color: $blackish;
+              transform-origin: 50% 50%;
+              transform: scale(0, 0);
+            }
+          }
+
+          input:checked + label {
+            color: $white;
+            text-decoration: underline;
+
+            &::after {
+              transform: scale(0.5, 0.5);
+            }
+          }
+        }
+      }
+    }
+  }
+}

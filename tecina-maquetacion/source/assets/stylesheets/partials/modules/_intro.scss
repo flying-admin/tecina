@@ -1,0 +1,121 @@
+.intro {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 60px 82px;
+  margin: 0;
+  transition: $transition;
+
+  &__logo {
+    display: block;
+    position: fixed;
+    left: 50%;
+    top: 60px;
+    width: 145px;
+    margin: 0 auto;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  &__start {
+    display: block;
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    cursor: pointer;
+    z-index: 2;
+
+    p {
+      display: block;
+      float: left;
+      font-family: $font_default;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 30px;
+      color: $white;
+      text-transform: uppercase;
+      padding-right: 20px;
+    }
+
+    img {
+      display: block;
+      float: right;
+      height: 60px;
+      width: auto;
+    }
+  }
+
+  &__slider {
+    display: block;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+  }
+
+
+  &__dish {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    @include align-content(center);
+    position: relative;
+    height: 100%;
+
+    &--inner {
+      display: block;
+      width: 100%;
+    }
+
+    &__image {
+      display: block;
+      width: 65vw;
+      margin: 0 auto;
+    }
+
+    &__info {
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+
+      &__category {
+        font-family: $font_default;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: $primary;
+        text-transform: uppercase;
+        padding: 0 0 16px;
+        margin: 0;
+      }
+
+      &__name {
+        font-family: $font_default;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        color: $white;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  .header--expanded & {
+    &__logo,
+    &__start {
+      opacity: 0;
+    }
+    &__dish__info {
+      position: absolute;
+      top: 0;
+      text-align: right;
+      max-width: 400px;
+
+      &__name {
+        font-size: 20px;
+      }
+    }
+  }
+}

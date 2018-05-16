@@ -7,12 +7,30 @@ use Illuminate\Database\Eloquent\Model;
 class Allergen extends Model
 {
     /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'lang',
+        'icon'
     ];
+
+
+    public function getTranslate() {
+        return $this->belongsToMany('App\Language', 'allergen_translations')->withPivot('name', 'description');
+    }
+
+
+    // A Allergen appears in many dishes
+    public function dishes(){
+        return $this->belongsToMany('App\Dish', 'allergens_dishes');
+    }
 
 }

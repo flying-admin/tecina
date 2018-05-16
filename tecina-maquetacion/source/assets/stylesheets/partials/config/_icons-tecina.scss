@@ -1,0 +1,83 @@
+//
+// Icon Font: icons-tecina
+//
+
+@font-face {
+  font-family: "icons-tecina";
+  src: url("./../fonts/icons-tecina.eot");
+  src: url("./../fonts/icons-tecina.eot?#iefix") format("embedded-opentype"),
+       url("./../fonts/icons-tecina.woff2") format("woff2"),
+       url("./../fonts/icons-tecina.woff") format("woff"),
+       url("./../fonts/icons-tecina.ttf") format("truetype"),
+       url("./../fonts/icons-tecina.svg#icons-tecina") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "icons-tecina";
+    src: url("./../fonts/icons-tecina.svg#icons-tecina") format("svg");
+  }
+}
+
+[data-icon]:before { content: attr(data-icon); }
+
+[data-icon]:before,
+.icon-altramuces:before,
+.icon-apio:before,
+.icon-cacahuetes:before,
+.icon-crustaceos:before,
+.icon-frutos_cascara:before,
+.icon-gluten:before,
+.icon-huevos:before,
+.icon-lacteos:before,
+.icon-moluscos:before,
+.icon-mostaza:before,
+.icon-pescado:before,
+.icon-sesamo:before,
+.icon-soja:before,
+.icon-sulfitos:before {
+  display: inline-block;
+  font-family: "icons-tecina";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.icon-altramuces:before { content: "\f100"; }
+.icon-apio:before { content: "\f101"; }
+.icon-cacahuetes:before { content: "\f102"; }
+.icon-crustaceos:before { content: "\f103"; }
+.icon-frutos_cascara:before { content: "\f104"; }
+.icon-gluten:before { content: "\f105"; }
+.icon-huevos:before { content: "\f106"; }
+.icon-lacteos:before { content: "\f107"; }
+.icon-moluscos:before { content: "\f10e"; }
+.icon-mostaza:before { content: "\f109"; }
+.icon-pescado:before { content: "\f10a"; }
+.icon-sesamo:before { content: "\f10b"; }
+.icon-soja:before { content: "\f10c"; }
+.icon-sulfitos:before { content: "\f10d"; }
+
+$font-icons-tecina-altramuces: "\f100";
+$font-icons-tecina-apio: "\f101";
+$font-icons-tecina-cacahuetes: "\f102";
+$font-icons-tecina-crustaceos: "\f103";
+$font-icons-tecina-frutos_cascara: "\f104";
+$font-icons-tecina-gluten: "\f105";
+$font-icons-tecina-huevos: "\f106";
+$font-icons-tecina-lacteos: "\f107";
+$font-icons-tecina-moluscos: "\f10e";
+$font-icons-tecina-mostaza: "\f109";
+$font-icons-tecina-pescado: "\f10a";
+$font-icons-tecina-sesamo: "\f10b";
+$font-icons-tecina-soja: "\f10c";
+$font-icons-tecina-sulfitos: "\f10d";

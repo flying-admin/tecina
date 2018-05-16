@@ -1,0 +1,134 @@
+body,
+input,
+textarea,
+button {
+  font-family: $font_default;
+  font-size: 14px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.body-wrapper {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: mix($black, $white, 83%);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/assets/images/shared/bg-shadow.png");
+    background-position: top right;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+.content-wrapper {
+  display: block;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all $transition;
+
+  .header--expanded & {
+    margin-left: 25vw;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+
+  &--wide {
+    width: 100% !important;
+  }
+}
+
+.link {
+  color: $secondary;
+  text-decoration: none;
+}
+
+/* ========== HELPERS ========== */
+
+.no-gutters {
+  margin: 0 !important;
+
+  [class^=col]{
+    padding: 0 !important
+  }
+}
+
+.content-align-left {
+  text-align: left;
+}
+
+.content-align-right {
+  text-align: right;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.relative {
+  position: relative;
+}
+
+// Desktop
+.hide-on-desktop,
+.responsive-only,
+.tablet-only,
+.mobile-only {
+  display: none !important;
+}
+
+.desktop-only,
+.hide-on-responsive,
+.hide-on-tablet,
+.hide-on-mobile {
+  display: inherit;
+}
+
+// Tablet
+@include media("<tablet") {
+  .responsive-only,
+  .tablet-only {
+    display: inherit !important;
+  }
+  .desktop-only,
+  .hide-on-responsive,
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+// Mobile
+@include media("<phablet") {
+  .responsive-only,
+  .mobile-only {
+    display: inherit !important;
+  }
+  .desktop-only,
+  .hide-on-responsive,
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
