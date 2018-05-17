@@ -7,9 +7,9 @@
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <a href="/">
-            <img src="/assets/images/shared/logo.png" alt="Tasca Fandango" class="header__menu__logo">
-          </a>
+          <% link_to '/', :relative => true do %>
+            <%= image_tag '/assets/images/shared/logo.png', :class => 'header__menu__logo' %>
+          <% end %>
         </div>
       </div>
       <div class="row">
@@ -17,26 +17,38 @@
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <a href="/dishes">Entrantes frios<span>(12)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Entrantes frios<span>(12)</span>
+                <% end %>
               </li>
               <li>
-                <a href="/dishes">Entrantes calientes<span>(06)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Entrantes calientes<span>(06)</span>
+                <% end %>
               </li>
               <li>
-                <a href="/dishes">Pescados<span>(04)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Pescados<span>(04)</span>
+                <% end %>
               </li>
               <li>
-                <a href="/dishes">Carnes<span>(06)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Carnes<span>(06)</span>
+                <% end %>
               </li>
               <li>
-                <a href="/dishes">Postres<span>(03)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Postres<span>(03)</span>
+                <% end %>
               </li>
             </ul>
           </div>
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <a>Menus<span>(05)</span></a>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Menus<span>(05)</span>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -45,18 +57,20 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <a>Carta de Vinos<span>(05)</span></a>
+                <% link_to '', :relative => true do %>
+                  Carta de Vinos<span>(05)</span>
+                <% end %>
               </li>
               <li class="header__menu__nav__feature">
-                <a href="" class="feat">
+                <% link_to '', :relative => true, :class => 'feat' do %>
                   <div class="feat__image">
-                    <img src="/assets/images/shared/menu-bottle.png" alt="">
+                    <%= image_tag '/assets/images/shared/menu-bottle.png' %>
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">Jean Leon<br>3055 Rosé</span>
                     <span class="feat__text__info">D. O. Penedés<br>Variedad: Pinot NOIR</span>
                   </p>
-                </a>
+                <% end %>
               </li>
             </ul>
           </div>
@@ -71,98 +85,98 @@
               <li>
                 <input type="checkbox" value="" id="filter1">
                 <label for="filter1">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Crustaceos</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter2">
                 <label for="filter2">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span class="double">Contiene<br>gluten</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter3">
                 <label for="filter3">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Soja</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter4">
                 <label for="filter4">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Moluscos</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter5">
                 <label for="filter5">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Apio</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter6">
                 <label for="filter6">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Mostaza</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter7">
                 <label for="filter7">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span class="double">Dióxido de<br>azufre y sulfítos</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter8">
                 <label for="filter8">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Cacahuetes</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter9">
                 <label for="filter9">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span class="double">Granos de<br>sésamo</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter10">
                 <label for="filter10">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Altramuces</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter11">
                 <label for="filter11">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span class="double">Frutos de<br>cascara</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter12">
                 <label for="filter12">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Lacteos</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter13">
                 <label for="filter13">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Pescado</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filter14">
                 <label for="filter14">
-                  <img src="/assets/images/shared/wip-icon.png" alt="">
+                  <%= image_tag '/assets/images/shared/wip-icon.png' %>
                   <span>Huevos</span>
                 </label>
               </li>

@@ -8,7 +8,7 @@
 <div class="dishes <%= extra_classes %>">
 
   <p href="" class="dishes__title">
-    <img src="/assets/images/shared/logo_mini.png" alt="Tasca Fandango">
+    <%= image_tag '/assets/images/shared/logo_mini.png', :alt => 'Tasca Fandango' %>
     <span><%= title %></span>
   </p>
 
@@ -20,7 +20,7 @@
         <div class="swiper-slide dishes__slider__item">
           <div class="dishes__row">
             <% dishes_sub.each do |dish| %>
-              <a href="<%= dish[:link] %>" class="dishes__row__dish">
+              <% link_to dish[:link], :relative => true, :class => 'dishes__row__dish' do %>
                 <p class="dishes__row__dish__name">
                   <span class="dishes__row__dish__name--number">
                     <% if n_dish < 10 %>
@@ -31,7 +31,7 @@
                   </span>
                   <span class="dishes__row__dish__name--text"><%= dish[:name] %></span>
                 </p>
-                <img src="<%= dish[:image] %>" alt="Tasca Fandango" class="dishes__row__dish__image">
+                <%= image_tag dish[:image], :class => 'dishes__row__dish__image' %>
                 <ul class="dishes__row__dish__allergens">
                   <% i = 0 %>
                   <% while i < 7 do %>
@@ -43,7 +43,7 @@
                     <% i = i + 1 %>
                   <% end %>
                 </ul>
-              </a>
+              <% end %>
               <% n_dish = n_dish + 1 %>
             <% end %>
           </div>
