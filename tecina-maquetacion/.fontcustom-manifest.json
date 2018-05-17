@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "3025bbb15d94cd9b9362737dcda04c6c8e204f21ce7edab2e17133a8d8b56483",
-    "current": "3025bbb15d94cd9b9362737dcda04c6c8e204f21ce7edab2e17133a8d8b56483"
+    "previous": "c7e2db44f401ffe17c740ef0413481df4228ed8c6411f16531af1ec526fb5774",
+    "current": "c7e2db44f401ffe17c740ef0413481df4228ed8c6411f16531af1ec526fb5774"
   },
   "fonts": [
     "./source/assets/fonts/icons-tecina.ttf",
@@ -22,6 +22,14 @@
     "cacahuetes": {
       "codepoint": 61698,
       "source": "./source/assets/images/icons/cacahuetes.svg"
+    },
+    "chevron-down": {
+      "codepoint": 61711,
+      "source": "./source/assets/images/icons/chevron-down.svg"
+    },
+    "chevron-up": {
+      "codepoint": 61712,
+      "source": "./source/assets/images/icons/chevron-up.svg"
     },
     "crustaceos": {
       "codepoint": 61699,

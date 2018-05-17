@@ -27,6 +27,8 @@
 .icon-altramuces:before,
 .icon-apio:before,
 .icon-cacahuetes:before,
+.icon-chevron-down:before,
+.icon-chevron-up:before,
 .icon-crustaceos:before,
 .icon-frutos_cascara:before,
 .icon-gluten:before,
@@ -55,6 +57,8 @@
 .icon-altramuces:before { content: "\f100"; }
 .icon-apio:before { content: "\f101"; }
 .icon-cacahuetes:before { content: "\f102"; }
+.icon-chevron-down:before { content: "\f10f"; }
+.icon-chevron-up:before { content: "\f110"; }
 .icon-crustaceos:before { content: "\f103"; }
 .icon-frutos_cascara:before { content: "\f104"; }
 .icon-gluten:before { content: "\f105"; }
@@ -70,6 +74,8 @@
 $font-icons-tecina-altramuces: "\f100";
 $font-icons-tecina-apio: "\f101";
 $font-icons-tecina-cacahuetes: "\f102";
+$font-icons-tecina-chevron-down: "\f10f";
+$font-icons-tecina-chevron-up: "\f110";
 $font-icons-tecina-crustaceos: "\f103";
 $font-icons-tecina-frutos_cascara: "\f104";
 $font-icons-tecina-gluten: "\f105";
