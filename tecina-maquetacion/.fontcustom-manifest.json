@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "c7e2db44f401ffe17c740ef0413481df4228ed8c6411f16531af1ec526fb5774",
-    "current": "c7e2db44f401ffe17c740ef0413481df4228ed8c6411f16531af1ec526fb5774"
+    "previous": "774e2854ea14d6c620fda828241cdb311617aa29569f1a098969797535cd1ca8",
+    "current": "774e2854ea14d6c620fda828241cdb311617aa29569f1a098969797535cd1ca8"
   },
   "fonts": [
     "./source/assets/fonts/icons-tecina.ttf",
@@ -62,6 +62,10 @@
     "pescado": {
       "codepoint": 61706,
       "source": "./source/assets/images/icons/pescado.svg"
+    },
+    "return": {
+      "codepoint": 61713,
+      "source": "./source/assets/images/icons/return.svg"
     },
     "sesamo": {
       "codepoint": 61707,

@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2018-5-17: Created with FontForge (http://fontforge.org)
+2018-5-18: Created with FontForge (http://fontforge.org)
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20180321 at Thu May 17 11:05:56 2018
+Created by FontForge 20180321 at Fri May 18 14:33:46 2018
  By Alejandro Garcia Ximenez
 
 </metadata>
@@ -22,7 +22,7 @@ Created by FontForge 20180321 at Thu May 17 11:05:56 2018
     bbox="0 -63.8535 512 447.927"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F110"
+    unicode-range="U+0020-F111"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
@@ -269,6 +269,9 @@ c-1.17285 -2.93457 -3.96094 -4.69434 -6.96777 -4.69434c-0.880859 0 -1.83398 0.14
 c-3.8877 1.61328 -5.72168 5.94141 -4.18164 9.8291l0.367188 0.953125c7.55566 18.7051 28.9014 27.874 47.6787 20.3184z" />
     <glyph glyph-name="chevron-up" unicode="&#xf110;" 
 d="M256 331.637l256 -254.938l-24.4365 -24.335l-231.563 230.604l-231.563 -230.604l-24.4365 24.335z" />
+    <glyph glyph-name="return" unicode="&#xf111;" 
+d="M394.159 17.4541h-74.3877v33.2354h74.3877c46.3955 0 84.1719 37.2891 84.1719 83.0859s-37.7764 83.0859 -84.1719 83.0859h-329.717l105.921 -104.556l-23.7695 -23.5303l-146.594 144.703l146.594 144.703l23.8037 -23.4971l-105.955 -104.589h329.717
+c64.9805 0 117.841 -52.1777 117.841 -116.32s-52.8604 -116.321 -117.841 -116.321z" />
     <glyph glyph-name="chevron-down" unicode="&#xf10f;" 
 d="M256 52.3633l-256 254.938l24.4365 24.335l231.563 -230.604l231.563 230.604l24.4365 -24.335z" />
     <glyph glyph-name="apio" unicode="&#xf101;" 

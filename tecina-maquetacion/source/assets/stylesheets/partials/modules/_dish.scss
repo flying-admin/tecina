@@ -1,38 +1,37 @@
-.dishes {
+.dish {
   display: block;
   width: 100vw;
   height: 100vh;
-  padding: 100px 82px 60px;
+  padding: 0 82px;
+  padding-right: 0;
   margin: 0;
   transition: all $transition;
   overflow: hidden;
 
-  &__title {
+  &__logo {
     display: block;
     position: fixed;
-    left: 82px;
-    top: 30px;
-    right: 82px;
+    left: 252px;
+    top: 50px;
     width: 100%;
+    max-width: 145px;
     height: auto;
     margin: 0;
     padding: 0;
-    padding-left: 143px;
-    font-family: $font_default;
-    font-weight: 900;
-    font-size: 44px;
-    line-height: 77px;
-    color: $white;
     text-transform: uppercase;
     z-index: 2;
+  }
 
-    img {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 33px;
-      width: 77px;
-      height: auto;
+  &__return {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 82px;
+    z-index: 2;
+
+    span {
+      font-size: 40px;
+      color: $white;
     }
   }
 
@@ -43,7 +42,7 @@
     z-index: 1;
 
     &__item {
-      padding: 0 100px
+      padding: 300px 15px 0 170px;
     }
 
     &__nav {
@@ -53,19 +52,18 @@
       padding: 3px;
       margin-top: 0;
       transition: all $transition-short;
+      right: 82px;
 
       &--prev {
         top: auto;
-        right: 0;
         left: auto;
-        bottom: 60px;
+        bottom: 120px;
       }
 
       &--next {
         top: auto;
-        right: 0;
         left: auto;
-        bottom: 0;
+        bottom: 60px;
       }
 
       &--disabled {
@@ -82,52 +80,57 @@
     }
   }
 
-  &__row {
-    @include flexbox;
-    @include flex-wrap(nowrap);
-    @include justify-content(space-around);
-    @include align-items(stretch);
-    @include align-content(stretch);
+  &-item {
+    display: block;
+    padding: 0;
 
-    &__dish {
-      @include flex-basis(33.334%);
-      padding: 50px 50px 20px;
-      text-decoration: none;
+    &__title {
+      display: block;
+      position: relative;
+      font-family: $font_default;
+      font-weight: 800;
+      font-size: 60px;
+      line-height: 62px;
+      color: $white;
+      text-transform: uppercase;
+      margin: 0 0 40px;
+    }
 
-      &__name {
+    &__desc {
+      display: block;
+      position: relative;
+      font-family: $font_default;
+      font-weight: 300;
+      font-size: 26px;
+      line-height: 36px;
+      color: $white;
+    }
+
+    &__image {
+      display: block;
+      position: relative;
+      transform-origin: 50% 50%;
+      transform: scale(1.25) translateY(-8%);
+    }
+
+    &__allergens {
+      display: block;
+      max-width: 440px;
+      padding: 115px 0 0;
+
+      &__title {
         display: block;
         position: relative;
-        width: 100%;
-        min-height: 96px;
         font-family: $font_default;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
         color: $white;
         text-transform: uppercase;
-
-        &--number {
-          position: absolute;
-          top: 0;
-          left: -33px;
-          font-weight: 300;
-          font-size: 18px;
-          line-height: 28px;
-        }
-        &--text {
-          font-weight: 900;
-          font-size: 24px;
-          line-height: 32px;
-        }
+        margin: 0 0 20px;
       }
 
-      &__image {
-        display: block;
-        width: auto;
-        height: auto;
-        max-width: 100%;
-        max-height: 220px;
-        margin: 0 auto;
-      }
-
-      &__allergens {
+      &__list {
         @include flexbox;
         @include flex-direction(row);
         @include flex-wrap(nowrap);
@@ -135,19 +138,11 @@
         @include align-items(stretch);
         @include align-content(stretch);
 
-        // &::before,
-        // &::after {
-        //   content: '';
-        //   display: block;
-        //   width: 100%;
-        //   clear: both;
-        // }
-
         li {
           display: block;
           position: relative;
           margin-right: 5px;
-          padding-bottom: 30px;
+          padding-bottom: 40px;
           @include flex-basis(100% / 7);
 
           &:last-child {
@@ -184,6 +179,44 @@
             border-radius: 50%;
           }
         }
+      }
+    }
+
+    &__counter {
+      position: absolute;
+      top: 300px;
+      left: 70px;
+      font-size: 24px;
+      line-height: 30px;
+      width: 36px;
+      padding: 10px 0;
+      text-align: center;
+      background-color: mix($black, $white, 83%);
+
+      &__current {
+        display: block;
+        color: $primary;
+        padding: 3px 0;
+        border-bottom: 1px solid $primary;
+      }
+
+      &__total {
+        display: block;
+        color: $white;
+        padding: 3px 0;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 1px;
+        height: 100vh;
+        background-color: $white;
+        opacity: 0.5;
+        z-index: -1;
       }
     }
   }

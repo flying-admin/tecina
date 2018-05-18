@@ -37,6 +37,7 @@
 .icon-moluscos:before,
 .icon-mostaza:before,
 .icon-pescado:before,
+.icon-return:before,
 .icon-sesamo:before,
 .icon-soja:before,
 .icon-sulfitos:before {
@@ -67,6 +68,7 @@
 .icon-moluscos:before { content: "\f10e"; }
 .icon-mostaza:before { content: "\f109"; }
 .icon-pescado:before { content: "\f10a"; }
+.icon-return:before { content: "\f111"; }
 .icon-sesamo:before { content: "\f10b"; }
 .icon-soja:before { content: "\f10c"; }
 .icon-sulfitos:before { content: "\f10d"; }
@@ -84,6 +86,7 @@ $font-icons-tecina-lacteos: "\f107";
 $font-icons-tecina-moluscos: "\f10e";
 $font-icons-tecina-mostaza: "\f109";
 $font-icons-tecina-pescado: "\f10a";
+$font-icons-tecina-return: "\f111";
 $font-icons-tecina-sesamo: "\f10b";
 $font-icons-tecina-soja: "\f10c";
 $font-icons-tecina-sulfitos: "\f10d";
