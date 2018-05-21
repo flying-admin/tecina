@@ -1,0 +1,69 @@
+<%
+  extra_classes ||= ""
+  menus ||= []
+  n_menu = 1
+%>
+
+
+<div class="menus <%= extra_classes %>">
+
+  <p class="menus__title">
+    <%= image_tag '/assets/images/shared/logo_mini.png', :alt => 'Tasca Fandango' %>
+    <span>Menús</span>
+  </p>
+
+  <div class="swiper-container menus__slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+
+      <% menus.each_slice(3).to_a.each do |menus_sub| %>
+        <div class="swiper-slide menus__slider__item">
+          <div class="menus__row">
+            <% menus_sub.each do |menu| %>
+              <div class="menus__row__menu">
+                <% link_to menu[:link], :relative => true, :class => 'menus__row__menu--link' do %>
+                  <p class="menus__row__menu__name">
+                    <span class="menus__row__menu__name--number">
+                      <% if n_menu < 10 %>
+                        0<%= n_menu %>
+                      <% else %>
+                        <%= n_menu %>
+                      <% end %>
+                    </span>
+                    <span class="menus__row__menu__name--text"><%= menu[:name] %></span>
+                  </p>
+                  <p class="menus__row__menu__note">
+                    <%= menu[:note] %>
+                  </p>
+                <% end %>
+                <% menu[:menu].each do |menu_text| %>
+                  <p class="menus__row__menu__text">
+                    <%= menu_text %>
+                  </p>
+                <% end %>
+                <% link_to menu[:wines][:link], :relative => true, :class => 'menus__row__menu__wines' do %>
+                  <p class="menus__row__menu__wines__text">
+                    <%= menu[:wines][:text] %>
+                  </p>
+                  <p class="menus__row__menu__wines__note">
+                    <%= menu[:wines][:note] %>
+                  </p>
+                <% end %>
+              </div>
+              <% n_menu = n_menu + 1 %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="swiper-button-prev menus__slider__nav menus__slider__nav--prev">
+      <span class="icon-chevron-up"></span>
+    </div>
+    <div class="swiper-button-next menus__slider__nav menus__slider__nav--next">
+      <span class="icon-chevron-down"></span>
+    </div>
+  </div>
+
+</div>

@@ -54,6 +54,22 @@ Project.init = function(){
     });
   }
 
+  var menus = $('.menus');
+  if (menus.length){
+    var mySwiper = new Swiper('.menus__slider', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 1,
+      navigation: {
+        prevEl: '.menus__slider__nav--prev',
+        nextEl: '.menus__slider__nav--next',
+        disabledClass: 'menus__slider__nav--disabled'
+      },
+    });
+  }
+
 };
 
 $(function(){

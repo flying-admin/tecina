@@ -11,24 +11,19 @@ $flexboxgrid-breakpoints:
   xl 1440px 1220px;
 
 //Colors
-$white: #FFF;
-$black: #000;
+$white: #FFFFFF;
+$black: #000000;
 $blackish: #141414;
-$grey: #000;
+$grey: #000000;
 $darkgrey: #2C2C2C;
-$lightgrey: #000;
+$lightgrey: #000000;
 $primary: #BA2A2A;
-$primary-darken: darken(#BA2A2A, 15%);
-$primary-lighten: lighten(#BA2A2A, 15%);
-$secondary: #000;
-$secondary-darken: darken(#000, 15%);
-$secondary-lighten: lighten(#000, 15%);
+$primary-lighten: #F65D4D;
+$primary-darken: #000000;
 $rose: #F9CEB3;
-
 
 //Fonts
 $font_default: "Lato", sans-serif;
-
 
 // Standard transitions
 $transition: 0.5s cubic-bezier(0.6, 0, 0.4, 1.0) 0s;
