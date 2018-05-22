@@ -2,7 +2,7 @@
   display: block;
   width: 100vw;
   height: 100vh;
-  padding: 100px 82px 60px;
+  padding: 100px 80px 60px;
   margin: 0;
   transition: all $transition;
   overflow: hidden;
@@ -10,9 +10,9 @@
   &__title {
     display: block;
     position: fixed;
-    left: 82px;
+    left: 80px;
     top: 30px;
-    right: 82px;
+    right: 80px;
     width: 100%;
     height: auto;
     margin: 0;
@@ -82,7 +82,7 @@
     }
   }
 
-  &__row {
+  &-row {
     @include flexbox;
     @include flex-wrap(nowrap);
     @include justify-content(flex-start);
@@ -180,7 +180,7 @@
             font-size: 42px;
             line-height: 42px;
             background-color: $white;
-            color: $darkgrey;
+            color: $darkgrey-c;
             border-radius: 50%;
           }
         }

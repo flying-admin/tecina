@@ -1,0 +1,536 @@
+.menu {
+  // display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  padding-left: 80px;
+  margin: 0;
+  transition: all $transition;
+  overflow: hidden;
+
+  @include flexbox;
+  @include flex-wrap(nowrap);
+  @include justify-content(flex-start);
+  @include align-items(stretch);
+  @include align-content(stretch);
+
+  &__title {
+    display: block;
+    position: fixed;
+    left: 80px;
+    top: 30px;
+    right: 80px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    padding-left: 143px;
+    font-family: $font_default;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 77px;
+    color: $black;
+    text-transform: uppercase;
+    z-index: 2;
+
+    img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 33px;
+      width: 77px;
+      height: auto;
+    }
+  }
+
+  &__return {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    z-index: 2;
+
+    span {
+      font-size: 40px;
+      color: $white;
+    }
+  }
+
+  &__summary {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 35%;
+    background-color: $white;
+    padding: 100px 80px 60px;
+    z-index: 1;
+
+    &__menu {
+      display: block;
+      position: relative;
+      padding: 80px 50px 120px;
+
+      &--link {
+        display: block;
+        text-decoration: none;
+      }
+
+      &__name {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 32px;
+        color: $primary;
+      }
+
+      &__note {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+        color: $primary;
+        text-transform: lowercase;
+        margin: 0 0 40px;
+      }
+
+      &__text {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+        color: $darkgrey-b;
+        margin: 0;
+        padding: 5px 0;
+      }
+
+      &__wines {
+        display: block;
+        position: relative;
+        bottom: auto;
+        text-decoration: none;
+        margin: 40px 0 0;
+
+        &__text {
+          display: inline-block;
+          position: relative;
+          font-family: $font_default;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 30px;
+          color: $primary;
+
+          &::before {
+            content: '>'
+          }
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 16px;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            width: auto;
+            background-color: $primary;
+          }
+        }
+
+        &__note {
+          display: block;
+          position: relative;
+          font-family: $font_default;
+          font-weight: 300;
+          font-size: 16px;
+          line-height: 20px;
+          color: $primary;
+          text-decoration: none;
+          padding: 10px 0 0;
+        }
+      }
+    }
+  }
+
+  &__details {
+    display: block;
+    position: relative;
+    @include flex-basis(65%);
+    padding: 140px 0 60px;
+
+    &__slider {
+      display: block;
+      position: relative;
+      height: 100%;
+      width: 100%;
+      padding: 0 80px 0 60px;
+      z-index: 1;
+
+      &__item {
+        padding: 0;
+        padding-right: 100px;
+      }
+
+      &__nav {
+        background-image: none;
+        height: 40px;
+        width: 40px;
+        padding: 3px;
+        margin-top: 0;
+        transition: all $transition-short;
+        right: 80px;
+        top: auto;
+        left: auto;
+
+        &--prev {
+          bottom: 60px;
+        }
+
+        &--next {
+          bottom: 0;
+        }
+
+        &--disabled {
+          opacity: 0.2;
+          pointer-events: none;
+        }
+
+        span {
+          display: block;
+          color: $white;
+          font-size: 34px;
+          line-height: 34px;
+        }
+      }
+    }
+
+    &__wines {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100vh;
+      padding: 140px 0 60px;
+      background-color: $white;
+      box-shadow: inset 4px 0 8px rgba($black, 0.2);
+      transition: all $transition;
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
+
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        z-index: 3;
+      }
+
+      &__title {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 30px;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        padding-left: 33px;
+        font-family: $font_default;
+        font-weight: 900;
+        font-size: 44px;
+        line-height: 77px;
+        color: $primary;
+        text-transform: uppercase;
+      }
+
+      &__close {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 80px;
+        height: 40px;
+        width: 40px;
+        padding: 3px;
+        cursor: pointer;
+
+        span {
+          font-size: 34px;
+          line-height: 34px;
+          color: $darkgrey-b;
+        }
+      }
+
+      &__slider {
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 0 80px 0 60px;
+        z-index: 1;
+
+        &__item {
+          padding: 0;
+          padding-right: 100px;
+        }
+
+        &__nav {
+          background-image: none;
+          height: 40px;
+          width: 40px;
+          padding: 3px;
+          margin-top: 0;
+          transition: all $transition-short;
+          right: 80px;
+          top: auto;
+          left: auto;
+
+          &--prev {
+            bottom: 60px;
+          }
+
+          &--next {
+            bottom: 0;
+          }
+
+          &--disabled {
+            opacity: 0.2;
+            pointer-events: none;
+          }
+
+          span {
+            display: block;
+            color: $darkgrey-b;
+            font-size: 34px;
+            line-height: 34px;
+          }
+        }
+      }
+
+      .wines-row {
+        @include flexbox;
+        @include flex-wrap(nowrap);
+        @include justify-content(space-between);
+        @include align-items(stretch);
+        @include align-content(stretch);
+        width: 100%;
+        height: 100%;
+
+        &__wine {
+          @include flexbox;
+          @include flex-wrap(nowrap);
+          @include justify-content(flex-start);
+          @include align-items(stretch);
+          @include align-content(stretch);
+          @include flex-basis(49%);
+          height: 100%;
+          padding: 40px 0;
+          border-bottom: 1px solid $lightgrey;
+
+          &__image {
+            display: block;
+            position: relative;
+            height: 100%;
+            @include flex-basis(35%);
+
+            img {
+              display: block;
+              width: auto;
+              max-width: 100%;
+              max-height: 100%;
+              margin: 0 auto;
+            }
+          }
+
+          &__info {
+            display: block;
+            position: relative;
+            height: 100%;
+            @include flex-basis(65%);
+
+            &__name {
+              display: block;
+              position: relative;
+              width: 100%;
+              font-family: $font_default;
+              font-weight: 700;
+              font-size: 30px;
+              line-height: 40px;
+              color: $primary;
+              margin: 0 0 10px;
+            }
+
+            &__type,
+            &__origin {
+              display: block;
+              position: relative;
+              width: 100%;
+              font-family: $font_default;
+              font-size: 18px;
+              line-height: 26px;
+              color: $primary;
+              text-transform: uppercase;
+              margin: 0;
+            }
+
+            &__type {
+              font-weight: 700;
+            }
+
+            &__origin {
+              font-weight: 300;
+              margin: 0 0 10px;
+            }
+
+            &__variety {
+              display: block;
+              position: relative;
+              width: 100%;
+              font-size: 18px;
+              line-height: 26px;
+              font-family: $font_default;
+              color: $primary;
+              margin: 0;
+
+              &--label {
+                display: block;
+                font-weight: 700;
+                text-transform: uppercase;
+              }
+
+              &--value {
+                display: block;
+                font-weight: 300;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-dish {
+    @include flexbox;
+    @include flex-wrap(nowrap);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(stretch);
+    width: 100%;
+    height: 100%;
+    padding: 40px 0;
+    border-bottom: 1px dotted $white;
+
+    &__info {
+      display: block;
+      position: relative;
+      @include flex-basis(50%);
+
+
+      &__name {
+        display: block;
+        position: relative;
+        font-family: $font_default;
+        color: $white;
+        margin: 0;
+
+        &--number {
+          position: absolute;
+          top: 0;
+          left: -34px;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 34px;
+
+        }
+
+        &--text {
+          font-weight: 700;
+          font-size: 30px;
+          line-height: 40px;
+        }
+      }
+
+      &__allergens {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 70%;
+        padding: 0;
+
+
+        &__list {
+          @include flexbox;
+          @include flex-direction(row);
+          @include flex-wrap(nowrap);
+          @include justify-content(flex-start);
+          @include align-items(stretch);
+          @include align-content(stretch);
+
+          li {
+            display: block;
+            position: relative;
+            margin-right: 5px;
+            padding-bottom: 30px;
+            @include flex-basis(100% / 7);
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background-color: $primary;
+            }
+
+            @for $i from 1 through 7 {
+              &:nth-child(#{$i})::after{
+                $basepercent: 10%;
+                $percent1: (($i - 1) * $basepercent);
+                $percent2: ($i * $basepercent);
+                background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
+              }
+            }
+
+            span {
+              display: inline-block;
+              padding: 5px;
+              font-size: 32px;
+              line-height: 32px;
+              background-color: $white;
+              color: $darkgrey-c;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+
+    &__image {
+      @include flex-basis(50%);
+
+      img {
+        display: block;
+        position: relative;
+        width: 95%;
+        max-width: 95%;
+        margin-left: 5%;
+      }
+    }
+  }
+}

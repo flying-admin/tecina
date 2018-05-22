@@ -10,6 +10,15 @@ Project.init = function(){
     $('body').toggleClass(selectorName + '--expanded');
   });
 
+  $('[data-toggle]').on('click', function(ev){
+    ev.preventDefault();
+    ev.stopPropagation();
+    
+    var $this = $(this);
+    var $target = $($this.data('toggle'));
+    $target.toggleClass('active');
+  });
+
   var intro = $('.intro');
   if (intro.length){
     var mySwiper = new Swiper('.intro__slider', {
@@ -68,6 +77,38 @@ Project.init = function(){
         disabledClass: 'menus__slider__nav--disabled'
       },
     });
+  }
+
+  var menu = $('.menu');
+  if (menu.length){
+    var mySwiper = new Swiper('.menu__details__slider', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 2,
+      navigation: {
+        prevEl: '.menu__details__slider__nav--prev',
+        nextEl: '.menu__details__slider__nav--next',
+        disabledClass: 'menu__details__slider__nav--disabled'
+      },
+    });
+
+    var wines = $('.menu__details__wines');
+    if (wines.length){
+      var mySwiper = new Swiper('.menu__details__wines__slider', {
+        direction: 'vertical',
+        speed: 500,
+        freeMode: true,
+        freeModeSticky: true,
+        slidesPerView: 3,
+        navigation: {
+          prevEl: '.menu__details__wines__slider__nav--prev',
+          nextEl: '.menu__details__wines__slider__nav--next',
+          disabledClass: 'menu__details__wines__slider__nav--disabled'
+        },
+      });
+    }
   }
 
 };

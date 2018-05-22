@@ -96,7 +96,7 @@
         right: 16px;
         bottom: 0;
         height: 1px;
-        background-color: $darkgrey;
+        background-color: $darkgrey-c;
       }
 
       span {
@@ -105,7 +105,7 @@
         width: 30px;
         height: 5px;
         margin: 0;
-        background-color: $darkgrey;
+        background-color: $darkgrey-c;
         transition: all $transition;
 
         &::before,
@@ -116,7 +116,7 @@
           left: 0;
           right: 0;
           height: 5px;
-          background-color: $darkgrey;
+          background-color: $darkgrey-c;
           transition: all $transition;
         }
 
@@ -155,7 +155,7 @@
             line-height: 50px;
             text-align: center;
             text-decoration: none;
-            color: $darkgrey;
+            color: $darkgrey-c;
             transition: all $transition;
             padding: 0;
             margin: 0;
@@ -196,9 +196,9 @@
         font-size: 30px;
         line-height: 50px;
         text-transform: uppercase;
-        color: $darkgrey;
+        color: $darkgrey-c;
         padding-left: 25px;
-        border-left: 10px solid $darkgrey;
+        border-left: 10px solid $darkgrey-c;
       }
     }
   }

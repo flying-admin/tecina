@@ -15,8 +15,9 @@ $white: #FFFFFF;
 $black: #000000;
 $blackish: #141414;
 $grey: #000000;
-$darkgrey: #2C2C2C;
-$lightgrey: #000000;
+$darkgrey-c: #2C2C2C;
+$darkgrey-b: mix($black, $white, 83%); //#2B2B2B
+$lightgrey: #b3b3b3;
 $primary: #BA2A2A;
 $primary-lighten: #F65D4D;
 $primary-darken: #000000;

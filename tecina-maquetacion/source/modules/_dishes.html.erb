@@ -18,21 +18,21 @@
 
       <% dishes.each_slice(3).to_a.each do |dishes_sub| %>
         <div class="swiper-slide dishes__slider__item">
-          <div class="dishes__row">
+          <div class="dishes-row">
             <% dishes_sub.each do |dish| %>
-              <% link_to dish[:link], :relative => true, :class => 'dishes__row__dish' do %>
-                <p class="dishes__row__dish__name">
-                  <span class="dishes__row__dish__name--number">
+              <% link_to dish[:link], :relative => true, :class => 'dishes-row__dish' do %>
+                <p class="dishes-row__dish__name">
+                  <span class="dishes-row__dish__name--number">
                     <% if n_dish < 10 %>
                       0<%= n_dish %>
                     <% else %>
                       <%= n_dish %>
                     <% end %>
                   </span>
-                  <span class="dishes__row__dish__name--text"><%= dish[:name] %></span>
+                  <span class="dishes-row__dish__name--text"><%= dish[:name] %></span>
                 </p>
-                <%= image_tag dish[:image], :class => 'dishes__row__dish__image' %>
-                <ul class="dishes__row__dish__allergens">
+                <%= image_tag dish[:image], :class => 'dishes-row__dish__image' %>
+                <ul class="dishes-row__dish__allergens">
                   <% i = 0 %>
                   <% while i < 7 do %>
                     <li>

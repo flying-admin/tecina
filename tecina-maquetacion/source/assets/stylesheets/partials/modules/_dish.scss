@@ -2,7 +2,7 @@
   display: block;
   width: 100vw;
   height: 100vh;
-  padding: 0 82px;
+  padding: 0 80px;
   padding-right: 0;
   margin: 0;
   transition: all $transition;
@@ -26,7 +26,7 @@
     display: block;
     position: absolute;
     top: 60px;
-    right: 82px;
+    right: 80px;
     z-index: 2;
 
     span {
@@ -52,7 +52,7 @@
       padding: 3px;
       margin-top: 0;
       transition: all $transition-short;
-      right: 82px;
+      right: 80px;
 
       &--prev {
         top: auto;
@@ -175,7 +175,7 @@
             font-size: 42px;
             line-height: 42px;
             background-color: $white;
-            color: $darkgrey;
+            color: $darkgrey-c;
             border-radius: 50%;
           }
         }
@@ -191,7 +191,7 @@
       width: 36px;
       padding: 10px 0;
       text-align: center;
-      background-color: mix($black, $white, 83%);
+      background-color: $darkgrey-b;
 
       &__current {
         display: block;

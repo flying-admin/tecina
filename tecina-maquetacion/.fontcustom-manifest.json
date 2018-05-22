@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "774e2854ea14d6c620fda828241cdb311617aa29569f1a098969797535cd1ca8",
-    "current": "774e2854ea14d6c620fda828241cdb311617aa29569f1a098969797535cd1ca8"
+    "previous": "46bc1e53bca4e3135218d6461ec0e8e0a6c8300ceec00ca318faafaa74c16651",
+    "current": "46bc1e53bca4e3135218d6461ec0e8e0a6c8300ceec00ca318faafaa74c16651"
   },
   "fonts": [
     "./source/assets/fonts/icons-tecina.ttf",
@@ -30,6 +30,10 @@
     "chevron-up": {
       "codepoint": 61712,
       "source": "./source/assets/images/icons/chevron-up.svg"
+    },
+    "close": {
+      "codepoint": 61714,
+      "source": "./source/assets/images/icons/close.svg"
     },
     "crustaceos": {
       "codepoint": 61699,

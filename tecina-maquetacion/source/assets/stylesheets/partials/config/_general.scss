@@ -19,7 +19,7 @@ img {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  background-color: mix($black, $white, 83%);
+  background-color: $darkgrey-b;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -2,7 +2,7 @@
   display: block;
   width: 100vw;
   height: 100vh;
-  padding: 100px 82px 60px;
+  padding: 100px 80px 60px;
   margin: 0;
   transition: all $transition;
   overflow: hidden;
@@ -10,9 +10,9 @@
   &__title {
     display: block;
     position: fixed;
-    left: 82px;
+    left: 80px;
     top: 30px;
-    right: 82px;
+    right: 80px;
     width: 100%;
     height: auto;
     margin: 0;
@@ -53,18 +53,15 @@
       padding: 3px;
       margin-top: 0;
       transition: all $transition-short;
+      top: auto;
+      right: 0;
+      left: auto;
 
       &--prev {
-        top: auto;
-        right: 0;
-        left: auto;
         bottom: 60px;
       }
 
       &--next {
-        top: auto;
-        right: 0;
-        left: auto;
         bottom: 0;
       }
 
@@ -82,7 +79,7 @@
     }
   }
 
-  &__row {
+  &-row {
     @include flexbox;
     @include flex-wrap(nowrap);
     @include justify-content(flex-start);
@@ -94,7 +91,7 @@
       @include flex-basis(33.334%);
       display: block;
       position: relative;
-      padding: 80px 50px 120px;
+      padding: 80px 50px;
 
       &--link {
         display: block;
@@ -174,12 +171,10 @@
 
       &__wines {
         display: block;
-        position: absolute;
-        top: calc(100% - 100px);
-        left: 50px;
-        right: 50px;
+        position: relative;
         bottom: auto;
         text-decoration: none;
+        margin: 40px 0 0;
 
         &__text {
           display: inline-block;
