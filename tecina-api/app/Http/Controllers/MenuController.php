@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Highlight;
+use App\Menu;
 use Illuminate\Http\Request;
 
-class HighlightController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,13 @@ class HighlightController extends Controller
      */
     public function index()
     {
-        $data = Highlight::all();
-
+		$data = [];
+		foreach(Menu::all() as $menu)
+		{
+			$menu->translate = prettyTranslate($menu->getTranslate()->get());
+			$data[] = $menu;
+		}
+		
         return response()->json($data,200);
     }
 
@@ -48,9 +53,7 @@ class HighlightController extends Controller
      */
     public function show($id)
     {
-        $Highlight = Highlight::find($id);
-		$Highlight->Translate = prettyTranslate($Highlight->getTranslate()->get());
-		return response()->json($Highlight,200);
+        //
     }
 
     /**

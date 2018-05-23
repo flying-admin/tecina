@@ -24,7 +24,7 @@ class Menu extends Model
 
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'menus_translations')->withPivot('name','description');
+        return $this->belongsToMany('App\Language', 'menus_translations', 'id_menu', 'id_language')->withPivot('name','description');
     }
 
     // A Menu appears in many Dishes
