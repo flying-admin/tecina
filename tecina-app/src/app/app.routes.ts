@@ -10,7 +10,7 @@ const appRoutes: Routes = [
   //   data: { title: 'Heroes List' }
   // },
   { path: '',
-    redirectTo: '/',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   { path: '**', redirectTo: '/'}
