@@ -46,18 +46,16 @@ Route::group([
 
 ], function ($router) {
 
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
+    Route::post('login',   'AuthController@login');
+    Route::post('logout',  'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::post('me',      'AuthController@me');
 
 
 });
 
 Route::group(['middleware' => 'api'], function () {
 
-    Route::resources([
-        'dish' => 'DishController',
-    ]);
+    Route::resources(['dishes' => 'DishController','highlights'=>'HighlightController','menus'=>'MenuController']);
 
 });

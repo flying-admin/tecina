@@ -14,7 +14,17 @@ class DishController extends Controller
      */
     public function index()
     {
-        $data = Dish::all();
+        $data = [];
+		foreach(Dish::all() as $dish)
+		{
+			$dish->translate = prettyTranslate($dish->getTranslate()->get());
+			$images = [];
+			foreach($dish->images()->get() as $image){
+				$images[]=$image->name;
+			}
+			$dish->images = $images;
+			$data[] = $dish;
+		}
 
         return response()->json($data,200);
     }
@@ -48,7 +58,29 @@ class DishController extends Controller
      */
     public function show($id)
     {
-        //
+        $dish = Dish::find($id);
+
+		$allergens = [];
+		foreach($dish->Allergens()->get() as $data)
+		{
+			$allergens[]=[$data['id'],$data['icon']];
+		}
+		$dish->Allergens = $allergens;
+
+		/*
+		$translate = [];		
+		foreach($dish->getTranslate()->get() as $data)
+		{
+			$translate[$data['code']] = [
+				'name'        => $data['pivot']['name'],
+				'description' => $data['pivot']['description']
+			];
+		}
+		$dish->Translate = $translate;
+		*/
+		$dish->Translate = prettyTranslate($dish->getTranslate()->get());
+		
+		return response()->json($dish,200);
     }
 
     /**

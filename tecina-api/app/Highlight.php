@@ -23,6 +23,6 @@ class Highlight extends Model
     ];
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'dishes_translations')->withPivot('name', 'description');
+        return $this->belongsToMany('App\Language', 'highlights_translations', 'id_highlight', 'id_language')->withPivot('name', 'description');
     }
 }

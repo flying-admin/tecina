@@ -20,18 +20,18 @@ class Dish extends Model
      * @var array
      */
     protected $fillable = [
-        'ingredients'
+        'ingredients',
     ];
 
 
+    // A Dish appears in many translates
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'dishes_translations')->withPivot('name', 'description');
+		return $this->belongsToMany('App\Language', 'dishes_translations','id_dish','id_language')->withPivot('name', 'description');
     }
-
 
     // A Dish appears in many allergens
     public function allergens(){
-        return $this->belongsToMany('App\Allergen', 'allergens_dishes');
+        return $this->belongsToMany('App\Allergen', 'allergens_dishes', 'id_dish', 'id_allergen');
     }
 
     // A Dish appears in many menus
@@ -51,7 +51,7 @@ class Dish extends Model
 
     // A Dish has many images
     public function images(){
-        return $this->hasMany('App\Image');
+        return $this->hasMany('App\Image', 'id_dish');
     }
 
 }
