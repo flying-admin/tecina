@@ -15,7 +15,7 @@ class FoodType extends Model
 
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'dishes_translations')->withPivot('name');
+        return $this->belongsToMany('App\Language', 'food_types_translations', 'id_food_type', 'id_language')->withPivot('name');
     }
 
 

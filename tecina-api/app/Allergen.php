@@ -24,7 +24,7 @@ class Allergen extends Model
 
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'allergen_translations')->withPivot('name', 'description');
+        return $this->belongsToMany('App\Language', 'allergens_translations','id_allergen', 'id_language')->withPivot('name', 'description');
     }
 
 

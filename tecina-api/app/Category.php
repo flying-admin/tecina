@@ -14,7 +14,7 @@ class Category extends Model
     public $timestamps = false;
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'categories_translations')->withPivot('name', 'description');
+        return $this->belongsToMany('App\Language', 'categories_translations', 'id_category', 'id_language')->withPivot('name', 'description');
     }
 
 

@@ -41,12 +41,12 @@ class Dish extends Model
 
     // A Dish appears in many food types
     public function foodTypes(){
-        return $this->belongsToMany('App\FoodType', 'dishes_food_types');
+        return $this->belongsToMany('App\FoodType', 'dishes_food_types', 'id_dish', 'id_food_type');
     }
 
     // A Dish appears in many categories
     public function categories(){
-        return $this->belongsToMany('App\Category', 'categories_dishes');
+        return $this->belongsToMany('App\Category', 'categories_dishes', 'id_dish', 'id_category');
     }
 
     // A Dish has many images

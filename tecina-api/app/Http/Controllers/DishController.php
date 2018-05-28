@@ -23,6 +23,30 @@ class DishController extends Controller
 				$images[]=$image->name;
 			}
 			$dish->images = $images;
+			
+			$allergens=[];
+			foreach($dish->allergens()->get() as $allergen){
+				$translate=prettyTranslate($allergen->getTranslate()->get());
+				$my_allergen=['icon'=>$allergen['icon'],'id'=>$allergen['id']];
+				$my_allergen['translate']=$translate;
+				$allergens[]=$my_allergen;
+			}
+			$dish->allergens = $allergens;
+			
+			$food_types=[];
+			foreach($dish->foodTypes()->get() as $food_type){
+				$translate=prettyTranslate($food_type->getTranslate()->get());
+				$food_types[]=$translate;
+			}
+			$dish->foodTypes = $food_types;
+			
+			$categories=[];
+			foreach($dish->categories()->get() as $category){
+				$translate=prettyTranslate($category->getTranslate()->get());
+				$categories[]=$translate;
+			}
+			$dish->categories = $food_types;
+			
 			$data[] = $dish;
 		}
 
