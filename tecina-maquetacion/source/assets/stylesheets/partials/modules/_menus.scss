@@ -1,0 +1,219 @@
+.menus {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px 80px 60px;
+  margin: 0;
+  transition: all $transition;
+  overflow: hidden;
+
+  &__title {
+    display: block;
+    position: fixed;
+    left: 80px;
+    top: 30px;
+    right: 80px;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    padding-left: 143px;
+    font-family: $font_default;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 77px;
+    color: $white;
+    text-transform: uppercase;
+    z-index: 2;
+
+    img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 33px;
+      width: 77px;
+      height: auto;
+    }
+  }
+
+  &__slider {
+    display: block;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+
+    &__item {
+      padding: 0 100px
+    }
+
+    &__nav {
+      background-image: none;
+      height: 40px;
+      width: 40px;
+      padding: 3px;
+      margin-top: 0;
+      transition: all $transition-short;
+      top: auto;
+      right: 0;
+      left: auto;
+
+      &--prev {
+        bottom: 60px;
+      }
+
+      &--next {
+        bottom: 0;
+      }
+
+      &--disabled {
+        opacity: 0.2;
+        pointer-events: none;
+      }
+
+      span {
+        display: block;
+        color: $white;
+        font-size: 34px;
+        line-height: 34px;
+      }
+    }
+  }
+
+  &-row {
+    @include flexbox;
+    @include flex-wrap(nowrap);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(stretch);
+    height: 100%;
+
+    &__menu {
+      @include flex-basis(33.334%);
+      display: block;
+      position: relative;
+      padding: 80px 50px;
+
+      &--link {
+        display: block;
+        text-decoration: none;
+      }
+
+      &__name {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        text-transform: uppercase;
+
+        &--number {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: -33px;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 28px;
+          color: $white;
+        }
+
+        &--text {
+          display: inline-block;
+          position: relative;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 32px;
+          color: $primary-lighten;
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            width: auto;
+            background-color: $primary-lighten;
+          }
+        }
+      }
+
+      &__note {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+        color: $primary-lighten;
+        text-transform: lowercase;
+        margin: 0 0 40px;
+      }
+
+      &__text {
+        display: block;
+        position: relative;
+        width: 100%;
+        font-family: $font_default;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 30px;
+        color: $white;
+        margin: 0;
+        padding: 5px 0;
+        border-bottom: 1px dotted $white;
+
+        &:last-of-type {
+          border-bottom: none;
+        }
+      }
+
+      &__wines {
+        display: block;
+        position: relative;
+        bottom: auto;
+        text-decoration: none;
+        margin: 40px 0 0;
+
+        &__text {
+          display: inline-block;
+          position: relative;
+          font-family: $font_default;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 30px;
+          color: $primary-lighten;
+
+          &::before {
+            content: '>'
+          }
+
+          &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 16px;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            width: auto;
+            background-color: $primary-lighten;
+          }
+        }
+
+        &__note {
+          display: block;
+          position: relative;
+          font-family: $font_default;
+          font-weight: 300;
+          font-size: 14px;
+          line-height: 20px;
+          color: $primary-lighten;
+          text-decoration: none;
+          padding: 10px 0 0;
+        }
+      }
+    }
+  }
+}

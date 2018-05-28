@@ -38,11 +38,42 @@ export class TecinaApiService {
   }
 
   getHighlights(){
-    let my_token = '';
-    this.getToken().subscribe(token => { console.log(token) });
-    let url = '';
-    let body = [];
-    
+    // let my_token = '';
+    // this.getToken().subscribe(token => { console.log(token) });
+    // let url = '';
+    // let body = [];
+    let highlights = 
+      [
+      {
+        image : '/assets/images/content/home/intro_dish1.png',
+        lang: {
+          es : {
+            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
+            category : 'Entrantes frios'
+          },
+          fr : {
+            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
+            category : 'Entrantes frios'
+          },
+          uk : {
+            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
+            category : 'Entrantes frios'
+          }
+        }
+      },
+      {
+        image : '/assets/images/content/home/intro_dish2.png',
+        name : 'Coca de foie con reduccion de PX<br />y cebolla caramelizada 1u',
+        category : 'Entrantes calientes'
+      },
+      {
+        image : '/assets/images/content/home/intro_dish3.png',
+        name : 'Langostinos tigre con ajo y guindilla<br />servidos con tostas de pan 4u',
+        category : 'Pescados'
+      }
+    ];
+
+     return  
     //this.http.post(url,body, this.httpOptionsAuth ).subscribe( resp => { console.log(resp)} ) ;
   }
 

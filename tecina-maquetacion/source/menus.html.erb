@@ -1,0 +1,136 @@
+---
+title: Project Index
+layout: layout
+---
+
+<%= partial("shared/header", :locals => {
+  :extra_classes => ''
+}) %>
+
+<div class="content-wrapper">
+
+  <%= partial("modules/menus", :locals => {
+    :extra_classes => '',
+    :menus => [
+      {
+        :name => 'menú maridaje',
+        :note => 'mínimo 2 personas, vinos incluidos',
+        :link => '/menu.html',
+        :menu => [
+          'Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate en AOVE.',
+          'Croquetas 2 u. (1 u. de cada sabor)(Parmesano con tomate y Bacalao con cebolla caramelizada).',
+          'Empanadilla de rabo de toro 1 u.',
+          'Picho de huevo, panceta ibérica y patata 1 u.',
+          'Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada y 3 5 patatas fritas.',
+          'Coulant de chocolate intenso.'
+        ],
+        :wines => {
+          :text => 'Maridaje',
+          :note => 'Incluido en el menú',
+          :link => '/menu.html',
+        }
+      },
+      {
+        :name => 'menú de tapas doñana',
+        :note => 'vinos no incluidos',
+        :link => '/menu.html',
+        :menu => [
+          'Selección de embutidos Ibéricos con pan rústico.',
+          'Anchoas con sal de ajo y tostadas de pan con tomate en AOVE.',
+          'Cazuela de Fabada Asturiana (Receta Tradicional).',
+          'Calandracas (Envueltos fritos de Chorizo fresco y queso en tempura) 1u.',
+          'Filete de Bacalao a la Bilbaina con papas negras.',
+          'Lomo de ternera con ajos tiernos, patatas asadas y Alioli Tocinillo de cielo.',
+        ],
+        :wines => {
+          :text => 'Propuesta de vinos',
+          :note => '',
+          :link => '/menu.html',
+        }
+      },
+      {
+        :name => 'menú de tapeo',
+        :note => 'vinos no incluidos',
+        :link => '/menu.html',
+        :menu => [
+          'Selección de embutidos Ibéricos con pan rústico.',
+          'Pimientos de Padrón.',
+          'Salmorejo de tomate ecológico con AOVE, lascas de jamón ibérico y aguacate.',
+          'Pincho de tortilla española.',
+          'Chorizo a la sidra con picos de pan',
+          'Lomo de ternera con ajos tiernos, patatas asadas y Alioli Tocinillo de cielo.',
+          'Croquetas de Jamón Ibérico con pan crujiente y Boletus con escamas de patata 1 u. + 1 u.',
+          'Coca de langostinos con tartar de aguacate y vinagreta de miel y mango 1 u.',
+          'Pequeño Entrecot de Ternera al punto con patatas asadas y Alioli.',
+          'Arroz con leche merengada en limón y vainilla.'
+        ],
+        :wines => {
+          :text => 'Propuesta de vinos',
+          :note => '',
+          :link => '/menu.html',
+        }
+      },
+      {
+        :name => 'menú maridaje',
+        :note => 'mínimo 2 personas, vinos incluidos',
+        :link => '/menu.html',
+        :menu => [
+          'Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate en AOVE.',
+          'Croquetas 2 u. (1 u. de cada sabor)(Parmesano con tomate y Bacalao con cebolla caramelizada).',
+          'Empanadilla de rabo de toro 1 u.',
+          'Picho de huevo, panceta ibérica y patata 1 u.',
+          'Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada y 3 5 patatas fritas.',
+          'Coulant de chocolate intenso.'
+        ],
+        :wines => {
+          :text => 'Maridaje',
+          :note => 'Incluido en el menú',
+          :link => '/menu.html',
+        }
+      },
+      {
+        :name => 'menú de tapas doñana',
+        :note => 'vinos no incluidos',
+        :link => '/menu.html',
+        :menu => [
+          'Selección de embutidos Ibéricos con pan rústico.',
+          'Anchoas con sal de ajo y tostadas de pan con tomate en AOVE.',
+          'Cazuela de Fabada Asturiana (Receta Tradicional).',
+          'Calandracas (Envueltos fritos de Chorizo fresco y queso en tempura) 1u.',
+          'Filete de Bacalao a la Bilbaina con papas negras.',
+          'Lomo de ternera con ajos tiernos, patatas asadas y Alioli Tocinillo de cielo.',
+        ],
+        :wines => {
+          :text => 'Propuesta de vinos',
+          :note => '',
+          :link => '/menu.html',
+        }
+      },
+      # {
+      #   :name => 'menú de tapeo',
+      #   :note => 'vinos no incluidos',
+      #   :link => '/menu.html',
+      #   :menu => [
+      #     'Selección de embutidos Ibéricos con pan rústico.',
+      #     'Pimientos de Padrón.',
+      #     'Salmorejo de tomate ecológico con AOVE, lascas de jamón ibérico y aguacate.',
+      #     'Pincho de tortilla española.',
+      #     'Chorizo a la sidra con picos de pan',
+      #     'Lomo de ternera con ajos tiernos, patatas asadas y Alioli Tocinillo de cielo.',
+      #     'Croquetas de Jamón Ibérico con pan crujiente y Boletus con escamas de patata 1 u. + 1 u.',
+      #     'Coca de langostinos con tartar de aguacate y vinagreta de miel y mango 1 u.',
+      #     'Pequeño Entrecot de Ternera al punto con patatas asadas y Alioli.',
+      #     'Arroz con leche merengada en limón y vainilla.'
+      #   ],
+      #   :wines => {
+      #     :text => 'Propuesta de vinos',
+      #     :note => '',
+      #     :link => '#link'
+      #   }
+      # },
+    ]
+  }) %>
+
+</div>
+
+<%= partial("shared/footer") %>

@@ -1,0 +1,41 @@
+<%
+  extra_classes ||= ""
+  dishes ||= ""
+%>
+
+<div class="intro <%= extra_classes %>">
+
+  <% link_to '/', :relative => true, :class => 'intro__logo' do %>
+    <%= image_tag '/assets/images/shared/logo.png', :alt => "Tasca Fandango" %>
+  <% end %>
+
+
+  <a class="intro__start" data-toggle=".header">
+    <p>Toca la pantalla<br>para comenzar</p>
+    <%= image_tag '/assets/images/content/home/intro_start.png' %>
+  </a>
+
+  <div class="swiper-container intro__slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+
+      <% dishes.each do |dish| %>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <%= image_tag dish[:image], :class => 'intro__dish__image' %>
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category"><%= dish[:category] %></p>
+                <p class="intro__dish__info__name"><%= dish[:name] %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+    <!-- <div class="swiper-pagination"></div> -->
+  </div>
+
+</div>
