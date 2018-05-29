@@ -14,9 +14,14 @@ class HighlightController extends Controller
      */
     public function index()
     {
-        $data = Highlight::all();
+        $data = Highlight::orderBy('order')->get();
+		$highlights=[];
+		foreach($data as $highlight){
+			$highlight->lang=prettyTranslate($highlight->getTranslate()->get());
+			$highlights[]=$highlight;
+		}
 
-        return response()->json($data,200);
+        return response()->json($highlights,200);
     }
 
     /**
