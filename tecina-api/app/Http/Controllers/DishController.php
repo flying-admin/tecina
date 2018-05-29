@@ -17,7 +17,7 @@ class DishController extends Controller
         $data = [];
 		foreach(Dish::all() as $dish)
 		{
-			$dish->translate = prettyTranslate($dish->getTranslate()->get());
+			$dish->lang = prettyTranslate($dish->getTranslate()->get());
 			$images = [];
 			foreach($dish->images()->get() as $image){
 				$images[]=$image->name;
@@ -28,7 +28,7 @@ class DishController extends Controller
 			foreach($dish->allergens()->get() as $allergen){
 				$translate=prettyTranslate($allergen->getTranslate()->get());
 				$my_allergen=['icon'=>$allergen['icon'],'id'=>$allergen['id']];
-				$my_allergen['translate']=$translate;
+				$my_allergen['lang']=$translate;
 				$allergens[]=$my_allergen;
 			}
 			$dish->allergens = $allergens;
@@ -102,7 +102,7 @@ class DishController extends Controller
 		}
 		$dish->Translate = $translate;
 		*/
-		$dish->Translate = prettyTranslate($dish->getTranslate()->get());
+		$dish->Lang = prettyTranslate($dish->getTranslate()->get());
 		
 		return response()->json($dish,200);
     }
