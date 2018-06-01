@@ -45,7 +45,7 @@ class DishController extends Controller
 				$translate=prettyTranslate($category->getTranslate()->get());
 				$categories[]=$translate;
 			}
-			$dish->categories = $food_types;
+			$dish->categories = $categories;
 			
 			$data[] = $dish;
 		}
