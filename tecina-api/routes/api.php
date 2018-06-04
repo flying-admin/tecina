@@ -56,6 +56,15 @@ Route::group([
 
 Route::group(['middleware' => 'api'], function () {
 
-    Route::resources(['dishes' => 'DishController','highlights'=>'HighlightController','menus'=>'MenuController']);
+    Route::resources([
+		'dishes' => 'DishController',
+		'highlights'=>'HighlightController',
+		'menus'=>'MenuController',
+		'categories'=>'CategoryController',
+		'languages' => '',
+		'allergens' => '',
+		// 'menus' => '', // id de platos
+		'' => '',
+		]);
 
 });
