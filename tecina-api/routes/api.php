@@ -61,10 +61,8 @@ Route::group(['middleware' => 'api'], function () {
 		'highlights'=>'HighlightController',
 		'menus'=>'MenuController',
 		'categories'=>'CategoryController',
-		'languages' => '',
-		'allergens' => '',
-		// 'menus' => '', // id de platos
-		'' => '',
+		'languages' => 'LanguageController',
+		'allergens' => 'AllergenController',
+		'foodTypes' => 'FoodTypeController'
 		]);
-
 });
