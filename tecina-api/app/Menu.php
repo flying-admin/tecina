@@ -28,12 +28,12 @@ class Menu extends Model
     }
 
     // A Menu appears in many Dishes
-    public function menus(){
-        return $this->belongsToMany('App\Dish', 'dishes_menus');
+    public function dishes(){
+        return $this->belongsToMany('App\Dish', 'dishes_menus','id_menu','id_dish');
     }
 
     // A Menu appears in many Wines
     public function wines(){
-        return $this->belongsToMany('App\Wine', 'menus_wines');
+        return $this->belongsToMany('App\Wine', 'menus_wines','id_menu','id_wine');
     }
 }

@@ -24,7 +24,7 @@ class DishController extends Controller
 			}
 			$dish->images = $images;
 			
-			$allergens=[];
+			/* $allergens=[];
 			foreach($dish->allergens()->get() as $allergen){
 				$translate=prettyTranslate($allergen->getTranslate()->get());
 				$my_allergen=['icon'=>$allergen['icon'],'id'=>$allergen['id']];
@@ -32,21 +32,24 @@ class DishController extends Controller
 				$allergens[]=$my_allergen;
 			}
 			$dish->allergens = $allergens;
-			
-			$food_types=[];
+			 */
+			$dish->allergens = $dish->allergens()->get()->pluck('id')->toArray();
+			/* $food_types=[];
 			foreach($dish->foodTypes()->get() as $food_type){
 				$translate=prettyTranslate($food_type->getTranslate()->get());
 				$food_types[]=$translate;
 			}
 			$dish->foodTypes = $food_types;
-			
-			$categories=[];
+			 */
+			$dish->foodTypes = $dish->foodTypes()->get()->pluck('id')->toArray();
+			/* $categories=[];
 			foreach($dish->categories()->get() as $category){
 				$translate=prettyTranslate($category->getTranslate()->get());
 				$categories[]=$translate;
 			}
 			$dish->categories = $categories;
-			
+			 */
+			$dish->categories = $dish->categories()->get()->pluck('id')->toArray();
 			$data[] = $dish;
 		}
 

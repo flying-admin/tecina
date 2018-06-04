@@ -18,6 +18,8 @@ class MenuController extends Controller
 		foreach(Menu::all() as $menu)
 		{
 			$menu->translate = prettyTranslate($menu->getTranslate()->get());
+			$menu->dishes = $menu->dishes()->get()->pluck('id')->toArray();
+			$menu->wines = $menu->wines()->get()->pluck('id')->toArray();
 			$data[] = $menu;
 		}
 		
