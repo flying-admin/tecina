@@ -3,18 +3,13 @@ import { HomeComponent } from './components/home/home.component'
 
 const appRoutes: Routes = [
  // { path: 'menus/', component: MenusComponent },
-  { path: 'home',      component: HomeComponent },
-  { path: 'home/:lang',      component: HomeComponent },
-  // {
-  //   path: 'heroes',
-  //   component: HeroListComponent,
-  //   data: { title: 'Heroes List' }
-  // },
+  { path: 'home',      component: HomeComponent,   runGuardsAndResolvers: 'always'},
+  { path: 'home/:lang',      component: HomeComponent ,   runGuardsAndResolvers: 'always'},
   { path: '', redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    runGuardsAndResolvers: 'always'
   },
-  { path: '**', redirectTo: '/'}
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: '**', redirectTo: '/home'}
 ];
 
 export const AppRouting = RouterModule.forRoot(appRoutes,{onSameUrlNavigation: 'reload'}); // is a Routes "Module" impor this const in app.modules like a modul

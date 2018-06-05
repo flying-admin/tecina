@@ -202,7 +202,7 @@
       <div class="header__bar__langs">
         <ul>
           <li *ngFor="let lang of langs" >
-            <a [routerLink]="['/home']" [queryParams]="{'lang': lang}" queryParamsHandling="merge" [class.active]="currentLang == lang"> {{lang}}</a>
+            <a [routerLink]="['/home']" [queryParams]="{'lang': lang.code}" queryParamsHandling="merge" [class.active]="currentLang == lang.code"> {{lang.code}}</a>
           </li>
         </ul>
       </div>

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { TecinaApiService } from "../../../services/tecina-api.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { StorageService } from "../../../services/storage-service.service";
+import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +11,14 @@ import { StorageService } from "../../../services/storage-service.service";
   styles: []
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   defaultLang = "es";
   currentLang = this.defaultLang;
   langs;
   categories;
+  foodTypes;
+  allergens;
+  routeLang;
 
   filters = {
     category : [],
@@ -23,14 +28,9 @@ export class NavbarComponent implements OnInit {
       public _tecinaApi:TecinaApiService ,
       private route: ActivatedRoute,
       private router: Router,
-      public _localStorage: StorageService
     ) { 
-        this.langs  = this._tecinaApi.getLanguages();
-        this.categories  = this._tecinaApi.getCategories();
-  }
 
-  ngOnInit() {
-    this.route
+     this.routeLang = this.route
       .queryParams
       .subscribe(params => {
         if(params['lang']){
@@ -38,11 +38,33 @@ export class NavbarComponent implements OnInit {
           this.currentLang = params['lang'] ;
         }
         console.log(this.currentLang);
-        //localStorage.setItem('currentLang', this.currentLang);
-        this._localStorage.store('currentLang' , this.currentLang);
-        console.log("cambia servicio" ,this._localStorage.changes);
-
+        localStorage.setItem('currentLang', this.currentLang);
+        this.initialiseInvites();
       });
+
+        
+  }
+
+  initialiseInvites() {
+    console.log('dentro');
+    // Set default values and re-fetch any data you need.
+    //this.langs  = this._tecinaApi.getLanguages();
+    this._tecinaApi.getLanguages().map(resp => {
+      this.langs = resp;
+      console.log("resp", resp);
+    })
+    this.categories  = this._tecinaApi.getCategories();
+    this.foodTypes  = this._tecinaApi.getFoodTypes();
+    this.allergens  = this._tecinaApi.getAllergens();
+  }
+ 
+  ngOnInit(){}
+
+
+  ngOnDestroy() {
+    if (this.routeLang) {  
+      this.routeLang.unsubscribe();
+   }
   }
 
 }
