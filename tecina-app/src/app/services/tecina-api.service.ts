@@ -4,14 +4,13 @@ import  "rxjs/add/operator/map";
 
 @Injectable()
 export class TecinaApiService {
-  token:any;
 
-  httpOptionsAuth = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'Bearer '+this.token,
-      'Accept': 'application/json',
-    })
+  //url = 'http://tecina-api.local/api';
+  url = 'http://tecina-api.local:8000/api';
+  
+  apiCredentials = {
+    email:'api@tecina.es',
+    password: 'admin123'
   };
 
   httpOptions = {
@@ -21,60 +20,121 @@ export class TecinaApiService {
     })
   };
 
-
-
   constructor( public http:HttpClient) {
     console.log('servicio activo');
   }
 
-  getToken(){
-    let url = 'http://tecina-api.local/api/auth/login';
-    let body = {
-      email:'api@tecina.es',
-      password: 'admin123'
-    };
-
-    return this.http.post(url,body, this.httpOptions ).map( (resp:any) => { return resp.access_token }); 
+  getHighlights( lang ){
+    let highlights = this.http.get(this.url + "/highlights" ,this.httpOptions ); 
+     return  highlights;
   }
 
-  getHighlights(){
-    // let my_token = '';
-    // this.getToken().subscribe(token => { console.log(token) });
-    // let url = '';
-    // let body = [];
-    let highlights = 
-      [
-      {
-        image : '/assets/images/content/home/intro_dish1.png',
-        lang: {
-          es : {
-            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
-            category : 'Entrantes frios'
-          },
-          fr : {
-            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
-            category : 'Entrantes frios'
-          },
-          uk : {
-            name : 'Jamón iberico de bellota 5J cortado cortado a mano,<br />con pan payes y tomate en aove',
-            category : 'Entrantes frios'
-          }
-        }
-      },
-      {
-        image : '/assets/images/content/home/intro_dish2.png',
-        name : 'Coca de foie con reduccion de PX<br />y cebolla caramelizada 1u',
-        category : 'Entrantes calientes'
-      },
-      {
-        image : '/assets/images/content/home/intro_dish3.png',
-        name : 'Langostinos tigre con ajo y guindilla<br />servidos con tostas de pan 4u',
-        category : 'Pescados'
-      }
-    ];
-
-     return  
-    //this.http.post(url,body, this.httpOptionsAuth ).subscribe( resp => { console.log(resp)} ) ;
+  getLanguages(){
+    let languages = this.http.get(this.url + "/languages" ,this.httpOptions ); 
+    //[{"id":1,"code":"es"},{"id":2,"code":"fr"}]
+    return languages;
   }
 
+  getCategories(){
+    let categories = this.http.get(this.url + "/categories" ,this.httpOptions ); 
+    // [
+    //   {
+    //       "id": 1,
+    //       "translate": {
+    //           "es": {
+    //               "name": "es_entrantes frios",
+    //               "description": "es_entrantes frios description"
+    //           },
+    //           "fr": {
+    //               "name": "fr_entrantes frios",
+    //               "description": "fr_entrantes frios description"
+    //           }
+    //       }
+    //   },
+    //   {
+    //       "id": 2,
+    //       "translate": {
+    //           "es": {
+    //               "name": "es_entrantes calientes",
+    //               "description": "es_entrantes calientes description"
+    //           },
+    //           "fr": {
+    //               "name": "fr_entrantes calientes",
+    //               "description": "fr_entrantes calientes description"
+    //           }
+    //       }
+    //   }
+    // ]
+    return categories;
+  }
+
+  getFoodTypes(){
+    let foodTypes = this.http.get(this.url + "/foodTypes" ,this.httpOptions ); 
+    // [
+    //   {
+    //       "id": 1,
+    //       "translate": {
+    //           "es": "es_comida vegana",
+    //           "fr": "fr_comida vegana"
+    //       }
+    //   }
+    // ]
+    return foodTypes;
+  }
+
+  getAllergens(){
+    let allergens = this.http.get(this.url + "/allergens" ,this.httpOptions ); 
+      // [
+      //   {
+      //       "id": 1,
+      //       "icon": "crustaceos.jpg",
+      //       "translate": {
+      //           "es": {
+      //               "name": "es_crustaceos",
+      //               "description": "es_crustaceos description"
+      //           },
+      //           "fr": {
+      //               "name": "fr_crustaceos",
+      //               "description": "fr_crustaceos description"
+      //           }
+      //       }
+      //   }
+      // ]
+    return allergens;
+  }
+
+  getDishes(){
+    //   [
+    //     {
+    //         "id": 1,
+    //         "ingredients": "ingredients_:0DGEUhw3rpxxjFRf",
+    //         "lang": {
+    //             "es": {
+    //                 "name": "es_name1",
+    //                 "description": "es description1"
+    //             },
+    //             "fr": {
+    //                 "name": "fr_name1",
+    //                 "description": "fr description1"
+    //             }
+    //         },
+    //         "images": [
+    //             "images1jpg",
+    //             "images2jpg",
+    //             "images3jpg"
+    //         ],
+    //         "allergens": [
+    //             2,
+    //             6
+    //         ],
+    //         "foodTypes": [],
+    //         "categories": [
+    //             1,
+    //             2
+    //         ]
+    //     }
+    // ]
+    let dishes = this.http.get(this.url + "/dishes" ,this.httpOptions ); 
+    return dishes;
+  }
 }

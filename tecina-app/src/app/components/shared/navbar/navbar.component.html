@@ -3,38 +3,19 @@
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <a [routerLink]="['home']">
+          <a [routerLink]="['home']" [queryParams]="{'lang': currentLang}" queryParamsHandling="merge">
             <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
           </a>
         </div>
       </div>
+      
       <div class="row">
         <div class="col-xs-7">
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
-              <li>
-                <a [routerLink]="['home']" routerLinkActive="active">Entrantes frios
+              <li *ngFor="let category of categories[currentLang]">
+                <a (click)="filters.category.push(0)"  >{{category}}
                   <span>(12)</span>
-                </a>
-              </li>
-              <li>
-                <a href="dishes/"> Entrantes calientes
-                  <span>(06)</span>
-                </a>
-              </li>
-              <li>
-                <a href="dishes/"> Pescados
-                  <span>(04)</span>
-                </a>
-              </li>
-              <li>
-                <a href="dishes/"> Carnes
-                  <span>(06)</span>
-                </a>
-              </li>
-              <li>
-                <a href="dishes/"> Postres
-                  <span>(03)</span>
                 </a>
               </li>
             </ul>
@@ -220,17 +201,8 @@
       </a>
       <div class="header__bar__langs">
         <ul>
-          <li>
-            <a href="#es">ES</a>
-          </li>
-          <li>
-            <a href="#en">EN</a>
-          </li>
-          <li>
-            <a href="#ge" class="active">GE</a>
-          </li>
-          <li>
-            <a href="#it">IT</a>
+          <li *ngFor="let lang of langs" >
+            <a [routerLink]="['/home']" [queryParams]="{'lang': lang.code}" queryParamsHandling="merge" [class.active]="currentLang == lang.code"> {{lang.code}}</a>
           </li>
         </ul>
       </div>

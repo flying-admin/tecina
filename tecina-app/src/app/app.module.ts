@@ -14,6 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
 
 // services
 import { TecinaApiService } from "./services/tecina-api.service";
+import { StorageService } from "./services/storage-service.service"; 
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TecinaApiService } from "./services/tecina-api.service";
     HttpClientModule
   ],
   providers: [
-    TecinaApiService
+    TecinaApiService,
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
