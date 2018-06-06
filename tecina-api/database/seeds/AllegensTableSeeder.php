@@ -28,15 +28,32 @@ class AllegensTableSeeder extends Seeder
             'frutos de cascara',
             'huevos',
             'soja' ,
-            'mosataza' ,
+            'mostaza' ,
             'granos de sésamo',
             'lácteos'
+        ];
+
+        $allergens_icons = [
+            'crustaceos',
+            'moluscos',
+            'sulfitos',
+            'altramuces',
+            'pescado',
+            'gluten',
+            'apio',
+            'cacahuetes',
+            'frutos_cascara',
+            'huevos',
+            'soja' ,
+            'mostaza' ,
+            'sesamo',
+            'lacteos'
         ];
 
         for ($i = 0 ; $i < $cant ; $i++){
             DB::table('allergens')->insert([
                 [
-                    'icon' => str_replace(' ', '_', $allergens[$i]).'.jpg'
+                    'icon' => $allergens_icons[$i]
                 ]
             ]);
         }

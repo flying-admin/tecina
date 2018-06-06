@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import  "rxjs/add/operator/map";
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class TecinaApiService {
 
-  //url = 'http://tecina-api.local/api';
-  url = 'http://tecina-api.local:8000/api';
-  
-  apiCredentials = {
-    email:'api@tecina.es',
-    password: 'admin123'
-  };
+  private lang = new BehaviorSubject('es');
+  currentLAng = this.lang.asObservable();
 
+  url = 'http://tecina-api.local/api';
+  //url = 'http://tecina-api.local:8000/api';
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -25,8 +24,13 @@ export class TecinaApiService {
   }
 
   getHighlights( lang ){
+    this.http.get(this.url + "/highlights" ,this.httpOptions ).map( resp => console.log("/highlights",resp)); 
     let highlights = this.http.get(this.url + "/highlights" ,this.httpOptions ); 
-     return  highlights;
+    return  highlights;
+  }
+
+  setCurrentLAng( lang ){
+    this.lang.next(lang);
   }
 
   getLanguages(){
@@ -69,7 +73,7 @@ export class TecinaApiService {
   }
 
   getFoodTypes(){
-    let foodTypes = this.http.get(this.url + "/foodTypes" ,this.httpOptions ); 
+    let foodTypes = this.http.get(this.url + "/food-types" ,this.httpOptions ); 
     // [
     //   {
     //       "id": 1,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,OnDestroy} from '@angular/core';
 import { TecinaApiService } from "../../services/tecina-api.service";
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -7,9 +7,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './home.component.html',
   styles: []
 })
-export class HomeComponent implements OnInit {
-  currentLang:string;
-  langs;
+export class HomeComponent implements OnInit , OnDestroy  {
+  //defaultLang = "es";
+  //currentLang = this.defaultLang;
+  currentLang;
+  //routeLang;
+  //langs;
   highlights:any;
   imgPath = "http://tecina-api.local/public/images";
 
@@ -18,33 +21,33 @@ export class HomeComponent implements OnInit {
   }
 
   constructor( 
-      public _tecinaApi:TecinaApiService, 
+      public _tecinaApi: TecinaApiService, 
       private route: ActivatedRoute,
       private router: Router,
   ) {
-  
+    
   }
   
   initialiseState(){
-    this._tecinaApi.getHighlights( this.currentLang )
-    .subscribe( resp => {
+    this._tecinaApi.getHighlights(this.currentLang)
+    .subscribe( (resp: any) => {
       this.highlights = resp;
-      console.log("this.highlights",this.highlights);
     });
   }
   
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.currentLang = params['lang'] || 'es' ;
-      console.log("params['lang']" ,params['lang'] ,this.currentLang);
-      
-      this.initialiseState();
+    this._tecinaApi.currentLAng.subscribe(
+      resp => {
+        this.currentLang = resp;
+        this.initialiseState();
+      }
+    );
+  }
 
-      //this.initialiseState(); // reset and set based on new parameter this time
-    });
-
-
-
+  ngOnDestroy() {
+  //   if (this.routeLang) {  
+  //     this.routeLang.unsubscribe();
+  //  }
   }
 
 }
