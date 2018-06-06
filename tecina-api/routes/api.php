@@ -63,6 +63,6 @@ Route::group(['middleware' => 'api'], function () {
 		'categories'=>'CategoryController',
 		'languages' => 'LanguageController',
 		'allergens' => 'AllergenController',
-		'foodTypes' => 'FoodTypeController'
+		'food-types' => 'FoodTypeController'
 		]);
 });
