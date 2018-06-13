@@ -77,9 +77,9 @@
             <p class="header__menu__filter__title">{{ translations.nav.food_types_title[currentLang] }}</p>
             <ul class="header__menu__filter__food">
               <li *ngFor="let foodType of foodTypes" >
-                <input type="checkbox" [value]="foodType.id" (change)="search()" name="foodtype" [id]="'foodtype-'+foodType.id">
+                <input type="checkbox" [value]="foodType.id" ((change)="onChange(foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
                 <label [for]="'foodtype-'+foodType.id">
-                  <span>{{ foodType.translate[currentLang] }}</span>
+                  <span>{{ foodType.translate[currentLang] }} </span>
                 </label>
               </li>
             </ul>

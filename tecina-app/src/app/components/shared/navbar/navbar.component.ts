@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
        es:"Tipo de Alérgeno",
        fr:"Tipo de Alérgeno - FR"
      },
-     food_types_title: {
+     foodtypes_title: {
        es:"Tipo de comida",
        fr:"Tipo de comida - FR"
      },
@@ -52,7 +52,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   filters = {
     categories : [],
     allergens:[],
-    food_type: '',
+    foodtype: [] 
   };
 
   constructor( 
@@ -80,29 +80,37 @@ export class NavbarComponent implements OnInit, OnDestroy {
     });
   }
 
-  getFilteredDishes ( categories=[], allergens=[], food_type = "" ){
-    // let result;
-    // let dishes = this.dishes;
-    // Object.keys(dishes).forEach(function( k ){
-    //   var dish_categories = dishes[k].categories;
-    //   var dish_allergens = dishes[k].allergens;
-    //   var dish_food_type = dishes[k].foodTypes;
+  getFilteredDishes ( categories=[] ){
+    let _foodtype = this.filters.foodtype;
+    let _allergens = this.allergens;
+    let _dishes = this.dishes;
+    let result;
 
-    //   if (food_type != ""){
-    //     Object.keys(dish_food_type).forEach(function( j ){
-    //       //if ( dis)
-    //       delete dishes[k]
-    //     });
-    //   }
+    Object.keys(_dishes).forEach(function( k ){
+      var dish_categories = _dishes[k].categories;
+      var dish_allergens = _dishes[k].allergens;
+      var dish_foodtype = _dishes[k].foodTypes;
+      console.log(_dishes[k]['foodTypes'])
+      // if (_foodtype != ""){
+      //   Object.keys(dish_foodtype).forEach(function( j ){
+      //     //if ( dis)
+      //     console.log(_dishes[k]);
+      //     //delete _dishes[k]
+      //   });
+      // }
       
-    //   console.log(k + ' - ' + dishes[k]);
+      console.log(k + ' - ' + _dishes[k]);
 
-    // });
-
+    });
   }
 
-  search( filters = this.filters ){
-    console.log(filters);
+  addFoodTypeFilter(foodTypeId:string, isChecked: boolean) {
+    if(isChecked) {
+      this.filters.foodtype.push(foodTypeId);
+    } else {
+      let index = emailFormArray.controls.findIndex(x => x.value == email)
+      emailFormArray.removeAt(index);
+    }
   }
  
   ngOnInit(){
