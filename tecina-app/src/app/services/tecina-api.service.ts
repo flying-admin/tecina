@@ -9,8 +9,17 @@ export class TecinaApiService {
   private lang = new BehaviorSubject('es');
   currentLAng = this.lang.asObservable();
 
-  url = 'http://tecina-api.local/api';
-  //url = 'http://tecina-api.local:8000/api';
+  private filters = new BehaviorSubject(
+    { 
+      categories: [],
+      allergens: [],
+      foodtype: [] 
+    }
+  );
+  currentFilters = this.filters.asObservable();
+
+  //url = 'http://tecina-api.local/api';
+  url = 'http://tecina-api.local:8000/api';
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -31,6 +40,45 @@ export class TecinaApiService {
 
   setCurrentLAng( lang ){
     this.lang.next(lang);
+  }
+
+  setCurrentFilters( filters ){
+    this.filters.next(filters);
+  }
+
+  getDishes(){
+    //   [
+    //     {
+    //         "id": 1,
+    //         "ingredients": "ingredients_:0DGEUhw3rpxxjFRf",
+    //         "lang": {
+    //             "es": {
+    //                 "name": "es_name1",
+    //                 "description": "es description1"
+    //             },
+    //             "fr": {
+    //                 "name": "fr_name1",
+    //                 "description": "fr description1"
+    //             }
+    //         },
+    //         "images": [
+    //             "images1jpg",
+    //             "images2jpg",
+    //             "images3jpg"
+    //         ],
+    //         "allergens": [
+    //             2,
+    //             6
+    //         ],
+    //         "foodTypes": [],
+    //         "categories": [
+    //             1,
+    //             2
+    //         ]
+    //     }
+    // ]
+    let dishes = this.http.get(this.url + "/dishes" ,this.httpOptions ); 
+    return dishes;
   }
 
   getLanguages(){
@@ -107,38 +155,5 @@ export class TecinaApiService {
     return allergens;
   }
 
-  getDishes(){
-    //   [
-    //     {
-    //         "id": 1,
-    //         "ingredients": "ingredients_:0DGEUhw3rpxxjFRf",
-    //         "lang": {
-    //             "es": {
-    //                 "name": "es_name1",
-    //                 "description": "es description1"
-    //             },
-    //             "fr": {
-    //                 "name": "fr_name1",
-    //                 "description": "fr description1"
-    //             }
-    //         },
-    //         "images": [
-    //             "images1jpg",
-    //             "images2jpg",
-    //             "images3jpg"
-    //         ],
-    //         "allergens": [
-    //             2,
-    //             6
-    //         ],
-    //         "foodTypes": [],
-    //         "categories": [
-    //             1,
-    //             2
-    //         ]
-    //     }
-    // ]
-    let dishes = this.http.get(this.url + "/dishes" ,this.httpOptions ); 
-    return dishes;
-  }
+
 }

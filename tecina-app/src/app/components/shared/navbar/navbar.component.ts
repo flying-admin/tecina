@@ -11,14 +11,13 @@ import { map } from 'rxjs/operators';
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
-  //defaultLang = "es";
   currentLang;
   langs;
   categories;
   foodTypes;
   allergens;
   dishes;
-  //routeLang;
+
 
   translations = {
    nav: {
@@ -49,6 +48,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    }
   };
 
+  currentFilters;
   filters = {
     categories : [],
     allergens:[],
@@ -63,54 +63,64 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   initialiseInvites() {
-    this._tecinaApi.getLanguages().subscribe(resp => {
-      this.langs = resp;
+    this._tecinaApi.getLanguages().subscribe(languages => {
+      this.langs = languages;
     });
-    this._tecinaApi.getCategories().subscribe(resp => {
-      this.categories = resp;
+
+    this._tecinaApi.currentFilters.subscribe( filters => {
+        this.currentFilters = filters;
     });
-    this._tecinaApi.getFoodTypes().subscribe(resp => {
-      this.foodTypes = resp;
+
+    this._tecinaApi.getCategories().subscribe(catefories => {
+      this.categories = catefories;
     });
-    this._tecinaApi.getAllergens().subscribe(resp => {
-      this.allergens = resp;
+    this._tecinaApi.getFoodTypes().subscribe(foodTypes => {
+      this.foodTypes = foodTypes;
     });
-    this._tecinaApi.getDishes().subscribe(resp => {
-      this.dishes = resp;
+    this._tecinaApi.getAllergens().subscribe(allergens => {
+      this.allergens = allergens;
     });
+    this._tecinaApi.getDishes().subscribe(dishes => {
+      this.dishes = dishes;
+    });
+
+   
   }
 
   getFilteredDishes ( categories=[] ){
     let _foodtype = this.filters.foodtype;
-    let _allergens = this.allergens;
+    let _allergens = this.filters.allergens;
     let _dishes = this.dishes;
     let result;
-
-    Object.keys(_dishes).forEach(function( k ){
+    console.log('cambia');
+    Object.keys(_dishes).forEach(function( k ){ 
       var dish_categories = _dishes[k].categories;
       var dish_allergens = _dishes[k].allergens;
       var dish_foodtype = _dishes[k].foodTypes;
       console.log(_dishes[k]['foodTypes'])
-      // if (_foodtype != ""){
-      //   Object.keys(dish_foodtype).forEach(function( j ){
-      //     //if ( dis)
-      //     console.log(_dishes[k]);
-      //     //delete _dishes[k]
-      //   });
-      // }
-      
-      console.log(k + ' - ' + _dishes[k]);
+      if (_foodtype.length > 0){
+        Object.keys(dish_foodtype).forEach(function( j ){
+          if( dish_foodtype[j].indexOf() ){
 
+          }
+        });
+      }
     });
   }
 
-  addFoodTypeFilter(foodTypeId:string, isChecked: boolean) {
+  changeFilter( filterType:string , filterId:string, isChecked: boolean) {
+    console.log('isChecked',isChecked);
     if(isChecked) {
-      this.filters.foodtype.push(foodTypeId);
+      this.filters[filterType].push(filterId);
     } else {
-      let index = emailFormArray.controls.findIndex(x => x.value == email)
-      emailFormArray.removeAt(index);
+      let index = this.filters[filterType].indexOf(filterId);
+
+      if(index != -1) {
+        this.filters[filterType].splice(index, 1);
+      }
     }
+    console.log("filters[filterType]" ,this.filters);
+    this._tecinaApi.setCurrentFilters( this.filters );
   }
  
   ngOnInit(){
