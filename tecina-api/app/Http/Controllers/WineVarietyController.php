@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Menu;
-use App\Dish;
 use Illuminate\Http\Request;
+use App\WineVariety;
 
-class MenuController extends Controller
+class WineVarietyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +14,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-		$data = [];
-		foreach(Menu::all() as $menu)
-		{
-			$menu->translate = prettyTranslate($menu->getTranslate()->get());
-			$menu->dishes = $menu->dishes()->get()->pluck('id')->toArray();
-			$menu->wines = $menu->wines()->get()->pluck('id')->toArray();
-			$data[] = $menu;
-		}
-
+        $data=[];
+        foreach (WineVariety::all() as $wineVariety) {
+          $data[$wineVariety->id]=prettyTranslate($wineVariety->getTranslate()->get());
+        }
         return response()->json($data,200);
     }
 
@@ -32,9 +26,9 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        return response()->json(['probando'=>$request],200);
+        //
     }
 
     /**
@@ -56,17 +50,7 @@ class MenuController extends Controller
      */
     public function show($id)
     {
-      $menu=Menu::find($id);
-      $menu->translate = prettyTranslate($menu->getTranslate()->get());
-      foreach($menu->dishes()->get() as $dishId ){
-        $dish=prettyTranslate(Dish::find($dishId->id)->getTranslate()->get())['es'];
-        // dd(prettyTranslate($dish->getTranslate()->get()));
-        // dd($dish);
-        $menu->dishes[] = prettyTranslate(Dish::find($dishId->id)->getTranslate()->get())['es'];
-      }
-      $menu->wines = $menu->wines()->get()->pluck('id')->toArray();
-      dd($menu->toArray());
-      return response()->json($menu,200);
+        //
     }
 
     /**
@@ -77,15 +61,7 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        $menu=Menu::find($id);
-        $values=[
-          'id'=>$menu->id,
-          'image'=>$menu->image,
-          'translation'=>prettyTranslate($menu->getTranslate()->get()),
-          'dishes'=>$menu->dishes()->get()
-        ];
-        // dd($values);
-        return view('admin.menu_edit', $values);
+        //
     }
 
     /**

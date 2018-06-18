@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Menu;
+use App\helpers;
+use App\Dish;
 
 class HomeController extends Controller
 {
@@ -25,8 +28,33 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function menus(request $request)
+    public function listMenu(request $request)
     {
-        
+      $langs=getLangs();
+      $menus=[];
+      // dd(Menu::all());
+      foreach(Menu::all() as $menu){
+        $my_menu=[
+          'id'=>$menu->id,
+          'img'=>$menu->image,
+          'translate'=>prettyTranslate($menu->getTranslate()->get()),
+        ];
+
+          $dishes=[];
+          foreach($menu->dishes()->get() as $dish){
+            $dishes[$dish->id]=prettyTranslate($dish->getTranslate()->get())['es']['name'];
+          }
+          $my_menu['dishes']=$dishes;
+
+          $wines=[];
+          foreach($menu->wines()->get() as $wine){
+            $wines[$wine->id]=prettyTranslate($wine->getTranslate()->get())['es']['description'];
+          }
+          $my_menu['wines']=$wines;
+          $menus[]=$my_menu;
+      }
+
+        // dd($menus);
+        return view('admin.menu', ['menus'=>$menus]);
     }
 }

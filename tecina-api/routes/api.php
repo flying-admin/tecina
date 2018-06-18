@@ -63,6 +63,11 @@ Route::group(['middleware' => 'api'], function () {
 		'categories'=>'CategoryController',
 		'languages' => 'LanguageController',
 		'allergens' => 'AllergenController',
-		'food-types' => 'FoodTypeController'
+		'food-types' => 'FoodTypeController',
+    'wines' => 'WineController',
+    'wine-varieties' => 'WineVarietyController',
+    'wine-types' => 'WineTypeController',
+    'wine-do' => 'WineDOController',
+    // 'wines' => 'WineController', php artisan create:controller Wine --resource
 		]);
 });
