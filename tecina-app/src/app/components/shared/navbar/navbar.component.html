@@ -15,7 +15,7 @@
             <ul>
               <li *ngFor="let category of categories">
                 <a>{{category.translate[currentLang]['name']}}
-                  <span>{{ getFilteredDishes( [category.id] ) }}</span>
+                  <span>({{ (getFilteredDishes( [category.id] )).length }})</span>
                 </a>
               </li>
             </ul>
@@ -77,7 +77,7 @@
             <p class="header__menu__filter__title">{{ translations.nav.food_types_title[currentLang] }}</p>
             <ul class="header__menu__filter__food">
               <li *ngFor="let foodType of foodTypes" >
-                <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodtype', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
+                <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
                 <label [for]="'foodtype-'+foodType.id">
                   <span>{{ foodType.translate[currentLang] }} </span>
                 </label>

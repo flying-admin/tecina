@@ -13,13 +13,13 @@ export class TecinaApiService {
     { 
       categories: [],
       allergens: [],
-      foodtype: [] 
+      foodTypes: [] 
     }
   );
   currentFilters = this.filters.asObservable();
 
-  //url = 'http://tecina-api.local/api';
-  url = 'http://tecina-api.local:8000/api';
+  url = 'http://tecina-api.local/api';
+  //url = 'http://tecina-api.local:8000/api';
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -43,7 +43,7 @@ export class TecinaApiService {
   }
 
   setCurrentFilters( filters ){
-    this.filters.next(filters);
+    this.filters.next( filters );
   }
 
   getDishes(){

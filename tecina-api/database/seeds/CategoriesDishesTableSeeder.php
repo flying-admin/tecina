@@ -15,7 +15,7 @@ class CategoriesDishesTableSeeder extends Seeder
 
         foreach ($dishes as $dish) {
 
-            $category_numb = rand(0 ,2 );
+            $category_numb = rand(1 ,2 );
             $category =  DB::table('categories')->inRandomOrder()->take($category_numb)->get();
 
             for ($j= 0 ; $j <= $category_numb ;$j++){

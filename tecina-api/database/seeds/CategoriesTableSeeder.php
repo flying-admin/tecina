@@ -14,18 +14,17 @@ class CategoriesTableSeeder extends Seeder
 
         $lang =  DB::table('languages')->get();
 
-        $cant = 5;
         $categories = [
             'entrantes frios','entrantes calientes','carnes', 'pescados' , 'postres'
         ];
 
-        for ($i = 0 ; $i < $cant ; $i++){
+        for ($i = 0 ; $i < count($categories) ; $i++){
             DB::table('categories')->insert([
                 'id' => NULL
             ]);
         }
 
-        for ($i = 0 ; $i < $cant ; $i++) {
+        for ($i = 0 ; $i < count($categories) ; $i++) {
             foreach ($lang as $lan) {
                 DB::table('categories_translations')->insert([
                     [

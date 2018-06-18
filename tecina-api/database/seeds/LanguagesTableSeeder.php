@@ -17,6 +17,9 @@ class LanguagesTableSeeder extends Seeder
             ],
             [
                 'code' => 'fr',
+            ],
+            [
+                'code' => 'en',
             ]
         ]);
     }
