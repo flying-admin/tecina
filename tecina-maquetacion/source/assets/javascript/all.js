@@ -13,7 +13,7 @@ Project.init = function(){
   $('[data-toggle]').on('click', function(ev){
     ev.preventDefault();
     ev.stopPropagation();
-    
+
     var $this = $(this);
     var $target = $($this.data('toggle'));
     $target.toggleClass('active');
@@ -109,6 +109,22 @@ Project.init = function(){
         },
       });
     }
+  }
+
+  var wines = $('.wines');
+  if (wines.length){
+    var mySwiper = new Swiper('.wines__details__slider', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 3,
+      navigation: {
+        prevEl: '.wines__details__slider__nav--prev',
+        nextEl: '.wines__details__slider__nav--next',
+        disabledClass: 'wines__details__slider__nav--disabled'
+      },
+    });
   }
 
 };
