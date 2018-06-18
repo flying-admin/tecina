@@ -4,7 +4,6 @@
   note ||= ""
   menu ||= ""
   wines ||= ""
-  n_dish = 1
 %>
 
 
@@ -16,46 +15,16 @@
   </p>
 
   <div class="wines__filters">
-
+    
   </div>
 
-  <div class="wines__details">
-    <div class="swiper-container wines__details__slider">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
+  <div class="wines__list">
 
-        <% wines[:list].each_slice(2).to_a.each do |wines_sub| %>
-          <div class="swiper-slide wines__details__slider__item">
-            <div class="wines-row">
-              <% wines_sub.each do |wine| %>
-                <div class="wines-row__wine">
-                  <div class="wines-row__wine__image">
-                    <%= image_tag wine[:image] %>
-                  </div>
-                  <div class="wines-row__wine__info">
-                    <p class="wines-row__wine__info__name"><%= wine[:name] %></p>
-                    <p class="wines-row__wine__info__type"><%= wine[:type] %></p>
-                    <p class="wines-row__wine__info__origin"><strong>D. O.</strong> <%= wine[:origin] %></p>
-                    <p class="wines-row__wine__info__variety">
-                      <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                      <span class="wines-row__wine__info__variety--value"><%= wine[:variety] %></span>
-                    </p>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
+    <%= partial("modules/wine-list", :locals => {
+      :extra_classes => 'wines__list__slider',
+      :wines => wines
+    }) %>
 
-      </div>
-
-      <div class="swiper-button-prev wines__details__slider__nav wines__details__slider__nav--prev">
-        <span class="icon-chevron-up"></span>
-      </div>
-      <div class="swiper-button-next wines__details__slider__nav wines__details__slider__nav--next">
-        <span class="icon-chevron-down"></span>
-      </div>
-    </div>
   </div>
 
 </div>

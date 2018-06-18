@@ -93,36 +93,25 @@ Project.init = function(){
         disabledClass: 'menu__details__slider__nav--disabled'
       },
     });
-
-    var wines = $('.menu__details__wines');
-    if (wines.length){
-      var mySwiper = new Swiper('.menu__details__wines__slider', {
-        direction: 'vertical',
-        speed: 500,
-        freeMode: true,
-        freeModeSticky: true,
-        slidesPerView: 3,
-        navigation: {
-          prevEl: '.menu__details__wines__slider__nav--prev',
-          nextEl: '.menu__details__wines__slider__nav--next',
-          disabledClass: 'menu__details__wines__slider__nav--disabled'
-        },
-      });
-    }
   }
 
   var wines = $('.wines');
   if (wines.length){
-    var mySwiper = new Swiper('.wines__details__slider', {
+
+  }
+
+  var wineList = $('.wine-list');
+  if (wineList.length){
+    var mySwiper = new Swiper('.wine-list', {
       direction: 'vertical',
       speed: 500,
       freeMode: true,
       freeModeSticky: true,
       slidesPerView: 3,
       navigation: {
-        prevEl: '.wines__details__slider__nav--prev',
-        nextEl: '.wines__details__slider__nav--next',
-        disabledClass: 'wines__details__slider__nav--disabled'
+        prevEl: '.wine-list__nav--prev',
+        nextEl: '.wine-list__nav--next',
+        disabledClass: 'wine-list__nav--disabled'
       },
     });
   }

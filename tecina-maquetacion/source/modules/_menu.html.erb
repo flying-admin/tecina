@@ -104,42 +104,10 @@
         <span class="icon-close"></span>
       <% end %>
 
-      <div class="swiper-container menu__details__wines__slider">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-
-          <% wines[:list].each_slice(2).to_a.each do |wines_sub| %>
-            <div class="swiper-slide menu__details__wines__slider__item">
-              <div class="wines-row">
-                <% wines_sub.each do |wine| %>
-                  <div class="wines-row__wine">
-                    <div class="wines-row__wine__image">
-                      <%= image_tag wine[:image] %>
-                    </div>
-                    <div class="wines-row__wine__info">
-                      <p class="wines-row__wine__info__name"><%= wine[:name] %></p>
-                      <p class="wines-row__wine__info__type"><%= wine[:type] %></p>
-                      <p class="wines-row__wine__info__origin"><strong>D. O.</strong> <%= wine[:origin] %></p>
-                      <p class="wines-row__wine__info__variety">
-                        <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                        <span class="wines-row__wine__info__variety--value"><%= wine[:variety] %></span>
-                      </p>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-
-        </div>
-
-        <div class="swiper-button-prev menu__details__wines__slider__nav menu__details__wines__slider__nav--prev">
-          <span class="icon-chevron-up"></span>
-        </div>
-        <div class="swiper-button-next menu__details__wines__slider__nav menu__details__wines__slider__nav--next">
-          <span class="icon-chevron-down"></span>
-        </div>
-      </div>
+      <%= partial("modules/wine-list", :locals => {
+        :extra_classes => 'menu__details__wines__slider',
+        :wines => wines[:list]
+      }) %>
 
     </div>
   </div>
