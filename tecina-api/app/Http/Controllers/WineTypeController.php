@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\WineType;
 
 class WineTypeController extends Controller
 {
@@ -13,7 +14,11 @@ class WineTypeController extends Controller
      */
     public function index()
     {
-        //
+      $data=[];
+      foreach (WineType::all() as $wineType) {
+        $data[$wineType->id]=prettyTranslate($wineType->getTranslate()->get());
+      }
+      return response()->json($data,200);
     }
 
     /**

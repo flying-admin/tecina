@@ -15,7 +15,7 @@ class WineType extends Model
 
 
     public function getTranslate() {
-        return $this->belongsToMany('App\Language', 'wine_types_translations')->withPivot( 'name');
+        return $this->belongsToMany('App\Language', 'wine_types_translations', 'id_wine_type', 'id_language')->withPivot( 'name');
     }
 
     // A wine type has many wines
