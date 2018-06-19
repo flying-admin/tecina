@@ -357,17 +357,12 @@
         display: block;
         font-family: $font_default;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 700;
         line-height: 16px;
         color: $rose;
         text-transform: uppercase;
         padding: 0;
-        margin: 0 0 26px;
-
-        &--main {
-          font-weight: 700;
-          margin: 0 0 18px;
-        }
+        margin: 0 0 18px;
       }
 
       &__alergen {
@@ -482,7 +477,7 @@
             font-size: 16px;
             line-height: 16px;
             color: $rose;
-            padding: 0 0 16px 25px;
+            padding: 8px 0 8px 25px;
             white-space: nowrap;
             text-transform: uppercase;
             transition: all $transition;
@@ -492,7 +487,7 @@
               content: '';
               display: block;
               position: absolute;
-              top: 0;
+              top: 8px;
               left: 0;
               height: 16px;
               width: 16px;
