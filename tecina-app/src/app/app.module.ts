@@ -14,14 +14,18 @@ import { HttpClientModule } from "@angular/common/http";
 
 // services
 import { TecinaApiService } from "./services/tecina-api.service";
-import { StorageService } from "./services/storage-service.service"; 
+import { StorageService } from "./services/storage-service.service";
+import { DishesComponent } from './components/dishes/dishes.component';
+import { DishComponent } from './components/dish/dish.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    DishesComponent,
+    DishComponent
   ],
   imports: [
     BrowserModule,

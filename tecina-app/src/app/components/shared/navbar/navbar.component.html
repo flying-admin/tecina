@@ -3,18 +3,17 @@
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <a [routerLink]="['home']" [queryParams]="{'lang': currentLang}" queryParamsHandling="merge">
+          <a [routerLink]="['home']">
             <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
           </a>
         </div>
       </div>
-      
       <div class="row">
         <div class="col-xs-7">
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
-              <li *ngFor="let category of categories">
-                <a>{{category.translate[currentLang]['name']}}
+              <li *ngFor="let category  of categories">
+                <a [routerLink]="['dishes',category.id]" (click)="changeFilter('categories', category.id, true)" >{{category.translate[currentLang]['name']}}
                   <span>({{ (getFilteredDishes( [category.id] )).length }})</span>
                 </a>
               </li>

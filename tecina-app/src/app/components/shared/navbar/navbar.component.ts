@@ -23,34 +23,40 @@ export class NavbarComponent implements OnInit, OnDestroy {
    nav: {
      allergen_title: {
        es:"Tipo de Alérgeno",
-       fr:"Tipo de Alérgeno - FR"
+       fr:"Tipo de Alérgeno - FR",
+       en:"Tipo de Alérgeno - EN"
      },
      foodtypes_title: {
        es:"Tipo de comida",
-       fr:"Tipo de comida - FR"
+       fr:"Tipo de comida - FR",
+       en:"Tipo de comida - EN"
      },
      wine_title: {
        es:"Carta de Vinos",
-       fr:"Carta de Vinos - FR"
+       fr:"Carta de Vinos - FR",
+       en:"Carta de Vinos - EN"
      },
     menu_title: {
        es:"Menus",
-       fr:"Menus - FR"
+       fr:"Menus - FR",
+       en:"Menus - EN"
      },
     filter_title: {
        es:"Filtros",
-       fr:"Filtros - FR"
+       fr:"Filtros - FR",
+       en:"Filtros - EN"
      },
     menu: {
        es:"Ver Carta",
-       fr:"Ver Carta - FR"
+       fr:"Ver Carta - FR",
+       en:"Ver Carta - EN"
      }
    }
   };
 
   currentFilters;
   filters = {
-    categories : [],
+    categories: [],
     allergens:[],
     foodTypes: [] 
   };
@@ -59,8 +65,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       public _tecinaApi: TecinaApiService ,
       private route: ActivatedRoute,
       private router: Router,
-    ) {     
-  }
+    ) { }
 
   initialiseInvites() {
     this._tecinaApi.getLanguages().subscribe(languages => {
@@ -74,13 +79,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._tecinaApi.getCategories().subscribe(catefories => {
       this.categories = catefories;
     });
+
     this._tecinaApi.getFoodTypes().subscribe(foodTypes => {
       this.foodTypes = foodTypes;
     });
     this._tecinaApi.getAllergens().subscribe(allergens => {
       this.allergens = allergens;
     });
-    this._tecinaApi.getDishes().subscribe(dishes => {
+    this._tecinaApi.getDishes( ).subscribe(dishes => {
       this.dishes = dishes;
     });
 
@@ -88,20 +94,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getFilteredDishes ( _categories=[] ){
-
+    var _categories = (_categories.length != 0 ) ? _categories : this.filters.categories;
     let _foodTypes = this.filters.foodTypes;
     let _allergens = this.filters.allergens;
-    var _dishes = this.dishes.slice(0) ;
-    var _removeDishes = []; 
-
-    console.log('cambia');
-    console.log("platos",_dishes);
-    console.log("_foodTypes",_foodTypes);
-    console.log("_allergens",_allergens);
-    console.log("_categories",_categories);
+    var _dishes = this.dishes.slice(0);
+    var _filteredDishes = []; 
     
-    loopDishes:
     for (var D = 0; D < _dishes.length; D++) {
+      var addDish = true;
+
       if( _categories.length != 0 && _dishes[D].categories.length != 0){
         var hasCategory = false;
         
@@ -109,29 +110,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
         outerloopC:
         for (var i = 0; i < _categories.length; i++) {
           for (var j = 0; j < _dishes[D].categories.length; j++) {
-
             if(_categories[i] == _dishes[D].categories[j]){
-              console.log("tiene la categoria");
-              console.log(_dishes[D].categories);
-              
               hasCategory = true;
               break outerloopC; // finaliza ambos loops
             }
           }
         }
 
-        console.log(_dishes[D].categories ,hasCategory);
         if( hasCategory == false ){
-          _removeDishes.push(_dishes[D].id);
-
-          //_dishes.splice(D, 1);
-          console.log(" nuevo", _dishes);
-          continue loopDishes;
+          addDish = false
         }
-       
       }
 
-      if( _allergens.length != 0 && _dishes[D].allergens.length != 0){
+      if( _allergens.length != 0 && _dishes[D].allergens.length != 0 && addDish){
         var isAllergen = false;
         // si tiene el allergeno se elimina
         
@@ -140,23 +131,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
           for (var b = 0; b < _dishes[D].allergens.length; b++) {
             if(_allergens[a] == _dishes[D].allergens[b]){
               isAllergen = true;
-              console.log("tiene el allergeno");
               break outerloopA; // finaliza ambos loops
             }
           }
         }
 
         if( isAllergen ){
-          //_dishes.splice(D, 1);
-          _removeDishes.push(_dishes[D].id);
-          console.log("tiene el allergeno");
-          continue loopDishes;
+          addDish = false
         }
-
       }
 
-      
-      if( _foodTypes.length != 0 && _dishes[D].foodTypes.length != 0){
+      if( _foodTypes.length != 0 && _dishes[D].foodTypes.length != 0 && addDish){
           var isFoddType = false;
         
           // si no tiene el tipo de comida se elimina
@@ -165,36 +150,25 @@ export class NavbarComponent implements OnInit, OnDestroy {
             for (var m = 0; m < _dishes[D].foodTypes.length; m++) {
               if(_foodTypes[l] == _dishes[D].foodTypes[m]){
                 isFoddType = true;
-                console.log("tipo de comida" );
                 break outerloopFT; // finaliza ambos loops
               }
             }
           }
 
           if( isFoddType == false ){
-            _removeDishes.push(_dishes[D].id);
-            //_dishes.splice(D, 1);
-            continue loopDishes;
+            addDish = false
           }
-        
       }
 
-    } 
-
-    console.log("platos filtrados:",_dishes);
-    var newArray = _dishes.filter(function (el) {
-      return el.id <= 1000 &&
-             el.sqft >= 500 &&
-             el.num_of_beds >= 2 &&
-             el.num_of_baths >= 1.5; // Changed this so a home would match
-    });
-    console.log(newArray);
-    return _dishes;
+      if(addDish){
+        _filteredDishes.push(_dishes[D]);
+      }
+    }     
+    return _filteredDishes;
   }
 
 
   changeFilter( filterType:string , filterId:string, isChecked: boolean) {
-    //console.log('isChecked',isChecked);
     if(isChecked) {
       this.filters[filterType].push(filterId);
     } else {
@@ -204,7 +178,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.filters[filterType].splice(index, 1);
       }
     }
-    console.log("filters" ,this.filters);
     this._tecinaApi.setCurrentFilters( this.filters );
   }
  
@@ -221,10 +194,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._tecinaApi.setCurrentLAng( new_lang );
   }
 
-  ngOnDestroy() {
-  //   if (this.routeLang) {  
-  //     this.routeLang.unsubscribe();
-  //  }
-  }
+  ngOnDestroy() {}
 
 }
