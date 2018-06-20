@@ -15,7 +15,7 @@ layout: layout
     :dishes => [
       {
         :name => 'Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove',
-        :image => '/assets/images/content/home/intro_dish1.png',
+        :image => '/assets/images/content/foto.png',
         :link => '/dish.html',
         :allergens => [
           'gluten',
@@ -128,6 +128,10 @@ layout: layout
       #   ]
       # }
     ]
+  }) %>
+
+  <%= partial("modules/filters", :locals => {
+    :extra_classes => ''
   }) %>
 
 </div>

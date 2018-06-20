@@ -2,21 +2,16 @@ var Project = {};
 
 Project.init = function(){
   // Header Init
-  $('body').find('[data-toggle]').on('click', function(){
-    var elem = $(this);
-    var selector = elem.data('toggle');
-    var selectorName = selector.substring(1);
-    $(selector).toggleClass(selectorName + '--expanded');
-    $('body').toggleClass(selectorName + '--expanded');
-  });
-
   $('[data-toggle]').on('click', function(ev){
     ev.preventDefault();
     ev.stopPropagation();
 
-    var $this = $(this);
-    var $target = $($this.data('toggle'));
-    $target.toggleClass('active');
+    var elem = $(this);
+    var selector = elem.data('toggle');
+    var selectorName = selector.substring(1);
+    var $target = $(selector);
+    $target.toggleClass('active').toggleClass(selectorName + '--expanded');
+    $('body').toggleClass(selectorName + '--expanded');
   });
 
   var intro = $('.intro');
@@ -26,7 +21,7 @@ Project.init = function(){
       loop: true,
       autoplay: {
         delay: 7000,
-        disableOnInteraction: false,
+        disableOnInteraction: true,
       }
     });
   }

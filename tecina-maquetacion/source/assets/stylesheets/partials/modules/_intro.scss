@@ -9,11 +9,11 @@
   &__logo {
     display: block;
     position: fixed;
-    left: 50%;
+    left: 230px;
     top: 60px;
     width: 145px;
     margin: 0 auto;
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     transition: all $transition-short;
     z-index: 2;
   }
@@ -105,13 +105,14 @@
     }
   }
 
-  .header--expanded & {
+  body.header--expanded & {
     &__logo,
     &__start {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
     }
+
     &__dish__info {
       position: absolute;
       top: 0;

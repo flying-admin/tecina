@@ -32,14 +32,14 @@
           <%= dish[:name] %>
         </p>
       <% end %>
-      <% link_to '', :relative => true, :class => 'menu__summary__menu__wines', :'data-toggle' => '.menu__details__wines' do %>
+      <span class="menu__summary__menu__wines" data-toggle=".menu__details__wines">
         <p class="menu__summary__menu__wines__text">
           <%= wines[:text] %>
         </p>
         <p class="menu__summary__menu__wines__note">
           <%= wines[:note] %>
         </p>
-      <% end %>
+      </span>
     </div>
   </div>
 
@@ -100,9 +100,9 @@
         <%= wines[:text] %>
       </p>
 
-      <% link_to '', :relative => true, :class => 'menu__details__wines__close', :'data-toggle' => '.menu__details__wines' do %>
+      <span class="menu__details__wines__close" data-toggle=".menu__details__wines">
         <span class="icon-close"></span>
-      <% end %>
+      </span>
 
       <%= partial("modules/wine-list", :locals => {
         :extra_classes => 'menu__details__wines__slider',

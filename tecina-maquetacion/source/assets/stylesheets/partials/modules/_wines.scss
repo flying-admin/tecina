@@ -50,6 +50,7 @@
     width: 35%;
     background-color: $white;
     padding: 140px 40px 60px;
+    box-shadow: 2px 0 4px rgba($black, 0.2);
     z-index: 1;
 
     &__block {
@@ -66,7 +67,7 @@
         color: $black;
         text-transform: uppercase;
         padding: 0;
-        margin: 0 0 18px;
+        margin: 0 0 22px;
       }
 
       &__list {
@@ -95,7 +96,7 @@
               color: $black;
               text-transform: uppercase;
               padding: 8px 0;
-              margin: 0 0 8px;
+              margin: 0 0 10px;
             }
           }
 
@@ -105,28 +106,26 @@
             }
           }
 
-          input {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 1px;
-            width: 1px;
-            opacity: 0;
-            z-index: -1;
-          }
-
           label {
             display: block;
             position: relative;
             font-family: $font_default;
             font-size: 16px;
-            line-height: 16px;
+            line-height: 22px;
             color: $black;
-            padding: 8px 0 8px 25px;
+            padding: 5px 0 5px 25px;
             white-space: nowrap;
             text-transform: uppercase;
             transition: all $transition;
+
+            span {
+              display: inline-block;
+              position: relative;
+              font-size: 16px;
+              line-height: 22px;
+              border-bottom: 1px solid transparent;
+              transition: all $transition;
+            }
 
             &::before,
             &::after {
@@ -152,8 +151,25 @@
             }
           }
 
-          input:checked ~ label::after {
-            transform: scale(0.5, 0.5);
+          input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 1px;
+            opacity: 0;
+            z-index: -1;
+
+            &:checked ~ label {
+              span {
+                border-bottom-color: $black;
+              }
+
+              &::after {
+                transform: scale(0.5, 0.5);
+              }
+            }
           }
         }
 

@@ -19,7 +19,7 @@
     transition: all $transition;
   }
 
-  &--expanded {
+  &.active {
     .header--inner {
       left: 0;
       border-right: 1px solid rgba($white, 0.1);
@@ -165,6 +165,7 @@
             &.active {
               display: block;
             }
+
             &:not(.active) {
               color: $white;
               opacity: 0;
@@ -359,10 +360,10 @@
         font-size: 16px;
         font-weight: 700;
         line-height: 16px;
-        color: $rose;
+        color: $white;
         text-transform: uppercase;
         padding: 0;
-        margin: 0 0 18px;
+        margin: 0 0 22px;
       }
 
       &__alergen {
@@ -405,7 +406,7 @@
               font-size: 16px;
               font-weight: 400;
               line-height: 40px;
-              color: $rose;
+              color: $white;
               transition: all $transition-short;
 
               &.double {
@@ -414,13 +415,16 @@
 
               &[class^='icon-'] {
                 float: left;
-                padding: 2px;
+                height: 40px;
+                width: 40px;
+                padding: 1px;
+                margin: 0;
+                margin-right: 18px;
+                border-radius: 50%;
                 font-size: 36px;
                 line-height: 36px;
-                color: $black;
-                background-color: $rose;
-                border-radius: 50%;
-                margin-right: 18px;
+                text-align: center;
+                color: $white;
               }
             }
           }
@@ -438,11 +442,10 @@
             &:checked {
               & + label {
                 span {
-                  color: $white;
+                  color: $primary;
 
                   &[class^='icon-'] {
-                    background-color: $white;
-                    color: $black;
+                    color: $primary;
                   }
                 }
               }
@@ -459,28 +462,25 @@
           display: block;
           position: relative;
 
-          input {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 1px;
-            width: 1px;
-            opacity: 0;
-            z-index: -1;
-          }
-
           label {
             display: block;
             position: relative;
             font-family: $font_default;
             font-size: 16px;
-            line-height: 16px;
-            color: $rose;
-            padding: 8px 0 8px 25px;
+            line-height: 22px;
+            color: $white;
+            padding: 5px 0 5px 25px;
             white-space: nowrap;
             text-transform: uppercase;
-            transition: all $transition;
+
+            span {
+              display: inline-block;
+              position: relative;
+              font-size: 16px;
+              line-height: 22px;
+              border-bottom: 1px solid transparent;
+              transition: all $transition;
+            }
 
             &::before,
             &::after {
@@ -496,7 +496,7 @@
             }
 
             &::before {
-              background-color: $rose;
+              background-color: $white;
             }
             &::after {
               background-color: $blackish;
@@ -505,12 +505,26 @@
             }
           }
 
-          input:checked + label {
-            color: $white;
-            text-decoration: underline;
+          input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 1px;
+            opacity: 0;
+            z-index: -1;
 
-            &::after {
-              transform: scale(0.5, 0.5);
+            &:checked + label {
+              color: $white;
+
+              span {
+                border-bottom-color: $white;
+              }
+
+              &::after {
+                transform: scale(0.5, 0.5);
+              }
             }
           }
         }
