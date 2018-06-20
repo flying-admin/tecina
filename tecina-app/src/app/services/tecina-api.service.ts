@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import  "rxjs/add/operator/map";
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+
 
 @Injectable()
 export class TecinaApiService {
@@ -77,9 +79,11 @@ export class TecinaApiService {
     //         ]
     //     }
     // ]
-    let dishes = this.http.get(this.url + "/dishes" ,this.httpOptions ); 
+    let dishes = this.http.get(this.url + "/dishes" ,this.httpOptions )
+   
     return dishes;
   }
+
 
   getLanguages(){
     let languages = this.http.get(this.url + "/languages" ,this.httpOptions ); 
@@ -135,7 +139,9 @@ export class TecinaApiService {
   }
 
   getAllergens(){
-    let allergens = this.http.get(this.url + "/allergens" ,this.httpOptions ); 
+    let allergens = this.http.get(this.url + "/allergens" ,this.httpOptions ).map(
+      resp => {return resp}
+    ); 
       // [
       //   {
       //       "id": 1,
@@ -154,6 +160,4 @@ export class TecinaApiService {
       // ]
     return allergens;
   }
-
-
 }

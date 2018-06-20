@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { TimesPipe } from './pipes/times.pipe'; 
 
 // modules
 import  { AppRouting } from './app.routes'; 
@@ -14,9 +14,8 @@ import { HttpClientModule } from "@angular/common/http";
 
 // services
 import { TecinaApiService } from "./services/tecina-api.service";
-import { StorageService } from "./services/storage-service.service";
 import { DishesComponent } from './components/dishes/dishes.component';
-import { DishComponent } from './components/dish/dish.component'; 
+import { DishComponent } from './components/dish/dish.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,8 @@ import { DishComponent } from './components/dish/dish.component';
     HeaderComponent,
     NavbarComponent,
     DishesComponent,
-    DishComponent
+    DishComponent,
+    TimesPipe
   ],
   imports: [
     BrowserModule,
@@ -33,8 +33,7 @@ import { DishComponent } from './components/dish/dish.component';
     HttpClientModule
   ],
   providers: [
-    TecinaApiService,
-    StorageService
+    TecinaApiService
   ],
   bootstrap: [AppComponent]
 })

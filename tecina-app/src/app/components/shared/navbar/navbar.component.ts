@@ -63,37 +63,36 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor( 
       public _tecinaApi: TecinaApiService ,
-      private route: ActivatedRoute,
+      private _activeRoute: ActivatedRoute,
       private router: Router,
-    ) { }
+    ) {
+      this._tecinaApi.getLanguages().subscribe(languages => {
+        this.langs = languages;
+      });
+      this._tecinaApi.getCategories().subscribe(categories => {
+        this.categories = categories;
+      });
+  
+      this._tecinaApi.getFoodTypes().subscribe(foodTypes => {
+        this.foodTypes = foodTypes;
+      });
+  
+      this._tecinaApi.getAllergens().subscribe(allergens => {
+        this.allergens = allergens;
+      });
+  }
 
   initialiseInvites() {
-    this._tecinaApi.getLanguages().subscribe(languages => {
-      this.langs = languages;
-    });
-
     this._tecinaApi.currentFilters.subscribe( filters => {
         this.currentFilters = filters;
     });
 
-    this._tecinaApi.getCategories().subscribe(catefories => {
-      this.categories = catefories;
-    });
-
-    this._tecinaApi.getFoodTypes().subscribe(foodTypes => {
-      this.foodTypes = foodTypes;
-    });
-    this._tecinaApi.getAllergens().subscribe(allergens => {
-      this.allergens = allergens;
-    });
     this._tecinaApi.getDishes( ).subscribe(dishes => {
       this.dishes = dishes;
     });
-
-   
   }
 
-  getFilteredDishes ( _categories=[] ){
+  getFilteredDishes ( _categories=[]){
     var _categories = (_categories.length != 0 ) ? _categories : this.filters.categories;
     let _foodTypes = this.filters.foodTypes;
     let _allergens = this.filters.allergens;
@@ -192,6 +191,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   
   changeLang( new_lang ){
     this._tecinaApi.setCurrentLAng( new_lang );
+  }
+
+  goToDishes( categoryId:number ){
+    this.filters.categories = [categoryId];
+    this._tecinaApi.setCurrentFilters( this.filters );
+    this.router.navigate(['/dishes']);
   }
 
   ngOnDestroy() {}
