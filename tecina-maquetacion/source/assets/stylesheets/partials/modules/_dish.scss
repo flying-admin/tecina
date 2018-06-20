@@ -94,6 +94,7 @@
       color: $white;
       text-transform: uppercase;
       margin: 0 0 40px;
+      z-index: 2;
     }
 
     &__desc {
@@ -104,13 +105,15 @@
       font-size: 26px;
       line-height: 36px;
       color: $white;
+      z-index: 2;
     }
 
     &__image {
       display: block;
       position: relative;
-      transform-origin: 50% 50%;
-      transform: scale(1.25) translateY(-8%);
+      transform-origin: 0% 50%;
+      transform: scale(2) translate(-16%, -2%);
+      z-index: 1;
     }
 
     &__allergens {

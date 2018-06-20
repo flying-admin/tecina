@@ -70,7 +70,9 @@
 
     &__image {
       display: block;
-      width: 65vw;
+      width: auto;
+      max-width: 100%;
+      max-height: 100%;
       margin: 0 auto;
     }
 

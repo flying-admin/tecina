@@ -527,9 +527,12 @@
       img {
         display: block;
         position: relative;
-        width: 95%;
-        max-width: 95%;
-        margin-left: 5%;
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        transform-origin: 0% 50%;
+        transform: scale(1.6) translate(-10%, 0%);
       }
     }
   }
