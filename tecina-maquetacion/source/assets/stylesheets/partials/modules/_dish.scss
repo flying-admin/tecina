@@ -141,35 +141,17 @@
         @include align-items(stretch);
         @include align-content(stretch);
 
+        height: 52px;
+        width: 100%;
+
         li {
           display: block;
           position: relative;
           margin-right: 5px;
-          padding-bottom: 40px;
           @include flex-basis(100% / 7);
 
           &:last-child {
             margin-right: 0;
-          }
-
-          &::after {
-            content: '';
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background-color: $primary;
-          }
-
-          @for $i from 1 through 7 {
-            &:nth-child(#{$i})::after{
-              $basepercent: 10%;
-              $percent1: (($i - 1) * $basepercent);
-              $percent2: ($i * $basepercent);
-              background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
-            }
           }
 
           span {
@@ -180,6 +162,34 @@
             background-color: $white;
             color: $darkgrey-c;
             border-radius: 50%;
+          }
+        }
+
+        &--border {
+          height: auto;
+          
+          li {
+            padding-bottom: 40px;
+
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background-color: $primary;
+            }
+
+            @for $i from 1 through 7 {
+              &:nth-child(#{$i})::after{
+                $basepercent: 10%;
+                $percent1: (($i - 1) * $basepercent);
+                $percent2: ($i * $basepercent);
+                background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
+              }
+            }
           }
         }
       }
