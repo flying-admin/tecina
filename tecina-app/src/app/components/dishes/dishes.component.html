@@ -6,19 +6,19 @@
         <div class="swiper-container dishes__slider">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
-            <div class="swiper-slide dishes__slider__item" *ngFor="let group of dishes; let last = last">
+            <div class="swiper-slide dishes__slider__item" *ngFor="let group of dishes ; let last = last; index as i">
               <div class="dishes-row">
-                <a [routerLink]="['/dish',dish.id]"  class="dishes-row__dish" *ngFor="let dish of group;">
+                <a [routerLink]="['/dish',dish.id]"  class="dishes-row__dish" *ngFor="let dish of group; index as j">
                   <p class="dishes-row__dish__name">
                     <span class="dishes-row__dish__name--number">
-                        {{dishes.length}} 
+                        {{ (  3 * i + j)+1  }} 
                     </span>
                     <span class="dishes-row__dish__name--text"> {{ dish.lang[currentLang]['name'] }}</span>
                   </p>
                   <img src="../assets/images/content/home/intro_dish1.png" class="dishes-row__dish__image" alt="Intro dish1" />
                   <ul class="dishes-row__dish__allergens" >
                     <li *ngFor="let in of 'arr' | times:7 ">
-                      <span [class]="'icon-'+allergens[in]['icon']" *ngIf="dish.allergens[in]" ></span>
+                      <span [class]="'icon-'+allergens[in].icon " *ngIf="dish.allergens.length >= in " ></span>
                     </li>
                   </ul>
                 </a>

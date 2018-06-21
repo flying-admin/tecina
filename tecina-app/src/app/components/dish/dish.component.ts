@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TecinaApiService } from "../../services/tecina-api.service";
 
 
 @Component({
@@ -10,12 +11,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DishComponent implements OnInit {
 
   constructor(
-    private _activeRoute:ActivatedRoute
+    private _activeRoute:ActivatedRoute,
+    public _tecinaApi: TecinaApiService ,
   ) { 
 
     this._activeRoute.params.subscribe(
       params => {console.log(params)}
-    )
+    )    
   }
 
   ngOnInit() {

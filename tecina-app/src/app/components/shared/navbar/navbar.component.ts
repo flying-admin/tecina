@@ -11,12 +11,14 @@ import { map } from 'rxjs/operators';
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
-  currentLang;
-  langs;
-  categories;
-  foodTypes;
-  allergens;
-  dishes;
+  currentLang = 'es';
+  langs = [];
+  categories = [];
+  foodTypes = [];
+  allergens = [];
+  dishes = [];
+  menus = [];
+  wines =[];
 
 
   translations = {
@@ -55,6 +57,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   };
 
   currentFilters;
+
   filters = {
     categories: [],
     allergens:[],
@@ -80,90 +83,27 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this._tecinaApi.getAllergens().subscribe(allergens => {
         this.allergens = allergens;
       });
+      this._tecinaApi.getMenus().subscribe(menus => {
+        this.menus = menus;
+      });
+      this._tecinaApi.getWines().subscribe(wines => {
+        this.wines = wines;
+      });
   }
 
   initialiseInvites() {
     this._tecinaApi.currentFilters.subscribe( filters => {
-        this.currentFilters = filters;
-    });
-
-    this._tecinaApi.getDishes( ).subscribe(dishes => {
-      this.dishes = dishes;
+      this._tecinaApi.getDishes( filters ).subscribe(
+        dishes => { 
+          this.dishes = dishes;
+          this.currentFilters = filters;
+        }
+      );
     });
   }
 
-  getFilteredDishes ( _categories=[]){
-    var _categories = (_categories.length != 0 ) ? _categories : this.filters.categories;
-    let _foodTypes = this.filters.foodTypes;
-    let _allergens = this.filters.allergens;
-    var _dishes = this.dishes.slice(0);
-    var _filteredDishes = []; 
-    
-    for (var D = 0; D < _dishes.length; D++) {
-      var addDish = true;
-
-      if( _categories.length != 0 && _dishes[D].categories.length != 0){
-        var hasCategory = false;
-        
-        // si no tiene la categoria se elimina 
-        outerloopC:
-        for (var i = 0; i < _categories.length; i++) {
-          for (var j = 0; j < _dishes[D].categories.length; j++) {
-            if(_categories[i] == _dishes[D].categories[j]){
-              hasCategory = true;
-              break outerloopC; // finaliza ambos loops
-            }
-          }
-        }
-
-        if( hasCategory == false ){
-          addDish = false
-        }
-      }
-
-      if( _allergens.length != 0 && _dishes[D].allergens.length != 0 && addDish){
-        var isAllergen = false;
-        // si tiene el allergeno se elimina
-        
-        outerloopA:
-        for (var a = 0; a < _allergens.length; a++) {
-          for (var b = 0; b < _dishes[D].allergens.length; b++) {
-            if(_allergens[a] == _dishes[D].allergens[b]){
-              isAllergen = true;
-              break outerloopA; // finaliza ambos loops
-            }
-          }
-        }
-
-        if( isAllergen ){
-          addDish = false
-        }
-      }
-
-      if( _foodTypes.length != 0 && _dishes[D].foodTypes.length != 0 && addDish){
-          var isFoddType = false;
-        
-          // si no tiene el tipo de comida se elimina
-          outerloopFT:
-          for (var l = 0; l < _foodTypes.length; l++) {
-            for (var m = 0; m < _dishes[D].foodTypes.length; m++) {
-              if(_foodTypes[l] == _dishes[D].foodTypes[m]){
-                isFoddType = true;
-                break outerloopFT; // finaliza ambos loops
-              }
-            }
-          }
-
-          if( isFoddType == false ){
-            addDish = false
-          }
-      }
-
-      if(addDish){
-        _filteredDishes.push(_dishes[D]);
-      }
-    }     
-    return _filteredDishes;
+  getFilteredDishes ( _categories ){
+    return this._tecinaApi.filterAll(this.dishes , this.currentFilters ,_categories);
   }
 
 
