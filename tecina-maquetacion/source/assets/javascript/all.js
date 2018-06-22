@@ -2,21 +2,16 @@ var Project = {};
 
 Project.init = function(){
   // Header Init
-  $('body').find('[data-toggle]').on('click', function(){
-    var elem = $(this);
-    var selector = elem.data('toggle');
-    var selectorName = selector.substring(1);
-    $(selector).toggleClass(selectorName + '--expanded');
-    $('body').toggleClass(selectorName + '--expanded');
-  });
-
   $('[data-toggle]').on('click', function(ev){
     ev.preventDefault();
     ev.stopPropagation();
-    
-    var $this = $(this);
-    var $target = $($this.data('toggle'));
-    $target.toggleClass('active');
+
+    var elem = $(this);
+    var selector = elem.data('toggle');
+    var selectorName = selector.substring(1);
+    var $target = $(selector);
+    $target.toggleClass('active').toggleClass(selectorName + '--expanded');
+    $('body').toggleClass(selectorName + '--expanded');
   });
 
   var intro = $('.intro');
@@ -26,7 +21,7 @@ Project.init = function(){
       loop: true,
       autoplay: {
         delay: 7000,
-        disableOnInteraction: false,
+        disableOnInteraction: true,
       }
     });
   }
@@ -93,22 +88,27 @@ Project.init = function(){
         disabledClass: 'menu__details__slider__nav--disabled'
       },
     });
+  }
 
-    var wines = $('.menu__details__wines');
-    if (wines.length){
-      var mySwiper = new Swiper('.menu__details__wines__slider', {
-        direction: 'vertical',
-        speed: 500,
-        freeMode: true,
-        freeModeSticky: true,
-        slidesPerView: 3,
-        navigation: {
-          prevEl: '.menu__details__wines__slider__nav--prev',
-          nextEl: '.menu__details__wines__slider__nav--next',
-          disabledClass: 'menu__details__wines__slider__nav--disabled'
-        },
-      });
-    }
+  var wines = $('.wines');
+  if (wines.length){
+
+  }
+
+  var wineList = $('.wine-list');
+  if (wineList.length){
+    var mySwiper = new Swiper('.wine-list', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 3,
+      navigation: {
+        prevEl: '.wine-list__nav--prev',
+        nextEl: '.wine-list__nav--next',
+        disabledClass: 'wine-list__nav--disabled'
+      },
+    });
   }
 
 };

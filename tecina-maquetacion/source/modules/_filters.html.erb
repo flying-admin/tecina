@@ -1,0 +1,182 @@
+<%
+  extra_classes ||= ""
+%>
+
+<div class="filters">
+  <span class="filters__button" data-toggle=".filters">
+    Ver filtros
+  </span>
+  <div class="filters__section">
+    <p class="filters__section__title">
+      <%= image_tag '/assets/images/shared/logo_mini.png', :alt => 'Tasca Fandango' %>
+      <span>FILTROS</span>
+    </p>
+
+    <span class="filters__section__close" data-toggle=".filters">
+      <span class="icon-close"></span>
+    </span>
+
+    <div class="filters__section__content">
+      <div class="filters__section__content__allergens">
+        <p class="filters__section__content__allergens__title">Tipo de alérgeno</p>
+        <ul>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen1">
+            <label for="filterBoxAllergen1">
+              <span class="icon-crustaceos"></span>
+              <span>Crustaceos</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen2">
+            <label for="filterBoxAllergen2">
+              <span class="icon-gluten"></span>
+              <span class="double">Contiene gluten</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen3">
+            <label for="filterBoxAllergen3">
+              <span class="icon-soja"></span>
+              <span>Soja</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen4">
+            <label for="filterBoxAllergen4">
+              <span class="icon-moluscos"></span>
+              <span>Moluscos</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen5">
+            <label for="filterBoxAllergen5">
+              <span class="icon-apio"></span>
+              <span>Apio</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen6">
+            <label for="filterBoxAllergen6">
+              <span class="icon-mostaza"></span>
+              <span>Mostaza</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen7">
+            <label for="filterBoxAllergen7">
+              <span class="icon-sulfitos"></span>
+              <span class="double">Dióxido de azufre y sulfítos</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen8">
+            <label for="filterBoxAllergen8">
+              <span class="icon-cacahuetes"></span>
+              <span>Cacahuetes</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen9">
+            <label for="filterBoxAllergen9">
+              <span class="icon-sesamo"></span>
+              <span class="double">Granos de sésamo</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen10">
+            <label for="filterBoxAllergen10">
+              <span class="icon-altramuces"></span>
+              <span>Altramuces</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen11">
+            <label for="filterBoxAllergen11">
+              <span class="icon-frutos_cascara"></span>
+              <span class="double">Frutos de cascara</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen12">
+            <label for="filterBoxAllergen12">
+              <span class="icon-lacteos"></span>
+              <span>Lacteos</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen13">
+            <label for="filterBoxAllergen13">
+              <span class="icon-pescado"></span>
+              <span>Pescado</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxAllergen14">
+            <label for="filterBoxAllergen14">
+              <span class="icon-huevos"></span>
+              <span>Huevos</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="filters__section__content__food">
+        <p class="filters__section__content__food__title">Tipo de comida</p>
+        <ul>
+          <li>
+            <input type="checkbox" value="" id="filterBoxFood1">
+            <label for="filterBoxFood1">
+              <span>Comida vegana</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxFood2">
+            <label for="filterBoxFood2">
+              <span>Comida saludable</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxFood3">
+            <label for="filterBoxFood3">
+              <span>Comida baja en sal</span>
+            </label>
+          </li>
+        </ul>
+        <p class="filters__section__content__food__title">Tipo de plato</p>
+        <ul>
+          <li>
+            <input type="checkbox" value="" id="filterBoxDish1">
+            <label for="filterBoxDish1">
+              <span>Entrantes frios</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxDish2">
+            <label for="filterBoxDish2">
+              <span>Entrantes calientes</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxDish3">
+            <label for="filterBoxDish3">
+              <span>Pescados</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxDish4">
+            <label for="filterBoxDish4">
+              <span>Carnes</span>
+            </label>
+          </li>
+          <li>
+            <input type="checkbox" value="" id="filterBoxDish5">
+            <label for="filterBoxDish5">
+              <span>Postres</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

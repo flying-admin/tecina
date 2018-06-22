@@ -19,7 +19,7 @@
     transition: all $transition;
   }
 
-  &--expanded {
+  &.active {
     .header--inner {
       left: 0;
       border-right: 1px solid rgba($white, 0.1);
@@ -51,7 +51,7 @@
       }
 
       &__langs {
-        ul li a {
+        ul li span {
           pointer-events: all;
 
           &.active {
@@ -146,7 +146,7 @@
           padding: 0;
           margin: 0;
 
-          a {
+          span {
             display: block;
             width: 100%;
             height: 50px;
@@ -165,6 +165,7 @@
             &.active {
               display: block;
             }
+
             &:not(.active) {
               color: $white;
               opacity: 0;
@@ -357,17 +358,12 @@
         display: block;
         font-family: $font_default;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 700;
         line-height: 16px;
-        color: $rose;
+        color: $white;
         text-transform: uppercase;
         padding: 0;
-        margin: 0 0 26px;
-
-        &--main {
-          font-weight: 700;
-          margin: 0 0 18px;
-        }
+        margin: 0 0 22px;
       }
 
       &__alergen {
@@ -410,7 +406,7 @@
               font-size: 16px;
               font-weight: 400;
               line-height: 40px;
-              color: $rose;
+              color: $white;
               transition: all $transition-short;
 
               &.double {
@@ -419,13 +415,16 @@
 
               &[class^='icon-'] {
                 float: left;
-                padding: 2px;
+                height: 40px;
+                width: 40px;
+                padding: 1px;
+                margin: 0;
+                margin-right: 18px;
+                border-radius: 50%;
                 font-size: 36px;
                 line-height: 36px;
-                color: $black;
-                background-color: $rose;
-                border-radius: 50%;
-                margin-right: 18px;
+                text-align: center;
+                color: $white;
               }
             }
           }
@@ -443,11 +442,10 @@
             &:checked {
               & + label {
                 span {
-                  color: $white;
+                  color: $primary;
 
                   &[class^='icon-'] {
-                    background-color: $white;
-                    color: $black;
+                    color: $primary;
                   }
                 }
               }
@@ -464,6 +462,49 @@
           display: block;
           position: relative;
 
+          label {
+            display: block;
+            position: relative;
+            font-family: $font_default;
+            font-size: 16px;
+            line-height: 22px;
+            color: $white;
+            padding: 5px 0 5px 25px;
+            white-space: nowrap;
+            text-transform: uppercase;
+
+            span {
+              display: inline-block;
+              position: relative;
+              font-size: 16px;
+              line-height: 22px;
+              border-bottom: 1px solid transparent;
+              transition: all $transition;
+            }
+
+            &::before,
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 8px;
+              left: 0;
+              height: 16px;
+              width: 16px;
+              border-radius: 50%;
+              transition: all $transition;
+            }
+
+            &::before {
+              background-color: $white;
+            }
+            &::after {
+              background-color: $blackish;
+              transform-origin: 50% 50%;
+              transform: scale(0, 0);
+            }
+          }
+
           input {
             display: block;
             position: absolute;
@@ -473,48 +514,17 @@
             width: 1px;
             opacity: 0;
             z-index: -1;
-          }
 
-          label {
-            display: block;
-            position: relative;
-            font-family: $font_default;
-            font-size: 16px;
-            line-height: 16px;
-            color: $rose;
-            padding: 0 0 16px 25px;
-            white-space: nowrap;
-            transition: all $transition;
+            &:checked + label {
+              color: $white;
 
-            &::before,
-            &::after {
-              content: '';
-              display: block;
-              position: absolute;
-              top: 0;
-              left: 0;
-              height: 16px;
-              width: 16px;
-              border-radius: 50%;
-              transition: all $transition;
-            }
+              span {
+                border-bottom-color: $white;
+              }
 
-            &::before {
-              background-color: $rose;
-            }
-            &::after {
-              background-color: $blackish;
-              transform-origin: 50% 50%;
-              transform: scale(0, 0);
-            }
-          }
-
-          input:checked + label {
-            color: $white;
-            text-decoration: underline;
-
-            &::after {
-              transform: scale(0.5, 0.5);
+              &::after {
+                transform: scale(0.5, 0.5);
+              }
             }
           }
         }
