@@ -19,6 +19,7 @@ class DishesTableSeeder extends Seeder
         for ($i = 0 ; $i < $cant ; $i++){
             DB::table('dishes')->insert([
                 'ingredients' => 'ingredients_:' . $i. str_random(15),
+                'active'=> TRUE
             ]);
         }
 

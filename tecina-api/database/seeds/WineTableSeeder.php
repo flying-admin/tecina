@@ -22,7 +22,8 @@ class WineTableSeeder extends Seeder
                 'name' => 'wine' . $i,
                 'id_wine_type' =>  DB::table('wine_types')->inRandomOrder()->first()->id,
                 'id_do' => DB::table('do')->inRandomOrder()->first()->id,
-                'year' => rand(1880,2018)
+                'year' => rand(1880,2018),
+                'active'=>TRUE
             ]);
         }
 

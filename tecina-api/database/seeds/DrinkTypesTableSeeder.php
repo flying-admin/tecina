@@ -19,6 +19,7 @@ class DrinkTypesTableSeeder extends Seeder
           'Agua Mineral',
           'Zumo'
           ];
+
         $langs =  DB::table('languages')->get();
         foreach($drinkTypes as $drinkType){
           $idDrinkType = DB::table('drink_types')->insertGetId([

@@ -18,6 +18,7 @@ class MenusTableSeeder extends Seeder
         for ($i = 0 ; $i < $cant ; $i++){
             DB::table('menus')->insert([
                 'image' => 'image-' . $i . '.jpg',
+                'active'=> TRUE
             ]);
         }
 
