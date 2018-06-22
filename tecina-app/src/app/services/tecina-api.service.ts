@@ -45,8 +45,8 @@ export class TecinaApiService {
   _menus = this.menus.asObservable();
  
 
-  //url = 'http://tecina-api.local/api';
-  url = 'http://tecina-api.local:8000/api';
+  url = 'http://tecina-api.local/api';
+  //url = 'http://tecina-api.local:8000/api';
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -56,8 +56,6 @@ export class TecinaApiService {
   };
 
   constructor( public http:HttpClient) {
-    console.log('servicio activo');
-
     this.setDishes().subscribe((resp:any[]) => { this.dishes.next(resp);});
     this.setAllergens().subscribe((resp:any[]) => { this.allergens.next(resp);});
     this.setCategories().subscribe((resp:any[]) => { this.categories.next(resp);});
@@ -68,9 +66,16 @@ export class TecinaApiService {
     this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
   }
 
-  filterAll( dishes , filters, category ){
-    console.log(category);
-    var _categories = (category.length != 0 ) ? category : filters.categories;
+  // filter Dishes
+  filterAll( dishes , filters, category? ){
+    let _categories;
+
+    if(category){
+      _categories = category;
+    }else{
+      _categories = filters.categories;
+    }
+
     let _foodTypes = filters.foodTypes;
     let _allergens = filters.allergens;
     var _dishes = dishes.slice(0);
@@ -144,19 +149,20 @@ export class TecinaApiService {
     return _filteredDishes;
   }
 
-
+  // current Language
   setCurrentLAng( lang ){
     this.lang.next(lang);
   }
 
+  // current Dish filters
   setCurrentFilters( filters ){
     this.filters.next( filters );
   }
 
+  // Get sub array 
   subArray(array:any[] , size:number){
     if(array.length > 0 ){
       var newArray = [];
-
       for (let f = 0; f < array.length ; f+=size) {
         var max = (f+size > array.length ) ? array.length :f+3;
         newArray.push( array.slice(f, max)); 
@@ -166,6 +172,7 @@ export class TecinaApiService {
     return false;
   }
 
+  // Dishes
   setDishes(){
     //   [
     //     {
@@ -200,22 +207,26 @@ export class TecinaApiService {
    
     return  this.http.get(this.url + "/dishes" ,this.httpOptions );
   }
-
-  getDishes( filters ,category = [] ){
+  getDishes( filters ,category? ){
     return this.dishes.map(
-      resp => {
-        return this.filterAll( resp ,filters, category );
+      dishes => {
+        if (category){
+          return this.filterAll( dishes ,filters, category );
+        }else{
+          return this.filterAll( dishes ,filters);
+        }
     });
   }
 
+  // Highlights
   getHighlights( lang ){
     return this.highlights;
   }
-
   setHighlights(){
     return this.http.get(this.url + "/highlights" ,this.httpOptions ); 
   }
 
+  // Languages
   getLanguages(){
     return this.languages;
   }
@@ -224,6 +235,7 @@ export class TecinaApiService {
     return this.http.get(this.url + "/languages" ,this.httpOptions ); 
   }
 
+  // Food categories
   getCategories(){
     return this.categories;
   }
@@ -260,6 +272,7 @@ export class TecinaApiService {
     return this.http.get(this.url + "/categories" ,this.httpOptions );
   }
 
+  // Food types
   getFoodTypes(){
     return this.foodTypes;
   }
@@ -276,6 +289,7 @@ export class TecinaApiService {
     return this.http.get(this.url + "/food-types" ,this.httpOptions );
   }
 
+  // Allergens
   getAllergens(){
     return this.allergens;
   }
@@ -299,6 +313,7 @@ export class TecinaApiService {
     return this.http.get(this.url + "/allergens" ,this.httpOptions );
   }
 
+  // Wines
   getWines(){
     return this.wines;
   }
@@ -306,6 +321,7 @@ export class TecinaApiService {
     return this.http.get(this.url + "/wines" ,this.httpOptions );
   }
  
+  // Menus
   getMenus(){
     return this.menus;
   }
@@ -343,6 +359,4 @@ export class TecinaApiService {
     return this.http.get(this.url + "/menus" ,this.httpOptions );
   }
 
-
-      
 }

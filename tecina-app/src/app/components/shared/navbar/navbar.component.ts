@@ -93,7 +93,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   initialiseInvites() {
     this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getDishes( filters ).subscribe(
+      this._tecinaApi.getDishes( filters , [] ).subscribe(
         dishes => { 
           this.dishes = dishes;
           this.currentFilters = filters;
@@ -103,7 +103,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getFilteredDishes ( _categories ){
-    return this._tecinaApi.filterAll(this.dishes , this.currentFilters ,_categories);
+    return this._tecinaApi.filterAll( this.dishes , this.currentFilters ,_categories);
   }
 
 
