@@ -57,12 +57,17 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <% link_to '', :relative => true do %>
-                  Carta de Vinos<span>(05)</span>
+                <% link_to '/beverages.html', :relative => true do %>
+                  Carta de Bebidas<span>(25)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/wines.html', :relative => true do %>
+                Carta de Vinos<span>(05)</span>
                 <% end %>
               </li>
               <li class="header__menu__nav__feature">
-                <% link_to '', :relative => true, :class => 'feat' do %>
+                <% link_to '/wines.html', :relative => true, :class => 'feat' do %>
                   <div class="feat__image">
                     <%= image_tag '/assets/images/shared/menu-bottle.png' %>
                   </div>
@@ -93,7 +98,7 @@
                 <input type="checkbox" value="" id="filter2">
                 <label for="filter2">
                   <span class="icon-gluten"></span>
-                  <span class="double">Contiene<br>gluten</span>
+                  <span>Contiene gluten</span>
                 </label>
               </li>
               <li>
@@ -128,7 +133,7 @@
                 <input type="checkbox" value="" id="filter7">
                 <label for="filter7">
                   <span class="icon-sulfitos"></span>
-                  <span class="double">Dióxido de<br>azufre y sulfítos</span>
+                  <span>Dióxido de azufre y sulfítos</span>
                 </label>
               </li>
               <li>
@@ -142,7 +147,7 @@
                 <input type="checkbox" value="" id="filter9">
                 <label for="filter9">
                   <span class="icon-sesamo"></span>
-                  <span class="double">Granos de<br>sésamo</span>
+                  <span>Granos de sésamo</span>
                 </label>
               </li>
               <li>
@@ -156,7 +161,7 @@
                 <input type="checkbox" value="" id="filter11">
                 <label for="filter11">
                   <span class="icon-frutos_cascara"></span>
-                  <span class="double">Frutos de<br>cascara</span>
+                  <span>Frutos de cascara</span>
                 </label>
               </li>
               <li>
@@ -191,19 +196,19 @@
               <li>
                 <input type="checkbox" value="" id="filterfood1">
                 <label for="filterfood1">
-                  <span>COMIDA VEGANA</span>
+                  <span>Comida vegana</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filterfood2">
                 <label for="filterfood2">
-                  <span>COMIDA SALUDABLE</span>
+                  <span>Comida saludable</span>
                 </label>
               </li>
               <li>
                 <input type="checkbox" value="" id="filterfood3">
                 <label for="filterfood3">
-                  <span>COMIDA BAJA EN SAL</span>
+                  <span>Comida baja en sal</span>
                 </label>
               </li>
             </ul>
@@ -213,15 +218,15 @@
       </div>
     </div>
     <div class="header__bar">
-      <a class="header__bar__burguer" data-toggle=".header">
+      <span class="header__bar__burguer" data-toggle=".header">
         <span></span>
-      </a>
+      </span>
       <div class="header__bar__langs">
         <ul>
-          <li><a href="#es" >ES</a></li>
-          <li><a href="#en">EN</a></li>
-          <li><a href="#ge" class="active">GE</a></li>
-          <li><a href="#it">IT</a></li>
+          <li><span>ES</a></li>
+          <li><span>EN</a></li>
+          <li><span class="active">GE</a></li>
+          <li><span>IT</a></li>
         </ul>
       </div>
       <div class="header__bar__tag" data-toggle=".header">

@@ -1,16 +1,16 @@
 //@import url('https://fonts.googleapis.com/css?family=Work+Sans:800');
 
-/* SETTINGS */
+/* CONFIG */
 @import "partials/config_manifest";
+
+/* PLUGINS STYLES */
+@import "partials/plugins_manifest";
 
 /* LAYOUTS STYLES */
 @import "partials/layouts_manifest";
 
 /* SHARED STYLES */
 @import "partials/shared_manifest";
-
-/* SHARED STYLES */
-@import "partials/plugins_manifest";
 
 /* MODULES STYLES */
 @import "partials/modules_manifest";

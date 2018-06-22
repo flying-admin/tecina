@@ -3,18 +3,17 @@
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <a [routerLink]="['home']" [queryParams]="{'lang': currentLang}" queryParamsHandling="merge">
+          <a [routerLink]="['home']">
             <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
           </a>
         </div>
       </div>
-      
       <div class="row">
         <div class="col-xs-7">
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
-              <li *ngFor="let category of categories">
-                <a>{{category.translate[currentLang]['name']}}
+              <li *ngFor="let category  of categories">
+                <a  (click)="goToDishes(category.id)"  data-toggle=".header">{{ category.translate[currentLang].name}}
                   <span>({{ (getFilteredDishes( [category.id] )).length }})</span>
                 </a>
               </li>
@@ -23,8 +22,8 @@
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <a href="menus/">{{ translations.nav.menu_title[currentLang] }}
-                  <span>(05)</span>
+                <a href="menus/" data-toggle=".header" >{{ translations.nav.menu_title[currentLang] }}
+                <span>({{ menus.length }})</span>
                 </a>
               </li>
             </ul>
@@ -34,8 +33,13 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <a href="">{{ translations.nav.wine_title[currentLang] }}
-                  <span>(05)</span>
+                <a href="" data-toggle=".header">{{ translations.nav.drinks_title[currentLang] }}
+                  <span>(numero)</span>
+                </a>
+              </li>
+              <li>
+                <a href="" data-toggle=".header">{{ translations.nav.wine_title[currentLang] }}
+                  <span>({{ wines.length }})</span>
                 </a>
               </li>
               <li class="header__menu__nav__feature">
@@ -65,7 +69,7 @@
                 <input type="checkbox" [value]="allergen.id" [id]="'allergen-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
                 <label [for]="'allergen-'+allergen.id">
                   <span [class]="'icon-'+allergen.icon"></span>
-                  <span>{{ allergen.translate[currentLang]['name'] }}</span>
+                  <span>{{ allergen.translate[currentLang].name }}</span>
                 </label>
               </li>
             </ul>

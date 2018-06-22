@@ -16,11 +16,11 @@
 
   &__title {
     display: block;
-    position: fixed;
+    position: absolute;
     left: 80px;
     top: 30px;
     right: 80px;
-    width: 100%;
+    width: auto;
     height: auto;
     margin: 0;
     padding: 0;
@@ -340,7 +340,7 @@
             display: block;
             position: relative;
             height: 100%;
-            @include flex-basis(35%);
+            @include flex-basis(30%);
 
             img {
               display: block;
@@ -355,7 +355,7 @@
             display: block;
             position: relative;
             height: 100%;
-            @include flex-basis(65%);
+            @include flex-basis(70%);
 
             &__name {
               display: block;
@@ -476,35 +476,17 @@
           @include align-items(stretch);
           @include align-content(stretch);
 
+          height: 42px;
+          width: 100%;
+
           li {
             display: block;
             position: relative;
             margin-right: 5px;
-            padding-bottom: 30px;
             @include flex-basis(100% / 7);
 
             &:last-child {
               margin-right: 0;
-            }
-
-            &::after {
-              content: '';
-              display: block;
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              right: 0;
-              height: 4px;
-              background-color: $primary;
-            }
-
-            @for $i from 1 through 7 {
-              &:nth-child(#{$i})::after{
-                $basepercent: 10%;
-                $percent1: (($i - 1) * $basepercent);
-                $percent2: ($i * $basepercent);
-                background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
-              }
             }
 
             span {
@@ -517,6 +499,34 @@
               border-radius: 50%;
             }
           }
+
+          &--border {
+            height: auto;
+
+            li {
+              padding-bottom: 30px;
+
+              &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background-color: $primary;
+              }
+
+              @for $i from 1 through 7 {
+                &:nth-child(#{$i})::after{
+                  $basepercent: 10%;
+                  $percent1: (($i - 1) * $basepercent);
+                  $percent2: ($i * $basepercent);
+                  background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -527,9 +537,12 @@
       img {
         display: block;
         position: relative;
-        width: 95%;
-        max-width: 95%;
-        margin-left: 5%;
+        width: auto;
+        height: auto;
+        max-height: 100%;
+        max-width: 100%;
+        transform-origin: 0% 50%;
+        transform: scale(1.6) translate(-10%, 0%);
       }
     }
   }

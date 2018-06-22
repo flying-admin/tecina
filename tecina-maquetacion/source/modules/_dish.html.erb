@@ -11,7 +11,7 @@
   <% link_to '/dishes.html', :relative => true, :class => 'dish__return' do %>
     <span class="icon-return"></span>
   <% end %>
-  
+
   <div class="swiper-container dish__slider">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
@@ -33,6 +33,13 @@
                           <span class="icon-<%= dish[:allergens].to_a[i] %>"></span>
                         <% end %>
                       </li>
+                      <% i = i + 1 %>
+                    <% end %>
+                  </ul>
+                  <ul class="dish-item__allergens__list dish-item__allergens__list--border">
+                    <% i = 0 %>
+                    <% while i < 7 do %>
+                      <li></li>
                       <% i = i + 1 %>
                     <% end %>
                   </ul>
