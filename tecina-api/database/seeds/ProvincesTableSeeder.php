@@ -67,12 +67,12 @@ class ProvincesTableSeeder extends Seeder
         ];
         foreach($provinces as $province){
           try{
-          DB::table('provinces')->insert([
-              'name' => $province
-          ]);
-        }catch (Exception $e){
-          echo 'Ha cascado el seeder de provincias: '. $e->getMessage();
-        }
+            DB::table('provinces')->insert([
+                'name' => $province
+            ]);
+          }catch (Exception $e){
+            echo 'Ha cascado el seeder de provincias: '. $e->getMessage();
+          } 
         }
     }
 }

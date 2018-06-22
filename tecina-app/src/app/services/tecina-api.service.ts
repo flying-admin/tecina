@@ -254,19 +254,6 @@ export class TecinaApiService {
     //               "description": "fr_entrantes frios description"
     //           }
     //       }
-    //   },
-    //   {
-    //       "id": 2,
-    //       "translate": {
-    //           "es": {
-    //               "name": "es_entrantes calientes",
-    //               "description": "es_entrantes calientes description"
-    //           },
-    //           "fr": {
-    //               "name": "fr_entrantes calientes",
-    //               "description": "fr_entrantes calientes description"
-    //           }
-    //       }
     //   }
     // ]
     return this.http.get(this.url + "/categories" ,this.httpOptions );

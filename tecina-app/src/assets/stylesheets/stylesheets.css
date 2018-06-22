@@ -4357,6 +4357,7 @@ button.swiper-pagination-bullet {
   line-height: 50px;
   text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   color: #2C2C2C;
   -webkit-transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1) 0s;
   transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1) 0s;
