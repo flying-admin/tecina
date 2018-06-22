@@ -36,18 +36,27 @@ class DatabaseSeeder extends Seeder
         DB::table('images')->truncate();
         DB::table('highlights')->truncate();
         DB::table('highlights_translations')->truncate();
+        DB::table('provinces')->truncate();
+        DB::table('wine_ages')->truncate();
+        DB::table('wine_age_translations')->truncate();
+        DB::table('drink_type_translations')->truncate();
+        DB::table('wine_class_translations')->truncate();
+        DB::table('wine_classes')->truncate();
 
 
+        DB::table('drink_types')->truncate();
 
         // seed tables by order
         $this->call(UsersTableSeeder::class);
         $this->call(LanguagesTableSeeder::class);
+        $this->call(DrinkTypesTableSeeder::class);
         $this->call(AllegensTableSeeder::class);
         $this->call(FoodTypesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(DoTableSeeder::class);
         $this->call(WineVarietiesTableSeeder::class);
         $this->call(WineTypesTableSeeder::class);
+        $this->call(ProvincesTableSeeder::class);
         $this->call(WineTableSeeder::class);
         $this->call(DishesTableSeeder::class);
         $this->call(MenusTableSeeder::class);
@@ -59,6 +68,8 @@ class DatabaseSeeder extends Seeder
         $this->call(MenusWinesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
         $this->call(HighlightsTableSeeder::class);
+        $this->call(WineAgesTableSeeder::class);
+        $this->call(WineClassesTableSeeder::class);
 
 
 

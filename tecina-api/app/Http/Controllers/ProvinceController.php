@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Province;
 use Illuminate\Http\Request;
-use App\Wine;
-use App\WineType;
-use App\WineVariety;
 
-class WineController extends Controller
+class ProvinceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +14,11 @@ class WineController extends Controller
      */
     public function index()
     {
-      $data = [];
-      foreach(Wine::all() as $wine)
-      {
-        // dd ($wine->getTranslate()->get());
-        $wine->translate = prettyTranslate($wine->getTranslate()->get());
-        $wine->wineVarieties = $wine->wineVarieties()->get()->pluck('id')->toArray();
-        $data[$wine->id] = $wine;
+      $data=[];
+      foreach(Province::all() as $province){
+        $data[$province->id]=$province->name;
       }
-          return response()->json($data,200);
+        return response()->json($data,200);
     }
 
     /**
@@ -51,10 +45,10 @@ class WineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Province $province)
     {
         //
     }
@@ -62,10 +56,10 @@ class WineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Province $province)
     {
         //
     }
@@ -74,10 +68,10 @@ class WineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Province $province)
     {
         //
     }
@@ -85,10 +79,10 @@ class WineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Province  $province
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Province $province)
     {
         //
     }

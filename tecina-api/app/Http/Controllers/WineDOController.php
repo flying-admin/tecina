@@ -14,7 +14,8 @@ class WineDOController extends Controller
      */
     public function index()
     {
-      return response()->json(DenominationOfOrigin::all(),200);
+      $DOs=DenominationOfOrigin::all()->toArray();
+      return response()->json(array_combine(array_column($DOs,'id'),$DOs),200);
     }
 
     /**

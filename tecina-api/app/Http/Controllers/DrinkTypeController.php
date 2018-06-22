@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DrinkType;
 use Illuminate\Http\Request;
-use App\Wine;
-use App\WineType;
-use App\WineVariety;
 
-class WineController extends Controller
+class DrinkTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,14 +15,12 @@ class WineController extends Controller
     public function index()
     {
       $data = [];
-      foreach(Wine::all() as $wine)
+      foreach(DrinkType::all() as $drinktype)
       {
-        // dd ($wine->getTranslate()->get());
-        $wine->translate = prettyTranslate($wine->getTranslate()->get());
-        $wine->wineVarieties = $wine->wineVarieties()->get()->pluck('id')->toArray();
-        $data[$wine->id] = $wine;
+        $drinktype->translate = prettyTranslate($drinktype->getTranslate()->get());
+        $data[$drinktype->id] = $drinktype;
       }
-          return response()->json($data,200);
+      return response()->json($data,200);
     }
 
     /**
@@ -51,10 +47,10 @@ class WineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\DrinkType  $drinkType
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(DrinkType $drinkType)
     {
         //
     }
@@ -62,10 +58,10 @@ class WineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\DrinkType  $drinkType
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(DrinkType $drinkType)
     {
         //
     }
@@ -74,10 +70,10 @@ class WineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\DrinkType  $drinkType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, DrinkType $drinkType)
     {
         //
     }
@@ -85,10 +81,10 @@ class WineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\DrinkType  $drinkType
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DrinkType $drinkType)
     {
         //
     }

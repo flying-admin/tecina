@@ -68,6 +68,10 @@ Route::group(['middleware' => 'api'], function () {
     'wine-varieties' => 'WineVarietyController',
     'wine-types' => 'WineTypeController',
     'wine-do' => 'WineDOController',
+    'provinces' => 'ProvinceController',
+    'drink-types' => 'DrinkTypeController',
+    'wine-ages' => 'WineAgeController',
+    'wine-classes' => 'WineClassController',
     // 'wines' => 'WineController', php artisan create:controller Wine --resource
 		]);
 });

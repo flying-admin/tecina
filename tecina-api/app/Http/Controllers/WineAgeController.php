@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\WineAge;
 use Illuminate\Http\Request;
-use App\Wine;
-use App\WineType;
-use App\WineVariety;
 
-class WineController extends Controller
+class WineAgeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,15 +14,11 @@ class WineController extends Controller
      */
     public function index()
     {
-      $data = [];
-      foreach(Wine::all() as $wine)
-      {
-        // dd ($wine->getTranslate()->get());
-        $wine->translate = prettyTranslate($wine->getTranslate()->get());
-        $wine->wineVarieties = $wine->wineVarieties()->get()->pluck('id')->toArray();
-        $data[$wine->id] = $wine;
-      }
-          return response()->json($data,200);
+        $data=[];
+        foreach (WineAge::all() as $wineAge) {
+          $data[$wineAge->id]=prettyTranslate($wineAge->getTranslate()->get());
+        }
+        return response()->json($data,200);
     }
 
     /**
@@ -51,10 +45,10 @@ class WineController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\WineAge  $wineAge
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(WineAge $wineAge)
     {
         //
     }
@@ -62,10 +56,10 @@ class WineController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\WineAge  $wineAge
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(WineAge $wineAge)
     {
         //
     }
@@ -74,10 +68,10 @@ class WineController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\WineAge  $wineAge
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, WineAge $wineAge)
     {
         //
     }
@@ -85,10 +79,10 @@ class WineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\WineAge  $wineAge
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(WineAge $wineAge)
     {
         //
     }

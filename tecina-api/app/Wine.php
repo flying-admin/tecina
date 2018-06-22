@@ -20,7 +20,7 @@ class Wine extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'image', 'id_wine_type', 'id_do', 'year'
+        'name', 'image', 'id_wine_type', 'id_do', 'year', 'province_id', 'drink_type_id', 'wine_age_id', 'wine_class_id'
     ];
 
 
@@ -40,7 +40,7 @@ class Wine extends Model
 
     // A Wine has a wine type
     // public function wineType(){
-    //     return $this->belongsTo('App\WineType', '');
+    //     return $this->belongsTo('App\WineType','wine_types', 'id_wine','id_wine_type');
     // }
 
     // A Wine has a denomination of origin
