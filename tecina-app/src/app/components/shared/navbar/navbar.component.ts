@@ -38,6 +38,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
        fr:"Carta de Vinos - FR",
        en:"Carta de Vinos - EN"
      },
+     drinks_title: {
+      es:"Carta de Bebidas",
+      fr:"Carta de Bebidas - FR",
+      en:"Carta de Bebidas - EN"
+    },
     menu_title: {
        es:"Menus",
        fr:"Menus - FR",
