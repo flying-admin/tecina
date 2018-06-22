@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TecinaApiService } from "../../services/tecina-api.service";
-import { Dish } from "../../iterfaces/dish";
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
 
 @Component({
   selector: 'app-dishes',
@@ -17,6 +18,19 @@ export class DishesComponent implements OnInit {
   categories:{} = {};
   allergens;
   title_category:{} = {};
+
+  currentConfig: SwiperConfigInterface = {
+    direction: 'vertical',
+    speed: 500,
+    freeMode: true,
+    freeModeSticky: true,
+    slidesPerView: 2,
+    navigation: {
+      prevEl: '.dishes__slider__nav--prev',
+      nextEl: '.dishes__slider__nav--next',
+      disabledClass: 'dishes__slider__nav--disabled'
+    },
+  };
 
   translations = {
     dishes: {
@@ -83,5 +97,14 @@ export class DishesComponent implements OnInit {
     
     return allergen[0].icon;
 
+  }
+
+  hola(){
+    console.log("hola");
+    setTimeout(function(){
+      this.resize ;
+      console.log("dentro");
+      
+    },5000)
   }
 }

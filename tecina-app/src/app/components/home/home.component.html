@@ -12,7 +12,7 @@
       <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
     </a>
 
-    <div class="swiper-container intro__slider">
+    <div class="swiper-container intro__slider" [swiper]="currentConfig">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <div class="swiper-slide intro__slider__item" *ngFor="let highlight of highlights; let last = last" >

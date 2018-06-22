@@ -3,7 +3,7 @@
           <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
           <span>{{  ((currentFilters.categories).length == 1)? title_category[currentLang]['name'] :  translations.dishes.title[currentLang] }}</span>
         </p>
-        <div class="swiper-container dishes__slider">
+        <div class="swiper-container dishes__slider" [swiper]="currentConfig" (init)="hola()"  >
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <div class="swiper-slide dishes__slider__item" *ngFor="let group of dishes ; let last = last; index as i">

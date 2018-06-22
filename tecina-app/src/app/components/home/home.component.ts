@@ -1,6 +1,8 @@
 import { Component, OnInit ,OnDestroy} from '@angular/core';
 import { TecinaApiService } from "../../services/tecina-api.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,16 @@ export class HomeComponent implements OnInit , OnDestroy  {
   //langs;
   highlights:any;
   imgPath;
+
+  currentConfig: SwiperConfigInterface = {
+    speed: 500,
+    loop: !0,
+    autoplay: {
+      delay: 7e3,
+      disableOnInteraction: !1
+    }
+  };
+  
 
   resize = function(){
     window.dispatchEvent(new Event('resize'));
