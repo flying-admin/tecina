@@ -78,7 +78,7 @@
         <div class="col-xs-3">
           <div class="header__menu__filter">
             <p class="header__menu__filter__title header__menu__filter__title--main">&nbsp;</p>
-            <p class="header__menu__filter__title">{{ translations.nav.food_types_title[currentLang] }}</p>
+            <p class="header__menu__filter__title">{{ translations.nav.foodtypes_title[currentLang] }}</p>
             <ul class="header__menu__filter__food">
               <li *ngFor="let foodType of foodTypes" >
                 <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">

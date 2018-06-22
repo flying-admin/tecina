@@ -45,9 +45,11 @@ export class TecinaApiService {
   _menus = this.menus.asObservable();
  
 
-  url = 'http://tecina-api.local/api';
-  //url = 'http://tecina-api.local:8000/api';
-  
+  pageRoot = "http://tecina-api.local/";
+  //pageRoot = "http://tecina-api.local:8000/";
+  imagesPath = this.pageRoot + "img";
+  url = this.pageRoot + 'api';
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
