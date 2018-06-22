@@ -121,6 +121,8 @@
               display: block;
               position: relative;
               @include flexbox;
+              @include flex-direction(row);
+              @include flex-wrap(nowrap);
               @include justify-content(flex-start);
               @include align-items(center);
               @include align-content(center);

@@ -1,55 +1,52 @@
-<%
-  extra_classes ||= ''
-%>
-
-<header class="header <%= extra_classes %>">
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Project Index</title>
+    <link href="assets/stylesheets/stylesheets.css" rel="stylesheet" />
+    <script src="assets/javascript/all.fn.js"></script><script src="assets/javascript/all.js"></script>
+  </head>
+  <body>
+    <div class="body-wrapper">
+      
+<header class="header ">
   <div class="header--inner">
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <% link_to '/index.html', :relative => true do %>
-            <%= image_tag '/assets/images/shared/logo.png', :class => 'header__menu__logo' %>
-          <% end %>
-        </div>
+<a href="./">            <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
+</a>        </div>
       </div>
       <div class="row">
         <div class="col-xs-7">
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <% link_to '/dishes.html', :relative => true do %>
-                  Entrantes frios<span>(12)</span>
-                <% end %>
-              </li>
+<a href="dishes/">                  Entrantes frios<span>(12)</span>
+</a>              </li>
               <li>
-                <% link_to '/dishes.html', :relative => true do %>
-                  Entrantes calientes<span>(06)</span>
-                <% end %>
-              </li>
+<a href="dishes/">                  Entrantes calientes<span>(06)</span>
+</a>              </li>
               <li>
-                <% link_to '/dishes.html', :relative => true do %>
-                  Pescados<span>(04)</span>
-                <% end %>
-              </li>
+<a href="dishes/">                  Pescados<span>(04)</span>
+</a>              </li>
               <li>
-                <% link_to '/dishes.html', :relative => true do %>
-                  Carnes<span>(06)</span>
-                <% end %>
-              </li>
+<a href="dishes/">                  Carnes<span>(06)</span>
+</a>              </li>
               <li>
-                <% link_to '/dishes.html', :relative => true do %>
-                  Postres<span>(03)</span>
-                <% end %>
-              </li>
+<a href="dishes/">                  Postres<span>(03)</span>
+</a>              </li>
             </ul>
           </div>
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <% link_to '/menus.html', :relative => true do %>
-                  Menus<span>(05)</span>
-                <% end %>
-              </li>
+<a href="menus/">                  Menus<span>(05)</span>
+</a>              </li>
             </ul>
           </div>
         </div>
@@ -57,26 +54,20 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <% link_to '/beverages.html', :relative => true do %>
-                  Carta de Bebidas<span>(25)</span>
-                <% end %>
-              </li>
+<a href="beverages/">                  Carta de Bebidas<span>(25)</span>
+</a>              </li>
               <li>
-                <% link_to '/wines.html', :relative => true do %>
-                Carta de Vinos<span>(05)</span>
-                <% end %>
-              </li>
+<a href="wines/">                Carta de Vinos<span>(05)</span>
+</a>              </li>
               <li class="header__menu__nav__feature">
-                <% link_to '/wines.html', :relative => true, :class => 'feat' do %>
-                  <div class="feat__image">
-                    <%= image_tag '/assets/images/shared/menu-bottle.png' %>
+<a href="wines/" class="feat">                  <div class="feat__image">
+                    <img src="assets/images/shared/menu-bottle.png" alt="Menu bottle" />
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">Jean Leon<br>3055 Rosé</span>
                     <span class="feat__text__info">D. O. Penedés<br>Variedad: Pinot NOIR</span>
                   </p>
-                <% end %>
-              </li>
+</a>              </li>
             </ul>
           </div>
         </div>
@@ -235,3 +226,103 @@
     </div>
   </div>
 </header>
+
+
+<div class="content-wrapper">
+
+  
+<div class="intro ">
+
+<a href="/" class="intro__logo">    <img src="assets/images/shared/logo.png" alt="Tasca Fandango" />
+</a>
+
+  <a class="intro__start" data-toggle=".header">
+    <p>Toca la pantalla<br>para comenzar</p>
+    <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
+  </a>
+
+  <div class="swiper-container intro__slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish1.png" class="intro__dish__image" alt="Intro dish1" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Entrantes frios</p>
+                <p class="intro__dish__info__name">Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish2.png" class="intro__dish__image" alt="Intro dish2" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Entrantes calientes</p>
+                <p class="intro__dish__info__name">Coca de foie con reduccion de PX y cebolla caramelizada 1u</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish3.png" class="intro__dish__image" alt="Intro dish3" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Pescados</p>
+                <p class="intro__dish__info__name">Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish4.png" class="intro__dish__image" alt="Intro dish4" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Entrantes frios</p>
+                <p class="intro__dish__info__name">Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish5.png" class="intro__dish__image" alt="Intro dish5" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Entrantes calientes</p>
+                <p class="intro__dish__info__name">Coca de foie con reduccion de PX y cebolla caramelizada 1u</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide intro__slider__item">
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="assets/images/content/home/intro_dish6.png" class="intro__dish__image" alt="Intro dish6" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">Pescados</p>
+                <p class="intro__dish__info__name">Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+
+<footer class="footer "></footer>
+
+
+    </div>
+  </body>
+</html>
