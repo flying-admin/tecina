@@ -14,24 +14,25 @@ class WineTypesTableSeeder extends Seeder
 
         $lang =  DB::table('languages')->get();
 
-        $cant = 5;
+        $types = [
+          'Vino Tinto',
+          'Vino Blanco',
+          'Vino Rosado',
+          'Espumosos'
+        ];
 
-        $type= ['blanco','tinto','rosado','espumoso','generoso'];
 
-
-        for ($i = 0 ; $i < $cant ; $i++){
-            DB::table('wine_types')->insert([
+        foreach ($types as $type){
+            $wineTypeId = DB::table('wine_types')->insertGetId([
                 'id' => NULL
             ]);
-        }
 
-        for ($i = 0 ; $i < $cant ; $i++) {
             foreach ($lang as $lan) {
                 DB::table('wine_type_translations')->insert([
                     [
-                        'id_wine_type' => $i+1,
+                        'id_wine_type' => $wineTypeId,
                         'id_language' => $lan->id,
-                        'name' =>$type[$i]
+                        'name' =>$type
                     ]
                 ]);
             }

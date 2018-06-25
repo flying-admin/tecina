@@ -311,16 +311,16 @@ $bebidas=[
 foreach($bebidas as $bebida){
   if($bebida['TIPO DE BEBIDA']=='Vino'){
 
-    $wineId = DB::table('wines')->insertGetId([
+              $wineId = DB::table('wines')->insertGetId([
         'image' => ($bebida['Imagen']=='')?'no-image.jpg':$bebida['Imagen'],
         'name' => $bebida['Nombre de la bebida'],
         'id_do' => App\DenominationOfOrigin::where('name',$bebida['D.O'])->first()->id,
-        'id_wine_type' => (App\WineTypeTranslation::where('name',$bebida['TIPO DE VINO'])->first())?App\WineTypeTranslation::where('name',$bebida['TIPO DE VINO'])->first()->id:NULL,
+        'id_wine_type' => (App\WineTypeTranslation::where('name',$bebida['TIPO DE VINO'])->first())?App\WineTypeTranslation::where('name',$bebida['TIPO DE VINO'])->first()->id_wine_type:NULL,
         // 'province_id' =>  App\Province::where('name',$bebida['PROVINCIA'])->first()->id,
         'wine_age_id' => (App\WineAgeTranslation::where('name',$bebida['EDAD DE VINO'])->first())?App\WineAgeTranslation::where('name',$bebida['EDAD DE VINO'])->first()->wine_age_id:NULL,
         'wine_class_id' => (App\WineClassTranslation::where('name',$bebida['CLASE DE VINO'])->first())?App\WineClassTranslation::where('name',$bebida['CLASE DE VINO'])->first()->wine_class_id:NULL,
         'year' => NULL,
-        'active'=>($bebida['TASCA']=='SI');
+        'active'=>($bebida['TASCA']=='SI')
     ]);
     for($i=1;$i<8;$i++){
       if(trim($bebida['VARIEDAD_'.$i])!=''){

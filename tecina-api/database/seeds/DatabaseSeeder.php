@@ -57,7 +57,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WineVarietiesTableSeeder::class);
         $this->call(WineTypesTableSeeder::class);
         $this->call(ProvincesTableSeeder::class);
-        $this->call(WineTableSeeder::class);
         $this->call(DishesTableSeeder::class);
         $this->call(MenusTableSeeder::class);
         $this->call(AllergensDishesTableSeeder::class);
@@ -70,6 +69,7 @@ class DatabaseSeeder extends Seeder
         $this->call(HighlightsTableSeeder::class);
         $this->call(WineAgesTableSeeder::class);
         $this->call(WineClassesTableSeeder::class);
+        $this->call(WineTableSeeder::class);
 
 
 
