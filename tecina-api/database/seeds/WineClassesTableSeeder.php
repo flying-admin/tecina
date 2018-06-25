@@ -28,7 +28,7 @@ class WineClassesTableSeeder extends Seeder
               'id'=>NULL,
               'wine_class_id'=>$idWineClass,
               'language_id'=>$lang->id,
-              'name'=>$wineClass.'_'.$lang->code
+              'name'=>$wineClass
             ]);
           }
         }

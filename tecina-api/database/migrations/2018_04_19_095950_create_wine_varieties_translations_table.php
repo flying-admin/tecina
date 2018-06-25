@@ -13,7 +13,7 @@ class CreateWineVarietiesTranslationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('wine_varieties_translations', function (Blueprint $table) {
+        Schema::create('wine_variety_translations', function (Blueprint $table) {
             $table->integer('id_wine_variety')->unsigned();
             $table->integer('id_language')->unsigned();
             $table->string('name');
@@ -37,6 +37,6 @@ class CreateWineVarietiesTranslationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wine_varieties_translations');
+        Schema::dropIfExists('wine_variety_translations');
     }
 }

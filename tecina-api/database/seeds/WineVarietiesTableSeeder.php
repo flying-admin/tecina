@@ -143,11 +143,11 @@ foreach($varieties as $variety){
       'id' => NULL
   ]);
   foreach ($lang as $lan) {
-      DB::table('wine_varieties_translations')->insert([
+      DB::table('wine_variety_translations')->insert([
           [
               'id_wine_variety' => $id_variety,
               'id_language' => $lan->id,
-              'name' => $variety.'_'.$lan->code
+              'name' => $variety
           ]
       ]);
   }
@@ -161,7 +161,7 @@ foreach($varieties as $variety){
 
         for ($i = 0 ; $i < $cant ; $i++) {
             foreach ($lang as $lan) {
-                DB::table('wine_varieties_translations')->insert([
+                DB::table('wine_variety_translations')->insert([
                     [
                         'id_wine_variety' => $i+1,
                         'id_language' => $lan->id,

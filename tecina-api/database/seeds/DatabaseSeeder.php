@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         DB::table('food_types')->truncate(); DB::table('food_types_translations')->truncate();
         DB::table('categories')->truncate(); DB::table('categories_translations')->truncate();
         DB::table('do')->truncate();
-        DB::table('wine_varieties')->truncate(); DB::table('wine_varieties_translations')->truncate();
-        DB::table('wine_types')->truncate(); DB::table('wine_types_translations')->truncate();
+        DB::table('wine_varieties')->truncate(); DB::table('wine_variety_translations')->truncate();
+        DB::table('wine_types')->truncate(); DB::table('wine_type_translations')->truncate();
         DB::table('wines')->truncate(); DB::table('wines_translations')->truncate();
         DB::table('dishes')->truncate(); DB::table('dishes_translations')->truncate();
         DB::table('menus')->truncate(); DB::table('menus_translations')->truncate();

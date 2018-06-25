@@ -27,11 +27,11 @@ class WineTypesTableSeeder extends Seeder
 
         for ($i = 0 ; $i < $cant ; $i++) {
             foreach ($lang as $lan) {
-                DB::table('wine_types_translations')->insert([
+                DB::table('wine_type_translations')->insert([
                     [
                         'id_wine_type' => $i+1,
                         'id_language' => $lan->id,
-                        'name' =>$lan->code .' '. $type[$i]
+                        'name' =>$type[$i]
                     ]
                 ]);
             }
