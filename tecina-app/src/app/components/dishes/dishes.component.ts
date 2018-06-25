@@ -16,8 +16,14 @@ export class DishesComponent implements OnInit {
   currentFilters:{} = {} ;
   dishes;
   categories:{} = {};
+  foodTypes:{} = {};
   allergens;
   title_category:{} = {};
+  filters = {
+    categories: [],
+    allergens:[],
+    foodTypes: [] 
+  };
 
   currentConfig: SwiperConfigInterface = {
     direction: 'vertical',
@@ -41,6 +47,33 @@ export class DishesComponent implements OnInit {
         fr:"Platos - FR",
         en:"Platos - EN"
       }
+    },
+    filters: {
+      button: {
+        es:"Ver filtros",
+        fr:"Ver filtros - FR",
+        en:"Ver filtros - EN"
+      },
+      title: {
+        es:"Filtros",
+        fr:"Filtros - FR",
+        en:"Filtros - EN"
+      },
+      allergen_title: {
+        es:"Tipo de alérgeno",
+        fr:"Tipo de alérgeno - FR",
+        en:"Tipo de alérgeno - EN"
+      },
+      foodtypes_title: {
+        es:"Tipo de comida",
+        fr:"Tipo de comida  - FR",
+        en:"Tipo de comida  - EN"
+      },
+      categores_title: {
+        es:"Tipo de plato",
+        fr:"Tipo de plato - FR",
+        en:"Tipo de plato - EN"
+      },
     }
    };
 
@@ -56,6 +89,10 @@ export class DishesComponent implements OnInit {
 
     this._tecinaApi.getAllergens().subscribe(allergens => {
       this.allergens = allergens;
+    });
+
+    this._tecinaApi.getFoodTypes().subscribe(foodTypes => {
+      this.foodTypes = foodTypes;
     });
   }
 
@@ -105,4 +142,28 @@ export class DishesComponent implements OnInit {
     }, 1000);
   }
   
+
+  // filters 
+  changeFilter( filterType:string , filterId:string, isChecked: boolean) {
+    if(isChecked) {
+      this.filters[filterType].push(filterId);
+    } else {
+      let index = this.filters[filterType].indexOf(filterId);
+
+      if(index != -1) {
+        this.filters[filterType].splice(index, 1);
+      }
+    }
+    this._tecinaApi.setCurrentFilters( this.filters );
+  }
+
+ 
+  inArray( value , args ){
+    if ((value.findIndex(element => { return element == args })) != -1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }

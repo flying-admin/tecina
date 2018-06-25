@@ -18,6 +18,7 @@ import { DishComponent } from './components/dish/dish.component';
 
 // swiper
 import { SwiperModule , SWIPER_CONFIG ,SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { InarrayPipe } from './pipes/inarray.pipe';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   speed: 500
@@ -30,7 +31,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     NavbarComponent,
     DishesComponent,
     DishComponent,
-    TimesPipe
+    TimesPipe,
+    InarrayPipe
   ],
   imports: [
     BrowserModule,
