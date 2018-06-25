@@ -42,3 +42,54 @@
           </div>
         </div>
       </div>
+      <div class="filters">
+        <span class="filters__button" data-toggle=".filters">
+          {{ translations.filters.button[currentLang] }}
+        </span>
+        <div class="filters__section">
+          <p class="filters__section__title">
+            <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+            <span>{{ translations.filters.filters[currentLang] }}</span>
+          </p>
+
+          <span class="filters__section__close" data-toggle=".filters">
+            <span class="icon-close"></span>
+          </span>
+
+          <div class="filters__section__content">
+            <div class="filters__section__content__allergens">
+              <p class="filters__section__content__allergens__title">{{ translations.filters.allergen_title[currentLang] }}</p>
+              <ul>
+                <li *ngFor="let allergen of allergens" >
+                  <input type="checkbox" [value]="allergen.id" [id]="'allergen-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
+                  <label [for]="'allergen-'+allergen.id">
+                    <span [class]="'icon-'+allergen.icon"></span>
+                    <span>{{ allergen.translate[currentLang].name }}</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+            <div class="filters__section__content__food">
+              <p class="filters__section__content__food__title">{{ translations.filters.foodtypes_title[currentLang] }}</p>
+              <ul>
+                <li *ngFor="let foodType of foodTypes" >
+                  <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
+                  <label [for]="'foodtype-'+foodType.id">
+                    <span>{{ foodType.translate[currentLang] }}</span>
+                  </label>
+                </li>
+              </ul>
+              <p class="filters__section__content__food__title">{{ translations.filters.categores_title[currentLang] }}</p>
+              <ul>
+                <li *ngFor="let category  of categories">
+                  <input type="checkbox" [value]="category.id" (change)="changeFilter('categories', category.id, $event.target.checked)" name="category" [id]="'category-'+category.id">
+                  <label [for]="'category-'+category.id">
+                    <span>{{ category.translate[currentLang] }} </span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>

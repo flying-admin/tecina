@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TimesPipe } from './pipes/times.pipe'; 
 
@@ -28,7 +27,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     AppComponent,
     HomeComponent,
-    HeaderComponent,
     NavbarComponent,
     DishesComponent,
     DishComponent,
