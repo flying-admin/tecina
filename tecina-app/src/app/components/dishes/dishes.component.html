@@ -8,10 +8,10 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide dishes__slider__item" *ngFor="let group of dishes ; let firstlast = last; index as i; ">
               <div class="dishes-row">
-                <a [routerLink]="['/dish',dish.id]"  class="dishes-row__dish" *ngFor="let dish of group; index as j; let secondlast = last;">
+                <a [routerLink]="['/dish',(  3 * i + j)]"  class="dishes-row__dish" *ngFor="let dish of group; index as j; let secondlast = last;">
                   <p class="dishes-row__dish__name">
                     <span class="dishes-row__dish__name--number">
-                        {{ (  3 * i + j)+1  }} 
+                        {{ ((  3 * i + j)+1) | number:'2.0-0'  }} 
                     </span>
                     <span class="dishes-row__dish__name--text"> {{ dish.lang[currentLang]['name'] }}</span>
                   </p>

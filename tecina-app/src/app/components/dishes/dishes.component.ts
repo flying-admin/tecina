@@ -1,9 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewChild } from '@angular/core'
 import { TecinaApiService } from "../../services/tecina-api.service";
-import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
-  SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 
 @Component({
@@ -20,8 +18,6 @@ export class DishesComponent implements OnInit {
   categories:{} = {};
   allergens;
   title_category:{} = {};
-  public show: boolean = false;
-
 
   currentConfig: SwiperConfigInterface = {
     direction: 'vertical',
@@ -48,8 +44,7 @@ export class DishesComponent implements OnInit {
     }
    };
 
-   //@ViewChild(SwiperComponent) componentRef?: SwiperComponent;
-   @ViewChild(SwiperDirective) directiveRef?: SwiperDirective;
+  @ViewChild(SwiperDirective) swiperDishes?: SwiperDirective;
 
   constructor(
     private _tecinaApi: TecinaApiService, 
@@ -64,14 +59,14 @@ export class DishesComponent implements OnInit {
     });
   }
 
-
-
   initialiseState(){    
     this._tecinaApi.currentFilters.subscribe( filters => {
       this._tecinaApi.getDishes( filters ).subscribe(
         dishes => { 
           this.dishes = this._tecinaApi.subArray( dishes , 3 );
           this.currentFilters = filters;
+          console.log(this.currentFilters);
+          
           this.goToIndex( 0 );
           if( (filters.categories).length == 1 ){
             var i =  filters.categories[0];
@@ -101,14 +96,12 @@ export class DishesComponent implements OnInit {
      var allergen = this.allergens.filter(
       a => { return a.id == allergen_id}
     );
-    
     return allergen[0].icon;
-
   }
 
   goToIndex( i ){    
     setTimeout(() => {
-      this.directiveRef.setIndex(i);
+      this.swiperDishes.setIndex(i);
     }, 1000);
   }
   

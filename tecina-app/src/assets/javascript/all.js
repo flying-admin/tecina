@@ -1,6 +1,6 @@
 var Project = {};
 Project.init = function () {
-  $("[data-toggle]").on("click", function (e) {
+  $(document).on("click", "[data-toggle]" ,function (e) {
     e.preventDefault(), e.stopPropagation();
     var i = $(this),
       n = i.data("toggle"),
