@@ -45,9 +45,11 @@ export class TecinaApiService {
   _menus = this.menus.asObservable();
  
 
-  url = 'http://tecina-api.local/api';
-  //url = 'http://tecina-api.local:8000/api';
-  
+  pageRoot = "http://tecina-api.local/";
+  //pageRoot = "http://tecina-api.local:8000/";
+  imagesPath = this.pageRoot + "img";
+  url = this.pageRoot + 'api';
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -252,19 +254,6 @@ export class TecinaApiService {
     //           "fr": {
     //               "name": "fr_entrantes frios",
     //               "description": "fr_entrantes frios description"
-    //           }
-    //       }
-    //   },
-    //   {
-    //       "id": 2,
-    //       "translate": {
-    //           "es": {
-    //               "name": "es_entrantes calientes",
-    //               "description": "es_entrantes calientes description"
-    //           },
-    //           "fr": {
-    //               "name": "fr_entrantes calientes",
-    //               "description": "fr_entrantes calientes description"
     //           }
     //       }
     //   }

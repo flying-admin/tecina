@@ -19,6 +19,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dishes = [];
   menus = [];
   wines =[];
+  imgPath = "http://tecina-api.local/img";
+
 
 
   translations = {

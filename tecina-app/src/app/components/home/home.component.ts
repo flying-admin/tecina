@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit , OnDestroy  {
   //routeLang;
   //langs;
   highlights:any;
-  imgPath = "http://tecina-api.local/public/images";
+  imgPath;
 
   resize = function(){
     window.dispatchEvent(new Event('resize'));

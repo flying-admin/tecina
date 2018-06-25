@@ -15,7 +15,7 @@ export class DishesComponent implements OnInit {
   currentFilters:{} = {} ;
   dishes;
   categories:{} = {};
-  allergens:{} = {};
+  allergens;
   title_category:{} = {};
 
   translations = {
@@ -74,5 +74,14 @@ export class DishesComponent implements OnInit {
 
   goToDish(id:number){
     this.router.navigate(['/dish',id]);
+  }
+
+  getIcon( allergen_id ){
+     var allergen = this.allergens.filter(
+      a => { return a.id == allergen_id}
+    );
+    
+    return allergen[0].icon;
+
   }
 }
