@@ -17,6 +17,13 @@ import { TecinaApiService } from "./services/tecina-api.service";
 import { DishesComponent } from './components/dishes/dishes.component';
 import { DishComponent } from './components/dish/dish.component';
 
+// swiper
+import { SwiperModule , SWIPER_CONFIG ,SwiperConfigInterface } from 'ngx-swiper-wrapper';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  speed: 500
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,10 +37,15 @@ import { DishComponent } from './components/dish/dish.component';
   imports: [
     BrowserModule,
     AppRouting,
-    HttpClientModule
+    HttpClientModule,
+    SwiperModule
   ],
   providers: [
-    TecinaApiService
+    TecinaApiService,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ],
   bootstrap: [AppComponent]
 })
