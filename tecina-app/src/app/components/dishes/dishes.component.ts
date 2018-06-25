@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ViewChild } from '@angular/core'
 import { TecinaApiService } from "../../services/tecina-api.service";
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
+  SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
 
 
 @Component({
@@ -18,11 +20,15 @@ export class DishesComponent implements OnInit {
   categories:{} = {};
   allergens;
   title_category:{} = {};
+  public show: boolean = false;
+
 
   currentConfig: SwiperConfigInterface = {
     direction: 'vertical',
     speed: 500,
+    a11y: true,
     freeMode: true,
+    observer:true,
     freeModeSticky: true,
     slidesPerView: 2,
     navigation: {
@@ -42,6 +48,9 @@ export class DishesComponent implements OnInit {
     }
    };
 
+   //@ViewChild(SwiperComponent) componentRef?: SwiperComponent;
+   @ViewChild(SwiperDirective) directiveRef?: SwiperDirective;
+
   constructor(
     private _tecinaApi: TecinaApiService, 
     private router: Router,
@@ -55,9 +64,7 @@ export class DishesComponent implements OnInit {
     });
   }
 
-  resize = function(){
-    window.dispatchEvent(new Event('resize'));
-  }
+
 
   initialiseState(){    
     this._tecinaApi.currentFilters.subscribe( filters => {
@@ -65,8 +72,8 @@ export class DishesComponent implements OnInit {
         dishes => { 
           this.dishes = this._tecinaApi.subArray( dishes , 3 );
           this.currentFilters = filters;
+          this.goToIndex( 0 );
           if( (filters.categories).length == 1 ){
-
             var i =  filters.categories[0];
             this.title_category = this.categories[i-1]['translate'];
           }else{
@@ -99,12 +106,10 @@ export class DishesComponent implements OnInit {
 
   }
 
-  hola(){
-    console.log("hola");
-    setTimeout(function(){
-      this.resize ;
-      console.log("dentro");
-      
-    },5000)
+  goToIndex( i ){    
+    setTimeout(() => {
+      this.directiveRef.setIndex(i);
+    }, 1000);
   }
+  
 }
