@@ -1,0 +1,62 @@
+<div class="menus ">
+  <p class="menus__title">
+    <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+    <span>Menús</span>
+  </p>
+  <div class="swiper-container menus__slider" [swiper]="currentConfig">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <div class="swiper-slide menus__slider__item" *ngFor="let group of menus ; let firstlast = last; index as i; ">
+        <div class="menus-row">
+          <div class="menus-row__menu" *ngFor="let menu of group; index as j; let secondlast = last;">
+            <a [routerLink]="['/menu',(  3 * i + j)]" class="menus-row__menu--link">
+              <p class="menus-row__menu__name">
+                <span class="menus-row__menu__name--number">
+                  01
+                </span>
+                <span class="menus-row__menu__name--text">menú maridaje</span>
+              </p>
+              <p class="menus-row__menu__note">
+                mínimo 2 personas, vinos incluidos
+              </p>
+            </a>
+            <p class="menus-row__menu__text">
+              Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate
+              en AOVE.
+            </p>
+            <p class="menus-row__menu__text">
+              Croquetas 2 u. (1 u. de cada sabor)(Parmesano con tomate y Bacalao con cebolla caramelizada).
+            </p>
+            <p class="menus-row__menu__text">
+              Empanadilla de rabo de toro 1 u.
+            </p>
+            <p class="menus-row__menu__text">
+              Picho de huevo, panceta ibérica y patata 1 u.
+            </p>
+            <p class="menus-row__menu__text">
+              Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada
+              y 3 5 patatas fritas.
+            </p>
+            <p class="menus-row__menu__text">
+              Coulant de chocolate intenso.
+            </p>
+            <a href="../menu/" class="menus-row__menu__wines">
+              <p class="menus-row__menu__wines__text">
+                Maridaje
+              </p>
+              <p class="menus-row__menu__wines__note">
+                Incluido en el menú
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev menus__slider__nav menus__slider__nav--prev">
+      <span class="icon-chevron-up"></span>
+    </div>
+    <div class="swiper-button-next menus__slider__nav menus__slider__nav--next">
+      <span class="icon-chevron-down"></span>
+    </div>
+  </div>
+</div>

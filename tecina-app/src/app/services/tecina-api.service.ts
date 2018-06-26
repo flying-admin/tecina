@@ -226,6 +226,7 @@ export class TecinaApiService {
    
     return  this.http.get(this.api + "/dishes" ,this.httpOptions );
   }
+
   getDishes( filters ,category? ){
     return this.dishes.map(
       dishes => {
@@ -361,7 +362,7 @@ export class TecinaApiService {
   //         8,
   //         15
   //     ]
-  // } ]
+  // } ]                  
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 

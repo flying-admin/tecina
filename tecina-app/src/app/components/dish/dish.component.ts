@@ -69,7 +69,6 @@ export class DishComponent implements OnInit {
         dishes => { 
           this.dishes = dishes;
           this.currentFilters = filters;
-          console.log(this.currentFilters);
           this.goToIndex( this.initialSlider );
         }
       );

@@ -20,8 +20,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   wines =[];
   mainMenu = false;
 
-
-
   translations = {
    nav: {
      allergen_title: {
@@ -64,8 +62,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   currentFilters = {
     categories: [],
-    allergens:[],
-    foodTypes: [] 
+    allergens: [],
+    foodTypes: []
   };
 
   constructor( 
@@ -104,8 +102,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         dishes => { 
           this.dishes = dishes;
           this.currentFilters = filters;
-          console.log("menu" ,this.currentFilters);
-
         }
       );
     });
