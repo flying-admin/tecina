@@ -22,7 +22,7 @@ class ImagesTableSeeder extends Seeder
                 try{
                     DB::table('images')->insert([
                         'id_dish' => $dish->id,
-                        'name' => 'images'.($j+1).'jpg'
+                        'name' => 'dish_'.($j+1).'png'
                     ]);
                 }catch( Exception $exception){
 

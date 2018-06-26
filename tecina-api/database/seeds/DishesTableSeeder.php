@@ -14,7 +14,7 @@ class DishesTableSeeder extends Seeder
 
         $lang =  DB::table('languages')->get();
 
-        $cant = 15;
+        $cant = 80;
 
         for ($i = 0 ; $i < $cant ; $i++){
             DB::table('dishes')->insert([
