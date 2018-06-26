@@ -16,6 +16,7 @@ export class DishComponent implements OnInit {
   allergens;
   initialSlider:number = 0;
   dish_id:number;
+  imagesPath;
 
   currentConfig: SwiperConfigInterface = {
     a11y: true,
@@ -49,6 +50,7 @@ export class DishComponent implements OnInit {
     public _tecinaApi: TecinaApiService ,
     private router: Router
   ) { 
+    this.imagesPath = this._tecinaApi.imagesPath + "/dishes/"; 
 
     this._activeRoute.params.subscribe(
       params => {

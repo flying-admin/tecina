@@ -6,7 +6,7 @@
       <h1 style="color:#fff;"> {{ a }}</h1>
     </a>
 
-    <a class="intro__start" data-toggle=".header">
+    <a class="intro__start" (click)="mainMenuStatus(true)">
       <p>Toca la pantalla
         <br>para comenzar</p>
       <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
@@ -18,7 +18,7 @@
         <div class="swiper-slide intro__slider__item" *ngFor="let highlight of highlights; let last = last" >
           <div class="intro__dish">
             <div class="intro__dish--inner">
-              <img src="{{ imgPath +'/highlights/'+ highlight.image }}" class="intro__dish__image" alt="Intro dish1" />
+              <img src="{{ imagesPath + highlight.image }}" class="intro__dish__image" alt="Intro dish1" />
               <div class="intro__dish__info">
                 <p class="intro__dish__info__category">{{ highlight.lang[currentLang]['name'] }}</p>
                 <p class="intro__dish__info__name">{{ highlight.lang[currentLang]['description'] }}</p>

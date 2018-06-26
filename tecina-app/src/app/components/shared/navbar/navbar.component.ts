@@ -1,7 +1,6 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { TecinaApiService } from "../../../services/tecina-api.service";
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -19,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dishes = [];
   menus = [];
   wines =[];
-  imgPath = "http://tecina-api.local/img";
+  mainMenu = false;
 
 
 
@@ -63,9 +62,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    }
   };
 
-  currentFilters;
-
-  filters = {
+  currentFilters = {
     categories: [],
     allergens:[],
     foodTypes: [] 
@@ -73,7 +70,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor( 
       public _tecinaApi: TecinaApiService ,
-      private _activeRoute: ActivatedRoute,
       private router: Router,
     ) {
       this._tecinaApi.getLanguages().subscribe(languages => {
@@ -96,6 +92,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this._tecinaApi.getWines().subscribe(wines => {
         this.wines = wines;
       });
+
+      this._tecinaApi._mainMenu.subscribe(
+        main_menu => this.mainMenu = main_menu
+      );
   }
 
   initialiseInvites() {
@@ -104,6 +104,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         dishes => { 
           this.dishes = dishes;
           this.currentFilters = filters;
+          console.log("menu" ,this.currentFilters);
+
         }
       );
     });
@@ -116,15 +118,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   changeFilter( filterType:string , filterId:string, isChecked: boolean) {
     if(isChecked) {
-      this.filters[filterType].push(filterId);
+      this.currentFilters[filterType].push(filterId);
     } else {
-      let index = this.filters[filterType].indexOf(filterId);
+      let index = this.currentFilters[filterType].indexOf(filterId);
 
       if(index != -1) {
-        this.filters[filterType].splice(index, 1);
+        this.currentFilters[filterType].splice(index, 1);
       }
     }
-    this._tecinaApi.setCurrentFilters( this.filters );
+    this._tecinaApi.setCurrentFilters( this.currentFilters );
   }
  
   ngOnInit(){
@@ -141,9 +143,24 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   goToDishes( categoryId:number ){
-    this.filters.categories = [categoryId];
-    this._tecinaApi.setCurrentFilters( this.filters );
+    this.currentFilters.categories = [categoryId];
+    this._tecinaApi.setCurrentFilters( this.currentFilters );
     this.router.navigate(['/dishes']);
+  }
+
+  filtersMenuStatus( open ){
+    this._tecinaApi.setFiltersMenu(open);
+  }
+  mainMenuStatus( open ){
+    this._tecinaApi.setMainMenu(open);
+  }
+
+  inArray( value , args ){
+    if ((value.findIndex(element => { return element == args })) != -1){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   ngOnDestroy() {}
