@@ -304,8 +304,6 @@ $bebidas=[
   [	'TIPO DE BEBIDA'=>'Sangria',	'Nombre de la bebida'=>'Lolea Libre',	'PRECIO'=>'8',	'Imagen'=>'',	'TIPO DE VINO'=>'',	'CLASE DE VINO'=>'',	'D.O'=>'',	'EDAD DE VINO'=>'',	'VARIEDAD_1'=>'',	'VARIEDAD_2'=>'',	'VARIEDAD_3'=>'',	'VARIEDAD_4'=>'',	'VARIEDAD_5'=>'',	'VARIEDAD_6'=>'',	'VARIEDAD_7'=>'',	'GARA'=>'NO',	'TASCA'=>'NO',	'PRINCIPAL'=>'SI',	],
   [	'TIPO DE BEBIDA'=>'Sangria',	'Nombre de la bebida'=>'Fin Loly',	'PRECIO'=>'8',	'Imagen'=>'',	'TIPO DE VINO'=>'',	'CLASE DE VINO'=>'',	'D.O'=>'',	'EDAD DE VINO'=>'',	'VARIEDAD_1'=>'',	'VARIEDAD_2'=>'',	'VARIEDAD_3'=>'',	'VARIEDAD_4'=>'',	'VARIEDAD_5'=>'',	'VARIEDAD_6'=>'',	'VARIEDAD_7'=>'',	'GARA'=>'NO',	'TASCA'=>'NO',	'PRINCIPAL'=>'SI',	],
   [	'TIPO DE BEBIDA'=>'Sangria',	'Nombre de la bebida'=>'La Sangría de Mamá',	'PRECIO'=>'8',	'Imagen'=>'',	'TIPO DE VINO'=>'',	'CLASE DE VINO'=>'',	'D.O'=>'',	'EDAD DE VINO'=>'',	'VARIEDAD_1'=>'',	'VARIEDAD_2'=>'',	'VARIEDAD_3'=>'',	'VARIEDAD_4'=>'',	'VARIEDAD_5'=>'',	'VARIEDAD_6'=>'',	'VARIEDAD_7'=>'',	'GARA'=>'NO',	'TASCA'=>'NO',	'PRINCIPAL'=>'SI',	],
-
-
 ];
 
 foreach($bebidas as $bebida){

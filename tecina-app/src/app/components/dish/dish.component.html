@@ -10,8 +10,8 @@
         <div class="dish-item">
           <div class="row">
             <div class="col-xs-5">
-              <p class="dish-item__title">{{ dish.lang[currentLang].name }}</p>
-              <p class="dish-item__desc">{{ dish.lang[currentLang].description }}</p>
+              <p class="dish-item__title">{{ dish.translate[currentLang].name }}</p>
+              <p class="dish-item__desc">{{ dish.translate[currentLang].description }}</p>
               <div class="dish-item__allergens">
                 <p class="dish-item__allergens__title" *ngIf="dish.allergens.length > 0">{{ translations.dish.allergens_title[currentLang] }}:</p>
                 <ul class="dish-item__allergens__list">

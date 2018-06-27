@@ -50,7 +50,7 @@ class DishController extends Controller
 			$dish->categories = $categories;
 			 */
 			$dish->categories = $dish->categories()->get()->pluck('id')->toArray();
-			$data[$dish->id] = $dish;
+			$data[] = $dish;
 		}
 
         return response()->json($data,200);

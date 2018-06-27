@@ -22,7 +22,7 @@
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <a href="menus/" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
+                <a [routerLink]="['/menus']" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
                 <span>({{ menus.length }})</span>
                 </a>
               </li>

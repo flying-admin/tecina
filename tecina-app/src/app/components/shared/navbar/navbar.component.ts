@@ -69,7 +69,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor( 
       public _tecinaApi: TecinaApiService ,
       private router: Router,
-    ) {
+    ) {                                           
       this._tecinaApi.getLanguages().subscribe(languages => {
         this.langs = languages;
       });
@@ -81,7 +81,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.foodTypes = foodTypes;
       });
   
-      this._tecinaApi.getAllergens().subscribe(allergens => {
+      this._tecinaApi.getAllergens().subscribe( allergens => {
         this.allergens = allergens;
       });
       this._tecinaApi.getMenus().subscribe(menus => {

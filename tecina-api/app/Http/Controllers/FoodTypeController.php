@@ -18,7 +18,7 @@ class FoodTypeController extends Controller
 		foreach(FoodType::all() as $foodtype)
 		{
 			$foodtype->translate = prettyTranslate($foodtype->getTranslate()->get());
-			$data[$foodtype->id] = $foodtype;
+			$data[] = $foodtype;
 		}
 
         return response()->json($data,200);

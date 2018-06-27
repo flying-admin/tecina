@@ -12,6 +12,7 @@ class ImagesTableSeeder extends Seeder
     public function run()
     {
         $dishes =  DB::table('dishes')->get();
+        
 
         foreach ($dishes as $dish) {
 
@@ -22,7 +23,7 @@ class ImagesTableSeeder extends Seeder
                 try{
                     DB::table('images')->insert([
                         'id_dish' => $dish->id,
-                        'name' => 'dish_'.($j+1).'png'
+                        'name' => 'dish_'.$dish->id.'_'.($j+1).'.png'
                     ]);
                 }catch( Exception $exception){
 

@@ -107,7 +107,8 @@ export class MenusComponent implements OnInit {
 
   initialiseState() {
     this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getMenus().subscribe(
+      this._tecinaApi.getMenus()
+      .subscribe(
         menus => {
           this.menus = this._tecinaApi.subArray(menus, 3);
 
@@ -185,6 +186,10 @@ export class MenusComponent implements OnInit {
 
   mainMenuStatus(open) {
     this._tecinaApi.setMainMenu(open);
+  }
+
+  pairingStatus(open) {
+    this._tecinaApi.setPairing(open);
   }
 
   conuntFilters() {

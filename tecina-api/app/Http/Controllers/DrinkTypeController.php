@@ -18,7 +18,7 @@ class DrinkTypeController extends Controller
       foreach(DrinkType::all() as $drinktype)
       {
         $drinktype->translate = prettyTranslate($drinktype->getTranslate()->get());
-        $data[$drinktype->id] = $drinktype;
+        $data[] = $drinktype;
       }
       return response()->json($data,200);
     }

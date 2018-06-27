@@ -18,7 +18,7 @@ class CategoryController extends Controller
 		foreach(Category::all() as $category)
 		{
 			$category->translate = prettyTranslate($category->getTranslate()->get());
-			$data[$category->id] = $category;
+			$data[] = $category;
 		}
 
         return response()->json($data,200);
