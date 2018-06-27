@@ -10,7 +10,7 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 })
 export class MenusComponent implements OnInit {
   currentLang: string = 'es';
-  currentFilters = {
+  filters = {
     categories: [],
     allergens: [],
     foodTypes: []
@@ -22,6 +22,8 @@ export class MenusComponent implements OnInit {
   title_category: {} = {};
   filtersMenu = false;
   imagesPath;
+  dishes = [];
+
 
   currentConfig: SwiperConfigInterface = {
     a11y: true,
@@ -100,32 +102,36 @@ export class MenusComponent implements OnInit {
 
     this.imagesPath = this._tecinaApi.imagesPath + "/menus/";
 
-    this._tecinaApi._filtersMenu.subscribe(
-      filters_menu => this.filtersMenu = filters_menu
+    this._tecinaApi.getDishes().subscribe(
+      dishes => { 
+        this.dishes = dishes;
+      }
     );
   }
 
   initialiseState() {
-    this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getMenus()
-      .subscribe(
+    this._tecinaApi.getDishes().subscribe(
+      dishes => { 
+      this._tecinaApi.getMenus().subscribe(
         menus => {
-          this.menus = this._tecinaApi.subArray(menus, 3);
+              this.dishes = dishes;
+              console.log("d", dishes);
+              console.log("m",menus);
+          
+                for (let m = 0; m < menus.length; m++) {
 
-          if (this.currentFilters != filters) {
-            this.currentFilters = filters;
-          }
-
-          this.goToIndex(0);
-          if ((filters.categories).length == 1) {
-            var i = filters.categories[0];
-            this.title_category = this.categories[i - 1]['translate'];
-          } else {
-            this.title_category = {};
-          }
+                  for (let d = 0; d < (menus[m].dishes).length; d++) {
+                    var dish_id = menus[m].dishes[d];
+                    menus[m].dishes[d] = this.getObject( dishes , dish_id );
+                  }
+                }
+                console.log(menus);
+                this.menus =  this._tecinaApi.subArray(menus, 3);
+              }  
+          );
         }
       );
-    });
+      
   }
 
   ngOnInit() {
@@ -137,19 +143,8 @@ export class MenusComponent implements OnInit {
     );
   }
 
-  goToDish(id: number) {
-    this.router.navigate(['/dish', id]);
-  }
-
-  getIcon(allergen_id) {
-    if (this.allergens.length > 0) {
-      var allergen = this.allergens.filter(
-        a => { return a.id == allergen_id }
-      );
-      return allergen[0].icon;
-    } else {
-      return false;
-    }
+  goToMenu(id: number) {
+    this.router.navigate(['/menu', id]);
   }
 
   goToIndex(i) {
@@ -158,44 +153,19 @@ export class MenusComponent implements OnInit {
     }, 1000);
   }
 
-  // filters 
-  changeFilter(filterType: string, filterId: string, isChecked: boolean) {
-    if (isChecked) {
-      this.currentFilters[filterType].push(filterId);
-    } else {
-      let index = this.currentFilters[filterType].indexOf(filterId);
-
-      if (index != -1) {
-        this.currentFilters[filterType].splice(index, 1);
-      }
-    }
-    this._tecinaApi.setCurrentFilters(this.currentFilters);
-  }
-
-  inArray(value, args) {
-    if ((value.findIndex(element => { return element == args })) != -1) {
-      return true;
+  getObject(value, args) {
+    var obj = value.filter(element => { return element.id == args });
+    if ( obj.length != 0 ) {
+      return obj[0];
     } else {
       return false;
     }
-  }
-
-  filtersMenuStatus(open) {
-    this._tecinaApi.setFiltersMenu(open);
-  }
-
-  mainMenuStatus(open) {
-    this._tecinaApi.setMainMenu(open);
   }
 
   pairingStatus(open) {
     this._tecinaApi.setPairing(open);
   }
 
-  conuntFilters() {
-    var total = (this.currentFilters.categories).length + (this.currentFilters.foodTypes).length + (this.currentFilters.allergens).length;
-    return total;
-  }
 }
 
  //   [{

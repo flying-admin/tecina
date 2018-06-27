@@ -235,13 +235,15 @@ export class TecinaApiService {
     return  this.http.get(this.api + "/dishes" ,this.httpOptions );
   }
 
-  getDishes( filters ,category? ){
+  getDishes( filters? ,category? ){
     return this.dishes.map(
       dishes => {
         if (category){
           return this.filterAll( dishes ,filters, category );
-        }else{
+        }else if(filters){
           return this.filterAll( dishes ,filters);
+        }else{
+          return dishes;
         }
     });
   }

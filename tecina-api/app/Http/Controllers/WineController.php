@@ -22,7 +22,7 @@ class WineController extends Controller
         // dd ($wine->getTranslate()->get());
         $wine->translate = prettyTranslate($wine->getTranslate()->get());
         $wine->wineVarieties = $wine->wineVarieties()->get()->pluck('id')->toArray();
-        $data[$wine->id] = $wine;
+        $data[] = $wine;
       }
           return response()->json($data,200);
     }

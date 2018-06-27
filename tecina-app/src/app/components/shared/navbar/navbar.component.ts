@@ -111,7 +111,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     return this._tecinaApi.filterAll( this.dishes , this.currentFilters ,_categories);
   }
 
-
   changeFilter( filterType:string , filterId:string, isChecked: boolean) {
     if(isChecked) {
       this.currentFilters[filterType].push(filterId);
@@ -147,6 +146,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   filtersMenuStatus( open ){
     this._tecinaApi.setFiltersMenu(open);
   }
+
   mainMenuStatus( open ){
     this._tecinaApi.setMainMenu(open);
   }

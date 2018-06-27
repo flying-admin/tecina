@@ -20,25 +20,8 @@
                 {{ menu.translate[currentLang].description }}
               </p>
             </a>
-            <p class="menus-row__menu__text" *ngFor="let dish of group;">
-              Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate
-              en AOVE.
-            </p>
-            <p class="menus-row__menu__text">
-              Croquetas 2 u. (1 u. de cada sabor)(Parmesano con tomate y Bacalao con cebolla caramelizada).
-            </p>
-            <p class="menus-row__menu__text">
-              Empanadilla de rabo de toro 1 u.
-            </p>
-            <p class="menus-row__menu__text">
-              Picho de huevo, panceta ibérica y patata 1 u.
-            </p>
-            <p class="menus-row__menu__text">
-              Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada
-              y 3 5 patatas fritas.
-            </p>
-            <p class="menus-row__menu__text">
-              Coulant de chocolate intenso.
+            <p class="menus-row__menu__text" *ngFor="let dish of menu.dishes;">
+              {{dish.translate[currentLang].name }}
             </p>
             <a href="../menu/" class="menus-row__menu__wines">
               <p class="menus-row__menu__wines__text">
