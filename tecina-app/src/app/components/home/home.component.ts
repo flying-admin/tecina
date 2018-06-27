@@ -10,13 +10,10 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   styles: []
 })
 export class HomeComponent implements OnInit , OnDestroy  {
-  //defaultLang = "es";
-  //currentLang = this.defaultLang;
   currentLang;
-  //routeLang;
-  //langs;
   highlights:any;
-  imgPath;
+  imagesPath;
+  mainMenu = false;
 
   currentConfig: SwiperConfigInterface = {
     speed: 500,
@@ -33,11 +30,15 @@ export class HomeComponent implements OnInit , OnDestroy  {
   }
 
   constructor( 
-      public _tecinaApi: TecinaApiService, 
+      private _tecinaApi: TecinaApiService, 
       private route: ActivatedRoute,
       private router: Router,
-  ) {
+  ) {    
+    this.imagesPath = this._tecinaApi.imagesPath + "/highlights/"; 
     
+    this._tecinaApi._mainMenu.subscribe(
+      main_menu => this.mainMenu = main_menu
+    );
   }
   
   initialiseState(){
@@ -60,6 +61,10 @@ export class HomeComponent implements OnInit , OnDestroy  {
   //   if (this.routeLang) {  
   //     this.routeLang.unsubscribe();
   //  }
+  }
+
+  mainMenuStatus( open ){
+    this._tecinaApi.setMainMenu(open);
   }
 
 }

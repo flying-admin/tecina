@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TecinaApiService } from "./services/tecina-api.service";
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  mainMenu = false;
+
+  constructor(  public _tecinaApi: TecinaApiService ){
+    this._tecinaApi._mainMenu.subscribe(
+      main_menu => this.mainMenu = main_menu
+    );
+  }
+
 }

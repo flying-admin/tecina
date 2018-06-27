@@ -15,7 +15,7 @@
                     </span>
                     <span class="dishes-row__dish__name--text"> {{ dish.lang[currentLang]['name'] }}</span>
                   </p>
-                  <img [src]="imgPath + '/dishes/' + dish.images[0]" class="dishes-row__dish__image" alt="Intro dish1" />
+                  <img [src]="imagesPath + dish.images[0]" class="dishes-row__dish__image" alt="Intro dish1" />
                     <ul class="dishes-row__dish__allergens">
                       <li *ngFor="let allergen_id of dish.allergens ">
                           <span [class]="'icon-'+ getIcon(allergen_id) "></span>
@@ -42,9 +42,10 @@
           </div>
         </div>
       </div>
-      <div class="filters">
-        <span class="filters__button" data-toggle=".filters">
-          {{ translations.filters.button[currentLang] }}
+      <div class="filters" [ngClass]="{'active': filtersMenu}">
+        <span class="filters__button" (click)="filtersMenuStatus(true); mainMenuStatus(false)" >
+          <span *ngIf="conuntFilters() == 0">{{ translations.filters.button[currentLang]  }}</span>
+          <span *ngIf="conuntFilters() > 0">{{ translations.filters.button_change[currentLang] + ' ('+ conuntFilters() +')' }}</span>
         </span>
         <div class="filters__section">
           <p class="filters__section__title">
@@ -52,7 +53,7 @@
             <span>{{ translations.filters.title[currentLang] }}</span>
           </p>
 
-          <span class="filters__section__close" data-toggle=".filters">
+          <span class="filters__section__close"  (click)="filtersMenuStatus(false)">
             <span class="icon-close"></span>
           </span>
 
@@ -61,9 +62,12 @@
               <p class="filters__section__content__allergens__title">{{ translations.filters.allergen_title[currentLang] }}</p>
               <ul>
                 <li *ngFor="let allergen of allergens" >
-                  <input type="checkbox" [value]="allergen.id" [id]="'allergen-filter-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
+                  <input type="checkbox" [value]="allergen.id" 
+                    [checked]="inArray( currentFilters.allergens , allergen.id)"
+                    [id]="'allergen-filter-'+allergen.id" 
+                    (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
                   <label [for]="'allergen-filter-'+allergen.id">
-                    <span [class]="'icon-'+allergen.icon"></span>
+                    <span [class]="'icon-'+ allergen.icon"></span>
                     <span>{{ allergen.translate[currentLang].name }}</span>
                   </label>
                 </li>
@@ -73,7 +77,8 @@
               <p class="filters__section__content__food__title">{{ translations.filters.foodtypes_title[currentLang] }}</p>
               <ul>
                 <li *ngFor="let foodType of foodTypes" >
-                  <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" [checked]="inArray( currentFilters.foodTypes , foodType.id)" name="foodtype" [id]="'foodtype-filter-'+foodType.id">
+                  <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" 
+                   [checked]="inArray( currentFilters.foodTypes , foodType.id)" name="foodtype" [id]="'foodtype-filter-'+foodType.id">
                   <label [for]="'foodtype-filter-'+foodType.id">
                     <span>{{ foodType.translate[currentLang] }}</span>
                   </label>
@@ -82,7 +87,9 @@
               <p class="filters__section__content__food__title">{{ translations.filters.categores_title[currentLang] }}</p>
               <ul>
                 <li *ngFor="let category  of categories">
-                  <input type="checkbox" [value]="category.id" (change)="changeFilter('categories', category.id, $event.target.checked)" name="category" [id]="'categoryfilter--'+category.id">
+                  <input type="checkbox" [value]="category.id" (change)="changeFilter('categories', category.id, $event.target.checked)" 
+                  [checked]="inArray( currentFilters.categories , category.id)"
+                  name="category" [id]="'category-filter-'+category.id">
                   <label [for]="'category-filter-'+category.id">
                     <span>{{ category.translate[currentLang].name }} </span>
                   </label>

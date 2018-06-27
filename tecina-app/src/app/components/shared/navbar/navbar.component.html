@@ -1,9 +1,9 @@
-<header class="header ">
+<header class="header " [ngClass]="{'active': mainMenu}">
   <div class="header--inner">
     <div class="header__menu">
       <div class="row">
         <div class="col-xs-12">
-          <a [routerLink]="['home']">
+          <a [routerLink]="['home']" (click)="mainMenuStatus(false)" >
             <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
           </a>
         </div>
@@ -13,7 +13,7 @@
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li *ngFor="let category  of categories">
-                <a  (click)="goToDishes(category.id)"  data-toggle=".header">{{ category.translate[currentLang].name}}
+                <a  (click)="goToDishes(category.id) ;mainMenuStatus(false)"  >{{ category.translate[currentLang].name}}
                   <span>({{ (getFilteredDishes( [category.id] )).length }})</span>
                 </a>
               </li>
@@ -22,7 +22,7 @@
           <div class="header__menu__nav header__menu__nav--left">
             <ul>
               <li>
-                <a href="menus/" data-toggle=".header" >{{ translations.nav.menu_title[currentLang] }}
+                <a href="menus/" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
                 <span>({{ menus.length }})</span>
                 </a>
               </li>
@@ -33,12 +33,12 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <a href="" data-toggle=".header">{{ translations.nav.drinks_title[currentLang] }}
+                <a href="" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
                   <span>(--)</span>
                 </a>
               </li>
               <li>
-                <a href="" data-toggle=".header">{{ translations.nav.wine_title[currentLang] }}
+                <a href="" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
                   <span>({{ wines.length }})</span>
                 </a>
               </li>
@@ -66,7 +66,9 @@
             <p class="header__menu__filter__title">{{ translations.nav.allergen_title[currentLang] }}</p>
             <ul class="header__menu__filter__alergen">
               <li *ngFor="let allergen of allergens" >
-                <input type="checkbox" [value]="allergen.id" [id]="'allergen-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
+                <input type="checkbox" [value]="allergen.id"
+                [checked]="inArray( currentFilters.allergens , allergen.id)" 
+                [id]="'allergen-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
                 <label [for]="'allergen-'+allergen.id">
                   <span [class]="'icon-'+allergen.icon"></span>
                   <span>{{ allergen.translate[currentLang].name }}</span>
@@ -81,7 +83,9 @@
             <p class="header__menu__filter__title">{{ translations.nav.foodtypes_title[currentLang] }}</p>
             <ul class="header__menu__filter__food">
               <li *ngFor="let foodType of foodTypes" >
-                <input type="checkbox" [value]="foodType.id" (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
+                <input type="checkbox" [value]="foodType.id" 
+                [checked]="inArray( currentFilters.foodTypes , foodType.id)"
+                (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
                 <label [for]="'foodtype-'+foodType.id">
                   <span>{{ foodType.translate[currentLang] }} </span>
                 </label>
@@ -92,7 +96,7 @@
       </div>
     </div>
     <div class="header__bar">
-      <a class="header__bar__burguer" data-toggle=".header">
+      <a class="header__bar__burguer" (click)="filtersMenuStatus(flase); mainMenuStatus(!mainMenu)">
         <span></span>
       </a>
       <div class="header__bar__langs">
@@ -102,7 +106,7 @@
           </li>
         </ul>
       </div>
-      <div class="header__bar__tag" data-toggle=".header">
+      <div class="header__bar__tag" >
         <span>{{ translations.nav.menu[currentLang] }}</span>
       </div>
     </div>

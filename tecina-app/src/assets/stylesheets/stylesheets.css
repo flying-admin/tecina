@@ -153,7 +153,7 @@ img {
   transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1) 0s
 }
 
-body.header--expanded .content-wrapper {
+.body-wrapper.menu--expanded .content-wrapper {
   margin-left: 25vw
 }
 
@@ -4890,14 +4890,14 @@ button.swiper-pagination-bullet {
   margin: 0
 }
 
-body.header--expanded .intro__logo,
-body.header--expanded .intro__start {
+.body-wrapper.menu--expanded .intro__logo,
+.body-wrapper.menu--expanded .intro__start {
   opacity: 0;
   visibility: hidden;
   pointer-events: none
 }
 
-body.header--expanded .intro__dish__info {
+.body-wrapper.menu--expanded .intro__dish__info {
   position: absolute;
   top: 0;
   bottom: auto;
@@ -4910,7 +4910,7 @@ body.header--expanded .intro__dish__info {
   max-width: 600px
 }
 
-body.header--expanded .intro__dish__info__name {
+.body-wrapper.menu--expanded .intro__dish__info__name {
   font-size: 20px
 }
 
