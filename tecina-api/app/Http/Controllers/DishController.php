@@ -17,13 +17,13 @@ class DishController extends Controller
         $data = [];
 		foreach(Dish::all() as $dish)
 		{
-			$dish->lang = prettyTranslate($dish->getTranslate()->get());
+			$dish->translate = prettyTranslate($dish->getTranslate()->get());
 			$images = [];
 			foreach($dish->images()->get() as $image){
 				$images[]=$image->name;
 			}
 			$dish->images = $images;
-			
+
 			/* $allergens=[];
 			foreach($dish->allergens()->get() as $allergen){
 				$translate=prettyTranslate($allergen->getTranslate()->get());
@@ -50,7 +50,7 @@ class DishController extends Controller
 			$dish->categories = $categories;
 			 */
 			$dish->categories = $dish->categories()->get()->pluck('id')->toArray();
-			$data[] = $dish;
+			$data[$dish->id] = $dish;
 		}
 
         return response()->json($data,200);
@@ -95,7 +95,7 @@ class DishController extends Controller
 		$dish->Allergens = $allergens;
 
 		/*
-		$translate = [];		
+		$translate = [];
 		foreach($dish->getTranslate()->get() as $data)
 		{
 			$translate[$data['code']] = [
@@ -106,7 +106,7 @@ class DishController extends Controller
 		$dish->Translate = $translate;
 		*/
 		$dish->Lang = prettyTranslate($dish->getTranslate()->get());
-		
+
 		return response()->json($dish,200);
     }
 
