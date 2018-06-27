@@ -18,7 +18,7 @@ class AllergenController extends Controller
 		foreach(Allergen::all() as $allergen)
 		{
 			$allergen->translate = prettyTranslate($allergen->getTranslate()->get());
-			$data[$allergen->id] = $allergen->toArray();
+			$data[$allergen->id] = $allergen;
 		}
 
         return response()->json($data,200);
