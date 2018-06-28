@@ -91,7 +91,7 @@ export class DishComponent implements OnInit {
     return allergen[0].icon;
   }
 
-  goToIndex( i ){    
+  goToIndex( i ){
     setTimeout(() => {
       this.swiperDish.setIndex(i);
     }, 1000);

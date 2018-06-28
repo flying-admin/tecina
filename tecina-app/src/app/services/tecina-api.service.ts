@@ -21,6 +21,7 @@ export class TecinaApiService {
   _pairing = this.pairing.asObservable();
 
   allDishes;
+  allMenus
 
   private filters = new BehaviorSubject(
     { 
@@ -70,14 +71,39 @@ export class TecinaApiService {
   };
 
   constructor( public http:HttpClient) {
-    this.setDishes().subscribe((resp:any[]) => { this.dishes.next(resp);});
+
     this.setAllergens().subscribe((resp:any[]) => { this.allergens.next(resp);});
     this.setCategories().subscribe((resp:any[]) => { this.categories.next(resp);});
     this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
     this.setLanguages().subscribe((resp:any[]) => { this.languages.next(resp);});
     this.setHighlights().subscribe((resp:any[]) => { this.highlights.next(resp);});
+
+    this.setDishes().subscribe((resp:any[]) => {
+       this.dishes.next(resp);
+       this.allDishes = resp;
+    },
+    error => console.log("Error: ", error),
+    () => {
+        this.setMenus().subscribe((resp:any[]) => { 
+          this.allMenus = resp;
+        },error => console.log("Error: ", error),
+        () => {
+          // console.log('callback 2', this.allDishes);
+          // console.log('callback 2', this.allMenus);
+          for (let m = 0; m < this.allMenus.length; m++) {
+            for (let d = 0; d < (this.allMenus[m].dishes).length; d++) {
+              var dish_id = this.allMenus[m].dishes[d];
+              this.allMenus[m].dishes[d] = this.getObject(this.allDishes, dish_id);
+            }
+          }
+          //console.log("this.allMenus",this.allMenus);
+          this.menus.next(this.allMenus);
+        });
+      }
+    );
+
     this.setWines().subscribe((resp:any[]) => { this.wines.next(resp);});
-    this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
+    //this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
   }
 
   // filter Dishes
@@ -252,6 +278,7 @@ export class TecinaApiService {
   getHighlights( lang ){
     return this.highlights;
   }
+
   setHighlights(){
     return this.http.get(this.api + "/highlights" ,this.httpOptions ).map(
       (res) => {
@@ -264,6 +291,7 @@ export class TecinaApiService {
   getLanguages(){
     return this.languages;
   }
+
   setLanguages(){
     //[{"id":1,"code":"es"},{"id":2,"code":"fr"}]
     return this.http.get(this.api + "/languages" ,this.httpOptions ); 
@@ -273,6 +301,7 @@ export class TecinaApiService {
   getCategories(){
     return this.categories;
   }
+
   setCategories(){
  
     // [
@@ -346,12 +375,9 @@ export class TecinaApiService {
  
   // Menus
   getMenus(){
-    return this.menus.map(
-      menus => { 
-        return menus;
-      }
-    );
+    return this.menus;
   }
+
 
   setMenus(){
   //   [{
@@ -385,6 +411,15 @@ export class TecinaApiService {
   //     ]
   // } ]                  
     return this.http.get(this.api + "/menus" ,this.httpOptions );
+  }
+
+  getObject(value, args) {
+    var obj = value.filter(element => { return element.id == args });
+    if (obj.length != 0) {
+      return obj[0];
+    } else {
+      return false;
+    }
   }
 
 }

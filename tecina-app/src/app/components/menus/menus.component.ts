@@ -1,5 +1,4 @@
-import { Component, OnInit , ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TecinaApiService } from "../../services/tecina-api.service";
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
@@ -43,51 +42,27 @@ export class MenusComponent implements OnInit {
   translations = {
     menus: {
       title: {
-        es: "Platos",
-        fr: "Platos - FR",
-        en: "Platos - EN"
-      }
-    },
-    filters: {
-      button: {
-        es: "Ver filtros",
-        fr: "Ver filtros - FR",
-        en: "Ver filtros - EN"
+        es: "Menus",
+        fr: "Menus - FR",
+        en: "Menus - EN"
       },
-      button_change: {
-        es: "Cambiar filtros",
-        fr: "Cambiar filtros - FR",
-        en: "Cambiar filtros - EN"
+      pairing: {
+        es: "Maridaje",
+        fr: "Maridaje - FR",
+        en: "Maridaje - EN"
       },
-      title: {
-        es: "Filtros",
-        fr: "Filtros - FR",
-        en: "Filtros - EN"
-      },
-      allergen_title: {
-        es: "Tipo de alérgeno",
-        fr: "Tipo de alérgeno - FR",
-        en: "Tipo de alérgeno - EN"
-      },
-      foodtypes_title: {
-        es: "Tipo de comida",
-        fr: "Tipo de comida  - FR",
-        en: "Tipo de comida  - EN"
-      },
-      categores_title: {
-        es: "Tipo de plato",
-        fr: "Tipo de plato - FR",
-        en: "Tipo de plato - EN"
+      pairing_txt: {
+        es: "Incluido en el menú",
+        fr: "Incluido en el menú - FR",
+        en: "Incluido en el menú - EN"
       },
     }
   };
 
   @ViewChild(SwiperDirective) swiperMenus?: SwiperDirective;
 
-  constructor(
-    private _tecinaApi: TecinaApiService,
-    private router: Router,
-  ){
+  constructor(private _tecinaApi: TecinaApiService) {
+
     this._tecinaApi.getCategories().subscribe(categories => {
       this.categories = categories;
     });
@@ -100,38 +75,16 @@ export class MenusComponent implements OnInit {
       this.foodTypes = foodTypes;
     });
 
-    this.imagesPath = this._tecinaApi.imagesPath + "/menus/";
+    this.imagesPath = this._tecinaApi.imagesPath + "/dishes/";
 
-    this._tecinaApi.getDishes().subscribe(
-      dishes => { 
-        this.dishes = dishes;
-      }
-    );
   }
 
   initialiseState() {
-    this._tecinaApi.getDishes().subscribe(
-      dishes => { 
       this._tecinaApi.getMenus().subscribe(
         menus => {
-              this.dishes = dishes;
-              console.log("d", dishes);
-              console.log("m",menus);
-          
-                for (let m = 0; m < menus.length; m++) {
-
-                  for (let d = 0; d < (menus[m].dishes).length; d++) {
-                    var dish_id = menus[m].dishes[d];
-                    menus[m].dishes[d] = this.getObject( dishes , dish_id );
-                  }
-                }
-                console.log(menus);
-                this.menus =  this._tecinaApi.subArray(menus, 3);
-              }  
-          );
-        }
-      );
-      
+            console.log("menis en menus",menus);
+            this.menus = this._tecinaApi.subArray(menus, 3);
+      });
   }
 
   ngOnInit() {
@@ -143,10 +96,6 @@ export class MenusComponent implements OnInit {
     );
   }
 
-  goToMenu(id: number) {
-    this.router.navigate(['/menu', id]);
-  }
-
   goToIndex(i) {
     setTimeout(() => {
       this.swiperMenus.setIndex(i);
@@ -155,7 +104,7 @@ export class MenusComponent implements OnInit {
 
   getObject(value, args) {
     var obj = value.filter(element => { return element.id == args });
-    if ( obj.length != 0 ) {
+    if (obj.length != 0) {
       return obj[0];
     } else {
       return false;
