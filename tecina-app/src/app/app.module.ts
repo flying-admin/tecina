@@ -21,6 +21,8 @@ import { SwiperModule , SWIPER_CONFIG ,SwiperConfigInterface } from 'ngx-swiper-
 import { InarrayPipe } from './pipes/inarray.pipe';
 import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { WinesComponent } from './components/wines/wines.component';
+import { DrinksComponent } from './components/drinks/drinks.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   speed: 500
@@ -36,7 +38,9 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     TimesPipe,
     InarrayPipe,
     MenusComponent,
-    MenuComponent
+    MenuComponent,
+    WinesComponent,
+    DrinksComponent
   ],
   imports: [
     BrowserModule,

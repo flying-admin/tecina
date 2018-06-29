@@ -6,20 +6,24 @@
   <a [routerLink]="['/menus']" class="menu__return">
     <span class="icon-return"></span>
   </a>
-  <div class="menu__summary">
+  <div class="menu__summary" *ngIf="menu.translate">
     <div class="menu__summary__menu">
-      <p class="menu__summary__menu__name">
+      <p class="menu__summary__menu__name" >
        {{ menu.translate[currentLang].name}}
       </p>
-      <p class="menu__summary__menu__note" *ngFor="let dish of menu.dishes; index as i " >
+
+      <p class="menu__summary__menu__note">
+          {{ menu.translate[currentLang].description}}
+      </p>
+      <p class="menu__summary__menu__text" *ngFor="let dish of menu.dishes; index as i " (click)="goToIndexDishes(i)" >
           {{ dish.translate[currentLang].name }}
       </p>
       <span class="menu__summary__menu__wines" (click)="pairingStatus(true)">
         <p class="menu__summary__menu__wines__text">
-          Maridaje
+          {{ translations.menu.pairing.title[currentLang] }}
         </p>
         <p class="menu__summary__menu__wines__note">
-          Incluido en el menú
+            {{ translations.menu.pairing.subtitle[currentLang] }}
         </p>
       </span>
     </div>
@@ -71,152 +75,16 @@
     </div>
     <div class="menu__details__wines" [ngClass]="{'active': pairing}">
       <p class="menu__details__wines__title">
-          <span>{{ translations.menu.pairing.title[currentLang] }}</span>
+          {{ translations.menu.pairing.title[currentLang] }}
       </p>
       <span class="menu__details__wines__close" (click)="pairingStatus(false)">
         <span class="icon-close"></span>
       </span>
       <div class="swiper-container wine-list menu__details__wines__slider" [swiper]="swiperPairingConfig">
         <div class="swiper-wrapper">
-          <div class="swiper-slide wine-list__item">
+          <div class="swiper-slide wine-list__item" *ngFor="let wines_group of wines">
             <div class="wines-row">
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Jean Leon Vinya Gigi</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Penedés</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Chardonnay</span>
-                  </p>
-                </div>
-              </div>
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Canarius</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Islas Canarias</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Listán Blanco, Marmajuelo</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide wine-list__item">
-            <div class="wines-row">
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Jean Leon Vinya Gigi</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Penedés</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Chardonnay</span>
-                  </p>
-                </div>
-              </div>
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Canarius</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Islas Canarias</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Listán Blanco, Marmajuelo</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide wine-list__item">
-            <div class="wines-row">
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Jean Leon Vinya Gigi</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Penedés</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Chardonnay</span>
-                  </p>
-                </div>
-              </div>
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Canarius</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Islas Canarias</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Listán Blanco, Marmajuelo</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide wine-list__item">
-            <div class="wines-row">
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Jean Leon Vinya Gigi</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Penedés</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Chardonnay</span>
-                  </p>
-                </div>
-              </div>
-              <div class="wines-row__wine">
-                <div class="wines-row__wine__image">
-                  <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
-                </div>
-                <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Canarius</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Islas Canarias</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Listán Blanco, Marmajuelo</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide wine-list__item">
-            <div class="wines-row">
-              <div class="wines-row__wine">
+              <div class="wines-row__wine" *ngFor="let wine of wines_group" >
                 <div class="wines-row__wine__image">
                   <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
                 </div>

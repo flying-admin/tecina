@@ -9,14 +9,14 @@
       <div class="swiper-slide menus__slider__item" *ngFor="let group of menus ; let firstlast = last; index as i; ">
         <div class="menus-row">
           <div class="menus-row__menu" *ngFor="let menu of group; index as j; let secondlast = last;">
-            <a [routerLink]="['/menu',menu.id]" class="menus-row__menu--link">
+            <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(false)" class="menus-row__menu--link">
               <p class="menus-row__menu__name">
                 <span class="menus-row__menu__name--number">
                   {{ ((  3 * i + j)+1) | number:'2.0-0'  }} 
                 </span>
-                <span class="menus-row__menu__name--text">{{ menu.translate[currentLang].name }}</span>
+                <span class="menus-row__menu__name--text" >{{ menu.translate[currentLang].name }}</span>
               </p>
-              <p class="menus-row__menu__note">
+              <p class="menus-row__menu__note" >
                 {{ menu.translate[currentLang].description }}
               </p>
             </a>

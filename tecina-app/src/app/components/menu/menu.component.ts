@@ -11,17 +11,12 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class MenuComponent implements OnInit {
 
   currentLang: string = 'es';
-  filters = {
-    categories: [],
-    allergens: [],
-    foodTypes: []
-  };
-  menus;
   menu = {};
   allergens;
   pairing = true;
   imagesPath;
   menu_id;
+  wines=[];
   initialSlider:number = 0;
   swiperDishesConfig: SwiperConfigInterface = {
     a11y: true,
@@ -68,10 +63,15 @@ export class MenuComponent implements OnInit {
           fr: "Maridaje - FR",
           en: "Maridaje - EN"
         },
+        subtitle: {
+          es: "Incluido en el menú",
+          fr: "Incluido en el menú - FR",
+          en: "Incluido en el menú - EN"
+        },
+        
       }
     }
   };
-
 
   @ViewChildren(SwiperDirective) swiperView: QueryList<SwiperDirective>;
 
@@ -100,10 +100,20 @@ export class MenuComponent implements OnInit {
   initialiseState() {
     this._tecinaApi.getMenus().subscribe(
       menus => {
-        this.menus = menus;
         this.menu = this._tecinaApi.getObjectById(menus, this.menu_id);
-        this.goToIndexDishes(this.initialSlider);
-        this.goToIndexPairing(this.initialSlider);
+        if(this.menu == []){
+          this.router.navigate(['/menus'])
+        }
+        if(('wines' in this.menu)){
+
+          this.wines = this._tecinaApi.subArray( (this.menu['wines']).slice(0) ,2 );
+          console.log("todos los vinos",this.menu['wines']);
+          console.log("vinos divididos",this.wines);
+          
+          
+          this.goToIndexDishes(this.initialSlider);
+          this.goToIndexPairing(this.initialSlider);        
+        }
       });
   }
 
@@ -137,5 +147,6 @@ export class MenuComponent implements OnInit {
   pairingStatus(open) {
     this._tecinaApi.setPairing(open);
   }
+
 
 }

@@ -16,8 +16,8 @@ class WineAgeController extends Controller
     {
         $data=[];
         foreach (WineAge::all() as $wineAge) {
-          $data[$wineAge->id]=prettyTranslate($wineAge->getTranslate()->get());
-        }
+            $wineAge->translate = prettyTranslate($wineAge->getTranslate()->get());
+            $data[] = $wineAge;        }
         return response()->json($data,200);
     }
 

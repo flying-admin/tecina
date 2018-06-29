@@ -108,6 +108,8 @@ export class MenusComponent implements OnInit {
     this._tecinaApi.setPairing(open);
   }
 
+
+
 }
 
  //   [{

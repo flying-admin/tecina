@@ -38,6 +38,15 @@ export class TecinaApiService {
  
   private wines = new BehaviorSubject([]);
   _wines = this.wines.asObservable();
+  
+  private winesTypes = new BehaviorSubject([]);
+  _winesTypes = this.winesTypes.asObservable();
+
+  private winesVarieties = new BehaviorSubject([]);
+  _winesVarieties = this.winesVarieties.asObservable();
+
+  private winesDO = new BehaviorSubject([]);
+  _winesDO = this.winesDO.asObservable();
  
   private categories = new BehaviorSubject([]);
   _categories = this.categories.asObservable();
@@ -226,12 +235,12 @@ export class TecinaApiService {
     if(array.length > 0 ){
       var newArray = [];
       for (let f = 0; f < array.length ; f+=size) {
-        var max = (f+size > array.length ) ? array.length :f+3;
+        var max = (f+size > array.length ) ? array.length :f+size;
         newArray.push( array.slice(f, max)); 
       }
       return newArray;
     }
-    return false;
+    return [];
   }
 
   // Dishes
@@ -374,13 +383,18 @@ export class TecinaApiService {
   }
 
   // Wines
-  getWines(){
-    return this.wines;
-  }
+  getWines(){return this.wines;}
 
-  setWines(){
-    return this.http.get(this.api + "/wines" ,this.httpOptions );
-  }
+  setWines(){return this.http.get(this.api + "/wines" ,this.httpOptions );}
+ 
+  getWinesVarieties(){return this.wines;}
+  setWinesVarieties(){return this.http.get(this.api + "/wines-varieties" ,this.httpOptions );}
+  
+  getWinesTypes(){return this.wines;}
+  setWinesTypes(){return this.http.get(this.api + "/wine-types" ,this.httpOptions );}
+  
+  getWinesDO(){return this.wines;}
+  setWinesDO(){return this.http.get(this.api + "/wines-do" ,this.httpOptions );}
  
   // Menus
   getMenus(){
@@ -427,7 +441,7 @@ export class TecinaApiService {
     if (obj.length != 0) {
       return obj[0];
     } else {
-      return false;
+      return [];
     }
   }
 

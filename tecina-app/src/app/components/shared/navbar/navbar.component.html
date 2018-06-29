@@ -33,17 +33,17 @@
           <div class="header__menu__nav">
             <ul>
               <li>
-                <a href="" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
+                <a [routerLink]="['/drinks']" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
                   <span>(--)</span>
                 </a>
               </li>
               <li>
-                <a href="" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
+                <a [routerLink]="['/wines']" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
                   <span>({{ wines.length }})</span>
                 </a>
               </li>
               <li class="header__menu__nav__feature">
-                <a href="" class="feat">
+                <a [routerLink]="['/wines']" class="feat">
                   <div class="feat__image">
                     <img src="assets/images/shared/menu-bottle.png" alt="Menu bottle" />
                   </div>
