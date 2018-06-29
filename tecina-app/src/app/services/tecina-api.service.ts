@@ -21,7 +21,8 @@ export class TecinaApiService {
   _pairing = this.pairing.asObservable();
 
   allDishes;
-  allMenus
+  allMenus;
+  allWines;
 
   private filters = new BehaviorSubject(
     { 
@@ -88,21 +89,29 @@ export class TecinaApiService {
           this.allMenus = resp;
         },error => console.log("Error: ", error),
         () => {
-          // console.log('callback 2', this.allDishes);
-          // console.log('callback 2', this.allMenus);
-          for (let m = 0; m < this.allMenus.length; m++) {
-            for (let d = 0; d < (this.allMenus[m].dishes).length; d++) {
-              var dish_id = this.allMenus[m].dishes[d];
-              this.allMenus[m].dishes[d] = this.getObject(this.allDishes, dish_id);
+          this.setWines().subscribe((resp:any[]) => { 
+            this.allWines = resp;
+            this.wines.next(resp);
+          },error => console.log("Error: ", error),
+          () => {
+            for (let m = 0; m < this.allMenus.length; m++) {
+              for (let d = 0; d < (this.allMenus[m].dishes).length; d++) {
+                var dish_id = this.allMenus[m].dishes[d];
+                this.allMenus[m].dishes[d] = this.getObjectById(this.allDishes, dish_id);
+              }
+
+              for (let w = 0; w < (this.allMenus[m].wines).length; w++) {
+                var wine_id = this.allMenus[m].wines[w];  
+                this.allMenus[m].wines[w] = this.getObjectById(this.allWines, wine_id);
+              }
             }
-          }
-          //console.log("this.allMenus",this.allMenus);
-          this.menus.next(this.allMenus);
+            this.menus.next(this.allMenus);
+          });
         });
       }
     );
 
-    this.setWines().subscribe((resp:any[]) => { this.wines.next(resp);});
+    //this.setWines().subscribe((resp:any[]) => { this.wines.next(resp);});
     //this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
   }
 
@@ -413,7 +422,7 @@ export class TecinaApiService {
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 
-  getObject(value, args) {
+  getObjectById(value, args) {
     var obj = value.filter(element => { return element.id == args });
     if (obj.length != 0) {
       return obj[0];

@@ -77,6 +77,8 @@ export class MenusComponent implements OnInit {
 
     this.imagesPath = this._tecinaApi.imagesPath + "/dishes/";
 
+
+
   }
 
   initialiseState() {
@@ -100,15 +102,6 @@ export class MenusComponent implements OnInit {
     setTimeout(() => {
       this.swiperMenus.setIndex(i);
     }, 1000);
-  }
-
-  getObject(value, args) {
-    var obj = value.filter(element => { return element.id == args });
-    if (obj.length != 0) {
-      return obj[0];
-    } else {
-      return false;
-    }
   }
 
   pairingStatus(open) {

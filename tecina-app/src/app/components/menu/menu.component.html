@@ -9,32 +9,12 @@
   <div class="menu__summary">
     <div class="menu__summary__menu">
       <p class="menu__summary__menu__name">
-        menú maridaje
+       {{ menu.translate[currentLang].name}}
       </p>
-      <p class="menu__summary__menu__note">
-        mínimo 2 personas, vinos incluidos
+      <p class="menu__summary__menu__note" *ngFor="let dish of menu.dishes; index as i " >
+          {{ dish.translate[currentLang].name }}
       </p>
-      <p class="menu__summary__menu__text">
-        Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate
-        en AOVE.
-      </p>
-      <p class="menu__summary__menu__text">
-        Croquetas 2 u. (1 u. de cada sabor) (Parmesano con tomate y Bacalao con cebolla caramelizada).
-      </p>
-      <p class="menu__summary__menu__text">
-        Empanadilla de rabo de toro 1 u.
-      </p>
-      <p class="menu__summary__menu__text">
-        Picho de huevo, panceta ibérica y patata 1 u.
-      </p>
-      <p class="menu__summary__menu__text">
-        Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada
-        y 3 5 patatas fritas.
-      </p>
-      <p class="menu__summary__menu__text">
-        Coulant de chocolate intenso.
-      </p>
-      <span class="menu__summary__menu__wines" data-toggle=".menu__details__wines">
+      <span class="menu__summary__menu__wines" (click)="pairingStatus(true)">
         <p class="menu__summary__menu__wines__text">
           Maridaje
         </p>
@@ -45,7 +25,7 @@
     </div>
   </div>
   <div class="menu__details">
-    <div class="swiper-container menu__details__slider"  [swiper]="currentConfig" >
+    <div class="swiper-container menu__details__slider"  [swiper]="swiperDishesConfig" >
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
         <div class="swiper-slide menu__details__slider__item" *ngFor="let dish of menu.dishes; index as i ">
@@ -89,14 +69,14 @@
         <span class="icon-chevron-down"></span>
       </div>
     </div>
-    <div class="menu__details__wines">
+    <div class="menu__details__wines" [ngClass]="{'active': pairing}">
       <p class="menu__details__wines__title">
-        Maridaje
+          <span>{{ translations.menu.pairing.title[currentLang] }}</span>
       </p>
-      <span class="menu__details__wines__close" data-toggle=".menu__details__wines">
+      <span class="menu__details__wines__close" (click)="pairingStatus(false)">
         <span class="icon-close"></span>
       </span>
-      <div class="swiper-container wine-list menu__details__wines__slider">
+      <div class="swiper-container wine-list menu__details__wines__slider" [swiper]="swiperPairingConfig">
         <div class="swiper-wrapper">
           <div class="swiper-slide wine-list__item">
             <div class="wines-row">

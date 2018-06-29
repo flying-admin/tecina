@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,QueryList,ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TecinaApiService } from "../../services/tecina-api.service";
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -17,13 +17,13 @@ export class MenuComponent implements OnInit {
     foodTypes: []
   };
   menus;
-  menu = [];
+  menu = {};
   allergens;
-  mainMenu = false;
+  pairing = true;
   imagesPath;
   menu_id;
   initialSlider:number = 0;
-  currentConfig: SwiperConfigInterface = {
+  swiperDishesConfig: SwiperConfigInterface = {
     a11y: true,
     observer: true,
     direction: "vertical",
@@ -31,13 +31,29 @@ export class MenuComponent implements OnInit {
     freeMode: !0,
     freeModeSticky: !0,
     slidesPerView: 2,
+    initialSlide:0,
     navigation: {
       prevEl: ".menu__details__slider__nav--prev",
       nextEl: ".menu__details__slider__nav--next",
       disabledClass: "menu__details__slider__nav--disabled"
     }
   };
-  
+
+  swiperPairingConfig: SwiperConfigInterface = {
+    a11y: true,
+    observer: true,
+    direction: "vertical",
+    speed: 500,
+    freeMode: !0,
+    initialSlide:0,
+    freeModeSticky: !0,
+    slidesPerView: 3,
+    navigation: {
+      prevEl: ".wine-list__nav--prev",
+      nextEl: ".wine-list__nav--next",
+      disabledClass: "wine-list__nav--disabled"
+    }
+  };
 
   translations = {
     menu: {
@@ -56,7 +72,8 @@ export class MenuComponent implements OnInit {
     }
   };
 
-  @ViewChild(SwiperDirective) swiperMenu?: SwiperDirective;
+
+  @ViewChildren(SwiperDirective) swiperView: QueryList<SwiperDirective>;
 
   constructor(
     private _activeRoute:ActivatedRoute,
@@ -74,15 +91,19 @@ export class MenuComponent implements OnInit {
     });
 
     this.imagesPath = this._tecinaApi.imagesPath;
+
+    this._tecinaApi._pairing.subscribe(
+      pairing => this.pairing = pairing
+    );
   }
 
   initialiseState() {
     this._tecinaApi.getMenus().subscribe(
       menus => {
         this.menus = menus;
-        this.menu = this.getObject(menus, this.menu_id);
-        console.log(this.menu);
-        this.goToIndex(this.initialSlider);
+        this.menu = this._tecinaApi.getObjectById(menus, this.menu_id);
+        this.goToIndexDishes(this.initialSlider);
+        this.goToIndexPairing(this.initialSlider);
       });
   }
 
@@ -94,9 +115,15 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  goToIndex(i) {
+  goToIndexDishes(i ) {
     setTimeout(() => {
-      this.swiperMenu.setIndex(i);
+      (this.swiperView['_results'][0]).setIndex(i);
+    }, 1000);
+  }
+
+  goToIndexPairing(i) {
+    setTimeout(() => {
+    (this.swiperView['_results'][1]).setIndex(i);
     }, 1000);
   }
 
@@ -106,15 +133,6 @@ export class MenuComponent implements OnInit {
    );
    return allergen[0].icon;
  }
-
-  getObject(value, args) {
-    var obj = value.filter( element => { return element.id == args });
-    if (obj.length != 0) {
-      return obj[0];
-    } else {
-      return false;
-    }
-  }
 
   pairingStatus(open) {
     this._tecinaApi.setPairing(open);

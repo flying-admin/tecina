@@ -64,12 +64,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesDishesTableSeeder::class);
         $this->call(WinesWineVarietiesTableSeeder::class);
         $this->call(DishesMenusTableSeeder::class);
-        $this->call(MenusWinesTableSeeder::class);
         $this->call(ImagesTableSeeder::class);
         $this->call(HighlightsTableSeeder::class);
         $this->call(WineAgesTableSeeder::class);
         $this->call(WineClassesTableSeeder::class);
         $this->call(WineTableSeeder::class);
+        $this->call(MenusWinesTableSeeder::class);
 
 
 

@@ -16,7 +16,7 @@ class MenusWinesTableSeeder extends Seeder
 
         foreach ($menus as $menu) {
 
-            $wine_numb = 3;
+            $wine_numb =  rand(6 ,10 );
             $wines = DB::table('wines')->inRandomOrder()->take($wine_numb)->get();
 
             for ($j= 0 ; $j < $wine_numb ;$j++){
