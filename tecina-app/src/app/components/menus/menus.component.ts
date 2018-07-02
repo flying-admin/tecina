@@ -90,7 +90,7 @@ export class MenusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._tecinaApi.currentLAng.subscribe(
+    this._tecinaApi.currentLang.subscribe(
       resp => {
         this.currentLang = resp;
         this.initialiseState();

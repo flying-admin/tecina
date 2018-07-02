@@ -16,8 +16,11 @@ export class MenuComponent implements OnInit {
   pairing = true;
   imagesPath;
   menu_id;
-  wines=[];
-  initialSlider:number = 0;
+  wines = [];
+  wineVarieties: any[] = [];
+  wineType: any[] = [];
+  wineDO: any[] = [];
+  initialSlider: number = 0;
   swiperDishesConfig: SwiperConfigInterface = {
     a11y: true,
     observer: true,
@@ -32,6 +35,12 @@ export class MenuComponent implements OnInit {
       nextEl: ".menu__details__slider__nav--next",
       disabledClass: "menu__details__slider__nav--disabled"
     }
+  };
+
+  wineFilters = {
+    varieties: [],
+    do: [],
+    type: []
   };
 
   swiperPairingConfig: SwiperConfigInterface = {
@@ -68,7 +77,11 @@ export class MenuComponent implements OnInit {
           fr: "Incluido en el menú - FR",
           en: "Incluido en el menú - EN"
         },
-        
+        variety:{
+          es: 'Variedad',
+          fr: 'Variedad-FR',
+          en: 'Variedad-EN'
+        }
       }
     }
   };
@@ -95,21 +108,30 @@ export class MenuComponent implements OnInit {
     this._tecinaApi._pairing.subscribe(
       pairing => this.pairing = pairing
     );
+
+    this._tecinaApi.getWinesTypes().subscribe(wineType => {
+      this.wineType = wineType;
+    });
+
+    this._tecinaApi.getWinesVarieties().subscribe(wineVarieties => {
+      this.wineVarieties = wineVarieties;
+    });
+
+    this._tecinaApi.getWinesDO().subscribe(wineDO => {
+      this.wineDO = wineDO;
+    });
   }
 
   initialiseState() {
     this._tecinaApi.getMenus().subscribe(
       menus => {
-        this.menu = this._tecinaApi.getObjectById(menus, this.menu_id);
+        this.menu = this._tecinaApi.getObjectBy(menus, this.menu_id);
         if(this.menu == []){
           this.router.navigate(['/menus'])
         }
         if(('wines' in this.menu)){
 
           this.wines = this._tecinaApi.subArray( (this.menu['wines']).slice(0) ,2 );
-          console.log("todos los vinos",this.menu['wines']);
-          console.log("vinos divididos",this.wines);
-          
           
           this.goToIndexDishes(this.initialSlider);
           this.goToIndexPairing(this.initialSlider);        
@@ -118,14 +140,14 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._tecinaApi.currentLAng.subscribe(
+    this._tecinaApi.currentLang.subscribe(
       resp => {
         this.currentLang = resp;
         this.initialiseState();
       });
   }
 
-  goToIndexDishes(i ) {
+  goToIndexDishes(i) {
     setTimeout(() => {
       (this.swiperView['_results'][0]).setIndex(i);
     }, 1000);
