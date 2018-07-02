@@ -189,8 +189,6 @@ class MenuController extends Controller
       $image_name = time()."-".$file->getClientOriginalName();
       $img_route='/img/menus/'. $image_name;
       $file->move('img/menus', $image_name);
-      // $image = Image::make(sprintf('uploads/%s', $image_name))->resize(1760, 960)->save();
-      // $image = Image::make(sprintf('img/%s', $image_name))->resize(1760, 960)->save();// $image = new Image('img/'. $image_name);
       $menu = \App\Menu::find($menuId);
       $menu->image=$img_route;
       $menu->save();
@@ -200,7 +198,6 @@ class MenuController extends Controller
       }
       // hay que redimensionarla a este tamaño: 1760 × 960
       return response()->json($respuesta,200);
-      // dd($request);
     }
 
 }

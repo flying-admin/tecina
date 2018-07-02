@@ -33,7 +33,8 @@ class HomeController extends Controller
       $langs=getLangs();
       $menus=[];
       // dd(Menu::all());
-      foreach(Menu::all() as $menu){
+      $menus_2=Menu::paginate(20);
+      foreach($menus_2 as $menu){
         $my_menu=[
           'id'=>$menu->id,
           'img'=>$menu->image,
@@ -55,6 +56,12 @@ class HomeController extends Controller
       }
 
         // dd($menus);
-        return view('admin.menu', ['menus'=>$menus]);
+        return view('admin.menu', ['menus'=>$menus,'menus_2'=>$menus_2]);
+    }
+    public function listWine(request $request)
+    {
+      $langs=getLangs();
+      $wines=\App\Wine::paginate(20);
+      return view('admin.wine', ['wines'=>$wines]);
     }
 }

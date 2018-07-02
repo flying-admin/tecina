@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/menu', 'HomeController@listMenu')->name('menu');
+Route::get('/wine', 'HomeController@listWine')->name('wine');
+
 Route::get('/deleteDishFromMenu/{dishId}/{menuId}','MenuController@deleteDishMenu')->middleware('auth');
 Route::get('/addDishFromMenu/{dishId}/{menuId}','MenuController@addDishMenu')->middleware('auth');
 Route::get('/deleteWineFromMenu/{wineId}/{menuId}','MenuController@deleteWineMenu')->middleware('auth');

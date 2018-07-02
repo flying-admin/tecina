@@ -17,10 +17,10 @@
           @endif
             <div class="card">
               <div class="card-header">
-                <strong>Listado de menús</strong>
+                <strong>Listado de vinos</strong>
               </div>
               <div class="card-body">
-                {{ $menus_2->links('pagination::bootstrap-4') }}
+                   {{ $wines->links('pagination::bootstrap-4') }}
                 <table>
                   <thead>
                     <tr>
@@ -30,24 +30,24 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($menus as $menu)
+                  @foreach ($wines as $wine)
                     <tr>
-                      <td>#{{$menu['id']}}</td>
-                      <td>{{$menu['translate']['es']['name']}}</td>
-                      <td><a href="/api/menus/{{$menu['id']}}/edit" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><span><strong>Editar</strong></span></a></td>
+                      <td>#{{$wine->id}}</td>
+                      <td>{{$wine->name}}</td>
+                      <td><a href="/api/wines/{{$wine->id}}/edit" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><span><strong>Editar</strong></span></a></td>
                     </tr>
                   @endforeach
                 </tbody>
                 </table>
-                {{ $menus_2->links('pagination::bootstrap-4') }}
+                   {{ $wines->links('pagination::bootstrap-4') }}
               </div>
             </div>
             <div class="card">
               <div class="card-header">
-                <strong>Nuevo Menú</strong>
+                <strong>Nuevo Vino</strong>
               </div>
               <div class="card-body">
-                <form class="menus create" action="/api/menus/create" method="post">
+                <form class="menus create" action="/api/wines/create" method="post">
 
                 </form>
               </div>

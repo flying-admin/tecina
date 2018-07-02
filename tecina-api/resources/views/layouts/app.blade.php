@@ -57,8 +57,8 @@
                               <a class="dropdown-item" href="{{ route('menu') }}">
                                 Listado de menús
                               </a>
-                              <a class="dropdown-item" href="{{ route('menu') }}#new-menu">
-                                Nuevo menú
+                              <a class="dropdown-item" href="{{ route('wine') }}#new-menu">
+                                Listado de vinos
                               </a>
                             </div>
                           </li>
