@@ -19,3 +19,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/menu', 'HomeController@listMenu')->name('menu');
+Route::get('/deleteDishFromMenu/{dishId}/{menuId}','MenuController@deleteDishMenu')->middleware('auth');
+Route::get('/addDishFromMenu/{dishId}/{menuId}','MenuController@addDishMenu')->middleware('auth');
+Route::get('/deleteWineFromMenu/{wineId}/{menuId}','MenuController@deleteWineMenu')->middleware('auth');
+Route::get('/addWineFromMenu/{wineId}/{menuId}','MenuController@addWineMenu')->middleware('auth');
+
+
+Route::post('/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('api','auth')->name('uploadMenuImage');
+Route::get( '/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('api','auth');
+
+
+// Route::post('/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('auth');

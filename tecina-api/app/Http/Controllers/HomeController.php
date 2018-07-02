@@ -40,17 +40,17 @@ class HomeController extends Controller
           'translate'=>prettyTranslate($menu->getTranslate()->get()),
         ];
 
-          $dishes=[];
-          foreach($menu->dishes()->get() as $dish){
-            $dishes[$dish->id]=prettyTranslate($dish->getTranslate()->get())['es']['name'];
-          }
-          $my_menu['dishes']=$dishes;
-
-          $wines=[];
-          foreach($menu->wines()->get() as $wine){
-            $wines[$wine->id]=prettyTranslate($wine->getTranslate()->get())['es']['description'];
-          }
-          $my_menu['wines']=$wines;
+          // $dishes=[];
+          // foreach($menu->dishes()->get() as $dish){
+          //   $dishes[$dish->id]=prettyTranslate($dish->getTranslate()->get())['es']['name'];
+          // }
+          // $my_menu['dishes']=$dishes;
+          //
+          // $wines=[];
+          // foreach($menu->wines()->get() as $wine){
+          //   $wines[$wine->id]=$wine->name;
+          // }
+          // $my_menu['wines']=$wines;
           $menus[]=$my_menu;
       }
 
