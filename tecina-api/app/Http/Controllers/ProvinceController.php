@@ -14,10 +14,10 @@ class ProvinceController extends Controller
      */
     public function index()
     {
-      $data=[];
-      foreach(Province::all() as $province){
-        $data[$province->id]=$province->name;
-      }
+      $data=Province::all();
+    //   foreach( as $province){
+    //     $data[$province->id]=$province->name;
+    //   }
         return response()->json($data,200);
     }
 

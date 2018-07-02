@@ -18,7 +18,7 @@ class WineClassController extends Controller
       foreach(WineClass::all() as $wineClass)
       {
         $wineClass->translate = prettyTranslate($wineClass->getTranslate()->get());
-        $data[$wineClass->id] = $wineClass;
+        $data[] = $wineClass;
       }
       return response()->json($data,200);
     }
