@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "46bc1e53bca4e3135218d6461ec0e8e0a6c8300ceec00ca318faafaa74c16651",
-    "current": "46bc1e53bca4e3135218d6461ec0e8e0a6c8300ceec00ca318faafaa74c16651"
+    "previous": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c",
+    "current": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c"
   },
   "fonts": [
     "./source/assets/fonts/icons-tecina.ttf",
@@ -18,6 +18,10 @@
     "apio": {
       "codepoint": 61697,
       "source": "./source/assets/images/icons/apio.svg"
+    },
+    "banned": {
+      "codepoint": 61715,
+      "source": "./source/assets/images/icons/banned.svg"
     },
     "cacahuetes": {
       "codepoint": 61698,

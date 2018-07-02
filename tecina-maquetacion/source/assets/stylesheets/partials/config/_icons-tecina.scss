@@ -26,6 +26,7 @@
 [data-icon]:before,
 .icon-altramuces:before,
 .icon-apio:before,
+.icon-banned:before,
 .icon-cacahuetes:before,
 .icon-chevron-down:before,
 .icon-chevron-up:before,
@@ -58,6 +59,7 @@
 
 .icon-altramuces:before { content: "\f100"; }
 .icon-apio:before { content: "\f101"; }
+.icon-banned:before { content: "\f113"; }
 .icon-cacahuetes:before { content: "\f102"; }
 .icon-chevron-down:before { content: "\f10f"; }
 .icon-chevron-up:before { content: "\f110"; }
@@ -77,6 +79,7 @@
 
 $font-icons-tecina-altramuces: "\f100";
 $font-icons-tecina-apio: "\f101";
+$font-icons-tecina-banned: "\f113";
 $font-icons-tecina-cacahuetes: "\f102";
 $font-icons-tecina-chevron-down: "\f10f";
 $font-icons-tecina-chevron-up: "\f110";

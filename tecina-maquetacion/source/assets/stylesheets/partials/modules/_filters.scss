@@ -172,6 +172,20 @@
 
                     &[class^='icon-'] {
                       color: $primary;
+
+                      &::before {
+                        position: relative;
+                        z-index: 2;
+                      }
+
+                      &::after {
+                        content: "\f113";
+                        font-family: "icons-tecina";
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        z-index: 1;
+                      }
                     }
                   }
                 }
