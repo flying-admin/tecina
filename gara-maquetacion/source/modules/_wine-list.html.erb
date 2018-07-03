@@ -1,0 +1,41 @@
+<%
+  extra_classes ||= ""
+  wines ||= ""
+%>
+
+<div class="swiper-container wine-list <%= extra_classes %>">
+
+  <div class="swiper-wrapper">
+
+    <% wines.each_slice(2).to_a.each do |wines_sub| %>
+      <div class="swiper-slide wine-list__item">
+        <div class="wines-row">
+          <% wines_sub.each do |wine| %>
+            <div class="wines-row__wine">
+              <div class="wines-row__wine__image">
+                <%= image_tag wine[:image] %>
+              </div>
+              <div class="wines-row__wine__info">
+                <p class="wines-row__wine__info__name"><%= wine[:name] %></p>
+                <p class="wines-row__wine__info__type"><%= wine[:type] %></p>
+                <p class="wines-row__wine__info__origin"><strong>D. O.</strong> <%= wine[:origin] %></p>
+                <p class="wines-row__wine__info__variety">
+                  <span class="wines-row__wine__info__variety--label">Variedad:</span>
+                  <span class="wines-row__wine__info__variety--value"><%= wine[:variety] %></span>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="swiper-button-prev wine-list__nav wine-list__nav--prev">
+    <span class="icon-chevron-up"></span>
+  </div>
+  <div class="swiper-button-next wine-list__nav wine-list__nav--next">
+    <span class="icon-chevron-down"></span>
+  </div>
+</div>

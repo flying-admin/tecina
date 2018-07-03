@@ -1,0 +1,559 @@
+.header {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  z-index: 10;
+
+  &--inner {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(80px - 50vw);
+    height: 100vh;
+    width: 50vw;
+    background-color: $blackish;
+    transition: all $transition;
+  }
+
+  &.active {
+    .header--inner {
+      left: 0;
+      border-right: 1px solid rgba($white, 0.1);
+      box-shadow: 20px 0 20px rgba($black, 0.15);
+    }
+    .header__bar {
+      background-color: transparent;
+
+      &__burguer {
+        &::after{
+          opacity: 0;
+        }
+        span {
+          background-color: transparent;
+        }
+        span::before,
+        span::after {
+          background-color: $primary;
+          transform-origin: 50% 50%;
+        }
+        span::before {
+          top:0;
+          transform: rotate(-45deg);
+        }
+        span::after {
+          bottom:0;
+          transform: rotate(45deg);
+        }
+      }
+
+      &__langs {
+        ul li span {
+          pointer-events: all;
+
+          &.active {
+            background-color: $primary;
+          }
+          &:not(.active) {
+            opacity: 1;
+            visibility: visible;
+            height: 50px;
+          }
+        }
+      }
+
+      &__tag {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+
+  &__bar {
+    display: block;
+    position: relative;
+    width: 82px;
+    height: 100vh;
+    padding: 0;
+    background-color: $primary;
+    transition: all $transition;
+
+    &__burguer {
+      display: block;
+      position: relative;
+      padding: 31px 26px;
+      transition: all $transition;
+      cursor: pointer;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 0;
+        height: 1px;
+        background-color: $darkgrey-c;
+      }
+
+      span {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 5px;
+        margin: 0;
+        background-color: $darkgrey-c;
+        transition: all $transition;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 5px;
+          background-color: $darkgrey-c;
+          transition: all $transition;
+        }
+
+        &::before {
+          top: -11px;
+        }
+
+        &::after {
+          bottom: -11px;
+        }
+      }
+    }
+
+    &__langs {
+      display: block;
+      width: 100%;
+      padding: 5px 0;
+      margin: 0;
+
+      ul {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          padding: 0;
+          margin: 0;
+
+          span {
+            display: block;
+            width: 100%;
+            height: 50px;
+            font-family: $font_special;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $darkgrey-c;
+            transition: all $transition;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            pointer-events: none;
+
+            &.active {
+              display: block;
+            }
+
+            &:not(.active) {
+              color: $white;
+              opacity: 0;
+              visibility: hidden;
+              height: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &__tag {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 100%;
+      transform-origin: 0 100%;
+      transform: rotate(-90deg);
+      padding: 16px 0;
+      transition: all $transition;
+      opacity: 1;
+      visibility: visible;
+      cursor: pointer;
+
+      span {
+        display: block;
+        white-space: nowrap;
+        font-family: $font_special;
+        font-weight: 900;
+        font-size: 30px;
+        line-height: 50px;
+        text-transform: uppercase;
+        color: $darkgrey-c;
+        padding-left: 25px;
+        border-left: 10px solid $darkgrey-c;
+      }
+    }
+  }
+
+  &__menu {
+    display: block;
+    position: relative;
+    width: calc(50vw - 80px);
+    height: 100vh;
+    padding: 50px 0 0 82px;
+
+    &__logo {
+      display: block;
+      max-width: 170px;
+    }
+
+    &__nav {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: auto;
+      padding: 50px 0 0;
+
+      & + .header__menu__nav {
+        padding: 40px 0 0;
+      }
+
+      &--left {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 0;
+          bottom: 0px;
+          width: 1px;
+          height: auto;
+          background-color: rgba($white, 0.3);
+        }
+
+        & + .header__menu__nav--left {
+          &::after {
+            top: 0;
+          }
+        }
+      }
+
+      ul {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        li {
+          display: block;
+          margin: 0;
+          padding: 0 0 30px;
+
+          a {
+            display: block;
+            position: relative;
+            font-family: $font_special;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 32px;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: $white;
+
+            span {
+              display: inline-block;
+              position: relative;
+              top: -10px;
+              font-family: $font_default;
+              font-size: 16px;
+              line-height: 18px;
+              color: $primary;
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+
+      & &__feature {
+
+        .feat {
+          display: flex;
+          text-decoration: none;
+
+          &__image {
+            display: block;
+            position: relative;
+            width: 106px;
+
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom:0;
+              transform: scale(3.5);
+              background-image: url("../images/shared/feat-shadow.png");
+              background-position: 50% 50%;
+              background-size: contain;
+              background-repeat: no-repeat;
+              z-index: 1;
+              pointer-events: none;
+            }
+
+            img {
+              display: block;
+              position: relative;
+              width: auto;
+              max-width: 100%;
+              z-index: 2;
+            }
+          }
+
+          &__text {
+            display: block;
+            position: relative;
+            width: calc(100% - 136px);
+            opacity: 0.67;
+            padding: 10px 0;
+            z-index: 2;
+
+            &__name,
+            &__info {
+              display: block;
+              font-size: 18px;
+              line-height: 24px;
+              margin: 0 0 15px;
+              top: 0;
+            }
+            &__name {
+              font-family: $font_special;
+              font-weight: 600;
+              color: $primary;
+              text-transform: uppercase;
+            }
+            &__info {
+              font-weight: 300;
+              color: $white;
+              text-transform: none;
+            }
+          }
+        }
+      }
+    }
+
+    &__filter {
+      display: block;
+      position: relative;
+      padding: 55px 0 0;
+      margin: 0;
+
+      &__title {
+        display: block;
+        font-family: $font_special;
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 16px;
+        color: $primary;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0 0 22px;
+
+        &--main {
+          font-size: 18px;
+          font-weight: 600;
+        }
+      }
+
+      &__alergen {
+        display: block;
+        padding: 0;
+        margin: 0;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          clear: both;
+        }
+
+        li {
+          display: block;
+          width: 33.3%;
+          float: left;
+          padding-right: 18px;
+          padding-bottom: 8px;
+
+          label {
+            @include flexbox;
+            @include flex-direction(row);
+            @include flex-wrap(nowrap);
+            @include justify-content(flex-start);
+            @include align-items(center);
+            @include align-content(center);
+            position: relative;
+            width: 100%;
+            height: 40px;
+
+            span {
+              display: inline-block;
+              height: auto;
+              width: auto;
+              max-width: calc(100% - 58px);
+              font-family: $font_default;
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 20px;
+              color: $primary-lighten;
+              transition: all $transition-short;
+
+              &.double {
+                line-height: 20px;
+              }
+
+              &[class^='icon-'] {
+                float: left;
+                height: 40px;
+                width: 40px;
+                padding: 1px;
+                margin: 0;
+                margin-right: 18px;
+                border-radius: 50%;
+                font-size: 36px;
+                line-height: 36px;
+                text-align: center;
+                color: $primary-lighten;
+              }
+            }
+          }
+
+          input {
+            display: block;
+            position: absolute;
+            height: 1px;
+            width: 1px;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: -1;
+
+            &:checked {
+              & + label {
+                span {
+                  color: $white;
+
+                  &[class^='icon-'] {
+                    color: $white;
+
+                    &::before {
+                      position: relative;
+                      z-index: 2;
+                    }
+
+                    &::after {
+                      content: "\f113";
+                      font-family: "icons-tecina";
+                      position: absolute;
+                      top: 2px;
+                      left: 2px;
+                      z-index: 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__food {
+        display: block;
+        position: relative;
+
+        li {
+          display: block;
+          position: relative;
+
+          label {
+            display: block;
+            position: relative;
+            font-family: $font_default;
+            font-size: 16px;
+            line-height: 22px;
+            color: $primary-lighten;
+            padding: 5px 0 5px 25px;
+            white-space: nowrap;
+            text-transform: uppercase;
+
+            span {
+              display: inline-block;
+              position: relative;
+              font-size: 16px;
+              line-height: 22px;
+              border-bottom: 1px solid transparent;
+              transition: all $transition;
+            }
+
+            &::before,
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 8px;
+              left: 0;
+              height: 16px;
+              width: 16px;
+              border-radius: 50%;
+              transition: all $transition;
+            }
+
+            &::before {
+              background-color: $primary-lighten;
+            }
+            &::after {
+              background-color: $white;
+              transform-origin: 50% 50%;
+              transform: scale(0, 0);
+            }
+          }
+
+          input {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 1px;
+            width: 1px;
+            opacity: 0;
+            z-index: -1;
+
+            &:checked + label {
+              color: $white;
+
+              span {
+                border-bottom-color: $white;
+              }
+
+              &::after {
+                transform: scale(0.5, 0.5);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

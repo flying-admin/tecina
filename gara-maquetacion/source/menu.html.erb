@@ -1,0 +1,135 @@
+---
+title: Project Index
+layout: layout
+---
+
+<%= partial("shared/header", :locals => {
+  :extra_classes => ''
+}) %>
+
+<div class="content-wrapper">
+
+  <%= partial("modules/menu", :locals => {
+    :extra_classes => '',
+    :name => 'menú maridaje',
+    :note => 'mínimo 2 personas, vinos incluidos',
+    :menu => [
+      {
+        :name => 'Combinado de Jamón Ibérico de bellota 5J cortado a mano, Queso Manchego y Almogrote Gomero servido con pan Payes y tomate en AOVE.',
+        :image => '/assets/images/content/home/intro_dish1.png',
+        :allergens => []
+      },
+      {
+        :name => 'Croquetas 2 u. (1 u. de cada sabor) (Parmesano con tomate y Bacalao con cebolla caramelizada).',
+        :image => '/assets/images/content/home/intro_dish2.png',
+        :allergens => [
+          'gluten',
+          'pescado',
+          'huevos'
+        ]
+      },
+      {
+        :name => 'Empanadilla de rabo de toro 1 u.',
+        :image => '/assets/images/content/home/intro_dish3.png',
+        :allergens => [
+          'gluten'
+        ]
+      },
+      {
+        :name => 'Picho de huevo, panceta ibérica y patata 1 u.',
+        :image => '/assets/images/content/home/intro_dish4.png',
+        :allergens => [
+          'gluten'
+        ]
+      },
+      {
+        :name => 'Pulpo a la plancha con patatas rotas al aceite de pimenton ahumado, Solomillo de Ternera al vino tinto con verduras de temporada y 3 5 patatas fritas.',
+        :image => '/assets/images/content/home/intro_dish5.png',
+        :allergens => [
+          'gluten',
+          'moluscos'
+        ]
+      },
+      {
+        :name => 'Coulant de chocolate intenso.',
+        :image => '/assets/images/content/home/intro_dish6.png',
+        :allergens => [
+          'gluten',
+          'lacteos'
+        ]
+      }
+    ],
+    :wines => {
+      :text => 'Maridaje',
+      :note => 'Incluido en el menú',
+      :list => [
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Jean Leon Vinya Gigi',
+          :type => 'Vino blanco',
+          :origin => 'Penedés',
+          :variety => 'Chardonnay'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Canarius',
+          :type => 'Vino blanco',
+          :origin => 'Islas Canarias',
+          :variety => 'Listán Blanco, Marmajuelo'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Jean Leon Vinya Gigi',
+          :type => 'Vino blanco',
+          :origin => 'Penedés',
+          :variety => 'Chardonnay'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Canarius',
+          :type => 'Vino blanco',
+          :origin => 'Islas Canarias',
+          :variety => 'Listán Blanco, Marmajuelo'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Jean Leon Vinya Gigi',
+          :type => 'Vino blanco',
+          :origin => 'Penedés',
+          :variety => 'Chardonnay'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Canarius',
+          :type => 'Vino blanco',
+          :origin => 'Islas Canarias',
+          :variety => 'Listán Blanco, Marmajuelo'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Jean Leon Vinya Gigi',
+          :type => 'Vino blanco',
+          :origin => 'Penedés',
+          :variety => 'Chardonnay'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Canarius',
+          :type => 'Vino blanco',
+          :origin => 'Islas Canarias',
+          :variety => 'Listán Blanco, Marmajuelo'
+        },
+        {
+          :image => '/assets/images/shared/menu-bottle.png',
+          :name => 'Jean Leon Vinya Gigi',
+          :type => 'Vino blanco',
+          :origin => 'Penedés',
+          :variety => 'Chardonnay'
+        }
+      ]
+    }
+  }) %>
+
+</div>
+
+<%= partial("shared/footer") %>

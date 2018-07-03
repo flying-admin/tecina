@@ -1,0 +1,79 @@
+<%
+  extra_classes ||= ""
+  dishes ||= ""
+  n_dish = 1
+%>
+
+<div class="dish <%= extra_classes %>">
+
+  <%= image_tag '/assets/images/shared/logo_white.png', :alt => 'Tasca Fandango', :class => 'dish__logo' %>
+
+  <% link_to '/dishes.html', :relative => true, :class => 'dish__return' do %>
+    <span class="icon-return"></span>
+  <% end %>
+
+  <div class="swiper-container dish__slider">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+
+      <% dishes.each do |dish| %>
+        <div class="swiper-slide dish__slider__item">
+          <div class="dish-item">
+            <div class="row">
+              <div class="col-xs-5">
+                <p class="dish-item__title"><%= dish[:name] %></p>
+                <p class="dish-item__desc"><%= dish[:desc] %></p>
+                <div class="dish-item__allergens">
+                  <p class="dish-item__allergens__title">Alergenos:</p>
+                  <ul class="dish-item__allergens__list">
+                    <% i = 0 %>
+                    <% while i < 7 do %>
+                      <li>
+                        <% if dish[:allergens].to_a[i] %>
+                          <span class="icon-<%= dish[:allergens].to_a[i] %>"></span>
+                        <% end %>
+                      </li>
+                      <% i = i + 1 %>
+                    <% end %>
+                  </ul>
+                  <ul class="dish-item__allergens__list dish-item__allergens__list--border">
+                    <% i = 0 %>
+                    <% while i < 7 do %>
+                      <li></li>
+                      <% i = i + 1 %>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xs-7">
+                <%= image_tag dish[:image], :class => 'dish-item__image' %>
+              </div>
+            </div>
+            <div class="dish-item__counter">
+              <span class="dish-item__counter__current">
+                <% if n_dish < 10 %>
+                  0<%= n_dish %>
+                <% else %>
+                  <%= n_dish %>
+                <% end %>
+              </span>
+              <span class="dish-item__counter__total">
+                <%= dishes.length %>
+              </span>
+            </div>
+          </div>
+          <% n_dish = n_dish + 1 %>
+        </div>
+      <% end %>
+
+    </div>
+
+    <div class="swiper-button-prev dish__slider__nav dish__slider__nav--prev">
+      <span class="icon-chevron-up"></span>
+    </div>
+    <div class="swiper-button-next dish__slider__nav dish__slider__nav--next">
+      <span class="icon-chevron-down"></span>
+    </div>
+  </div>
+
+</div>

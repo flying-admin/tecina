@@ -1,0 +1,123 @@
+{
+  "checksum": {
+    "previous": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c",
+    "current": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c"
+  },
+  "fonts": [
+    "./source/assets/fonts/icons-tecina.ttf",
+    "./source/assets/fonts/icons-tecina.svg",
+    "./source/assets/fonts/icons-tecina.woff",
+    "./source/assets/fonts/icons-tecina.eot",
+    "./source/assets/fonts/icons-tecina.woff2"
+  ],
+  "glyphs": {
+    "altramuces": {
+      "codepoint": 61696,
+      "source": "./source/assets/images/icons/altramuces.svg"
+    },
+    "apio": {
+      "codepoint": 61697,
+      "source": "./source/assets/images/icons/apio.svg"
+    },
+    "banned": {
+      "codepoint": 61715,
+      "source": "./source/assets/images/icons/banned.svg"
+    },
+    "cacahuetes": {
+      "codepoint": 61698,
+      "source": "./source/assets/images/icons/cacahuetes.svg"
+    },
+    "chevron-down": {
+      "codepoint": 61711,
+      "source": "./source/assets/images/icons/chevron-down.svg"
+    },
+    "chevron-up": {
+      "codepoint": 61712,
+      "source": "./source/assets/images/icons/chevron-up.svg"
+    },
+    "close": {
+      "codepoint": 61714,
+      "source": "./source/assets/images/icons/close.svg"
+    },
+    "crustaceos": {
+      "codepoint": 61699,
+      "source": "./source/assets/images/icons/crustaceos.svg"
+    },
+    "frutos_cascara": {
+      "codepoint": 61700,
+      "source": "./source/assets/images/icons/frutos_cascara.svg"
+    },
+    "gluten": {
+      "codepoint": 61701,
+      "source": "./source/assets/images/icons/gluten.svg"
+    },
+    "huevos": {
+      "codepoint": 61702,
+      "source": "./source/assets/images/icons/huevos.svg"
+    },
+    "lacteos": {
+      "codepoint": 61703,
+      "source": "./source/assets/images/icons/lacteos.svg"
+    },
+    "moluscos": {
+      "codepoint": 61710,
+      "source": "./source/assets/images/icons/moluscos.svg"
+    },
+    "mostaza": {
+      "codepoint": 61705,
+      "source": "./source/assets/images/icons/mostaza.svg"
+    },
+    "pescado": {
+      "codepoint": 61706,
+      "source": "./source/assets/images/icons/pescado.svg"
+    },
+    "return": {
+      "codepoint": 61713,
+      "source": "./source/assets/images/icons/return.svg"
+    },
+    "sesamo": {
+      "codepoint": 61707,
+      "source": "./source/assets/images/icons/sesamo.svg"
+    },
+    "soja": {
+      "codepoint": 61708,
+      "source": "./source/assets/images/icons/soja.svg"
+    },
+    "sulfitos": {
+      "codepoint": 61709,
+      "source": "./source/assets/images/icons/sulfitos.svg"
+    }
+  },
+  "options": {
+    "autowidth": false,
+    "config": "fontcustom.yml",
+    "copyright": "",
+    "css3": false,
+    "css_selector": ".icon-{{glyph}}",
+    "debug": false,
+    "font_ascent": 448,
+    "font_descent": 64,
+    "font_design_size": 16,
+    "font_em": 512,
+    "font_name": "icons-tecina",
+    "force": false,
+    "input": {
+      "templates": "./source/assets/images/icons",
+      "vectors": "./source/assets/images/icons"
+    },
+    "no_hash": true,
+    "output": {
+      "css": "./source/assets/stylesheets/partials/config",
+      "fonts": "./source/assets/fonts",
+      "preview": "./source/assets/fonts"
+    },
+    "preprocessor_path": "./../fonts/",
+    "quiet": false,
+    "templates": [
+      "scss"
+    ]
+  },
+  "templates": [
+    "./source/assets/stylesheets/partials/config/_icons-tecina.scss"
+  ]
+}

@@ -1,0 +1,10 @@
+.who {
+
+  @include flexbox;
+  @include flex-direction(column);
+
+  @include media("<tablet") {
+    
+  }
+ 
+}
