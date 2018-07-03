@@ -38,10 +38,21 @@ class Wine extends Model
         return $this->belongsToMany('App\WineVariety', 'wines_wine_varieties', 'id_wine', 'id_wine_variety');
     }
 
+    public function wineAge(){
+      // return \App\WineAge::find($this->wine_age_id);
+      return $this->belongsTo('App\WineAge');
+    }
+
     // A Wine has a wine type
-    // public function wineType(){
-    //     return $this->belongsTo('App\WineType','wine_types', 'id_wine','id_wine_type');
-    // }
+    public function wineType(){
+        return WineType::where('id',$this->id_wine_type);
+        // return $this->belongsTo('App\WineType','wine_types', 'id','id_wine_type');
+    }
+    // A Wine has a wine class
+    public function wineClass(){
+        return WineClass::where('id',$this->wine_class_id);
+        // return $this->belongsTo('App\WineClass','wine_classes','id', 'wine_class_id');
+    }
 
     // A Wine has a denomination of origin
     public function originDenomination(){
