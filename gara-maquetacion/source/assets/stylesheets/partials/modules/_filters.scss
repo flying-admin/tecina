@@ -13,8 +13,8 @@
     top: 0;
     right: 80px;
     background-color: $white;
-    font-family: $font_default;
-    font-weight: 400;
+    font-family: $font_special;
+    font-weight: 600;
     font-size: 16px;
     line-height: 16px;
     color: $black;
@@ -45,7 +45,7 @@
       margin: 0;
       padding: 0;
       padding-left: 143px;
-      font-family: $font_default;
+      font-family: $font_special;
       font-weight: 900;
       font-size: 44px;
       line-height: 77px;
@@ -95,7 +95,7 @@
 
         &__title {
           display: block;
-          font-family: $font_default;
+          font-family: $font_special;
           font-size: 16px;
           font-weight: 700;
           line-height: 16px;
@@ -204,7 +204,7 @@
 
         &__title {
           display: block;
-          font-family: $font_default;
+          font-family: $font_special;
           font-size: 16px;
           font-weight: 700;
           line-height: 16px;
