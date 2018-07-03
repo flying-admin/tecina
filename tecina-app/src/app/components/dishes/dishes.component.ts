@@ -131,7 +131,7 @@ export class DishesComponent implements OnInit {
     });
   }
 
-  
+  clearFilters(){this._tecinaApi.clearFilters()}
 
   ngOnInit() {
     this._tecinaApi.currentLang.subscribe(

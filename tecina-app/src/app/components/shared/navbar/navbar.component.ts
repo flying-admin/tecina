@@ -101,6 +101,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this._tecinaApi.getDishes( filters , [] ).subscribe(
         dishes => { 
           this.dishes = dishes;
+          console.log(filters);
           this.currentFilters = filters;
         }
       );
@@ -124,6 +125,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._tecinaApi.setCurrentFilters( this.currentFilters );
   }
  
+  clearFilters(){this._tecinaApi.clearFilters()}
+
   ngOnInit(){
     this._tecinaApi.currentLang.subscribe(
       resp => {

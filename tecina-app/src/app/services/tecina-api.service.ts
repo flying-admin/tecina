@@ -20,13 +20,13 @@ export class TecinaApiService {
   private pairing = new BehaviorSubject(false);
   _pairing = this.pairing.asObservable();
 
-  allDishes;
-  allMenus;
-  allWines;
-  allAllergens;
-  allCategories;
-  allFoodTypes;
-
+ 
+  defaultFilters = 
+  { 
+    categories: [],
+    allergens: [],
+    foodTypes: [] 
+  };
 
   private filters = new BehaviorSubject(
     { 
@@ -135,6 +135,11 @@ export class TecinaApiService {
     }
   }
 
+  clearFilters(){
+    console.log("clear" ,this.defaultFilters);
+    
+    this.setCurrentFilters(this.defaultFilters);
+  }
 
   // filter Dishes
   filterAll( dishes , filters, category? ){

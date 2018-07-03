@@ -65,7 +65,9 @@ export class DishComponent implements OnInit {
 
   initialiseState(){    
     this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getDishes( filters ).subscribe(
+      this._tecinaApi.getDishes( filters ).map(
+        dishes => { return dishes ;}
+      ).subscribe(
         dishes => { 
           this.dishes = dishes;
           this.currentFilters = filters;
@@ -84,10 +86,10 @@ export class DishComponent implements OnInit {
     );
   }
 
-  goToIndex( i ){
+  goToIndex(i , delay=1000) {
     setTimeout(() => {
       this.swiperDish.setIndex(i);
-    }, 1000);
+    }, delay);
   }
 
 }

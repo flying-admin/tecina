@@ -109,10 +109,10 @@ export class WinesComponent implements OnInit {
     }
   }
 
-  goToIndex(i) {
+  goToIndex(i , delay=1000) {
     setTimeout(() => {
       this.swiperWines.setIndex(i);
-    }, 1000);
+    }, delay);
   }
 
 
@@ -143,11 +143,28 @@ export class WinesComponent implements OnInit {
     let _wineTypes = _filters.wineTypes;
     let _wineDO = _filters.wineDO;
     let _wines = (this.allWines).slice(0);
+    let _filteredWines = [];
+    console.log(_filters);
 
-    let winesByDo 
+    for (var W = 0; W < _wines.length; W++) {
+      var addWine = true;
 
+      if( _wineTypes.length != 0 && _wines[W].id_wine_type != null && _wineTypes.indexOf(_wines[W].id_wine_type) == -1){
+        addWine = false;
+      }
 
-    //this.wines = this._tecinaApi.subArray( _wines ,2);
+      if( _wineDO.length != 0 && _wines[W].id_do != null && _wineDO.indexOf(_wines[W].id_do) == -1){
+        addWine = false;
+      }
+
+      if(addWine){
+        _filteredWines.push(_wines[W]);
+      }
+
+    }
+
+    this.wines = this._tecinaApi.subArray( _filteredWines ,2);
+    this.goToIndex(0 , 500) ;
   }
 
 }

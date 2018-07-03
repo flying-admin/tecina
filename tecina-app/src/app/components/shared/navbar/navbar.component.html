@@ -1,6 +1,6 @@
 <header class="header " [ngClass]="{'active': mainMenu}">
   <div class="header--inner">
-    <div class="header__menu">
+    <div class="header__menu" *ngIf="menus.length != 0">
       <div class="row">
         <div class="col-xs-12">
           <a [routerLink]="['home']" (click)="mainMenuStatus(false)" >
@@ -91,6 +91,9 @@
                 </label>
               </li>
             </ul>
+            <div class="header__menu__filter__clear" (click)="clearFilters()">
+                <span>Limpiar filtros</span>
+            </div>
           </div>
         </div>
       </div>
