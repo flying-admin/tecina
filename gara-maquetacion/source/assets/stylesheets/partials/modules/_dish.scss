@@ -14,7 +14,7 @@
     left: 252px;
     top: 50px;
     width: 100%;
-    max-width: 145px;
+    max-width: 180px;
     height: auto;
     margin: 0;
     padding: 0;
@@ -87,8 +87,8 @@
     &__title {
       display: block;
       position: relative;
-      font-family: $font_default;
-      font-weight: 800;
+      font-family: $font_special;
+      font-weight: 300;
       font-size: 60px;
       line-height: 62px;
       color: $white;
@@ -100,7 +100,7 @@
     &__desc {
       display: block;
       position: relative;
-      font-family: $font_default;
+      font-family: $font_special;
       font-weight: 300;
       font-size: 26px;
       line-height: 36px;
@@ -185,10 +185,10 @@
 
             @for $i from 1 through 7 {
               &:nth-child(#{$i})::after{
-                $basepercent: 10%;
+                $basepercent: 6%;
                 $percent1: (($i - 1) * $basepercent);
                 $percent2: ($i * $basepercent);
-                background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
+                background: linear-gradient(to right, tint($primary-darken, $percent1), tint($primary-darken, $percent2));
               }
             }
           }

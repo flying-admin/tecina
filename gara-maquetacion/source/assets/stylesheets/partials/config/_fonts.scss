@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,600,700,900');
+
+
+@font-face {
+  font-family: 'Souvenir';
+  src: url('./../fonts/SouvenirITCbyBT-Demi.eot?#iefix') format('embedded-opentype'),
+      url('./../fonts/SouvenirITCbyBT-Demi.woff') format('woff'),
+      url('./../fonts/SouvenirITCbyBT-Demi.woff2') format('woff2'),
+      url('./../fonts/SouvenirITCbyBT-Demi.ttf')  format('truetype'),
+      url('./../fonts/SouvenirITCbyBT-Demi.svg#SouvenirITCbyBT-Demi') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Souvenir';
+  src: url('./../fonts/SouvenirITCbyBT-Light.eot?#iefix') format('embedded-opentype'),
+      url('./../fonts/SouvenirITCbyBT-Light.woff') format('woff'),
+      url('./../fonts/SouvenirITCbyBT-Light.woff2') format('woff2'),
+      url('./../fonts/SouvenirITCbyBT-Light.ttf')  format('truetype'),
+      url('./../fonts/SouvenirITCbyBT-Light.svg#SouvenirITCbyBT-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}

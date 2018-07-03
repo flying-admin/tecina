@@ -1,37 +1,38 @@
-.dish {
+.dishes {
   display: block;
   width: 100vw;
   height: 100vh;
-  padding: 0 80px;
-  padding-right: 0;
+  padding: 100px 80px 60px;
   margin: 0;
   transition: all $transition;
   overflow: hidden;
 
-  &__logo {
+  &__title {
     display: block;
     position: absolute;
-    left: 252px;
-    top: 50px;
-    width: 100%;
-    max-width: 145px;
+    left: 80px;
+    top: 30px;
+    right: 80px;
+    width: auto;
     height: auto;
     margin: 0;
     padding: 0;
+    padding-left: 143px;
+    font-family: $font_special;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 77px;
+    color: $white;
     text-transform: uppercase;
     z-index: 2;
-  }
 
-  &__return {
-    display: block;
-    position: absolute;
-    top: 60px;
-    right: 80px;
-    z-index: 2;
-
-    span {
-      font-size: 40px;
-      color: $white;
+    img {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 33px;
+      width: 77px;
+      height: auto;
     }
   }
 
@@ -42,7 +43,7 @@
     z-index: 1;
 
     &__item {
-      padding: 300px 15px 0 170px;
+      padding: 0 100px
     }
 
     &__nav {
@@ -52,18 +53,19 @@
       padding: 3px;
       margin-top: 0;
       transition: all $transition-short;
-      right: 80px;
 
       &--prev {
         top: auto;
+        right: 0;
         left: auto;
-        bottom: 120px;
+        bottom: 60px;
       }
 
       &--next {
         top: auto;
+        right: 0;
         left: auto;
-        bottom: 60px;
+        bottom: 0;
       }
 
       &--disabled {
@@ -80,61 +82,53 @@
     }
   }
 
-  &-item {
-    display: block;
-    padding: 0;
+  &-row {
+    @include flexbox;
+    @include flex-wrap(nowrap);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(stretch);
 
-    &__title {
-      display: block;
-      position: relative;
-      font-family: $font_default;
-      font-weight: 800;
-      font-size: 60px;
-      line-height: 62px;
-      color: $white;
-      text-transform: uppercase;
-      margin: 0 0 40px;
-      z-index: 2;
-    }
+    &__dish {
+      @include flex-basis(33.334%);
+      padding: 50px 50px 20px;
+      text-decoration: none;
 
-    &__desc {
-      display: block;
-      position: relative;
-      font-family: $font_default;
-      font-weight: 300;
-      font-size: 26px;
-      line-height: 36px;
-      color: $white;
-      z-index: 2;
-      opacity: 0.5;
-    }
-
-    &__image {
-      display: block;
-      position: relative;
-      transform-origin: 0% 50%;
-      transform: scale(2) translate(-16%, -2%);
-      z-index: 1;
-    }
-
-    &__allergens {
-      display: block;
-      max-width: 440px;
-      padding: 115px 0 0;
-
-      &__title {
+      &__name {
         display: block;
         position: relative;
-        font-family: $font_default;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 24px;
+        width: 100%;
+        min-height: 96px;
+        font-family: $font_special;
         color: $white;
         text-transform: uppercase;
-        margin: 0 0 20px;
+
+        &--number {
+          position: absolute;
+          top: 0;
+          left: -33px;
+          font-family: $font_default;
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 28px;
+        }
+        &--text {
+          font-weight: 300;
+          font-size: 24px;
+          line-height: 32px;
+        }
       }
 
-      &__list {
+      &__image {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 220px;
+        margin: 0 auto;
+      }
+
+      &__allergens {
         @include flexbox;
         @include flex-direction(row);
         @include flex-wrap(nowrap);
@@ -170,7 +164,7 @@
           height: auto;
 
           li {
-            padding-bottom: 40px;
+            padding-bottom: 30px;
 
             &::after {
               content: '';
@@ -185,52 +179,14 @@
 
             @for $i from 1 through 7 {
               &:nth-child(#{$i})::after{
-                $basepercent: 10%;
+                $basepercent: 6%;
                 $percent1: (($i - 1) * $basepercent);
                 $percent2: ($i * $basepercent);
-                background: linear-gradient(to right, tint($primary, $percent1), tint($primary, $percent2));
+                background: linear-gradient(to right, tint($primary-darken, $percent1), tint($primary-darken, $percent2));
               }
             }
           }
         }
-      }
-    }
-
-    &__counter {
-      position: absolute;
-      top: 300px;
-      left: 70px;
-      font-size: 24px;
-      line-height: 30px;
-      width: 36px;
-      padding: 10px 0;
-      text-align: center;
-      background-color: $darkgrey-b;
-
-      &__current {
-        display: block;
-        color: $primary;
-        padding: 3px 0;
-        border-bottom: 1px solid $primary;
-      }
-
-      &__total {
-        display: block;
-        color: $white;
-        padding: 3px 0;
-      }
-
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 1px;
-        height: 100vh;
-        background-color: $white;
-        opacity: 0.5;
-        z-index: -1;
       }
     }
   }

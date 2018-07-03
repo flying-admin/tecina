@@ -1,0 +1,133 @@
+.intro {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  padding: 60px 80px;
+  margin: 0;
+  transition: all $transition;
+
+  &__logo {
+    display: block;
+    position: fixed;
+    left: 230px;
+    top: 60px;
+    width: 180px;
+    margin: 0 auto;
+    // transform: translateX(-50%);
+    transition: all $transition-short;
+    z-index: 2;
+  }
+
+  &__start {
+    display: block;
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    transition: all $transition-short;
+    cursor: pointer;
+    z-index: 2;
+
+    p {
+      display: block;
+      float: left;
+      font-family: $font_default;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 30px;
+      color: $white;
+      text-transform: uppercase;
+      padding-right: 20px;
+    }
+
+    img {
+      display: block;
+      float: right;
+      height: 60px;
+      width: auto;
+    }
+  }
+
+  &__slider {
+    display: block;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+  }
+
+
+  &__dish {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+    @include align-content(center);
+    position: relative;
+    height: 100%;
+
+    &--inner {
+      display: block;
+      width: 100%;
+    }
+
+    &__image {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+    }
+
+    &__info {
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      max-width: 750px;
+
+      &__category {
+        font-family: $font_special;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        color: $primary;
+        text-transform: uppercase;
+        padding: 0 0 16px;
+        margin: 0;
+      }
+
+      &__name {
+        font-family: $font_special;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        color: $white;
+        text-transform: uppercase;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
+  body.header--expanded & {
+    &__logo,
+    &__start {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &__dish__info {
+      position: absolute;
+      top: 0;
+      bottom: auto;
+      right: 25vw;
+      left: auto;
+      text-align: right;
+      transform: translateX( 20px );
+      max-width: 600px;
+
+      &__name {
+        font-size: 20px;
+      }
+    }
+  }
+}

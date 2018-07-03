@@ -25,7 +25,7 @@
     margin: 0;
     padding: 0;
     padding-left: 143px;
-    font-family: $font_default;
+    font-family: $font_special;
     font-weight: 900;
     font-size: 44px;
     line-height: 77px;
@@ -79,12 +79,12 @@
         display: block;
         position: relative;
         width: 100%;
-        font-family: $font_default;
+        font-family: $font_special;
         text-transform: uppercase;
         font-weight: 900;
         font-size: 24px;
         line-height: 32px;
-        color: $primary;
+        color: $primary-darken;
       }
 
       &__note {
@@ -95,7 +95,7 @@
         font-weight: 300;
         font-size: 20px;
         line-height: 30px;
-        color: $primary;
+        color: $primary-darken;
         text-transform: lowercase;
         margin: 0 0 40px;
       }
@@ -127,7 +127,7 @@
           font-weight: 700;
           font-size: 20px;
           line-height: 30px;
-          color: $primary;
+          color: $primary-darken;
 
           &::before {
             content: '>'
@@ -142,7 +142,7 @@
             bottom: 0;
             height: 1px;
             width: auto;
-            background-color: $primary;
+            background-color: $primary-darken;
           }
         }
 
@@ -153,7 +153,7 @@
           font-weight: 300;
           font-size: 16px;
           line-height: 20px;
-          color: $primary;
+          color: $primary-darken;
           text-decoration: none;
           padding: 10px 0 0;
         }
@@ -338,7 +338,7 @@
       &__name {
         display: block;
         position: relative;
-        font-family: $font_default;
+        font-family: $font_special;
         color: $white;
         margin: 0;
 
@@ -346,14 +346,14 @@
           position: absolute;
           top: 0;
           left: -34px;
+          font-family: $font_default;
           font-weight: 300;
           font-size: 18px;
           line-height: 34px;
-
         }
 
         &--text {
-          font-weight: 700;
+          font-weight: 300;
           font-size: 30px;
           line-height: 40px;
         }
