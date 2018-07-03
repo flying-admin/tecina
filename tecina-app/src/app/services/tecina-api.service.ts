@@ -23,6 +23,10 @@ export class TecinaApiService {
   allDishes;
   allMenus;
   allWines;
+  allAllergens;
+  allCategories;
+  allFoodTypes;
+
 
   private filters = new BehaviorSubject(
     { 
@@ -68,8 +72,8 @@ export class TecinaApiService {
   _menus = this.menus.asObservable();
  
 
-  pageRoot = "http://tecina-api.local/";
-  //public pageRoot = "http://tecina-api.local:8000/";
+ // pageRoot = "http://tecina-api.local/";
+  public pageRoot = "http://tecina-api.local:8000/";
 
   public imagesPath = this.pageRoot + "img";
   public api = this.pageRoot + 'api';
@@ -92,42 +96,10 @@ export class TecinaApiService {
     this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
     this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
 
-    this.setDishes().subscribe((resp:any[]) => {
-       this.dishes.next(resp);
-       this.allDishes = resp;
-    },
-    error => console.log("Error: ", error),
-    () => {
-        this.setMenus().subscribe((resp:any[]) => { 
-          this.allMenus = resp;
-        },error => console.log("Error: ", error),
-        () => {
-          this.setWines().subscribe((resp:any[]) => { 
-            this.allWines = resp;
-            this.wines.next(resp);
-          },error => console.log("Error: ", error),
-          () => {
-            for (let m = 0; m < this.allMenus.length; m++) {
-              for (let d = 0; d < (this.allMenus[m].dishes).length; d++) {
-                var dish_id = this.allMenus[m].dishes[d];
-                this.allMenus[m].dishes[d] = this.getObjectBy(this.allDishes, dish_id);
-              }
-
-              for (let w = 0; w < (this.allMenus[m].wines).length; w++) {
-                var wine_id = this.allMenus[m].wines[w];  
-                this.allMenus[m].wines[w] = this.getObjectBy(this.allWines, wine_id);
-              }
-            }
-            this.menus.next(this.allMenus);
-          });
-        });
-      }
-    );
-
-    //this.setWines().subscribe((resp:any[]) => { this.wines.next(resp);});
-    //this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
+    this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); console.log("dishes",resp);});
+    this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);console.log("wines",resp)});
+    this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);console.log("menus",resp)});
   }
-
 
 
   // current Dish filters
@@ -149,8 +121,9 @@ export class TecinaApiService {
   }
 
   getObjectBy(value, args ,key?) {
-    var obj =  obj = value.filter(element => { return element.id == args });
     
+    var obj =  obj = value.filter(element => { return element.id == args });
+
     if (obj.length != 0) {
       if(key){
         return obj[0][key];
@@ -266,7 +239,7 @@ export class TecinaApiService {
 
 
   // Dishes
-  setDishes(){
+  setDishes(): Observable<any>{
     //   [
     //     {
     //         "id": 1,
@@ -319,7 +292,7 @@ export class TecinaApiService {
     return this._highlights;
   }
 
-  setHighlights(){
+  setHighlights(): Observable<any>{
     return this.http.get(this.api + "/highlights" ,this.httpOptions ).map(
       (res) => {
         return res;
@@ -342,7 +315,7 @@ export class TecinaApiService {
     return this._categories;
   }
 
-  setCategories(){
+  setCategories(): Observable<any>{
  
     // [
     //   {
@@ -366,7 +339,7 @@ export class TecinaApiService {
   getFoodTypes(){
     return this._foodTypes;
   }
-  setFoodTypes(){
+  setFoodTypes(): Observable<any>{
     // [
     //   {
     //       "id": 1,
@@ -383,8 +356,7 @@ export class TecinaApiService {
   getAllergens(){
     return this._allergens;
   }
-
-  setAllergens(){
+  setAllergens(): Observable<any>{
       // [
       //   {
       //       "id": 1,
@@ -406,20 +378,20 @@ export class TecinaApiService {
 
   // Wines
   getWines(){return this._wines;}
-  setWines(){return this.http.get(this.api + "/wines" ,this.httpOptions );}
+  setWines(): Observable<any>{return this.http.get(this.api + "/wines" ,this.httpOptions );}
  
   getWinesVarieties(){return this._winesVarieties;}
-  setWinesVarieties(){return this.http.get(this.api + "/wine-varieties" ,this.httpOptions );}
+  setWinesVarieties(): Observable<any>{return this.http.get(this.api + "/wine-varieties" ,this.httpOptions );}
   
   getWinesTypes(){return this._winesTypes;}
-  setWinesTypes(){return this.http.get(this.api + "/wine-types" ,this.httpOptions );}
+  setWinesTypes(): Observable<any>{return this.http.get(this.api + "/wine-types" ,this.httpOptions );}
   
   getWinesDO(){return this._winesDO;}
-  setWinesDO(){return this.http.get(this.api + "/wine-do" ,this.httpOptions );}
+  setWinesDO(): Observable<any>{return this.http.get(this.api + "/wine-do" ,this.httpOptions );}
  
   // Menus
   getMenus(){return this._menus;}
-  setMenus(){
+  setMenus(): Observable<any>{
   //   [{
   //     "id": 1,
   //     "image": "image-0.jpg",
@@ -453,5 +425,139 @@ export class TecinaApiService {
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 
+
+  setCompleteWines(): Observable<any>{
+    return Observable.forkJoin([
+      this.setWines().map((res:Response) => res),
+      this.setWinesVarieties().map((res:Response) => res),
+      this.setWinesDO().map((res:Response) => res),
+      this.setWinesTypes().map((res:Response) => res)
+    ])
+    .map((data: any[]) => {
+      let wines: any = data[0];
+      let varieties: any[] = data[1];
+      let dos: any[] = data[2];
+      let types: any[] = data[3];
+      
+      for (let w = 0; w < wines.length; w++) {
+
+        let _varieties=[];
+        let _type = [];
+        let _do = []
+        
+        var w_t = this.getObjectBy(types,wines[w]['id_wine_type']);
+        if (w_t != [] ){
+          _type.push(w_t);
+        }
+
+        var w_do = this.getObjectBy(dos,wines[w]['id_do']);
+        if (w_do.length != [] ){
+          _do.push(w_do);
+        }
+
+        // add varieties
+        for (let v = 0; v < (wines[w]['wineVarieties']).length; v++) {
+          var w_v= this.getObjectBy(varieties,wines[w]['wineVarieties'][v]);
+          if (w_v.length != [] ){
+            _varieties.push(w_v);
+          }
+        }
+
+        wines[w].wine_varieties = _varieties;
+        wines[w].wine_type = _type;
+        wines[w].wine_do = _do;
+      }
+      
+      return  wines;
+    });
+  }
+
+  setCompleteDishes(): Observable<any>{
+    return Observable.forkJoin([
+      this.setDishes().map((res:Response) => res),
+      this.setCategories().map((res:Response) => res),
+      this.setFoodTypes().map((res:Response) => res),
+      this.setAllergens().map((res:Response) => res)
+    ])
+    .map((data: any[]) => {
+      let dishes: any = data[0];
+      let categories: any[] = data[1];
+      let foodTypes: any[] = data[2];
+      let allergens: any[] = data[3];
+      
+      for (let d = 0; d < dishes.length; d++) {
+
+        let _categories=[];
+        let _foodTypes = [];
+        let _allergens = []
+        
+
+        for (let c = 0; c < (dishes[d]['categories']).length; c++) {
+          var d_c= this.getObjectBy(categories,dishes[d]['categories'][c]);
+          if (d_c.length != [] ){
+            _categories.push(d_c);
+          }
+        }
+
+        for (let ft = 0; ft < (dishes[d]['foodTypes']).length; ft++) {
+          var d_ft= this.getObjectBy(foodTypes,dishes[d]['foodTypes'][ft]);
+          if (d_ft.length != [] ){
+            _foodTypes.push(d_ft);
+          }
+        }
+
+        for (let a = 0; a < (dishes[d]['allergens']).length; a++) {
+          var d_a= this.getObjectBy(allergens,dishes[d]['allergens'][a]);
+          if (d_a.length != [] ){
+            _allergens.push(d_a);
+          }
+        }
+
+        dishes[d].dish_categories = _categories;
+        dishes[d].dish_foodTypes = _foodTypes;
+        dishes[d].dish_allergens = _allergens;
+      }
+      
+      return  dishes;
+    });
+  }
+
+  setCompleteMenus(): Observable<any>{
+    return Observable.forkJoin([
+      this.setMenus().map((res:Response) => res),
+      this.setCompleteDishes().map((res:Response) => res),
+      this.setCompleteWines().map((res:Response) => res),
+    ])
+    .map((data: any[]) => {
+      let menus: any = data[0];
+      let dishes: any[] = data[1];
+      let wines: any[] = data[2];
+      
+      for (let m = 0; m < menus.length; m++) {
+        let _dishes=[];
+        let _wines = [];
+
+        for (let d = 0; d < (menus[m]['dishes']).length; d++) {
+          var m_d= this.getObjectBy(dishes,menus[m]['dishes'][d]);
+          if (m_d.length != [] ){
+            _dishes.push(m_d);
+          }
+        }
+
+        for (let w = 0; w < (menus[m]['wines']).length; w++) {
+          var m_w= this.getObjectBy(wines,menus[m]['wines'][w]);
+          if (m_w.length != [] ){
+            _wines.push(m_w);
+          }
+        }
+
+        menus[m].menu_dishes = _dishes;
+        menus[m].menu_wines = _wines;
+
+      }
+      
+      return  menus;
+    });
+  }
 
 }

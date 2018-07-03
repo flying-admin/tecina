@@ -21,7 +21,6 @@ export class DishesComponent implements OnInit {
   categories: {} = {};
   foodTypes: {} = {};
   allergens;
-  title_category: {} = {};
   filtersMenu = false;
   imagesPath;
 
@@ -82,6 +81,9 @@ export class DishesComponent implements OnInit {
     }
   };
 
+  title_category: {} = this.translations.dishes.title;
+
+
   @ViewChild(SwiperDirective) swiperDishes?: SwiperDirective;
 
   constructor(
@@ -120,14 +122,16 @@ export class DishesComponent implements OnInit {
           this.goToIndex(0);
           if ((filters.categories).length == 1) {
             var i = filters.categories[0];
-            this.title_category = this.categories[i - 1]['translate'];
+            this.title_category =  this._tecinaApi.getObjectBy(this.categories,i,'translate');
           } else {
-            this.title_category = {};
+            this.title_category = this.translations.dishes.title;
           }
         }
       );
     });
   }
+
+  
 
   ngOnInit() {
     this._tecinaApi.currentLang.subscribe(
@@ -140,17 +144,6 @@ export class DishesComponent implements OnInit {
 
   goToDish(id: number) {
     this.router.navigate(['/dish', id]);
-  }
-
-  getIcon(allergen_id) {
-    if (this.allergens.length > 0) {
-      var allergen = this.allergens.filter(
-        a => { return a.id == allergen_id }
-      );
-      return allergen[0].icon;
-    } else {
-      return false;
-    }
   }
 
   goToIndex(i) {

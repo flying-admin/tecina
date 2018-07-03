@@ -20,7 +20,7 @@
                 {{ menu.translate[currentLang].description }}
               </p>
             </a>
-            <p class="menus-row__menu__text" *ngFor="let dish of menu.dishes;">
+            <p class="menus-row__menu__text" *ngFor="let dish of menu.menu_dishes;">
               {{ dish.translate[ currentLang ].name }}
             </p>
             <a [routerLink]="['/menu',(  3 * i + j)]" (click)="pairingStatus(true)" class="menus-row__menu__wines">

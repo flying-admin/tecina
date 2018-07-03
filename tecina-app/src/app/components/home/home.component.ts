@@ -1,6 +1,6 @@
-import { Component, OnInit ,OnDestroy} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TecinaApiService } from "../../services/tecina-api.service";
-import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface,SwiperDirective } from 'ngx-swiper-wrapper';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   templateUrl: './home.component.html',
   styles: []
 })
-export class HomeComponent implements OnInit , OnDestroy  {
+export class HomeComponent implements OnInit   {
   currentLang;
   highlights:any;
   imagesPath;
@@ -23,25 +23,33 @@ export class HomeComponent implements OnInit , OnDestroy  {
     }
   };
   
+  @ViewChild(SwiperDirective) swiperHighlights?: SwiperDirective;
 
-  resize = function(){
-    window.dispatchEvent(new Event('resize'));
-  }
 
   constructor( 
       private _tecinaApi: TecinaApiService
   ) {    
     this.imagesPath = this._tecinaApi.imagesPath + "/highlights/"; 
-    
     this._tecinaApi._mainMenu.subscribe(
       main_menu => this.mainMenu = main_menu
     );
   }
+
+  goToIndex( i ){
+    setTimeout(() => {
+      this.swiperHighlights.setIndex(i);
+    }, 1000);
+  }
   
   initialiseState(){
-    this._tecinaApi.getHighlights(this.currentLang)
+    this._tecinaApi.getHighlights(this.currentLang).map(
+      (resp: any) => {
+        return resp;
+      }
+    )
     .subscribe( (resp: any) => {
       this.highlights = resp;
+      this.goToIndex( 0 );
     });
   }
   
@@ -54,11 +62,7 @@ export class HomeComponent implements OnInit , OnDestroy  {
     );
   }
 
-  ngOnDestroy() {
-  //   if (this.routeLang) {  
-  //     this.routeLang.unsubscribe();
-  //  }
-  }
+
 
   mainMenuStatus( open ){
     this._tecinaApi.setMainMenu(open);

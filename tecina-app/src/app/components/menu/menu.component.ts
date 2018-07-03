@@ -17,9 +17,6 @@ export class MenuComponent implements OnInit {
   imagesPath;
   menu_id;
   wines = [];
-  wineVarieties: any[] = [];
-  wineType: any[] = [];
-  wineDO: any[] = [];
   initialSlider: number = 0;
   swiperDishesConfig: SwiperConfigInterface = {
     a11y: true,
@@ -99,43 +96,31 @@ export class MenuComponent implements OnInit {
       }
     );
 
-    this._tecinaApi.getAllergens().subscribe(allergens => {
-      this.allergens = allergens;
-    });
-
     this.imagesPath = this._tecinaApi.imagesPath;
 
     this._tecinaApi._pairing.subscribe(
       pairing => this.pairing = pairing
     );
 
-    this._tecinaApi.getWinesTypes().subscribe(wineType => {
-      this.wineType = wineType;
-    });
-
-    this._tecinaApi.getWinesVarieties().subscribe(wineVarieties => {
-      this.wineVarieties = wineVarieties;
-    });
-
-    this._tecinaApi.getWinesDO().subscribe(wineDO => {
-      this.wineDO = wineDO;
-    });
   }
 
   initialiseState() {
-    this._tecinaApi.getMenus().subscribe(
+    this._tecinaApi.getMenus().map(
       menus => {
-        this.menu = this._tecinaApi.getObjectBy(menus, this.menu_id);
+        let menu = this._tecinaApi.getObjectBy(menus, this.menu_id);
+        if(('menu_wines' in menu)){
+          this.wines = this._tecinaApi.subArray( (menu['menu_wines']).slice(0) ,2 );
+        }
+        return menu;
+      }
+    ).subscribe(
+      menu => {
+        this.menu = menu;
         if(this.menu == []){
           this.router.navigate(['/menus'])
         }
-        if(('wines' in this.menu)){
-
-          this.wines = this._tecinaApi.subArray( (this.menu['wines']).slice(0) ,2 );
-          
-          this.goToIndexDishes(this.initialSlider);
-          this.goToIndexPairing(this.initialSlider);        
-        }
+        this.goToIndexDishes(this.initialSlider);
+        this.goToIndexPairing(this.initialSlider);        
       });
   }
 
@@ -158,13 +143,6 @@ export class MenuComponent implements OnInit {
     (this.swiperView['_results'][1]).setIndex(i);
     }, 1000);
   }
-
-  getIcon( allergen_id ){
-    var allergen = this.allergens.filter(
-     a => { return a.id == allergen_id}
-   );
-   return allergen[0].icon;
- }
 
   pairingStatus(open) {
     this._tecinaApi.setPairing(open);

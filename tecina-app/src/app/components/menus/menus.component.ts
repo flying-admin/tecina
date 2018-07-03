@@ -84,7 +84,6 @@ export class MenusComponent implements OnInit {
   initialiseState() {
       this._tecinaApi.getMenus().subscribe(
         menus => {
-            console.log("menis en menus",menus);
             this.menus = this._tecinaApi.subArray(menus, 3);
       });
   }

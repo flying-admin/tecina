@@ -1,7 +1,7 @@
       <div class="dishes ">
         <p class="dishes__title">
           <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
-          <span>{{  ((currentFilters.categories).length == 1)? title_category[currentLang]['name'] :  translations.dishes.title[currentLang] }}</span>
+          <span>{{  ((currentFilters.categories).length == 1)? title_category[currentLang]['name'] :  title_category[currentLang] }}</span>
         </p>
         <div class="swiper-container dishes__slider" [swiper]="currentConfig"  >
           <!-- Additional required wrapper -->
@@ -17,8 +17,8 @@
                   </p>
                   <img [src]="imagesPath + dish.images[0]" class="dishes-row__dish__image" alt="Intro dish1" />
                     <ul class="dishes-row__dish__allergens">
-                      <li *ngFor="let allergen_id of dish.allergens ">
-                          <span [class]="'icon-'+ getIcon(allergen_id) "></span>
+                      <li *ngFor="let allergen of dish.dish_allergens ">
+                          <span [class]="'icon-'+ allergen.icon "></span>
                       </li>
                     </ul>
                     <ul class="dishes-row__dish__allergens dishes-row__dish__allergens--border">

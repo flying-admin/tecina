@@ -15,7 +15,7 @@
       <p class="menu__summary__menu__note">
           {{ menu.translate[currentLang].description}}
       </p>
-      <p class="menu__summary__menu__text" *ngFor="let dish of menu.dishes; index as i " (click)="goToIndexDishes(i)" >
+      <p class="menu__summary__menu__text" *ngFor="let dish of menu.menu_dishes; index as i " (click)="goToIndexDishes(i)" >
           {{ dish.translate[currentLang].name }}
       </p>
       <span class="menu__summary__menu__wines" (click)="pairingStatus(true)">
@@ -32,7 +32,7 @@
     <div class="swiper-container menu__details__slider"  [swiper]="swiperDishesConfig" >
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
-        <div class="swiper-slide menu__details__slider__item" *ngFor="let dish of menu.dishes; index as i ">
+        <div class="swiper-slide menu__details__slider__item" *ngFor="let dish of menu.menu_dishes; index as i ">
           <div class="menu-dish">
             <div class="menu-dish__info">
               <p class="menu-dish__info__name">
@@ -45,8 +45,8 @@
               </p>
               <div class="menu-dish__info__allergens">
                 <ul class="menu-dish__info__allergens__list">
-                    <li *ngFor="let allergen_id of dish.allergens ">
-                        <span [class]="'icon-'+ getIcon(allergen_id) "></span>
+                    <li *ngFor="let allergen of dish.dish_allergens ">
+                        <span [class]="'icon-'+ allergen.icon "></span>
                     </li>
                 </ul>
                 <ul class="menu-dish__info__allergens__list menu-dish__info__allergens__list--border">
@@ -89,15 +89,15 @@
                   <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
                 </div>
                 <div class="wines-row__wine__info">
-                    <p class="wines-row__wine__info__name">{{ wine.name }}</p>
-                    <p class="wines-row__wine__info__type"> {{ wineType[(wine.id_wine_type)-1].translate[currentLang] }}</p>
-                    <p class="wines-row__wine__info__origin">
-                      <strong>D. O.</strong> {{ wineDO[(wine.id_do)-1].name }}</p>
-                    <p class="wines-row__wine__info__variety">
-                      <span class="wines-row__wine__info__variety--label">{{ translations.menu.pairing.variety[currentLang] }}:</span>
+                    <p class="wines-row__wine__info__name">{{ wine.name}}</p>
+                    <p class="wines-row__wine__info__type" *ngIf="wine.wine_type.length != 0"> {{ wine.wine_type[0].translate[currentLang] }}</p>
+                    <p class="wines-row__wine__info__origin" *ngIf="wine.wine_do.length != 0">
+                      <strong>D. O.</strong> {{ wine.wine_do[0].name  }}</p>
+                    <p class="wines-row__wine__info__variety" *ngIf="(wine.wine_varieties).length != 0">
+                      <span class="wines-row__wine__info__variety--label" >{{ translations.menu.pairing.variety[currentLang] }}:</span>
                       <span class="wines-row__wine__info__variety--value"> 
-                        <span *ngFor="let variety of wine.wineVarieties ; let last = last"> 
-                            {{ wineVarieties[variety-1].translate[currentLang] }}{{ (last)? '' : ','  }}  
+                        <span  *ngFor="let wine_variety of wine.wine_varieties ; let last = last"> 
+                            {{ wine_variety.translate[currentLang] }}{{ (last)? '' : ','  }}  
                         </span>
                       </span>
                     </p>

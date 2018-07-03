@@ -15,8 +15,8 @@
               <div class="dish-item__allergens">
                 <p class="dish-item__allergens__title" *ngIf="dish.allergens.length > 0">{{ translations.dish.allergens_title[currentLang] }}:</p>
                 <ul class="dish-item__allergens__list">
-                  <li *ngFor="let allergen_id of dish.allergens ">
-                    <span [class]="'icon-'+ getIcon(allergen_id) "></span>
+                  <li *ngFor="let allergen of dish.dish_allergens ">
+                    <span [class]="'icon-'+ allergen.icon "></span>
                   </li>
                 </ul>
                 <ul class="dish-item__allergens__list dish-item__allergens__list--border">

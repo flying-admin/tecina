@@ -84,13 +84,6 @@ export class DishComponent implements OnInit {
     );
   }
 
-  getIcon( allergen_id ){
-     var allergen = this.allergens.filter(
-      a => { return a.id == allergen_id}
-    );
-    return allergen[0].icon;
-  }
-
   goToIndex( i ){
     setTimeout(() => {
       this.swiperDish.setIndex(i);

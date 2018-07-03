@@ -7,36 +7,14 @@
     <div class="wines__filters__block">
       <p class="wines__filters__block__title">Tipo de vino</p>
       <ul class="wines__filters__block__list">
-        <li>
-          <input type="checkbox" value="" id="wineType1">
-          <label for="wineType1">
-            <span>Tinto</span>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" value="" id="wineType2">
-          <label for="wineType2">
-            <span>Rosado</span>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" value="" id="wineType3">
-          <label for="wineType3">
-            <span>Blanco</span>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" value="" id="wineType4">
-          <label for="wineType4">
-            <span>Espumoso</span>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" value="" id="wineType5">
-          <label for="wineType5">
-            <span>Dulce</span>
-          </label>
-        </li>
+          <li *ngFor="let wineType of wineTypes" >
+              <input type="checkbox" [value]="wineType.id" 
+                [id]="'wineType-filter-'+wineType.id" 
+                (change)="changeWinesFilters('types', wineType.id, $event.target.checked)">
+              <label [for]="'wineType-filter-'+wineType.id">
+                <span>{{ wineType.translate[currentLang] }}</span>
+              </label>
+            </li>
       </ul>
     </div>
     <div class="wines__filters__block">
@@ -248,14 +226,14 @@
               </div>
               <div class="wines-row__wine__info">
                 <p class="wines-row__wine__info__name">{{ wine.name }}</p>
-                <p class="wines-row__wine__info__type"> {{ wineType[(wine.id_wine_type)-1].translate[currentLang] }}</p>
-                <p class="wines-row__wine__info__origin">
-                  <strong>D. O.</strong> {{ wineDO[(wine.id_do)-1].name }}</p>
-                <p class="wines-row__wine__info__variety">
+                <p class="wines-row__wine__info__type" *ngIf="wine.wine_type.length != 0"> {{ wine.wine_type[0].translate[currentLang] }}</p>
+                <p class="wines-row__wine__info__origin" *ngIf="wine.wine_do.length != 0">
+                  <strong>D. O.</strong> {{ wine.wine_do[0].name  }}</p>
+                <p class="wines-row__wine__info__variety" *ngIf="(wine.wine_varieties).length != 0">
                   <span class="wines-row__wine__info__variety--label">Variedad:</span>
                   <span class="wines-row__wine__info__variety--value"> 
-                    <span *ngFor="let variety of wine.wineVarieties ; let last = last"> 
-                        {{ wineVarieties[variety-1].translate[currentLang] }}{{ (last)? '' : ','  }}  
+                    <span  *ngFor="let wine_variety of wine.wine_varieties ; let last = last"> 
+                      {{ wine_variety.translate[currentLang] }}{{ (last)? '' : ','  }}  
                     </span>
                   </span>
                 </p>

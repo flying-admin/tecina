@@ -13,11 +13,18 @@ import { Observable } from 'rxjs';
 
 export class WinesComponent implements OnInit {
   currentLang: string = 'es';
+
+  winesFilters = {
+    wineTypes: [] ,
+    wineDO: []
+  }
+
   wines: any[] = [];
   wineVarieties: any[] = [];
-  wineType: any[] = [];
+  wineTypes: any[] = [];
   wineDO: any[] = [];
   allergens;
+  allWines = [];
 
   imagesPath;
 
@@ -57,10 +64,14 @@ export class WinesComponent implements OnInit {
 
   initialiseState() {
 
-    this._tecinaApi.getWines()
+    this._tecinaApi.getWines().map(
+      wines => { 
+        this.allWines = wines;
+        return this._tecinaApi.subArray( wines ,2);
+    })
     .subscribe(
       (wines:any) => {
-        this.wines =  this._tecinaApi.subArray( wines ,2);
+        this.wines =  wines;
         this.goToIndex(0);
       });
     
@@ -72,12 +83,10 @@ export class WinesComponent implements OnInit {
       this.wineDO = wineDO;
     }); 
 
-    this._tecinaApi.getWinesTypes().subscribe(wineType => {
-      this.wineType = wineType;
+    this._tecinaApi.getWinesTypes().subscribe(wineTypes => {
+      console.log("wineTypes")
+      this.wineTypes = wineTypes;
     });
-
-    
-    
   }
 
   ngOnInit() {
@@ -90,41 +99,55 @@ export class WinesComponent implements OnInit {
   }
 
 
+  inArray(value, args) {
+    console.log("in Array");
+    
+    if ((value.findIndex(element => { return element == args })) != -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   goToIndex(i) {
     setTimeout(() => {
       this.swiperWines.setIndex(i);
     }, 1000);
   }
 
-  getDO( id_do ){    
-    return this._tecinaApi.getObjectBy(this.wineDO , id_do,'name');
 
-    // if (this.wineDO.length > 0) {
-    //   var do_name = this.wineDO.filter(
-    //     a => { return a.id == id_do }
-    //   );
-    //   return do_name[0]['name'];
-    // } else {
-    //   return [];
-    // }
+
+  changeWinesFilters(filterType: string, filterId: string, isChecked: boolean) {
+    console.log("changeWinesFilters");
+
+    let index = this.winesFilters[filterType].indexOf(filterId);
+    let change = false;
+
+    if (isChecked) {
+      if (index == -1) {
+        change = true;
+        this.winesFilters[filterType].push(filterId);
+      }
+    } else {
+      if (index != -1) {
+        change = true;
+        this.winesFilters[filterType].splice(index, 1);
+      }
+    }
+
+    change && this.getFilteredWines();
   }
 
-  getVariety( wine_varieties ,lang ){   
-    console.log("getVariety"); 
-    if (this.wineVarieties.length > 0) {
-      var varieties = [];
-      for (let v = 0; v < wine_varieties.length; v++) {
-        var variety = this.wineVarieties.filter(
-          a => { return a.id == wine_varieties[v] }
-        );
-        varieties.push( variety[0].translate[lang]);
-      }
-     
-      return varieties.join(', ');
-      
-    } else {
-      return [];
-    }
+  getFilteredWines(){
+    let _filters = this.winesFilters;
+    let _wineTypes = _filters.wineTypes;
+    let _wineDO = _filters.wineDO;
+    let _wines = (this.allWines).slice(0);
+
+    let winesByDo 
+
+
+    //this.wines = this._tecinaApi.subArray( _wines ,2);
   }
 
 }
