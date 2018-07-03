@@ -28,9 +28,9 @@ Route::get('/addDishFromMenu/{dishId}/{menuId}','MenuController@addDishMenu')->m
 Route::get('/deleteWineFromMenu/{wineId}/{menuId}','MenuController@deleteWineMenu')->middleware('auth');
 Route::get('/addWineFromMenu/{wineId}/{menuId}','MenuController@addWineMenu')->middleware('auth');
 Route::post('/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('api','auth')->name('uploadMenuImage');
-Route::get( '/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('api','auth');
 
 /*Wine admin*/
 Route::get('/addWineVariety/{wineId}/{varietyId}','WineController@addWineVariety')->middleware('auth');
 Route::get('/deleteWineVariety/{wineId}/{varietyId}','WineController@deleteWineVariety')->middleware('auth');
+Route::post('/uploadWineImage/{wineId}','WineController@uploadWineImage')->middleware('api','auth')->name('uploadMenuImage');
 // Route::post('/uploadMenuImage/{menuId}','MenuController@uploadMenuImage')->middleware('auth');

@@ -142,4 +142,23 @@ class WineController extends Controller
       }
       return response()->json($data,200);
     }
+
+    public function uploadWineImage(Request $request, $wineId){
+      $respuesta=['wineId'=>$wineId];
+      if ($request->hasFile('file'))
+      {
+      $file = $request->file('file');
+      $image_name = time()."-".$file->getClientOriginalName();
+      $img_route='/img/wines/'. $image_name;
+      $file->move('img/wines', $image_name);
+      $wine = \App\Wine::find($wineId);
+      $wine->image=$img_route;
+      $wine->save();
+      $respuesta ['img'] = $img_route;
+      }else{
+        $respuesta ['img'] = 'not-found.jpg';
+      }
+      // hay que redimensionarla a este tamaño: 1760 × 960
+      return response()->json($respuesta,200);
+    }
 }
