@@ -1,0 +1,239 @@
+<%
+  extra_classes ||= ''
+%>
+
+<header class="header <%= extra_classes %>">
+  <div class="header--inner">
+    <div class="header__menu">
+      <div class="row">
+        <div class="col-xs-12">
+          <% link_to '/index.html', :relative => true do %>
+            <%= image_tag '/assets/images/shared/logo.png', :class => 'header__menu__logo' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="header__menu__nav header__menu__nav--left">
+            <ul>
+              <li>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Entrantes frios<span>(12)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Entrantes calientes<span>(06)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Pescados<span>(04)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Carnes<span>(06)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/dishes.html', :relative => true do %>
+                  Postres<span>(03)</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+          <div class="header__menu__nav header__menu__nav--left">
+            <ul>
+              <li>
+                <% link_to '/menus.html', :relative => true do %>
+                  Menus<span>(05)</span>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <div class="header__menu__nav">
+            <ul>
+              <li>
+                <% link_to '/beverages.html', :relative => true do %>
+                  Carta de Bebidas<span>(25)</span>
+                <% end %>
+              </li>
+              <li>
+                <% link_to '/wines.html', :relative => true do %>
+                Carta de Vinos<span>(05)</span>
+                <% end %>
+              </li>
+              <li class="header__menu__nav__feature">
+                <% link_to '/wines.html', :relative => true, :class => 'feat' do %>
+                  <div class="feat__image">
+                    <%= image_tag '/assets/images/shared/menu-bottle.png' %>
+                  </div>
+                  <p class="feat__text">
+                    <span class="feat__text__name">Montoro</span>
+                    <span class="feat__text__info">D. O. Penedés<br>Variedad: Pinot NOIR</span>
+                  </p>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-9">
+          <div class="header__menu__filter">
+            <p class="header__menu__filter__title header__menu__filter__title--main">Filtros:</p>
+            <p class="header__menu__filter__title">Tipo de Alérgeno</p>
+            <ul class="header__menu__filter__alergen">
+              <li>
+                <input type="checkbox" value="" id="filter1">
+                <label for="filter1">
+                  <span class="icon-crustaceos"></span>
+                  <span>Crustaceos</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter2">
+                <label for="filter2">
+                  <span class="icon-gluten"></span>
+                  <span>Contiene gluten</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter3">
+                <label for="filter3">
+                  <span class="icon-soja"></span>
+                  <span>Soja</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter4">
+                <label for="filter4">
+                  <span class="icon-moluscos"></span>
+                  <span>Moluscos</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter5">
+                <label for="filter5">
+                  <span class="icon-apio"></span>
+                  <span>Apio</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter6">
+                <label for="filter6">
+                  <span class="icon-mostaza"></span>
+                  <span>Mostaza</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter7">
+                <label for="filter7">
+                  <span class="icon-sulfitos"></span>
+                  <span>Dióxido de azufre y sulfítos</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter8">
+                <label for="filter8">
+                  <span class="icon-cacahuetes"></span>
+                  <span>Cacahuetes</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter9">
+                <label for="filter9">
+                  <span class="icon-sesamo"></span>
+                  <span>Granos de sésamo</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter10">
+                <label for="filter10">
+                  <span class="icon-altramuces"></span>
+                  <span>Altramuces</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter11">
+                <label for="filter11">
+                  <span class="icon-frutos_cascara"></span>
+                  <span>Frutos de cascara</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter12">
+                <label for="filter12">
+                  <span class="icon-lacteos"></span>
+                  <span>Lacteos</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter13">
+                <label for="filter13">
+                  <span class="icon-pescado"></span>
+                  <span>Pescado</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filter14">
+                <label for="filter14">
+                  <span class="icon-huevos"></span>
+                  <span>Huevos</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3">
+          <div class="header__menu__filter">
+            <p class="header__menu__filter__title header__menu__filter__title--main">&nbsp;</p>
+            <p class="header__menu__filter__title">Tipo de comida</p>
+            <ul class="header__menu__filter__food">
+              <li>
+                <input type="checkbox" value="" id="filterfood1">
+                <label for="filterfood1">
+                  <span>Comida vegana</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filterfood2">
+                <label for="filterfood2">
+                  <span>Comida saludable</span>
+                </label>
+              </li>
+              <li>
+                <input type="checkbox" value="" id="filterfood3">
+                <label for="filterfood3">
+                  <span>Comida baja en sal</span>
+                </label>
+              </li>
+            </ul>
+            <div class="header__menu__filter__clear">
+              <span>Limpiar filtros</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header__bar">
+      <span class="header__bar__burguer" data-toggle=".header">
+        <span></span>
+      </span>
+      <div class="header__bar__langs">
+        <ul>
+          <li><span>ES</a></li>
+          <li><span>EN</a></li>
+          <li><span class="active">GE</a></li>
+          <li><span>IT</a></li>
+        </ul>
+      </div>
+      <div class="header__bar__tag" data-toggle=".header">
+        <span>Ver Carta</span>
+      </div>
+    </div>
+  </div>
+</header>

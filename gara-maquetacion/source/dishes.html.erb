@@ -1,0 +1,137 @@
+---
+title: Project Index
+layout: layout
+---
+
+<%= partial("shared/header", :locals => {
+  :extra_classes => ''
+}) %>
+
+<div class="content-wrapper">
+
+  <%= partial("modules/dishes", :locals => {
+    :extra_classes => '',
+    :title => 'Entrantes frios',
+    :dishes => [
+      {
+        :name => 'Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove',
+        :image => '/assets/images/content/home/intro_dish1.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Coca de foie con reduccion de PX y cebolla caramelizada 1u',
+        :image => '/assets/images/content/home/intro_dish2.png',
+        :link => '/dish.html',
+        :allergens => []
+      },
+      {
+        :name => 'Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u',
+        :image => '/assets/images/content/home/intro_dish3.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove',
+        :image => '/assets/images/content/home/intro_dish4.png',
+        :link => '/dish.html',
+        :allergens => [
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Coca de foie con reduccion de PX y cebolla caramelizada 1u',
+        :image => '/assets/images/content/home/intro_dish5.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u',
+        :image => '/assets/images/content/home/intro_dish6.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove',
+        :image => '/assets/images/content/home/intro_dish1.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Coca de foie con reduccion de PX y cebolla caramelizada 1u',
+        :image => '/assets/images/content/home/intro_dish2.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u',
+        :image => '/assets/images/content/home/intro_dish3.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Jamón iberico de bellota 5J cortado cortado a mano, con pan payes y tomate en aove',
+        :image => '/assets/images/content/home/intro_dish4.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      {
+        :name => 'Coca de foie con reduccion de PX y cebolla caramelizada 1u',
+        :image => '/assets/images/content/home/intro_dish5.png',
+        :link => '/dish.html',
+        :allergens => [
+          'gluten',
+          'moluscos',
+          'pescado'
+        ]
+      },
+      # {
+      #   :name => 'Langostinos tigre con ajo y guindilla servidos con tostas de pan 4u',
+      #   :image => '/assets/images/content/home/intro_dish6.png',
+      #   :link => '/dish.html',
+      #   :allergens => [
+      #     'gluten',
+      #     'moluscos',
+      #     'pescado'
+      #   ]
+      # }
+    ]
+  }) %>
+
+  <%= partial("modules/filters", :locals => {
+    :extra_classes => ''
+  }) %>
+
+</div>
+
+<%= partial("shared/footer") %>

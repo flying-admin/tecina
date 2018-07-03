@@ -1,0 +1,332 @@
+.filters {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  z-index: 2;
+
+  &__button {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 80px;
+    background-color: $white;
+    font-family: $font_special;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    color: $black;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 16px 48px 18px;
+  }
+
+  &__section {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 644px;
+    background-color: #FFFFFF;
+    padding: 200px 40px 60px 60px;
+    transition: all $transition;
+    z-index: 1;
+
+    &__title {
+      display: block;
+      position: absolute;
+      top: 30px;
+      left: 0;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      padding-left: 143px;
+      font-family: $font_special;
+      font-weight: 900;
+      font-size: 44px;
+      line-height: 77px;
+      color: $black;
+      text-transform: uppercase;
+      z-index: 2;
+
+      img {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 33px;
+        width: 77px;
+        height: auto;
+      }
+    }
+
+    &__close {
+      display: block;
+      position: absolute;
+      top: 50px;
+      right: 40px;
+      height: 40px;
+      width: 40px;
+      padding: 3px;
+      cursor: pointer;
+
+      span {
+        font-size: 34px;
+        line-height: 34px;
+        color: $darkgrey-b;
+      }
+    }
+
+    &__content {
+      @include flexbox;
+      @include justify-content(center);
+      @include align-items(stretch);
+      @include align-content(flex-start);
+
+      &__allergens {
+        display: block;
+        position: relative;
+        width: 50%;
+        padding: 0;
+        padding-right: 10px;
+
+        &__title {
+          display: block;
+          font-family: $font_special;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 16px;
+          color: $blackish;
+          text-transform: uppercase;
+          padding: 0;
+          margin: 0 0 22px;
+        }
+
+        ul{
+          display: block;
+          width: 100%;
+          padding: 0;
+          padding-right: 18px;
+          margin: 0 0 32px;
+
+          li {
+            display: block;
+            width: 100%;
+            padding: 0 0 8px;
+
+            label {
+              display: block;
+              position: relative;
+              @include flexbox;
+              @include flex-direction(row);
+              @include flex-wrap(nowrap);
+              @include justify-content(flex-start);
+              @include align-items(center);
+              @include align-content(center);
+
+              span {
+                display: block;
+                width: auto;
+                height: auto;
+                font-family: $font_default;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                color: $black;
+                padding: 0;
+                padding-left: 18px;
+                transition: all $transition-short;
+
+                &[class^='icon-'] {
+                  float: left;
+                  height: 40px;
+                  width: 40px;
+                  padding: 1px;
+                  margin: 0;
+                  border-radius: 50%;
+                  font-size: 36px;
+                  line-height: 36px;
+                  text-align: center;
+                  color: $black;
+                }
+              }
+            }
+
+            input {
+              display: block;
+              position: absolute;
+              height: 1px;
+              width: 1px;
+              top: 0;
+              left: 0;
+              opacity: 0;
+              z-index: -1;
+
+              &:checked {
+                & + label {
+                  span {
+                    color: $primary;
+
+                    &[class^='icon-'] {
+                      color: $primary;
+
+                      &::before {
+                        position: relative;
+                        z-index: 2;
+                      }
+
+                      &::after {
+                        content: "\f113";
+                        font-family: "icons-tecina";
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        z-index: 1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__food {
+        display: block;
+        position: relative;
+        width: 50%;
+        padding: 0;
+        padding-left: 10px;
+
+        &__title {
+          display: block;
+          font-family: $font_special;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 16px;
+          color: $blackish;
+          text-transform: uppercase;
+          padding: 0;
+          margin: 0 0 22px;
+        }
+
+        ul {
+          display: block;
+          position: relative;
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0 0 32px;
+
+          li {
+            display: block;
+            position: relative;
+            box-sizing: border-box;
+            width: 100%;
+            padding-right: 20px;
+
+            label {
+              display: block;
+              position: relative;
+              font-family: $font_default;
+              font-size: 16px;
+              line-height: 22px;
+              color: $black;
+              padding: 5px 0 5px 25px;
+              white-space: nowrap;
+              text-transform: uppercase;
+
+              span {
+                display: inline-block;
+                position: relative;
+                font-size: 16px;
+                line-height: 22px;
+                border-bottom: 1px solid transparent;
+                transition: all $transition;
+              }
+
+              &::before,
+              &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 8px;
+                left: 0;
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                transition: all $transition;
+              }
+
+              &::before {
+                background-color: $black;
+              }
+
+              &::after {
+                background-color: $white;
+                transform-origin: 50% 50%;
+                transform: scale(0, 0);
+              }
+            }
+
+            input {
+              display: block;
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 1px;
+              width: 1px;
+              opacity: 0;
+              z-index: -1;
+
+              &:checked + label {
+                color: $primary;
+
+                span {
+                  border-bottom-color: $primary;
+                }
+
+                &::after {
+                  transform: scale(0.5, 0.5);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__clear {
+      display: block;
+      width: 100%;
+      text-align: right;
+
+      span {
+        display: inline-block;
+        font-family: $font_special;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        padding: 12px 30px;
+        background-color: $primary;
+        color: $white;
+        text-transform: uppercase;
+        border-radius: 1px;
+
+        &:active {
+          background-color: darken($primary, 10%);
+        }
+      }
+    }
+  }
+
+  &.active {
+    .filters__section {
+      left: -644px;
+    }
+  }
+}

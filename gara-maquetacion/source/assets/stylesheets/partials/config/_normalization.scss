@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  &,
+  &:after,
+  &:before{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: 0;
+  }
+}
+
+article, aside, canvas, figure, figure img, figcaption, hgroup,
+footer, header, nav, section, audio, video {
+  display: block;
+}
+
+a img, fieldset { border:0; }
+
+body {
+  font-size:x-small;
+}
+
+img {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: block;
+  max-width: 100%;
+}
+
+button,
+label {
+  cursor:pointer;
+}
+
+textarea,
+input,
+button,
+legend {
+  outline: none;
+}
+
+input,
+textarea {
+  //-webkit-appearance:none;
+}
+
+input[type="button"],
+input[type="submit"],
+button{
+  -webkit-appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+legend {
+  display:block;
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: normal;
+}
+
+ul,
+ol{
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+input[type=checkbox],
+input[type=radio],
+input[type=checkbox][checked],
+input[type=radio][checked]{
+    border: 0;
+    background-color: transparent;
+}

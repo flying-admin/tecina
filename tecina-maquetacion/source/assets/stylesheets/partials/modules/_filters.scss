@@ -172,6 +172,20 @@
 
                     &[class^='icon-'] {
                       color: $primary;
+
+                      &::before {
+                        position: relative;
+                        z-index: 2;
+                      }
+
+                      &::after {
+                        content: "\f113";
+                        font-family: "icons-tecina";
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        z-index: 1;
+                      }
                     }
                   }
                 }
@@ -281,6 +295,29 @@
               }
             }
           }
+        }
+      }
+    }
+
+    &__clear {
+      display: block;
+      width: 100%;
+      text-align: right;
+
+      span {
+        display: inline-block;
+        font-family: $font_default;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        padding: 12px 30px;
+        background-color: $primary;
+        color: $white;
+        text-transform: uppercase;
+        border-radius: 1px;
+
+        &:active {
+          background-color: darken($primary, 10%);
         }
       }
     }
