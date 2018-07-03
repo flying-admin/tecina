@@ -89,15 +89,19 @@
                   <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
                 </div>
                 <div class="wines-row__wine__info">
-                  <p class="wines-row__wine__info__name">Jean Leon Vinya Gigi</p>
-                  <p class="wines-row__wine__info__type">Vino blanco</p>
-                  <p class="wines-row__wine__info__origin">
-                    <strong>D. O.</strong> Penedés</p>
-                  <p class="wines-row__wine__info__variety">
-                    <span class="wines-row__wine__info__variety--label">Variedad:</span>
-                    <span class="wines-row__wine__info__variety--value">Chardonnay</span>
-                  </p>
-                </div>
+                    <p class="wines-row__wine__info__name">{{ wine.name }}</p>
+                    <p class="wines-row__wine__info__type"> {{ wineType[(wine.id_wine_type)-1].translate[currentLang] }}</p>
+                    <p class="wines-row__wine__info__origin">
+                      <strong>D. O.</strong> {{ wineDO[(wine.id_do)-1].name }}</p>
+                    <p class="wines-row__wine__info__variety">
+                      <span class="wines-row__wine__info__variety--label">{{ translations.menu.pairing.variety[currentLang] }}:</span>
+                      <span class="wines-row__wine__info__variety--value"> 
+                        <span *ngFor="let variety of wine.wineVarieties ; let last = last"> 
+                            {{ wineVarieties[variety-1].translate[currentLang] }}{{ (last)? '' : ','  }}  
+                        </span>
+                      </span>
+                    </p>
+                  </div>
               </div>
             </div>
           </div>

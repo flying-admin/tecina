@@ -125,7 +125,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
  
   ngOnInit(){
-    this._tecinaApi.currentLAng.subscribe(
+    this._tecinaApi.currentLang.subscribe(
       resp => {
         this.currentLang = resp;
         this.initialiseInvites();

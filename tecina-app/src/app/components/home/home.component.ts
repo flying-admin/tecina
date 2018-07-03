@@ -1,6 +1,5 @@
 import { Component, OnInit ,OnDestroy} from '@angular/core';
 import { TecinaApiService } from "../../services/tecina-api.service";
-import { ActivatedRoute, Router } from '@angular/router';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 
@@ -30,9 +29,7 @@ export class HomeComponent implements OnInit , OnDestroy  {
   }
 
   constructor( 
-      private _tecinaApi: TecinaApiService, 
-      private route: ActivatedRoute,
-      private router: Router,
+      private _tecinaApi: TecinaApiService
   ) {    
     this.imagesPath = this._tecinaApi.imagesPath + "/highlights/"; 
     
@@ -49,7 +46,7 @@ export class HomeComponent implements OnInit , OnDestroy  {
   }
   
   ngOnInit() {
-    this._tecinaApi.currentLAng.subscribe(
+    this._tecinaApi.currentLang.subscribe(
       resp => {
         this.currentLang = resp;
         this.initialiseState();

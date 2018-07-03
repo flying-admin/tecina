@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class TecinaApiService {
 
   private lang = new BehaviorSubject('es');
-  currentLAng = this.lang.asObservable();
+  currentLang = this.lang.asObservable();
 
   private mainMenu = new BehaviorSubject(false);
   _mainMenu = this.mainMenu.asObservable();
@@ -31,6 +31,7 @@ export class TecinaApiService {
       foodTypes: [] 
     }
   );
+
   currentFilters = this.filters.asObservable();
 
   private dishes = new BehaviorSubject([]);
@@ -87,6 +88,9 @@ export class TecinaApiService {
     this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
     this.setLanguages().subscribe((resp:any[]) => { this.languages.next(resp);});
     this.setHighlights().subscribe((resp:any[]) => { this.highlights.next(resp);});
+    this.setWinesDO().subscribe((resp:any[]) => { this.winesDO.next(resp);});
+    this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
+    this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
 
     this.setDishes().subscribe((resp:any[]) => {
        this.dishes.next(resp);
@@ -106,12 +110,12 @@ export class TecinaApiService {
             for (let m = 0; m < this.allMenus.length; m++) {
               for (let d = 0; d < (this.allMenus[m].dishes).length; d++) {
                 var dish_id = this.allMenus[m].dishes[d];
-                this.allMenus[m].dishes[d] = this.getObjectById(this.allDishes, dish_id);
+                this.allMenus[m].dishes[d] = this.getObjectBy(this.allDishes, dish_id);
               }
 
               for (let w = 0; w < (this.allMenus[m].wines).length; w++) {
                 var wine_id = this.allMenus[m].wines[w];  
-                this.allMenus[m].wines[w] = this.getObjectById(this.allWines, wine_id);
+                this.allMenus[m].wines[w] = this.getObjectBy(this.allWines, wine_id);
               }
             }
             this.menus.next(this.allMenus);
@@ -123,6 +127,41 @@ export class TecinaApiService {
     //this.setWines().subscribe((resp:any[]) => { this.wines.next(resp);});
     //this.setMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
   }
+
+
+
+  // current Dish filters
+  setCurrentFilters( filters ){
+    this.filters.next( filters );
+  }
+
+  // Get sub array 
+  subArray(array:any[] , size:number){
+    if(array.length > 0 ){
+      var newArray = [];
+      for (let f = 0; f < array.length ; f+=size) {
+        var max = (f+size > array.length ) ? array.length :f+size;
+        newArray.push( array.slice(f, max)); 
+      }
+      return newArray;
+    }
+    return [];
+  }
+
+  getObjectBy(value, args ,key?) {
+    var obj =  obj = value.filter(element => { return element.id == args });
+    
+    if (obj.length != 0) {
+      if(key){
+        return obj[0][key];
+      }else{
+        return obj[0];
+      }
+    } else {
+      return [];
+    }
+  }
+
 
   // filter Dishes
   filterAll( dishes , filters, category? ){
@@ -212,7 +251,6 @@ export class TecinaApiService {
     this.lang.next(lang);
   }
 
-
   public setMainMenu( state:boolean ){
     this.mainMenu.next(state);
   }
@@ -225,23 +263,7 @@ export class TecinaApiService {
     this.pairing.next(state);
   }
 
-  // current Dish filters
-  setCurrentFilters( filters ){
-    this.filters.next( filters );
-  }
 
-  // Get sub array 
-  subArray(array:any[] , size:number){
-    if(array.length > 0 ){
-      var newArray = [];
-      for (let f = 0; f < array.length ; f+=size) {
-        var max = (f+size > array.length ) ? array.length :f+size;
-        newArray.push( array.slice(f, max)); 
-      }
-      return newArray;
-    }
-    return [];
-  }
 
   // Dishes
   setDishes(){
@@ -280,7 +302,7 @@ export class TecinaApiService {
   }
 
   getDishes( filters? ,category? ){
-    return this.dishes.map(
+    return this._dishes.map(
       dishes => {
         if (category){
           return this.filterAll( dishes ,filters, category );
@@ -294,7 +316,7 @@ export class TecinaApiService {
 
   // Highlights
   getHighlights( lang ){
-    return this.highlights;
+    return this._highlights;
   }
 
   setHighlights(){
@@ -307,7 +329,7 @@ export class TecinaApiService {
 
   // Languages
   getLanguages(){
-    return this.languages;
+    return this._languages;
   }
 
   setLanguages(){
@@ -317,7 +339,7 @@ export class TecinaApiService {
 
   // Food categories
   getCategories(){
-    return this.categories;
+    return this._categories;
   }
 
   setCategories(){
@@ -342,7 +364,7 @@ export class TecinaApiService {
 
   // Food types
   getFoodTypes(){
-    return this.foodTypes;
+    return this._foodTypes;
   }
   setFoodTypes(){
     // [
@@ -359,7 +381,7 @@ export class TecinaApiService {
 
   // Allergens
   getAllergens(){
-    return this.allergens;
+    return this._allergens;
   }
 
   setAllergens(){
@@ -383,25 +405,20 @@ export class TecinaApiService {
   }
 
   // Wines
-  getWines(){return this.wines;}
-
+  getWines(){return this._wines;}
   setWines(){return this.http.get(this.api + "/wines" ,this.httpOptions );}
  
-  getWinesVarieties(){return this.wines;}
-  setWinesVarieties(){return this.http.get(this.api + "/wines-varieties" ,this.httpOptions );}
+  getWinesVarieties(){return this._winesVarieties;}
+  setWinesVarieties(){return this.http.get(this.api + "/wine-varieties" ,this.httpOptions );}
   
-  getWinesTypes(){return this.wines;}
+  getWinesTypes(){return this._winesTypes;}
   setWinesTypes(){return this.http.get(this.api + "/wine-types" ,this.httpOptions );}
   
-  getWinesDO(){return this.wines;}
-  setWinesDO(){return this.http.get(this.api + "/wines-do" ,this.httpOptions );}
+  getWinesDO(){return this._winesDO;}
+  setWinesDO(){return this.http.get(this.api + "/wine-do" ,this.httpOptions );}
  
   // Menus
-  getMenus(){
-    return this.menus;
-  }
-
-
+  getMenus(){return this._menus;}
   setMenus(){
   //   [{
   //     "id": 1,
@@ -436,13 +453,5 @@ export class TecinaApiService {
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 
-  getObjectById(value, args) {
-    var obj = value.filter(element => { return element.id == args });
-    if (obj.length != 0) {
-      return obj[0];
-    } else {
-      return [];
-    }
-  }
 
 }
