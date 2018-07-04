@@ -145,7 +145,8 @@
 
             &:checked ~ label {
               span {
-                border-bottom-color: $black;
+                color: $primary;
+                border-bottom-color: $primary;
               }
 
               &::after {
