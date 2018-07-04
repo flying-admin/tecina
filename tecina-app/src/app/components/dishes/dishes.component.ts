@@ -110,28 +110,37 @@ export class DishesComponent implements OnInit {
   }
 
   initialiseState() {
-    this._tecinaApi.currentFilters.subscribe(filters => {
-      this._tecinaApi.getDishes(filters).subscribe(
-        dishes => {
-          this.dishes = this._tecinaApi.subArray(dishes, 3);
+    this._tecinaApi.currentFilters.flatMap(
+      filters => {
+        this.currentFilters = filters;
 
-          if (this.currentFilters != filters) {
-            this.currentFilters = filters;
-          }
-
-          this.goToIndex(0);
-          if ((filters.categories).length == 1) {
-            var i = filters.categories[0];
-            this.title_category =  this._tecinaApi.getObjectBy(this.categories,i,'translate');
-          } else {
-            this.title_category = this.translations.dishes.title;
-          }
+        if ((filters.categories).length == 1) {
+          var i = filters.categories[0];
+          this.title_category = this._tecinaApi.getObjectBy(this.categories, i, 'translate');
+        } else {
+          this.title_category = this.translations.dishes.title;
         }
-      );
-    });
+
+        return this._tecinaApi.getDishes(filters, []).map(
+          dishes => {
+            return this._tecinaApi.subArray(dishes, 3);
+          }
+        )
+      })
+      .subscribe(
+        dishes => {
+          this.dishes = dishes;
+          this.goToIndex(0);
+        });
   }
 
-  clearFilters(){this._tecinaApi.clearFilters()}
+  clearFilters() {
+    this._tecinaApi.setCurrentFilters({
+      categories: [],
+      allergens: [],
+      foodTypes: []
+    });
+  }
 
   ngOnInit() {
     this._tecinaApi.currentLang.subscribe(

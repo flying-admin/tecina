@@ -19,7 +19,7 @@
               </li>
             </ul>
           </div>
-          <div class="header__menu__nav header__menu__nav--left">
+          <div class="header__menu__nav header__menu__nav--left" *ngIf="menus.length > 0">
             <ul>
               <li>
                 <a [routerLink]="['/menus']" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
@@ -32,12 +32,12 @@
         <div class="col-xs-5">
           <div class="header__menu__nav">
             <ul>
-              <li>
+              <li *ngIf="drinks.length > 0">
                 <a [routerLink]="['/drinks']" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
-                  <span>(--)</span>
+                  <span>({{ drinks.length }})</span>
                 </a>
               </li>
-              <li>
+              <li *ngIf="wines.length > 0">
                 <a [routerLink]="['/wines']" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
                   <span>({{ wines.length }})</span>
                 </a>

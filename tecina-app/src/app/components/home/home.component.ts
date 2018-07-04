@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit   {
   }
   
   initialiseState(){
-    this._tecinaApi.getHighlights(this.currentLang).map(
+    this._tecinaApi.getHighlights().map(
       (resp: any) => {
         return resp;
       }

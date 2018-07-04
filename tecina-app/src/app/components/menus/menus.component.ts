@@ -76,15 +76,15 @@ export class MenusComponent implements OnInit {
     });
 
     this.imagesPath = this._tecinaApi.imagesPath + "/dishes/";
-
-
-
   }
 
   initialiseState() {
-      this._tecinaApi.getMenus().subscribe(
-        menus => {
-            this.menus = this._tecinaApi.subArray(menus, 3);
+    this._tecinaApi.getMenus().map(
+      resp => { return resp }
+    ).subscribe(
+      menus => {
+        this.menus = this._tecinaApi.subArray(menus, 3);
+        this.goToIndex(0, 500);
       });
   }
 
@@ -97,47 +97,13 @@ export class MenusComponent implements OnInit {
     );
   }
 
-  goToIndex(i) {
+  goToIndex(i, delay = 1000) {
     setTimeout(() => {
       this.swiperMenus.setIndex(i);
-    }, 1000);
+    }, delay);
   }
 
   pairingStatus(open) {
     this._tecinaApi.setPairing(open);
   }
-
-
-
 }
-
- //   [{
-  //     "id": 1,
-  //     "image": "image-0.jpg",
-  //     "translate": {
-  //         "es": {
-  //             "name": "es_name1",
-  //             "description": "es-description1"
-  //         },
-  //         "fr": {
-  //             "name": "fr_name1",
-  //             "description": "fr-description1"
-  //         },
-  //         "en": {
-  //             "name": "en_name1",
-  //             "description": "en-description1"
-  //         }
-  //     },
-  //     "dishes": [
-  //         19,
-  //         25,
-  //         34,
-  //         46,
-  //         49
-  //     ],
-  //     "wines": [
-  //         6,
-  //         8,
-  //         15
-  //     ]
-  // } ]          
