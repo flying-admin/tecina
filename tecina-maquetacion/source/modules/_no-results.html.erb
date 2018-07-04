@@ -1,0 +1,15 @@
+<%
+  extra_classes ||= ""
+  lang ||= "es"
+  title ||= "uups"
+%>
+
+<div class="noresults <%= extra_classes %>">
+  <p class="noresults__title">
+    <%= image_tag '/assets/images/shared/logo_mini.png', :alt => 'Tasca Fandango' %>
+    <span><%= title %></span>
+  </p>
+  <div class="noresults__wrapper">
+    <%= image_tag '/assets/images/shared/no-results_' + lang + '.svg', :class => 'noresults__wrapper__image' %>
+  </div>
+</div>
