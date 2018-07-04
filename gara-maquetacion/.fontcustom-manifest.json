@@ -1,7 +1,7 @@
 {
   "checksum": {
-    "previous": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c",
-    "current": "380720f504623a332de679652b94f722e3376ba8d295e310eb52959b8023209c"
+    "previous": "d29d2a38e7b8dd372a72fee1d7c549367954111dd3991f4299ce92eeb70d07bf",
+    "current": "d29d2a38e7b8dd372a72fee1d7c549367954111dd3991f4299ce92eeb70d07bf"
   },
   "fonts": [
     "./source/assets/fonts/icons-tecina.ttf",
@@ -86,6 +86,10 @@
     "sulfitos": {
       "codepoint": 61709,
       "source": "./source/assets/images/icons/sulfitos.svg"
+    },
+    "trash": {
+      "codepoint": 61716,
+      "source": "./source/assets/images/icons/trash.svg"
     }
   },
   "options": {
