@@ -13,7 +13,7 @@
     <div class="card-body">
       <form action="/api/wines/{{$wine->id}}" method="POST">
         <input name="_method" type="hidden" value="PUT">
-        <input name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
+        <span>Nombre del vino</span><input name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
         <ul class="nav nav-tabs">
           @foreach($langs =  DB::table('languages')->get() as $lang)
             <li @if ($loop->first) class="active show" @endif><a data-toggle="tab" href="#{{$lang->code}}">{{$lang->code}}</a></li>
@@ -24,22 +24,74 @@
           <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
             <label for="description_{{$lang->code}}">
               <span>Descripción</span>
-              <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{@$translation[$lang->code]['description']}}"/>
+              <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{ @$translation[$lang->code] }}"/>
             </label>
           </div>
           @endforeach
         </div>
+        <div>
+          <label for="year">
+            <span>Año</span>
+          <input type="number" min="1500" max="{{date('Y')}}" name="year" value="{{($wine->year)?$wine->year:''}}" />
+        </label>
+        </div>
+        <div>
+          <label for="active">
+            <span>Activo</span>
+          <input type="checkbox" name="active"{{($wine->active)?' checked':''}}  />
+        </label>
+        </div>
+        <div>
+          <label for="do">
+            <span>
+              Denominación de Origen
+            </span>
+          <select name="do" id="do">
+            @foreach($dos = DB::table('do')->get() as $my_do)
+              <option value="{{$my_do->id}}"{{($do->id==$my_do->id)?' selected':''}}>
+                {{$my_do->name}}
+              </option>
+            @endforeach
+          </select>
+        </label>
+        </div>
+        <div>
+          <label for="age">
+            <span>
+              Edad
+            </span>
+          <select name="age" id="age">
+            @foreach($ages = DB::table('wine_age_translations')->where('language_id',1)->get() as $my_age)
+              <option value="{{$my_age->wine_age_id}}"{{($age->id==$my_age->wine_age_id)?' selected':''}}>
+                {{$my_age->name}}
+              </option>
+            @endforeach
+          </select>
+        </label>
+        </div>
+        <div>
+          <label for="class">
+            <span>Clase</span>
+          <select name="class" id="class">
+            @foreach($classes = DB::table('wine_class_translations')->where('language_id',1)->get() as $my_class)
+              <option value="{{$my_class->wine_class_id}}"{{($class->id==$my_class->wine_class_id)?' selected':''}}>
+                {{$my_class->name}}
+              </option>
+            @endforeach
+          </select>
+        </label>
+        </div>
         <input type="submit" value="Guardar cambios" />
       </form>
           <div>
-            <p>Variedades</p>
+            <span>Variedades</span>
             <ul id="wine_varieties">
               @foreach($varieties as $variety)
                 <li id="variety_{{$variety->id}}"><span class="varietyName">{{@$varietieTranslations[$variety->id]['es']}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineVariety({{$wine->id}},{{$variety->id}});">Eliminar</a></span></li>
               @endforeach
             </ul>
           <label for="add_wine_variety">
-            Selecciona una variedad
+            <span>Selecciona una variedad</span>
             <select id="add_wine_variety">
               @foreach(db::table('wine_variety_translations')->whereNotIn('id_wine_variety',array_keys($varietieTranslations))->where('id_language',1)->get() as $variety)
                 <option value="{{$variety->id_wine_variety}}">

@@ -56,6 +56,7 @@ class Wine extends Model
 
     // A Wine has a denomination of origin
     public function originDenomination(){
-        return $this->belongsTo('App\DenominationOfOrigin');
+        return DenominationOfOrigin::where('id',$this->id_do);
+        // return $this->belongsTo('App\DenominationOfOrigin');
     }
 }

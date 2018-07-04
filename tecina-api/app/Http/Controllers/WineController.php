@@ -69,7 +69,7 @@ class WineController extends Controller
     public function edit($id)
     {
         $wine=Wine::find($id);
-        $do=$wine->originDenomination()->get();
+        $do=$wine->originDenomination()->get()->first();
         $varieties=$wine->wineVarieties()->get();
         $varietiesTranslations=[];
         foreach($varieties as $variety){
@@ -107,7 +107,31 @@ class WineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $respuesta=[];
+      $wine = \App\Wine::find($id);
+      $langs=\App\Language::all();
+      $translates = prettyTranslate($wine->getTranslate()->get());
+      foreach($langs as $lang){
+        $translate=@$translates[$lang->code];
+        $respuesta[$lang->code]=$translate;
+        $descripcion='description_'.$lang->code;
+        if(DB::table('wines_translations')->where('id_wine',$id)->where('id_language',$lang->id)->count()){
+          DB::table('wines_translations')->where('id_wine',$id)->where('id_language',$lang->id)->update(['description'=>$request->$descripcion]);
+        }else{
+          $descripcion2=$request->$descripcion;
+          DB::table('wines_translations')->insert(['id_wine'=>$id,'id_language'=>$lang->id,'description'=>$descripcion2]);
+        }
+      }
+        DB::table('wines')->where('id',$id)->update([
+            'name'=>$request->wineName,
+            'year'=>$request->year,
+            'wine_age_id'=>$request->age,
+            'active'=>($request->active == 'on')?true:false,
+            'id_do'=> $request->do,
+            'wine_age_id'=>$request->age,
+            'wine_class_id'=>$request->class
+          ]);
+      return redirect('api/wines/'.$id.'/edit');
     }
 
     /**
