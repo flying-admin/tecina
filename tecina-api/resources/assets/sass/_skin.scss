@@ -1,0 +1,126 @@
+.btn {
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+
+  .material-icons,
+  span {
+    display: inline-block;
+    float: left;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+  }
+
+  .material-icons {
+    margin-right: 4px;
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 0 30px;
+
+  &-header {
+    font-size: 18px;
+  }
+
+  &-body {
+
+    table {
+      width: 100%;
+      margin: 0 0 20px;
+
+      thead {
+        tr {
+          border-bottom: 1px solid rgba($black, 0.25);
+
+          th {
+            padding: 10px;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid rgba($black, 0.05);
+
+          &:nth-child(even){
+            background-color: #FAFAFA
+          }
+
+          td {
+            padding: 10px;
+
+            &:last-child {
+              text-align: right;
+            }
+
+            .btn {
+              padding: 2px 6px;
+            }
+          }
+        }
+      }
+    }
+
+    ul.pagination {
+      justify-content: center;
+      margin: 0 0 20px;
+    }
+  }
+
+  .nav-tabs {
+    li {
+      display: inline-block;
+
+      a {
+        display: block;
+        padding: 10px 15px;
+        font-size: 16px;
+        font-family: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $black;
+        text-decoration: none;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 2px;
+
+        &.active {
+          background-color: rgba($primary, 0.1);
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    padding:  20px 0 10px;
+
+    label {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      align-content: flex-start;
+      justify-content: flex-end;
+
+      span {
+        padding-right: 8px;
+        font-weight: 700;
+      }
+
+      input {
+        width: 100%;
+      }
+    }
+  }
+
+  button.btn[type=submit] {
+    margin: 0 0 30px;
+  }
+}
