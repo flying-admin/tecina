@@ -1,0 +1,24 @@
+---
+title: Project Index
+layout: layout
+---
+
+<%= partial("shared/header", :locals => {
+  :extra_classes => ''
+}) %>
+
+<div class="content-wrapper">
+
+  <%= partial("modules/no-results", :locals => {
+    :extra_classes => '',
+    :lang => 'es',
+    :title => 'uups'
+  }) %>
+
+  <%= partial("modules/filters", :locals => {
+    :extra_classes => ''
+  }) %>
+
+</div>
+
+<%= partial("shared/footer") %>
