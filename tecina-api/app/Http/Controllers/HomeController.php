@@ -64,4 +64,14 @@ class HomeController extends Controller
       $wines=\App\Wine::paginate(20);
       return view('admin.wine', ['wines'=>$wines]);
     }
+    public function listDish(request $request)
+    {
+      $langs=getLangs();
+      $dishes=\App\Dish::paginate(20);
+      foreach($dishes as $order=>$dish){
+        $dish->name=prettyTranslate($dish->getTranslate()->get())['es']['name'];
+        $dishes[$order]=$dish;
+      }
+      return view('admin.dish', ['dishes'=>$dishes]);
+    }
 }

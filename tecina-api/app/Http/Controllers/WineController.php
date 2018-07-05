@@ -116,9 +116,9 @@ class WineController extends Controller
         $respuesta[$lang->code]=$translate;
         $descripcion='description_'.$lang->code;
         if(DB::table('wines_translations')->where('id_wine',$id)->where('id_language',$lang->id)->count()){
-          DB::table('wines_translations')->where('id_wine',$id)->where('id_language',$lang->id)->update(['description'=>$request->$descripcion]);
+          DB::table('wines_translations')->where('id_wine',$id)->where('id_language',$lang->id)->update(['description'=>($request->$descripcion)?$request->$descripcion:' ']);
         }else{
-          $descripcion2=$request->$descripcion;
+          $descripcion2=($request->$descripcion)?$request->$descripcion:' ';
           DB::table('wines_translations')->insert(['id_wine'=>$id,'id_language'=>$lang->id,'description'=>$descripcion2]);
         }
       }

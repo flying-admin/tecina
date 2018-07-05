@@ -74,7 +74,7 @@
             <span>Clase</span>
           <select name="class" id="class">
             @foreach($classes = DB::table('wine_class_translations')->where('language_id',1)->get() as $my_class)
-              <option value="{{$my_class->wine_class_id}}"{{($class->id==$my_class->wine_class_id)?' selected':''}}>
+              <option value="{{$my_class->wine_class_id}}"{{(@$class->id==$my_class->wine_class_id)?' selected':''}}>
                 {{$my_class->name}}
               </option>
             @endforeach
