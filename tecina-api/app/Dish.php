@@ -20,7 +20,7 @@ class Dish extends Model
      * @var array
      */
     protected $fillable = [
-        'ingredients',
+        'ingredients', 'image'
     ];
 
 
