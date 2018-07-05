@@ -8,7 +8,7 @@
   transition: all $transition;
   overflow: hidden;
 
-  .noresults--wines {
+  &--wines {
     width: 65%;
     @include flex-basis(65%);
 
@@ -17,7 +17,7 @@
     }
   }
 
-  .noresults--beverages {
+  &--beverages {
     width: 75%;
     @include flex-basis(75%);
 
