@@ -47,23 +47,22 @@ export class DrinksComponent implements OnInit {
     freeModeSticky: true,
     slidesPerView: 3,
     navigation: {
-      prevEl: '.wine-list__nav--prev',
-      nextEl: '.wine-list__nav--next',
-      disabledClass: 'wine-list__nav--disabled'
+      prevEl: '.drink-list__nav--prev',
+      nextEl: '.drink-list__nav--next',
+      disabledClass: 'drink-list__nav--disabled'
     }
   };
 
   @ViewChild(SwiperDirective) swiperDrinks?: SwiperDirective;
 
   constructor(private _tecinaApi: TecinaApiService) {
-    this.imagesPath = this._tecinaApi.imagesPath + "/wines/";
+    this.imagesPath = this._tecinaApi.imagesPath + "/drinks/";
   }
   
   initialiseState(){
 
     this._tecinaApi.getDrinkTypes().flatMap( (drinkTypes:any[]) => {
       this.drinkTypes = drinkTypes;
-      console.log("drinkTypes",drinkTypes);
       
       return  this._tecinaApi.getDrinks().map(
         drinks => {
@@ -84,10 +83,15 @@ export class DrinksComponent implements OnInit {
       drinks => {
         this.allDrinks = drinks;
         this.drinks = this._tecinaApi.subArray(drinks, 2);
-        console.log("c drinks",drinks);
       }
     );
+  }
 
+  clearFilters(){
+    this.drinkFilters = [] ;
+    this.no_results = false;
+    this.drinks = this._tecinaApi.subArray( this.allDrinks ,2);
+    this.goToIndex(0,500);
   }
 
   goToIndex(i:number , delay = 1000) {
@@ -106,7 +110,31 @@ export class DrinksComponent implements OnInit {
   }
 
   getFilteredDrinks(){
+    let _filters = this.drinkFilters;
+    let _drinks = (this.allDrinks).slice(0);
+    let _filteredDrinks = [];
 
+
+    for (var D = 0; D < _drinks.length; D++) {
+      var addWine = true;
+
+      if (_filters.length != 0 && _drinks[D].id_type != null && _filters.indexOf(_drinks[D].id_type) == -1) {
+        addWine = false;
+      }
+
+      if (addWine) {
+        _filteredDrinks.push(_drinks[D]);
+      }
+    }
+    
+    if (_filteredDrinks.length == 0){
+      this.no_results = true;
+      this.drinks = _filteredDrinks;
+    }else{
+      this.no_results = false;
+      this.drinks = this._tecinaApi.subArray(_filteredDrinks, 2);
+      this.goToIndex(0, 1000);
+    }
   }
 
   changeDrinkFilters(filterId: string, isChecked: boolean) {
