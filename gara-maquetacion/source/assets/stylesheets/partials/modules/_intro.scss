@@ -107,7 +107,7 @@
     }
   }
 
-  body.header--expanded & {
+  .header--expanded & {
     &__logo,
     &__start {
       opacity: 0;
