@@ -15,7 +15,7 @@
         <input name="_method" type="hidden" value="PUT">
         <ul class="nav nav-tabs">
           @foreach($langs =  DB::table('languages')->get() as $lang)
-            <li @if ($loop->first) class="active show" @endif><a data-toggle="tab" href="#{{$lang->code}}">{{$lang->code}}</a></li>
+            <li><a data-toggle="tab" href="#{{$lang->code}}" @if ($loop->first) class="active show" @endif>{{$lang->code}}</a></li>
           @endforeach
         </ul>
         <div class="tab-content">
@@ -24,7 +24,7 @@
             <label for="name_{{$lang->code}}">
               <span>Nombre</span>
               <input type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{$translation[$lang->code]['name']}}"/>
-            </label><br>
+            </label>
             <label for="description_{{$lang->code}}">
               <span>Descripción</span>
               <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{$translation[$lang->code]['description']}}"/>
@@ -32,51 +32,59 @@
           </div>
           @endforeach
         </div>
-        <input type="submit" value="Guardar cambios" />
-        </form>
-          <div>
-            <p>Platos incluídos en el menú</p>
-            <ul id="menu_dishes">
-              @foreach($dishes as $dishId => $dish)
-                <li id="dish_{{$dishId}}"><span class="dishName">{{$dish['name']}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishMenu({{$dishId}},{{$id}});">Eliminar</a></span></li>
-              @endforeach
-            </ul>
-          <label for="add_menu_dish">
-            Selecciona un plato
-            <select id="add_menu_dish">
-              @foreach(db::table('dishes_translations')->whereNotIn('id_dish',array_keys($dishes))->where('id_language',1)->get() as $dish)
-                <option value="{{$dish->id_dish}}">
-                  {{$dish->name}}
-                </option>
-              @endforeach
-            </select>
-          </label>
-          <button type="button" name="button" id="add_menu_dish_button" onclick="addDishMenu({{$id}})">Añadir plato</button>
-          </div>
-          <div>
-            <p>Vinos incluídos en el menú</p>
-            <ul id="menu_wines">
-              @foreach($wines as $wineId => $wine)
-                <li id="wine_{{$wineId}}"><span class="wineName">{{$wine}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineMenu({{$wineId}},{{$id}});">Eliminar</a></span></li>
-              @endforeach
-            </ul>
-          <label for="add_menu_wine">
-            Selecciona un vino
-            <select id="add_menu_wine">
-              @foreach(db::table('wines')->whereNotIn('id',array_keys($wines))->get() as $wine)
-                <option value="{{$wine->id}}">
-                  {{$wine->name}}
-                </option>
-              @endforeach
-            </select>
-          </label>
-          <button type="button" name="button" id="add_menu_wine_button" onclick="addWineMenu({{$id}})">Añadir vino</button>
-          </div>
-    <img style="max-width:300px;max-height:300px;" id="menu_image" src="{{$image}}" class="menu main admin" onclick="jQuery('#uploadMenuImage').toggle();" />
-    <div id="uploadMenuImage" style="display:none">
-      <input type="file" name="menuImage" id="menuImage" accept="image/x-png" placeholder="Imagen nueva" />
+        <button type="submit" class="btn btn-primary">
+          <i class="material-icons">save</i>
+          <span>Guardar cambios</span>
+        </button>
+      </form>
+      <div>
+        <p>Platos incluídos en el menú</p>
+        <ul id="menu_dishes">
+          @foreach($dishes as $dishId => $dish)
+            <li id="dish_{{$dishId}}">
+              <span class="dishName">{{$dish['name']}}</span>
+              <span class="glyphicon glyphicon-remove-circle">
+                <a href="#" onclick="deleteDishMenu({{$dishId}},{{$id}});">Eliminar</a>
+              </span>
+            </li>
+          @endforeach
+        </ul>
+        <label for="add_menu_dish">
+          <span>Selecciona un plato</span>
+          <select id="add_menu_dish">
+            @foreach(db::table('dishes_translations')->whereNotIn('id_dish',array_keys($dishes))->where('id_language',1)->get() as $dish)
+              <option value="{{$dish->id_dish}}">
+                {{$dish->name}}
+              </option>
+            @endforeach
+          </select>
+        </label>
+        <button type="button" name="button" id="add_menu_dish_button" onclick="addDishMenu({{$id}})">Añadir plato</button>
+      </div>
+      <div>
+        <p>Vinos incluídos en el menú</p>
+        <ul id="menu_wines">
+          @foreach($wines as $wineId => $wine)
+            <li id="wine_{{$wineId}}"><span class="wineName">{{$wine}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineMenu({{$wineId}},{{$id}});">Eliminar</a></span></li>
+          @endforeach
+        </ul>
+        <label for="add_menu_wine">
+          <span>Selecciona un vino</span>
+          <select id="add_menu_wine">
+            @foreach(db::table('wines')->whereNotIn('id',array_keys($wines))->get() as $wine)
+              <option value="{{$wine->id}}">
+                {{$wine->name}}
+              </option>
+            @endforeach
+          </select>
+        </label>
+        <button type="button" name="button" id="add_menu_wine_button" onclick="addWineMenu({{$id}})">Añadir vino</button>
+      </div>
+      <img style="max-width:300px;max-height:300px;" id="menu_image" src="{{$image}}" class="menu main admin" onclick="jQuery('#uploadMenuImage').toggle();" />
+      <div id="uploadMenuImage" style="display:none">
+        <input type="file" name="menuImage" id="menuImage" accept="image/x-png" placeholder="Imagen nueva" />
         <button type="button" name="menuImage" id="upload_menu_image_button" onclick="uploadMenuImage({{$id}})">Cambiar imagen</button>
-    </div>
+      </div>
     </div>
 
 

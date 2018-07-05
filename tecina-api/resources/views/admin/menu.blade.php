@@ -9,9 +9,9 @@
                 <div class="card-header">Aviso</div>
 
                 <div class="card-body">
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                  <div class="alert alert-success">
+                      {{ session('status') }}
+                  </div>
                 </div>
             </div>
           @endif
@@ -32,9 +32,18 @@
                   <tbody>
                   @foreach ($menus as $menu)
                     <tr>
-                      <td>#{{$menu['id']}}</td>
-                      <td>{{$menu['translate']['es']['name']}}</td>
-                      <td><a href="/api/menus/{{$menu['id']}}/edit" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><span><strong>Editar</strong></span></a></td>
+                      <td>
+                        #{{$menu['id']}}
+                      </td>
+                      <td>
+                        {{$menu['translate']['es']['name']}}
+                      </td>
+                      <td>
+                        <a href="/api/menus/{{$menu['id']}}/edit" class="btn btn-primary">
+                          <i class="material-icons">edit</i>
+                          <span>Editar</span>
+                        </a>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
