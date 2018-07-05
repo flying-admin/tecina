@@ -1,4 +1,4 @@
-.wines {
+.beverages {
   // display: block;
   width: 100vw;
   height: 100vh;
@@ -21,6 +21,7 @@
     top: 30px;
     right: 80px;
     width: auto;
+    max-width: 22.5%;
     height: auto;
     margin: 0;
     padding: 0;
@@ -32,6 +33,12 @@
     color: $black;
     text-transform: uppercase;
     z-index: 2;
+
+    span {
+      display: inline-block;
+      line-height: 60px;
+      padding-top: 8px;
+    }
 
     img {
       display: block;
@@ -47,9 +54,10 @@
     display: inline-block;
     position: relative;
     height: 100%;
-    width: 35%;
+    width: 25%;
+    @include flex-basis(25%);
     background-color: $white;
-    padding: 140px 40px 60px;
+    padding: 220px 40px 60px;
     box-shadow: 2px 0 4px rgba($black, 0.2);
     z-index: 1;
 
@@ -77,14 +85,12 @@
         padding: 0;
 
         li {
-          display: inline-block;
+          display: block;
           position: relative;
           box-sizing: border-box;
           width: auto;
-          min-width: 24.5%;
-          padding-right: 20px;
 
-          &.wines__filters__block__list__title {
+          &.beverages__filters__block__list__title {
             display: block;
             width: 100%;
 
@@ -100,7 +106,7 @@
             }
           }
 
-          & + .wines__filters__block__list__title {
+          & + .beverages__filters__block__list__title {
             p {
               margin-top: 16px;
             }
@@ -163,7 +169,8 @@
 
             &:checked ~ label {
               span {
-                border-bottom-color: $black;
+                color: $primary;
+                border-bottom-color: $primary;
               }
 
               &::after {
@@ -180,12 +187,52 @@
         }
       }
     }
+
+    &__clear {
+      display: block;
+      width: 100%;
+      text-align: left;
+
+      &__link {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        padding: 2px;
+        margin: 0;
+        border-bottom: 1px solid $primary;
+
+        &::before,
+        &::after {
+          content: '';
+          display: block;
+          width: 100%;
+          clear: both;
+        }
+
+        span {
+          display: inline-block;
+          float: left;
+          font-family: $font_default;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          color: $primary;
+          text-transform: uppercase;
+
+          &[class^=icon] {
+            font-size: 20px;
+            margin-right: 4px;
+          }
+        }
+      }
+    }
   }
 
   &__list {
     display: block;
     position: relative;
-    @include flex-basis(65%);
+    width: 75%;
+    @include flex-basis(75%);
     padding: 140px 0 60px;
     background-color: $white;
   }

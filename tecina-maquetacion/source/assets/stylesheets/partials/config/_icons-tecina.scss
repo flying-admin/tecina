@@ -42,7 +42,8 @@
 .icon-return:before,
 .icon-sesamo:before,
 .icon-soja:before,
-.icon-sulfitos:before {
+.icon-sulfitos:before,
+.icon-trash:before {
   display: inline-block;
   font-family: "icons-tecina";
   font-style: normal;
@@ -76,6 +77,7 @@
 .icon-sesamo:before { content: "\f10b"; }
 .icon-soja:before { content: "\f10c"; }
 .icon-sulfitos:before { content: "\f10d"; }
+.icon-trash:before { content: "\f114"; }
 
 $font-icons-tecina-altramuces: "\f100";
 $font-icons-tecina-apio: "\f101";
@@ -96,3 +98,4 @@ $font-icons-tecina-return: "\f111";
 $font-icons-tecina-sesamo: "\f10b";
 $font-icons-tecina-soja: "\f10c";
 $font-icons-tecina-sulfitos: "\f10d";
+$font-icons-tecina-trash: "\f114";

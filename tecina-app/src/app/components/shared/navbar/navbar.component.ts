@@ -18,8 +18,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   dishes = [];
   menus = [];
   wines =[];
+  drinks =[];
   mainMenu = false;
-
   translations = {
    nav: {
      allergen_title: {
@@ -84,6 +84,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this._tecinaApi.getAllergens().subscribe( allergens => {
         this.allergens = allergens;
       });
+
+      this._tecinaApi.getDrinks().subscribe( drinks => {
+        this.drinks = drinks;
+      });
+
       this._tecinaApi.getMenus().subscribe(menus => {
         this.menus = menus;
       });
@@ -97,14 +102,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   initialiseInvites() {
-    this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getDishes( filters , [] ).subscribe(
-        dishes => { 
-          this.dishes = dishes;
-          console.log(filters);
-          this.currentFilters = filters;
-        }
-      );
+    this._tecinaApi.currentFilters.flatMap( 
+      filters => {
+        this.currentFilters = filters;
+        return this._tecinaApi.getDishes( filters , [] )
+    })
+    .subscribe(
+      dishes => { 
+        this.dishes = dishes;
     });
   }
 
@@ -125,7 +130,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._tecinaApi.setCurrentFilters( this.currentFilters );
   }
  
-  clearFilters(){this._tecinaApi.clearFilters()}
+  clearFilters(){
+    this._tecinaApi.setCurrentFilters( {
+      categories: [],
+      allergens: [],
+      foodTypes: []
+    });
+  }
 
   ngOnInit(){
     this._tecinaApi.currentLang.subscribe(

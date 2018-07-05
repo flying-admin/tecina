@@ -111,6 +111,22 @@ Project.init = function(){
     });
   }
 
+  var drinksList = $('.drink-list');
+  if (drinksList.length){
+    var mySwiper = new Swiper('.drink-list', {
+      direction: 'vertical',
+      speed: 500,
+      freeMode: true,
+      freeModeSticky: true,
+      slidesPerView: 3,
+      navigation: {
+        prevEl: '.drink-list__nav--prev',
+        nextEl: '.drink-list__nav--next',
+        disabledClass: 'drink-list__nav--disabled'
+      },
+    });
+  }
+
 };
 
 $(function(){

@@ -132,16 +132,16 @@ export class MenuComponent implements OnInit {
       });
   }
 
-  goToIndexDishes(i) {
+  goToIndexDishes(i,delay=1000) {
     setTimeout(() => {
       (this.swiperView['_results'][0]).setIndex(i);
-    }, 1000);
+    }, delay);
   }
 
-  goToIndexPairing(i) {
+  goToIndexPairing(i,delay=1000) {
     setTimeout(() => {
     (this.swiperView['_results'][1]).setIndex(i);
-    }, 1000);
+    }, delay);
   }
 
   pairingStatus(open) {

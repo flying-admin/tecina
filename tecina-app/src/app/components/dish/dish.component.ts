@@ -64,16 +64,15 @@ export class DishComponent implements OnInit {
   }
 
   initialiseState(){    
-    this._tecinaApi.currentFilters.subscribe( filters => {
-      this._tecinaApi.getDishes( filters ).map(
-        dishes => { return dishes ;}
-      ).subscribe(
-        dishes => { 
-          this.dishes = dishes;
-          this.currentFilters = filters;
-          this.goToIndex( this.initialSlider );
-        }
-      );
+    this._tecinaApi.currentFilters.flatMap( 
+      filters => {
+        this.currentFilters = filters;
+        return this._tecinaApi.getDishes( filters );
+    })
+    .subscribe(
+      dishes => { 
+        this.dishes = dishes;
+        this.goToIndex( this.initialSlider );
     });
   }
 

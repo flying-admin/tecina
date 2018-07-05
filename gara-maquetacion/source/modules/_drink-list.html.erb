@@ -1,0 +1,37 @@
+<%
+  extra_classes ||= ""
+  drinks ||= ""
+%>
+
+<div class="swiper-container drink-list <%= extra_classes %>">
+
+  <div class="swiper-wrapper">
+
+    <% drinks.each_slice(2).to_a.each do |drinks_sub| %>
+      <div class="swiper-slide drink-list__item">
+        <div class="drinks-row">
+          <% drinks_sub.each do |drink| %>
+            <div class="drinks-row__drink">
+              <div class="drinks-row__drink__image">
+                <%= image_tag drink[:image] %>
+              </div>
+              <div class="drinks-row__drink__info">
+                <p class="drinks-row__drink__info__name"><%= drink[:name] %></p>
+                <p class="drinks-row__drink__info__type"><%= drink[:type] %></p>
+                <p class="drinks-row__drink__info__desc"><%= drink[:info] %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="swiper-button-prev drink-list__nav drink-list__nav--prev">
+    <span class="icon-chevron-up"></span>
+  </div>
+  <div class="swiper-button-next drink-list__nav drink-list__nav--next">
+    <span class="icon-chevron-down"></span>
+  </div>
+</div>

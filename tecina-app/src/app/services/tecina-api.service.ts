@@ -70,10 +70,13 @@ export class TecinaApiService {
  
   private menus = new BehaviorSubject([]);
   _menus = this.menus.asObservable();
+
+  private drinks = new BehaviorSubject([]);
+  _drinks = this.drinks.asObservable();
  
 
- // pageRoot = "http://tecina-api.local/";
-  public pageRoot = "http://tecina-api.local:8000/";
+  pageRoot = "http://tecina-api.local/";
+  //public pageRoot = "http://tecina-api.local:8000/";
 
   public imagesPath = this.pageRoot + "img";
   public api = this.pageRoot + 'api';
@@ -87,25 +90,23 @@ export class TecinaApiService {
 
   constructor( public http:HttpClient) {
 
-    this.setAllergens().subscribe((resp:any[]) => { this.allergens.next(resp);});
-    this.setCategories().subscribe((resp:any[]) => { this.categories.next(resp);});
-    this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
+    // this.setAllergens().subscribe((resp:any[]) => { this.allergens.next(resp);});
+    // this.setCategories().subscribe((resp:any[]) => { this.categories.next(resp);});
+    // this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
     this.setLanguages().subscribe((resp:any[]) => { this.languages.next(resp);});
     this.setHighlights().subscribe((resp:any[]) => { this.highlights.next(resp);});
-    this.setWinesDO().subscribe((resp:any[]) => { this.winesDO.next(resp);});
-    this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
-    this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
+    this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
+    // this.setWinesDO().subscribe((resp:any[]) => { this.winesDO.next(resp);});
+    // this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
+    // this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
 
-    this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); console.log("dishes",resp);});
-    this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);console.log("wines",resp)});
-    this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);console.log("menus",resp)});
+    //this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); /*console.log("dishes",resp)*/;});
+   // this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);/*console.log("wines",resp)*/});
+    this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);/*console.log("menus",resp) */});
   }
 
 
-  // current Dish filters
-  setCurrentFilters( filters ){
-    this.filters.next( filters );
-  }
+ 
 
   // Get sub array 
   subArray(array:any[] , size:number){
@@ -120,9 +121,8 @@ export class TecinaApiService {
     return [];
   }
 
-  getObjectBy(value, args ,key?) {
-    
-    var obj =  obj = value.filter(element => { return element.id == args });
+  getObjectBy(array, args ,key?) {
+    var obj =  obj = array.filter(element => { return element.id == args });
 
     if (obj.length != 0) {
       if(key){
@@ -133,12 +133,6 @@ export class TecinaApiService {
     } else {
       return [];
     }
-  }
-
-  clearFilters(){
-    console.log("clear" ,this.defaultFilters);
-    
-    this.setCurrentFilters(this.defaultFilters);
   }
 
   // filter Dishes
@@ -224,6 +218,10 @@ export class TecinaApiService {
     return _filteredDishes;
   }
 
+  // current Dish filters
+   setCurrentFilters( filters ){
+    this.filters.next( filters );
+  }
   // current Language
   setCurrentLAng( lang ){
     this.lang.next(lang);
@@ -245,37 +243,6 @@ export class TecinaApiService {
 
   // Dishes
   setDishes(): Observable<any>{
-    //   [
-    //     {
-    //         "id": 1,
-    //         "ingredients": "ingredients_:0DGEUhw3rpxxjFRf",
-    //         "lang": {
-    //             "es": {
-    //                 "name": "es_name1",
-    //                 "description": "es description1"
-    //             },
-    //             "fr": {
-    //                 "name": "fr_name1",
-    //                 "description": "fr description1"
-    //             }
-    //         },
-    //         "images": [
-    //             "images1jpg",
-    //             "images2jpg",
-    //             "images3jpg"
-    //         ],
-    //         "allergens": [
-    //             2,
-    //             6
-    //         ],
-    //         "foodTypes": [],
-    //         "categories": [
-    //             1,
-    //             2
-    //         ]
-    //     }
-    // ]
-   
     return  this.http.get(this.api + "/dishes" ,this.httpOptions );
   }
 
@@ -293,10 +260,9 @@ export class TecinaApiService {
   }
 
   // Highlights
-  getHighlights( lang ){
+  getHighlights(){
     return this._highlights;
   }
-
   setHighlights(): Observable<any>{
     return this.http.get(this.api + "/highlights" ,this.httpOptions ).map(
       (res) => {
@@ -309,9 +275,7 @@ export class TecinaApiService {
   getLanguages(){
     return this._languages;
   }
-
   setLanguages(){
-    //[{"id":1,"code":"es"},{"id":2,"code":"fr"}]
     return this.http.get(this.api + "/languages" ,this.httpOptions ); 
   }
 
@@ -319,24 +283,7 @@ export class TecinaApiService {
   getCategories(){
     return this._categories;
   }
-
   setCategories(): Observable<any>{
- 
-    // [
-    //   {
-    //       "id": 1,
-    //       "translate": {
-    //           "es": {
-    //               "name": "es_entrantes frios",
-    //               "description": "es_entrantes frios description"
-    //           },
-    //           "fr": {
-    //               "name": "fr_entrantes frios",
-    //               "description": "fr_entrantes frios description"
-    //           }
-    //       }
-    //   }
-    // ]
     return this.http.get(this.api + "/categories" ,this.httpOptions );
   }
 
@@ -345,15 +292,6 @@ export class TecinaApiService {
     return this._foodTypes;
   }
   setFoodTypes(): Observable<any>{
-    // [
-    //   {
-    //       "id": 1,
-    //       "translate": {
-    //           "es": "es_comida vegana",
-    //           "fr": "fr_comida vegana"
-    //       }
-    //   }
-    // ]
     return this.http.get(this.api + "/food-types" ,this.httpOptions );
   }
 
@@ -362,22 +300,6 @@ export class TecinaApiService {
     return this._allergens;
   }
   setAllergens(): Observable<any>{
-      // [
-      //   {
-      //       "id": 1,
-      //       "icon": "crustaceos.jpg",
-      //       "translate": {
-      //           "es": {
-      //               "name": "es_crustaceos",
-      //               "description": "es_crustaceos description"
-      //           },
-      //           "fr": {
-      //               "name": "fr_crustaceos",
-      //               "description": "fr_crustaceos description"
-      //           }
-      //       }
-      //   }
-      // ]
     return this.http.get(this.api + "/allergens" ,this.httpOptions );
   }
 
@@ -394,39 +316,111 @@ export class TecinaApiService {
   getWinesDO(){return this._winesDO;}
   setWinesDO(): Observable<any>{return this.http.get(this.api + "/wine-do" ,this.httpOptions );}
  
+  // Drinks
+  setDrinks(): Observable<any>{
+    var data = [
+      {
+        type: 4,
+        name: 'Bitter Kas',
+        price: 3.00,
+      },
+      {
+        type: 4,
+        name: 'Appletiser',
+        price: 3.00,
+      },
+      {
+        type: 4,
+        name: 'Coca cola',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Seven up',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Fanta naranja',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Fanta limón',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Schweppes Tónica',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Schweppes Ginger Ale',
+        price: 2.70,
+      },
+      {
+        type: 4,
+        name: 'Nestea limón',
+        price: 2.90,
+      },
+      {
+        type: 4,
+        name: 'Nestea melocotón',
+        price: 2.90,
+      },
+      {
+        type: 4,
+        name: 'Nestea limon sin azucar',
+        price: 2.90,
+      },
+      {
+        type: 4,
+        name: 'Zumo natural de naranja',
+        price: 3.00,
+      },
+      {
+        type: 3,
+        name: 'Alhambra Reserva 1925',
+        price: 2.90
+      },
+      {
+        type: 3,
+        name: 'Alhambra Reserva Roja',
+        price: 2.90
+      },
+      {
+        type: 3,
+        name: 'La Sagra Premiun',
+        price: 2.90
+      },
+      {
+        type: 3,
+        name: 'La Sacra Ipa',
+        price: 2.90
+      },
+      {
+        type: 3,
+        name: 'Cerex Pilsen',
+        price: 2.90
+      },
+      {
+        type: 3,
+        name: 'Cerex Ibérica de bellota',
+        price: 2.90
+      }
+    ];
+
+    return new BehaviorSubject(data).asObservable();
+  }
+  getDrinks(){
+    return this._drinks;
+  }
+
+
   // Menus
   getMenus(){return this._menus;}
-  setMenus(): Observable<any>{
-  //   [{
-  //     "id": 1,
-  //     "image": "image-0.jpg",
-  //     "translate": {
-  //         "es": {
-  //             "name": "es_name1",
-  //             "description": "es-description1"
-  //         },
-  //         "fr": {
-  //             "name": "fr_name1",
-  //             "description": "fr-description1"
-  //         },
-  //         "en": {
-  //             "name": "en_name1",
-  //             "description": "en-description1"
-  //         }
-  //     },
-  //     "dishes": [
-  //         19,
-  //         25,
-  //         34,
-  //         46,
-  //         49
-  //     ],
-  //     "wines": [
-  //         6,
-  //         8,
-  //         15
-  //     ]
-  // } ]                  
+  setMenus(): Observable<any>{                 
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 
@@ -443,6 +437,10 @@ export class TecinaApiService {
       let varieties: any[] = data[1];
       let dos: any[] = data[2];
       let types: any[] = data[3];
+
+      this.winesDO.next(dos);
+      this.winesTypes.next(types);
+      this.winesVarieties.next(varieties);
       
       for (let w = 0; w < wines.length; w++) {
 
@@ -489,6 +487,11 @@ export class TecinaApiService {
       let categories: any[] = data[1];
       let foodTypes: any[] = data[2];
       let allergens: any[] = data[3];
+
+      this.allergens.next(allergens);
+      this.categories.next(categories);
+      this.foodTypes.next(foodTypes);
+
       
       for (let d = 0; d < dishes.length; d++) {
 
@@ -537,6 +540,9 @@ export class TecinaApiService {
       let menus: any = data[0];
       let dishes: any[] = data[1];
       let wines: any[] = data[2];
+
+      this.wines.next(wines);
+      this.dishes.next(dishes);
       
       for (let m = 0; m < menus.length; m++) {
         let _dishes=[];
@@ -555,10 +561,8 @@ export class TecinaApiService {
             _wines.push(m_w);
           }
         }
-
         menus[m].menu_dishes = _dishes;
         menus[m].menu_wines = _wines;
-
       }
       
       return  menus;
