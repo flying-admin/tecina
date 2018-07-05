@@ -11,7 +11,7 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class DrinksComponent implements OnInit {
   imagesPath:string;
   currentLang: string = 'es';
-  no_results: boolean = false ;
+  no_results: boolean = true ;
   drinkFilters = {};
   drinks:any[] = [];
   drinkTypes: any[] = [];

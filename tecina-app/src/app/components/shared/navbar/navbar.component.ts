@@ -56,7 +56,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
        es:"Ver Carta",
        fr:"Ver Carta - FR",
        en:"Ver Carta - EN"
-     }
+     },
+     button:{
+      es: 'Limpiar filtros',
+      fr: 'Limpiar filtros-FR',
+      en: 'Limpiar filtros-EN'
+    }
    }
   };
 

@@ -1,3 +1,8 @@
 <p>
   drinks works!
 </p>
+<div class="noresults noresults--beverages" *ngIf="no_results">
+  <div class="noresults__wrapper">
+    <img src="../assets/images/shared/no-results_{{currentLang}}.svg" class="noresults__wrapper__image" alt="No results es" />
+  </div>
+</div>

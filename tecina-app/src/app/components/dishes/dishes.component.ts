@@ -17,12 +17,13 @@ export class DishesComponent implements OnInit {
     allergens: [],
     foodTypes: []
   };
-  dishes;
-  categories: {} = {};
-  foodTypes: {} = {};
-  allergens;
+  dishes:any[] = []
+  categories: any[] = [];
+  foodTypes: any[] = [];
+  allergens: any[] = [];
   filtersMenu = false;
   imagesPath;
+  no_results: boolean = false;
 
   currentConfig: SwiperConfigInterface = {
     observer: true,

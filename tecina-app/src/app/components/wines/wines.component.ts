@@ -15,14 +15,14 @@ export class WinesComponent implements OnInit {
     wineTypes: [] ,
     wineDO: []
   };
-
+  block_lange:boolean = false;
   wines: any[] = [];
   wineVarieties: any[] = [];
   wineTypes: any[] = [];
   wineDO: any[] = [];
   allWines = [];
   imagesPath:string;
-  no_results:boolean = false ;
+  no_results:boolean = false;
   winesReady:boolean = false;
   translations = {
     wines: {
@@ -100,6 +100,9 @@ export class WinesComponent implements OnInit {
         return this._tecinaApi.getWines()
           .map((wines: any) => {
             wines;
+
+            (winesDO.length > 25 )? this.block_lange = true: this.block_lange = false;
+            
             this.allWines = wines;
             let wines_do = [];
             let used_do = [];
@@ -146,9 +149,10 @@ export class WinesComponent implements OnInit {
  
   clearFilters(){
     this.winesFilters.wineTypes = [] ;
+    this.no_results = false;
     this.winesFilters.wineDO = [];
     this.wines = this._tecinaApi.subArray( this.allWines ,2);
-    this.goToIndex(0,300);
+    this.goToIndex(0,500);
   }
 
   inArray(value, args) {
@@ -189,7 +193,6 @@ export class WinesComponent implements OnInit {
     let _wineDO = _filters.wineDO;
     let _wines = (this.allWines).slice(0);
     let _filteredWines = [];
-
     
       for (var W = 0; W < _wines.length; W++) {
         var addWine = true;
@@ -205,13 +208,17 @@ export class WinesComponent implements OnInit {
         if (addWine) {
           _filteredWines.push(_wines[W]);
         }
-
+      }
+      
+      if (_filteredWines.length == 0){
+        this.no_results = true;
+        this.wines = _filteredWines;
+      }else{
+        this.no_results = false;
+        this.wines = this._tecinaApi.subArray(_filteredWines, 2);
+        this.goToIndex(0, 1000);
       }
 
-    this.no_results =  (_filteredWines.length == 0)? true : false;
-
-    this.wines = this._tecinaApi.subArray(_filteredWines, 2);
-    this.goToIndex(0, 500);
   }
 
 }
