@@ -11,7 +11,6 @@
       <p class="menu__summary__menu__name" >
        {{ menu.translate[currentLang].name}}
       </p>
-
       <p class="menu__summary__menu__note">
           {{ menu.translate[currentLang].description}}
       </p>
@@ -61,7 +60,7 @@
               </div>
             </div>
             <div class="menu-dish__image">
-              <img [src]="imagesPath +'/dishes/'+ dish.images[0]" onerror="this.src='../assets/images/shared/logo_mini.png';" class="dishes-row__dish__image" alt="Intro dish1" />
+              <img [src]="imagesPath +'/dishes/'+ dish.images[0]" onerror="this.src='../assets/images/shared/default_dish.png';" class="dishes-row__dish__image" alt="Intro dish1" />
             </div>
           </div>
         </div>

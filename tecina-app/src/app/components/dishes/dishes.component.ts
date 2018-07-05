@@ -44,39 +44,44 @@ export class DishesComponent implements OnInit {
     dishes: {
       title: {
         es: "Platos",
-        fr: "Platos - FR",
+        de: "Platos - DE",
         en: "Platos - EN"
       }
     },
     filters: {
       button: {
         es: "Ver filtros",
-        fr: "Ver filtros - FR",
+        de: "Ver filtros - DE",
         en: "Ver filtros - EN"
       },
       button_change: {
         es: "Cambiar filtros",
-        fr: "Cambiar filtros - FR",
+        de: "Cambiar filtros - DE",
         en: "Cambiar filtros - EN"
+      },
+      button_clear:{
+        es: 'Limpiar filtros',
+        de: 'Limpiar filtros-DE',
+        en: 'Limpiar filtros-EN'
       },
       title: {
         es: "Filtros",
-        fr: "Filtros - FR",
+        de: "Filtros - DE",
         en: "Filtros - EN"
       },
       allergen_title: {
         es: "Tipo de alérgeno",
-        fr: "Tipo de alérgeno - FR",
+        de: "Tipo de alérgeno - DE",
         en: "Tipo de alérgeno - EN"
       },
       foodtypes_title: {
         es: "Tipo de comida",
-        fr: "Tipo de comida  - FR",
+        de: "Tipo de comida  - DE",
         en: "Tipo de comida  - EN"
       },
       categores_title: {
         es: "Tipo de plato",
-        fr: "Tipo de plato - FR",
+        de: "Tipo de plato - DE",
         en: "Tipo de plato - EN"
       },
     }
@@ -122,7 +127,7 @@ export class DishesComponent implements OnInit {
           this.title_category = this.translations.dishes.title;
         }
 
-        return this._tecinaApi.getDishes(filters, []).map(
+        return this._tecinaApi.getDishes(filters).map(
           dishes => {
             return this._tecinaApi.subArray(dishes, 3);
           }
@@ -131,7 +136,12 @@ export class DishesComponent implements OnInit {
       .subscribe(
         dishes => {
           this.dishes = dishes;
-          this.goToIndex(0);
+          if(dishes.length != 0){
+            this.no_results = false;
+            this.goToIndex(0);
+          }else{
+            this.no_results = true;
+          }
         });
   }
 

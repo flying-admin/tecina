@@ -60,24 +60,24 @@ export class MenuComponent implements OnInit {
     menu: {
       page_title: {
         es: "Menús",
-        fr: "Menús - FR",
+        de: "Menús - DE",
         en: "Menús - EN"
       },
       pairing:{
         title: {
           es: "Maridaje",
-          fr: "Maridaje - FR",
+          de: "Maridaje - DE",
           en: "Maridaje - EN"
         },
         subtitle: {
           es: "Incluido en el menú",
-          fr: "Incluido en el menú - FR",
+          de: "Incluido en el menú - DE",
           en: "Incluido en el menú - EN"
         },
         variety:{
           es: 'Variedad',
-          fr: 'Variedad-FR',
-          en: 'Variedad-EN'
+          de: 'Variedad - DE',
+          en: 'Variedad - EN'
         }
       }
     }

@@ -11,56 +11,68 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class NavbarComponent implements OnInit, OnDestroy {
   currentLang = 'es';
-  langs = [];
-  categories = [];
-  foodTypes = [];
-  allergens = [];
-  dishes = [];
-  menus = [];
-  wines =[];
-  drinks =[];
-  mainMenu = false;
+  langs:any[] = [];
+  categories:any[] = [];
+  foodTypes:any[] = [];
+  allergens:any[] = [];
+  dishes:any[] = [];
+  menus:any[] = [];
+  wines:any[] = [];
+  drinks:any[] = [];
+  wineHighlight;
+  imagesPath:string;
+  mainMenu:boolean = false;
   translations = {
    nav: {
      allergen_title: {
        es:"Tipo de Alérgeno",
-       fr:"Tipo de Alérgeno - FR",
+       de:"Tipo de Alérgeno - DE",
        en:"Tipo de Alérgeno - EN"
      },
      foodtypes_title: {
        es:"Tipo de comida",
-       fr:"Tipo de comida - FR",
+       de:"Tipo de comida - DE",
        en:"Tipo de comida - EN"
      },
      wine_title: {
        es:"Carta de Vinos",
-       fr:"Carta de Vinos - FR",
+       de:"Carta de Vinos - DE",
        en:"Carta de Vinos - EN"
      },
      drinks_title: {
       es:"Carta de Bebidas",
-      fr:"Carta de Bebidas - FR",
+      de:"Carta de Bebidas - DE",
       en:"Carta de Bebidas - EN"
+    },
+    variety:{
+      es: 'Variedad',
+      de: 'Variedad-DE',
+      en: 'Variedad-EN'
+    },
+    do:{
+      es: 'D. O.',
+      de: 'D. O.-DE',
+      en: 'D. O.-EN'
     },
     menu_title: {
        es:"Menus",
-       fr:"Menus - FR",
+       de:"Menus - DE",
        en:"Menus - EN"
      },
     filter_title: {
        es:"Filtros",
-       fr:"Filtros - FR",
+       de:"Filtros - DE",
        en:"Filtros - EN"
      },
     menu: {
        es:"Ver Carta",
-       fr:"Ver Carta - FR",
+       de:"Ver Carta - DE",
        en:"Ver Carta - EN"
      },
      button:{
       es: 'Limpiar filtros',
-      fr: 'Limpiar filtros-FR',
-      en: 'Limpiar filtros-EN'
+      de: 'Limpiar filtros - DE',
+      en: 'Limpiar filtros - EN'
     }
    }
   };
@@ -74,10 +86,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor( 
       public _tecinaApi: TecinaApiService ,
       private router: Router,
-    ) {                                           
+    ) {    
+      this.imagesPath = this._tecinaApi.imagesPath + "/wines/";
+                                       
       this._tecinaApi.getLanguages().subscribe(languages => {
         this.langs = languages;
       });
+
       this._tecinaApi.getCategories().subscribe(categories => {
         this.categories = categories;
       });
@@ -97,8 +112,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this._tecinaApi.getMenus().subscribe(menus => {
         this.menus = menus;
       });
+
+      // DO cambiar por el vino destacado
       this._tecinaApi.getWines().subscribe(wines => {
         this.wines = wines;
+        if((this.wines).length > 0 ){
+          this.wineHighlight = this.wines[Math.floor(Math.random()*(this.wines).length)];
+        }
       });
 
       this._tecinaApi._mainMenu.subscribe(

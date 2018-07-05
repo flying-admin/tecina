@@ -73,8 +73,11 @@ export class TecinaApiService {
 
   private drinks = new BehaviorSubject([]);
   _drinks = this.drinks.asObservable();
- 
 
+  private drinkTypes = new BehaviorSubject([]);
+  _drinkTypes = this.drinkTypes.asObservable();
+
+  
   pageRoot = "http://tecina-api.local/";
   //public pageRoot = "http://tecina-api.local:8000/";
 
@@ -95,14 +98,15 @@ export class TecinaApiService {
     // this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
     this.setLanguages().subscribe((resp:any[]) => { this.languages.next(resp);});
     this.setHighlights().subscribe((resp:any[]) => { this.highlights.next(resp);});
-    this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
     // this.setWinesDO().subscribe((resp:any[]) => { this.winesDO.next(resp);});
     // this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
     // this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
 
-    //this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); /*console.log("dishes",resp)*/;});
-   // this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);/*console.log("wines",resp)*/});
-    this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);/*console.log("menus",resp) */});
+    //this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); ;});
+   // this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);});
+    this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
+    this.setDrinkTypes().subscribe((resp:any[]) => { this.drinkTypes.next(resp);});
+    this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
   }
 
 
@@ -316,96 +320,106 @@ export class TecinaApiService {
   getWinesDO(){return this._winesDO;}
   setWinesDO(): Observable<any>{return this.http.get(this.api + "/wine-do" ,this.httpOptions );}
  
+
+
   // Drinks
+  setDrinkTypes(): Observable<any>{
+    return this.http.get(this.api + "/drink-types" ,this.httpOptions );
+  }
+  getDrinkTypes(){
+    return this._drinkTypes;
+  }
+
+
   setDrinks(): Observable<any>{
     var data = [
       {
-        type: 4,
+        id_type: 4,
         name: 'Bitter Kas',
         price: 3.00,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Appletiser',
         price: 3.00,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Coca cola',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Seven up',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Fanta naranja',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Fanta limón',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Schweppes Tónica',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Schweppes Ginger Ale',
         price: 2.70,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Nestea limón',
         price: 2.90,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Nestea melocotón',
         price: 2.90,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Nestea limon sin azucar',
         price: 2.90,
       },
       {
-        type: 4,
+        id_type: 4,
         name: 'Zumo natural de naranja',
         price: 3.00,
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'Alhambra Reserva 1925',
         price: 2.90
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'Alhambra Reserva Roja',
         price: 2.90
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'La Sagra Premiun',
         price: 2.90
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'La Sacra Ipa',
         price: 2.90
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'Cerex Pilsen',
         price: 2.90
       },
       {
-        type: 3,
+        id_type: 3,
         name: 'Cerex Ibérica de bellota',
         price: 2.90
       }
@@ -413,6 +427,7 @@ export class TecinaApiService {
 
     return new BehaviorSubject(data).asObservable();
   }
+
   getDrinks(){
     return this._drinks;
   }

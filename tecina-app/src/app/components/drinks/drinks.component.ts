@@ -11,13 +11,31 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class DrinksComponent implements OnInit {
   imagesPath:string;
   currentLang: string = 'es';
-  no_results: boolean = true ;
-  drinkFilters = {};
+  no_results: boolean = false ;
+  drinkFilters = [];
   drinks:any[] = [];
   drinkTypes: any[] = [];
   allDrinks: any[] = [];
   translations = {
-    drinks: {}
+    drinks: {
+      page_title:{
+        es: 'Carta de bebidas',
+        de: 'Carta de bebidas - DE',
+        en: 'Carta de bebidas - EN'
+      },
+      filters:{
+        title:{
+          es: 'Tipo de bebida',
+          de: 'Tipo de bebida - DE',
+          en: 'Tipo de bebida - EN'
+        },
+        button:{
+          es: 'Limpiar filtros',
+          de: 'Limpiar filtros-DE',
+          en: 'Limpiar filtros-EN'
+        },
+      }
+    }
   };
 
   currentConfig: SwiperConfigInterface = {
@@ -42,10 +60,31 @@ export class DrinksComponent implements OnInit {
   }
   
   initialiseState(){
-    this._tecinaApi.getDrinks().subscribe(
+
+    this._tecinaApi.getDrinkTypes().flatMap( (drinkTypes:any[]) => {
+      this.drinkTypes = drinkTypes;
+      console.log("drinkTypes",drinkTypes);
+      
+      return  this._tecinaApi.getDrinks().map(
+        drinks => {
+          for (let D = 0; D < drinks.length; D++) {
+          
+            var drink_type = []
+            var type = this._tecinaApi.getObjectBy( drinkTypes,drinks[D]['id_type'] );
+
+            if (type.length != [] ){
+              drink_type.push(type);
+            }
+
+            drinks[D]['drink_type'] = drink_type;
+          }
+          return drinks;
+      })
+    }).subscribe(
       drinks => {
         this.allDrinks = drinks;
         this.drinks = this._tecinaApi.subArray(drinks, 2);
+        console.log("c drinks",drinks);
       }
     );
 
@@ -64,6 +103,28 @@ export class DrinksComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  getFilteredDrinks(){
+
+  }
+
+  changeDrinkFilters(filterId: string, isChecked: boolean) {
+    let index = this.drinkFilters.indexOf(filterId);
+    let change = false;
+
+    if (isChecked) {
+      if (index == -1) {
+        change = true;
+        this.drinkFilters.push(filterId);
+      }
+    } else {
+      if (index != -1) {
+        change = true;
+        this.drinkFilters.splice(index, 1);
+      }
+    }
+    change && this.getFilteredDrinks();
   }
 
   ngOnInit() {

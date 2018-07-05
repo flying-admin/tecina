@@ -1,4 +1,4 @@
-      <div class="dishes">
+      <div class="dishes" *ngIf="!no_results">
         <p class="dishes__title">
           <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
           <span>{{  ((currentFilters.categories).length == 1)? title_category[currentLang]['name'] :  title_category[currentLang] }}</span>
@@ -11,11 +11,11 @@
                 <a [routerLink]="['/dish',(  3 * i + j)]"  class="dishes-row__dish" *ngFor="let dish of group; index as j; let secondlast = last;">
                   <p class="dishes-row__dish__name">
                     <span class="dishes-row__dish__name--number">
-                        {{ ((  3 * i + j)+1) | number:'2.0-0'  }} 
+                        {{   3 * i + j + 1 | number:'2.0-0'  }} 
                     </span>
-                    <span class="dishes-row__dish__name--text"> {{ dish.translate[currentLang]['name'] }}</span>
+                    <span class="dishes-row__dish__name--text"> {{ dish.translate[currentLang]['name'] }} </span>
                   </p>
-                  <img [src]="imagesPath + dish.images[0]" class="dishes-row__dish__image" alt="Intro dish1" />
+                  <img [src]="imagesPath + dish.image" onerror="this.src='../assets/images/shared/default_dish.png';" class="dishes-row__dish__image" alt="Intro dish1" />
                   <ul class="dishes-row__dish__allergens">
                     <li *ngFor="let allergen of dish.dish_allergens ">
                         <span [class]="'icon-'+ allergen.icon "></span>
@@ -106,8 +106,11 @@
               </ul>
             </div>
           </div>
-          <div class="filters__section__clear" (click)="clearFilters()">
-              <span>Limpiar filtros</span>
-            </div>
+          <div class="header__menu__filter__clear" (click)="clearFilters()">
+            <span class="header__menu__filter__clear__link">
+              <span class="icon-trash"></span>
+              <span>{{ translations.filters.button_clear[currentLang] }}</span>
+            </span>
+          </div>
         </div>
       </div>

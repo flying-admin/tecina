@@ -28,43 +28,43 @@ export class WinesComponent implements OnInit {
     wines: {
       page_title:{
         es: 'Carta de vinos',
-        fr: 'Carta de vinos-FR',
+        de: 'Carta de vinos-DE',
         en: 'Carta de vinos-EN'
       },
       variety:{
         es: 'Variedad',
-        fr: 'Variedad-FR',
+        de: 'Variedad-DE',
         en: 'Variedad-EN'
       },
       do:{
         es: 'D. O.',
-        fr: 'D. O.-FR',
+        de: 'D. O.-DE',
         en: 'D. O.-EN'
       },
       filters: {
         type:{
           es: 'Tipo de vino',
-          fr: 'Tipo de vino-FR',
+          de: 'Tipo de vino-DE',
           en: 'Tipo de vino-EN'
         },
         do_title:{
           es: 'Denominaciones de origen',
-          fr: 'Denominaciones de origen-FR',
+          de: 'Denominaciones de origen-DE',
           en: 'Denominaciones de origen-EN'
         },
         do_section_1:{
           es: 'Peninsula',
-          fr: 'Peninsula-FR',
+          de: 'Peninsula-DE',
           en: 'Peninsula-EN'
         },
         do_section_2:{
           es: 'Islas Canarias',
-          fr: 'Islas Canarias-FR',
+          de: 'Islas Canarias-DE',
           en: 'Islas Canarias-EN'
         },
         button:{
           es: 'Limpiar filtros',
-          fr: 'Limpiar filtros-FR',
+          de: 'Limpiar filtros-DE',
           en: 'Limpiar filtros-EN'
         },
       }
@@ -99,10 +99,7 @@ export class WinesComponent implements OnInit {
       (winesDO: any) => {
         return this._tecinaApi.getWines()
           .map((wines: any) => {
-            wines;
-
             (winesDO.length > 25 )? this.block_lange = true: this.block_lange = false;
-            
             this.allWines = wines;
             let wines_do = [];
             let used_do = [];
@@ -122,9 +119,15 @@ export class WinesComponent implements OnInit {
     .subscribe(
       (wines:any) => {
         this.wines = wines;
-        this.goToIndex(0);
+        
         if(this.wines.length > 0){
           this.winesReady = true;
+        }
+        if(wines.length != 0 ){
+          this.goToIndex(0);
+          this.no_results= false;
+        }else{
+          this.no_results= true;
         }
     });
     

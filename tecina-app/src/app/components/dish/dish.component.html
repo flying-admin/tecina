@@ -1,4 +1,4 @@
-<div class="dish ">
+<div class="dish " *ngIf="!no_results">
   <img src="../assets/images/shared/logo.png" alt="Tasca Fandango" class="dish__logo" />
   <a [routerLink]="['/dishes']" class="dish__return">
     <span class="icon-return"></span>
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="col-xs-7">
-              <img [src]="imagesPath + dish.images[0]" class="dish-item__image" alt="Intro dish1" />
+              <img [src]="imagesPath + dish.image" onerror="this.src='../assets/images/shared/default_dish.png';" class="dish-item__image" alt="Intro dish1" />
             </div>
           </div>
           <div class="dish-item__counter">
@@ -51,5 +51,14 @@
     <div class="swiper-button-next dish__slider__nav dish__slider__nav--next">
       <span class="icon-chevron-down"></span>
     </div>
+  </div>
+</div>
+<div class="noresults" *ngIf="no_results">
+  <p class="noresults__title">
+    <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+    <span>uups</span>
+  </p>
+  <div class="noresults__wrapper">
+    <img src="../assets/images/shared/no-results_{{currentLang}}.svg" class="noresults__wrapper__image" alt="No results es" />
   </div>
 </div>

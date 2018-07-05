@@ -17,6 +17,7 @@ export class DishComponent implements OnInit {
   initialSlider:number = 0;
   dish_id:number;
   imagesPath;
+  no_results:boolean = false;
 
   currentConfig: SwiperConfigInterface = {
     a11y: true,
@@ -37,7 +38,7 @@ export class DishComponent implements OnInit {
     dish: {
       allergens_title: {
         es:"Alergenos",
-        fr:"Alergenos - FR",
+        de:"Alergenos - DE",
         en:"Alergenos - EN"
       }
     }
@@ -72,7 +73,13 @@ export class DishComponent implements OnInit {
     .subscribe(
       dishes => { 
         this.dishes = dishes;
-        this.goToIndex( this.initialSlider );
+        if(dishes.length != 0){
+          this.no_results = false;
+          this.goToIndex( this.initialSlider );
+        }else{
+          this.no_results = true;
+        }
+        
     });
   }
 

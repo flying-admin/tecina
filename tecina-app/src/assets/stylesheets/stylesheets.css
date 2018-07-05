@@ -7507,23 +7507,23 @@ button.swiper-pagination-bullet {
   overflow: hidden
 }
 
-.noresults .noresults--wines {
+.noresults--wines {
   width: 65%;
   -ms-flex-preferred-size: 65%;
-  flex-basis: 65%
+  flex-basis: 65%;
 }
 
-.noresults .noresults--wines .noresults__title {
-  display: none
+.noresults--wines .noresults__title {
+  display: none;
 }
 
-.noresults .noresults--beverages {
+.noresults--beverages {
   width: 75%;
   -ms-flex-preferred-size: 75%;
   flex-basis: 75%
 }
 
-.noresults .noresults--beverages .noresults__title {
+.noresults--beverages .noresults__title {
   display: none
 }
 

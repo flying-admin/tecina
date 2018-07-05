@@ -8,14 +8,14 @@
       <p class="wines__filters__block__title">{{ translations.wines.filters.type[currentLang] }}</p>
       <ul class="wines__filters__block__list" *ngIf="wineTypes.length > 0">
         <li *ngFor="let wineType of wineTypes" >
-            <input type="checkbox" [value]="wineType.id" 
-              [id]="'wineType-'+ wineType.id" 
-              [checked]="inArray(winesFilters.wineTypes ,wineType.id)"
-              (change)="changeWinesFilters('wineTypes', wineType.id, $event.target.checked)">
-            <label [for]="'wineType-' + wineType.id">
-              <span>{{ wineType.translate[currentLang] }}</span>
-            </label>
-          </li>
+          <input type="checkbox" [value]="wineType.id" 
+            [id]="'wineType-'+ wineType.id" 
+            [checked]="inArray(winesFilters.wineTypes ,wineType.id)"
+            (change)="changeWinesFilters('wineTypes', wineType.id, $event.target.checked)">
+          <label [for]="'wineType-' + wineType.id">
+            <span>{{ wineType.translate[currentLang] }}</span>
+          </label>
+        </li>
       </ul>
     </div>
     <div class="wines__filters__block" [ngClass]="{'wines__filters__block--large': block_lange }"  *ngIf="winesReady">
@@ -52,7 +52,7 @@
           <div class="wines-row">
             <div class="wines-row__wine" *ngFor="let wine of group">
               <div class="wines-row__wine__image">
-                <img src="../assets/images/shared/menu-bottle.png" alt="Menu bottle" />
+                <img [src]="imagesPath + wine.image"  onerror="this.src='../assets/images/shared/menu-bottle.png';" alt="Menu bottle" />
               </div>
               <div class="wines-row__wine__info">
                 <p class="wines-row__wine__info__name">{{ wine.name }}</p>
