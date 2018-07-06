@@ -14,7 +14,7 @@
             <ul>
               <li *ngFor="let category  of categories">
                 <a  (click)="goToDishes(category.id) ;mainMenuStatus(false)"  >{{ category.translate[currentLang].name }}
-                  <span class="counter">({{ (getFilteredDishes( [category.id] )).length }})</span>
+                  <sup>({{ (getFilteredDishes( [category.id] )).length }})</sup>
                 </a>
               </li>
             </ul>
@@ -23,7 +23,7 @@
             <ul>
               <li *ngIf="menus.length > 0">
                 <a [routerLink]="['/menus']" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
-                <span class="counter">({{ menus.length }})</span>
+                <sup>({{ menus.length }})</sup>
                 </a>
               </li>
             </ul>
@@ -34,12 +34,12 @@
             <ul>
               <li *ngIf="drinks.length > 0">
                 <a [routerLink]="['/drinks']" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
-                  <span class="counter">({{ drinks.length }})</span>
+                  <sup>({{ drinks.length }})</sup>
                 </a>
               </li>
               <li *ngIf="wines.length > 0">
                 <a [routerLink]="['/wines']" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
-                  <span class="counter">({{ wines.length }})</span>
+                  <sup>({{ wines.length }})</sup>
                 </a>
               </li>
               <li class="header__menu__nav__feature">

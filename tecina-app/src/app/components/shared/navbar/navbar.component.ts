@@ -114,11 +114,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
 
       // DO cambiar por el vino destacado
-      this._tecinaApi.getWines().subscribe(wines => {
+      this._tecinaApi.getWines().flatMap(wines => {
         this.wines = wines;
-        if((this.wines).length > 0 ){
-          this.wineHighlight = this.wines[Math.floor(Math.random()*(this.wines).length)];
-        }
+        return this._tecinaApi.getHighLightedWine();
+      }).subscribe(
+        wineHighlight => {
+          if((this.wines).length > 0 ){
+            this.wineHighlight = this._tecinaApi.getObjectBy(this.wines,wineHighlight);
+          }
       });
 
       this._tecinaApi._mainMenu.subscribe(

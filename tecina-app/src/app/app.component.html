@@ -1,4 +1,4 @@
-<div class="body-wrapper" [ngClass]="{'header--expanded': mainMenu}">
+<div class="body-wrapper lang-{{currentLang}}" [ngClass]="{'header--expanded': mainMenu} ">
     <app-navbar></app-navbar>
     <div class="content-wrapper">
       <router-outlet></router-outlet>
