@@ -20,7 +20,7 @@ class CategoriesTableSeeder extends Seeder
         ];
 
         for ($i = 0 ; $i < count($dish_types['es']) ; $i++){
-            DB::table('categories')->insert([
+           $categoryID = DB::table('categories')->insertGetId([
                 'id' => NULL
             ]);
         }
@@ -29,7 +29,7 @@ class CategoriesTableSeeder extends Seeder
             foreach ($lang as $lan) {
                 DB::table('categories_translations')->insert([
                     [
-                        'id_category' => $i+1,
+                        'id_category' => $categoryID,
                         'id_language' => $lan->id,
                         'name' =>$dish_types[$lan->code][$i],
                         'description' => $dish_types[$lan->code][$i]
