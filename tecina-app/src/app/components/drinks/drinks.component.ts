@@ -61,30 +61,25 @@ export class DrinksComponent implements OnInit {
   
   initialiseState(){
 
-    this._tecinaApi.getDrinkTypes().flatMap( (drinkTypes:any[]) => {
-      this.drinkTypes = drinkTypes;
+    this._tecinaApi.getDrinkTypes().subscribe(
+      drinkTypes => {
+         this.drinkTypes = drinkTypes;
+        }
+    );
       
-      return  this._tecinaApi.getDrinks().map(
-        drinks => {
-          for (let D = 0; D < drinks.length; D++) {
-          
-            var drink_type = []
-            var type = this._tecinaApi.getObjectBy( drinkTypes,drinks[D]['id_type'] );
-
-            if (type.length != [] ){
-              drink_type.push(type);
-            }
-
-            drinks[D]['drink_type'] = drink_type;
-          }
-          return drinks;
-      })
-    }).subscribe(
+    this._tecinaApi.getDrinks().subscribe(
       drinks => {
+        console.log("drinks",drinks);
         this.allDrinks = drinks;
         this.drinks = this._tecinaApi.subArray(drinks, 2);
-      }
-    );
+        
+        if(drinks.length != 0 ){
+          this.goToIndex(0);
+          this.no_results= false;
+        }else{
+          this.no_results= true;
+        }
+    });
   }
 
   clearFilters(){
@@ -118,7 +113,7 @@ export class DrinksComponent implements OnInit {
     for (var D = 0; D < _drinks.length; D++) {
       var addWine = true;
 
-      if (_filters.length != 0 && _drinks[D].id_type != null && _filters.indexOf(_drinks[D].id_type) == -1) {
+      if (_filters.length != 0 && _drinks[D].drink_type_id != null && _filters.indexOf(_drinks[D].drink_type_id) == -1) {
         addWine = false;
       }
 

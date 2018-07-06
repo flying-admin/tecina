@@ -123,6 +123,7 @@ export class WinesComponent implements OnInit {
         if(this.wines.length > 0){
           this.winesReady = true;
         }
+        
         if(wines.length != 0 ){
           this.goToIndex(0);
           this.no_results= false;

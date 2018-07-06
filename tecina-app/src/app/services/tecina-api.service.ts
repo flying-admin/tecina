@@ -105,8 +105,9 @@ export class TecinaApiService {
     //this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); ;});
    // this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);});
     this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
-    this.setDrinkTypes().subscribe((resp:any[]) => { this.drinkTypes.next(resp);});
-    this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
+    //this.setDrinkTypes().subscribe((resp:any[]) => { this.drinkTypes.next(resp);});
+   // this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
+   this.setCompleteDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
   }
 
 
@@ -332,352 +333,7 @@ export class TecinaApiService {
 
 
   setDrinks(): Observable<any>{
-    var data = [
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Bitter Kas',
-            description: 'Bitter Kas',
-          },
-          de: {
-            name: 'Bitter Kas',
-            description: 'Bitter Kas',
-          },
-          en: {
-            name: 'Bitter Kas',
-            description: 'Bitter Kas',
-          }
-        },
-        price: 3.00,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Appletiser',
-            description: 'Appletiser',
-          },
-          de: {
-            name: 'Appletiser',
-            description: 'Appletiser',
-          },
-          en: {
-            name: 'Appletiser',
-            description: 'Appletiser',
-          }
-        },
-        price: 3.00,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Coca cola',
-            description: 'Coca cola',
-          },
-          de: {
-            name: 'Coca cola',
-            description: 'Coca cola',
-          },
-          en: {
-            name: 'Coca cola',
-            description: 'Coca cola',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Seven up',
-            description: 'Seven up',
-          },
-          de: {
-            name: 'Seven up',
-            description: 'Seven up',
-          },
-          en: {
-            name: 'Seven up',
-            description: 'Seven up',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Fanta naranja',
-            description: 'Fanta naranja',
-          },
-          de: {
-            name: 'Fanta naranja',
-            description: 'Fanta naranja',
-          },
-          en: {
-            name: 'Fanta naranja',
-            description: 'Fanta naranja',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Fanta limón',
-            description: 'Fanta limón',
-          },
-          de: {
-            name: 'Fanta limón',
-            description: 'Fanta limón',
-          },
-          en: {
-            name: 'Fanta limón',
-            description: 'Fanta limón',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Schweppes Tónica',
-            description: 'Schweppes Tónica',
-          },
-          de: {
-            name: 'Schweppes Tónica',
-            description: 'Schweppes Tónica',
-          },
-          en: {
-            name: 'Schweppes Tónica',
-            description: 'Schweppes Tónica',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Schweppes Ginger Ale',
-            description: 'Schweppes Ginger Ale',
-          },
-          de: {
-            name: 'Schweppes Ginger Ale',
-            description: 'Schweppes Ginger Ale',
-          },
-          en: {
-            name: 'Schweppes Ginger Ale',
-            description: 'Schweppes Ginger Ale',
-          }
-        },
-        price: 2.70,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Nestea limón',
-            description: 'Nestea limón',
-          },
-          de: {
-            name: 'Nestea limón',
-            description: 'Nestea limón',
-          },
-          en: {
-            name: 'Nestea limón',
-            description: 'Nestea limón',
-          }
-        },
-        price: 2.90,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Nestea melocotón',
-            description: 'Nestea melocotón',
-          },
-          de: {
-            name: 'Nestea melocotón',
-            description: 'Nestea melocotón',
-          },
-          en: {
-            name: 'Nestea melocotón',
-            description: 'Nestea melocotón',
-          }
-        },
-        price: 2.90,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Nestea limon sin azucar',
-            description: 'Nestea limon sin azucar',
-          },
-          de: {
-            name: 'Nestea limon sin azucar',
-            description: 'Nestea limon sin azucar',
-          },
-          en: {
-            name: 'Nestea limon sin azucar',
-            description: 'Nestea limon sin azucar',
-          }
-        },
-        price: 2.90,
-      },
-      {
-        id_type: 4,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Zumo natural de naranja',
-            description: 'Zumo natural de naranja',
-          },
-          de: {
-            name: 'Zumo natural de naranja',
-            description: 'Zumo natural de naranja',
-          },
-          en: {
-            name: 'Zumo natural de naranja',
-            description: 'Zumo natural de naranja',
-          }
-        },
-        price: 3.00,
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Alhambra Reserva 1925',
-            description: 'Alhambra Reserva 1925',
-          },
-          de: {
-            name: 'Alhambra Reserva 1925',
-            description: 'Alhambra Reserva 1925',
-          },
-          en: {
-            name: 'Alhambra Reserva 1925',
-            description: 'Alhambra Reserva 1925',
-          }
-        },
-        price: 2.90
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Alhambra Reserva Roja',
-            description: 'Alhambra Reserva Roja',
-          },
-          de: {
-            name: 'Alhambra Reserva Roja',
-            description: 'Alhambra Reserva Roja',
-          },
-          en: {
-            name: 'Alhambra Reserva Roja',
-            description: 'Alhambra Reserva Roja',
-          }
-        },
-        price: 2.90
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'La Sagra Premiun',
-            description: 'La Sagra Premiun',
-          },
-          de: {
-            name: 'La Sagra Premiun',
-            description: 'La Sagra Premiun',
-          },
-          en: {
-            name: 'La Sagra Premiun',
-            description: 'La Sagra Premiun',
-          }
-        },
-        price: 2.90
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'La Sacra Ipa',
-            description: 'La Sacra Ipa',
-          },
-          de: {
-            name: 'La Sacra Ipa',
-            description: 'La Sacra Ipa',
-          },
-          en: {
-            name: 'La Sacra Ipa',
-            description: 'La Sacra Ipa',
-          }
-        },
-        price: 2.90
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Cerex Pilsen',
-            description: 'Cerex Pilsen',
-          },
-          de: {
-            name: 'Cerex Pilsen',
-            description: 'Cerex Pilsen',
-          },
-          en: {
-            name: 'Cerex Pilsen',
-            description: 'Cerex Pilsen',
-          }
-        },
-        price: 2.90
-      },
-      {
-        id_type: 3,
-        image: "no-image.png",
-        translate: {
-          es: {
-            name: 'Cerex Ibérica de bellota',
-            description: 'Cerex Ibérica de bellota',
-          },
-          de: {
-            name: 'Cerex Ibérica de bellota',
-            description: 'Cerex Ibérica de bellota',
-          },
-          en: {
-            name: 'Cerex Ibérica de bellota',
-            description: 'Cerex Ibérica de bellota',
-          }
-        },
-        price: 2.90
-      }
-    ];
-
-    return new BehaviorSubject(data).asObservable();
+    return this.http.get(this.api + "/drinks" ,this.httpOptions );
   }
 
   getDrinks(){
@@ -691,6 +347,31 @@ export class TecinaApiService {
     return this.http.get(this.api + "/menus" ,this.httpOptions );
   }
 
+  setCompleteDrinks(): Observable<any>{
+    return Observable.forkJoin([
+      this.setDrinks().map((res:Response) => res),
+      this.setDrinkTypes().map((res:Response) => res)
+    ])
+    .map((data: any[]) => {
+      let drinks: any = data[0];
+      let drink_types: any[] = data[1];
+
+      this.drinkTypes.next(drink_types);
+      console.log(drink_types);
+      
+      for (let D = 0; D < drinks.length; D++) {
+        var drink_type = []
+            var type = this.getObjectBy( drink_types,drinks[D]['drink_type_id'] );
+
+            if (type.length != [] ){
+              drink_type.push(type);
+            }
+
+          drinks[D]['drink_type'] = drink_type;
+      }
+      return  drinks;
+    });
+  }
 
   setCompleteWines(): Observable<any>{
     return Observable.forkJoin([
