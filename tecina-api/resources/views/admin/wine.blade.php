@@ -35,7 +35,7 @@
                       <td>#{{$wine->id}}</td>
                       <td>{{$wine->name}}</td>
                       <td>
-                        <a href="/api/wines/{{$wine->id}}/edit" class="btn btn-primary a-btn-slide-text">
+                        <a href="/api/wines/{{$wine->id}}/edit" class="btn btn-primary">
                           <i class="material-icons">edit</i>
                           <span>Editar</span>
                         </a>
