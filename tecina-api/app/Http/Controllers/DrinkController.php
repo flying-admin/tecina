@@ -16,7 +16,7 @@ class DrinkController extends Controller
     {
       $data=[];
       foreach(Drink::all() as $drink){
-        $drink->translation=prettyTranslate($drink->getTranslate()->get());
+        $drink->translate=prettyTranslate($drink->getTranslate()->get());
         $data[]=$drink;
       }
       return $data;
