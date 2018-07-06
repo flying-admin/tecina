@@ -45,7 +45,7 @@
               <li class="header__menu__nav__feature">
                 <a [routerLink]="['/wines']" class="feat" *ngIf="wineHighlight">
                   <div class="feat__image">
-                    <img src="" onerror="this.src='../assets/images/shared/default_drink.png';" alt="Menu bottle" />
+                    <img [src]="wineHighlight.image"  src-fallback="{{ 'assets/images/shared/default_drink.png' }}" alt="Menu bottle" />
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">{{ wineHighlight.name }} <br>

@@ -15,7 +15,7 @@
                     </span>
                     <span class="dishes-row__dish__name--text"> {{ dish.translate[currentLang]['name'] }} </span>
                   </p>
-                  <img [src]="imagesPath + dish.image" onerror="this.src='../assets/images/shared/default_dish.png';" class="dishes-row__dish__image" alt="Intro dish1" />
+                  <img [src]="imagesPath + dish.image"   src-fallback="{{ '../assets/images/shared/default_dish.png' }}"  class="dishes-row__dish__image" alt="Intro dish1" />
                   <ul class="dishes-row__dish__allergens">
                     <li *ngFor="let allergen of dish.dish_allergens ">
                         <span [class]="'icon-'+ allergen.icon "></span>

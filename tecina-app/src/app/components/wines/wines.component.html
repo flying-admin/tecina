@@ -52,7 +52,7 @@
           <div class="wines-row">
             <div class="wines-row__wine" *ngFor="let wine of group">
               <div class="wines-row__wine__image">
-                <img [src]="imagesPath + wine.image"  onerror="this.src='../assets/images/shared/default_drink.png';" alt="Menu bottle" />
+                <img [src]="imagesPath + wine.image" src-fallback="{{ '../assets/images/shared/default_drink.png' }}" alt="Menu bottle" />
               </div>
               <div class="wines-row__wine__info">
                 <p class="wines-row__wine__info__name">{{ wine.name }}</p>
