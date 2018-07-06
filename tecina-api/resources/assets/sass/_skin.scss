@@ -198,4 +198,15 @@
       padding:  20px 0 0;
     }
   }
+
+  input[type=file]{
+    border: none;
+    background-color: transparent;
+
+    &::-webkit-file-upload-button {
+      background-color: rgba($primary, 0.1);
+      border: none;
+      border-radius: 5px;
+    }
+  }
 }

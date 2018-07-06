@@ -10619,6 +10619,17 @@ a.text-dark:focus {
   padding: 20px 0 0;
 }
 
+.card input[type=file] {
+  border: none;
+  background-color: transparent;
+}
+
+.card input[type=file]::-webkit-file-upload-button {
+  background-color: rgba(65, 134, 37, 0.1);
+  border: none;
+  border-radius: 5px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

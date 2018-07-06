@@ -13,21 +13,23 @@ class FoodTypesTableSeeder extends Seeder
     {
         $lang =  DB::table('languages')->get();
 
-        $food_types = ['comida vegana','comida baja en sal','comida saludable'];
+        $food_types = [
+            'es' =>[ 'comida vegana', 'comida saludable', 'comida baja en sal'],
+            'en' => [ 'vegan', 'healthy', 'low in salt'],  
+            'de' =>[ 'vegan', 'gesund', 'wenig Salz']
+          ];
 
-        for ($i = 0 ; $i < count($food_types) ; $i++){
+        for ($i = 0 ; $i < count($food_types['es']) ; $i++){
             DB::table('food_types')->insert([
                 'id' => NULL
             ]);
-        }
-
-        for ($i = 0 ; $i < count($food_types) ; $i++) {
+  
             foreach ($lang as $lan) {
                 DB::table('food_types_translations')->insert([
                     [
                         'id_food_type' => $i+1,
                         'id_language' => $lan->id,
-                        'name' =>$lan->code .'_'.$food_types[$i]
+                        'name' => $food_types[$lan->code][$i]
                     ]
                 ]);
             }
