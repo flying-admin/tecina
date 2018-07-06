@@ -20,14 +20,14 @@ class FoodTypesTableSeeder extends Seeder
           ];
 
         for ($i = 0 ; $i < count($food_types['es']) ; $i++){
-            DB::table('food_types')->insert([
+            $foodTypeID = DB::table('food_types')->insertGetId([
                 'id' => NULL
             ]);
   
             foreach ($lang as $lan) {
                 DB::table('food_types_translations')->insert([
                     [
-                        'id_food_type' => $i+1,
+                        'id_food_type' => $foodTypeID,
                         'id_language' => $lan->id,
                         'name' => $food_types[$lan->code][$i]
                     ]
