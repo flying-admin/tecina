@@ -14,7 +14,7 @@ class CreateWinesTable extends Migration
     public function up()
     {
         Schema::create('wines', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
             $table->string('image')->nullable();
             $table->string('name');
             $table->integer('id_wine_type')->unsigned()->nullable();

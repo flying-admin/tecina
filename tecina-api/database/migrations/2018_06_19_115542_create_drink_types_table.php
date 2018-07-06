@@ -14,7 +14,7 @@ class CreateDrinkTypesTable extends Migration
     public function up()
     {
         Schema::create('drink_types', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
           });
     }
 

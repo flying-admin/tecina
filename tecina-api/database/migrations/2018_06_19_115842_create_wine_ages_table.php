@@ -14,7 +14,7 @@ class CreateWineAgesTable extends Migration
     public function up()
     {
         Schema::create('wine_ages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->smallIncrements('id');
         });
     }
 
