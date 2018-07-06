@@ -34,6 +34,7 @@
     text-transform: uppercase;
     z-index: 2;
 
+
     span {
       display: inline-block;
       line-height: 60px;
@@ -47,6 +48,20 @@
       left: 33px;
       width: 77px;
       height: auto;
+    }
+
+    .lang-de & {
+      padding-left: 33px;
+
+      span {
+        float: left;
+      }
+
+      img {
+        display: inline-block;
+        float: left;
+        position: static;
+      }
     }
   }
 
