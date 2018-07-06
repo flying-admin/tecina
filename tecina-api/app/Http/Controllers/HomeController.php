@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Menu;
 use App\helpers;
 use App\Dish;
+use App\Misc;
 
 class HomeController extends Controller
 {
@@ -62,7 +63,8 @@ class HomeController extends Controller
     {
       $langs=getLangs();
       $wines=\App\Wine::paginate(20);
-      return view('admin.wine', ['wines'=>$wines]);
+      $highlighted_wine = Misc::where('key','highlighted_wine')->first()->value;
+      return view('admin.wine', ['wines'=>$wines,'highlighted_wine'=>$highlighted_wine]);
     }
     public function listDish(request $request)
     {

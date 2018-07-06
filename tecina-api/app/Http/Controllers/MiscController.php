@@ -67,11 +67,11 @@ class MiscController extends Controller
      * @param  \App\Misc  $misc
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Misc $misc)
+    public function update(Request $request, $misc)
     {
-        //
+        Misc::where('key',$request->key)->update(['value'=>$request->value]);
+        return ['key'=>$request->key,'value'=>$request->value];
     }
-
     /**
      * Remove the specified resource from storage.
      *
