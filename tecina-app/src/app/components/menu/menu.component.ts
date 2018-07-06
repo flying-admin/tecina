@@ -116,6 +116,7 @@ export class MenuComponent implements OnInit {
     ).subscribe(
       menu => {
         this.menu = menu;
+        
         if(this.menu == []){
           this.router.navigate(['/menus'])
         }
@@ -136,6 +137,10 @@ export class MenuComponent implements OnInit {
     setTimeout(() => {
       (this.swiperView['_results'][0]).setIndex(i);
     }, delay);
+  }
+
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
   }
 
   goToIndexPairing(i,delay=1000) {

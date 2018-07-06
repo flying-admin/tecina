@@ -6,7 +6,7 @@
   <a [routerLink]="['/menus']" class="menu__return">
     <span class="icon-return"></span>
   </a>
-  <div class="menu__summary" *ngIf="menu.translate">
+  <div class="menu__summary" *ngIf="hasProp(menu, 'menu_wines')">
     <div class="menu__summary__menu">
       <p class="menu__summary__menu__name" >
        {{ menu.translate[currentLang].name}}
@@ -27,11 +27,11 @@
       </span>
     </div>
   </div>
-  <div class="menu__details">
+  <div class="menu__details" *ngIf="hasProp(menu, 'menu_dishes')">
     <div class="swiper-container menu__details__slider"  [swiper]="swiperDishesConfig" >
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
-        <div class="swiper-slide menu__details__slider__item" *ngFor="let dish of menu.menu_dishes; index as i ">
+        <div class="swiper-slide menu__details__slider__item" *ngFor="let dish of menu['menu_dishes']; index as i ">
           <div class="menu-dish">
             <div class="menu-dish__info">
               <p class="menu-dish__info__name">
@@ -105,10 +105,10 @@
             </div>
           </div>
         </div>
-        <div class="swiper-button-prev wine-list__nav wine-list__nav--prev" *ngIf="wines.lenght > 3">
+        <div class="swiper-button-prev wine-list__nav wine-list__nav--prev" *ngIf="wines.length > 3">
           <span class="icon-chevron-up"></span>
         </div>
-        <div class="swiper-button-next wine-list__nav wine-list__nav--next" *ngIf="wines.lenght > 3">
+        <div class="swiper-button-next wine-list__nav wine-list__nav--next" *ngIf="wines.length > 3">
           <span class="icon-chevron-down"></span>
         </div>
       </div>
