@@ -70,6 +70,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WineClassesTableSeeder::class);
         $this->call(WineTableSeeder::class);
         $this->call(MenusWinesTableSeeder::class);
+        $this->call(DrinksTableSeeder::class);
 
 
 
