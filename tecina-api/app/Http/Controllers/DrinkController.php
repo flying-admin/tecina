@@ -87,4 +87,25 @@ class DrinkController extends Controller
     {
         //
     }
+
+
+
+    // public function uploadDrinkImage(Request $request, $drinkId){
+    //     $respuesta=['drinkId'=>$drinkId];
+    //     if ($request->hasFile('file'))
+    //     {
+    //     $file = $request->file('file');
+    //     $image_name = time()."-".$file->getClientOriginalName();
+    //     $img_route='/img/drinks/'. $image_name;
+    //     $file->move('img/drinks', $image_name);
+    //     $drink = \App\Drink::find($drinkId);
+    //     $drink->image=$img_route;
+    //     $drink->save();
+    //     $respuesta ['img'] = $img_route;
+    //     }else{
+    //       $respuesta ['img'] = 'not-found.jpg';
+    //     }
+    //     // hay que redimensionarla a este tamaño: 1760 × 960
+    //     return response()->json($respuesta,200);
+    //   }
 }
