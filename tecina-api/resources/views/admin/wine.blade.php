@@ -34,7 +34,12 @@
                     <tr>
                       <td>#{{$wine->id}}</td>
                       <td>{{$wine->name}}</td>
-                      <td><a href="/api/wines/{{$wine->id}}/edit" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><span><strong>Editar</strong></span></a></td>
+                      <td>
+                        <a href="/api/wines/{{$wine->id}}/edit" class="btn btn-primary a-btn-slide-text">
+                          <i class="material-icons">edit</i>
+                          <span>Editar</span>
+                        </a>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
