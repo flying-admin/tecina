@@ -184,8 +184,8 @@
           text-transform: uppercase;
           color: $black;
           text-decoration: none;
-          border-top-right-radius: 2px;
-          border-top-left-radius: 2px;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
 
           &.active {
             background-color: rgba($primary, 0.1);
