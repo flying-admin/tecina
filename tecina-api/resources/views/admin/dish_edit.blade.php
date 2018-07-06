@@ -114,7 +114,7 @@
               <select id="add_dish_allergen">
                 @foreach(db::table('allergens_translations')->whereNotIn('id_allergen',$allergenIds)->where('id_language',1)->get() as $allergen)
                   <option value="{{$allergen->id_allergen}}">
-                    {{$allergenTranslations[$allergen->id_allergen][$lang->code]['name']}}
+                    {{$allergenTranslations[$allergen->id_allergen]['es']['name']}}
                   </option>
                 @endforeach
               </select>
