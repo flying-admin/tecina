@@ -78,7 +78,7 @@ export class TecinaApiService {
   _drinkTypes = this.drinkTypes.asObservable();
 
   
-  pageRoot = "http://tecina.flyingpigs.es/fandango";
+  pageRoot = "https://tecina.flyingpigs.es/fandango/public/";
  // pageRoot = "http://tecina-api.local/";
   //public pageRoot = "http://tecina-api.local:8000/";
 
