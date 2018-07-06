@@ -24,19 +24,15 @@ class AllegensTableSeeder extends Seeder
 
         for ($i = 0 ; $i < count($allergens_icons) ; $i++){
             $allergenId = DB::table('allergens')->insertGetId([
-                [
                     'icon' => $allergens_icons[$i]
-                ]
             ]);
 
             foreach ($lang as $lan) {
                 DB::table('allergens_translations')->insert([
-                    [
                         'id_allergen' => $allergenId,
                         'id_language' => $lan->id,
                         'name' => $allergens[$lan->code][$i],
                         'description' => $allergens[$lan->code][$i]
-                    ]
                 ]);
             }
         }
