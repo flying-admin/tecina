@@ -14,8 +14,8 @@ class CreateDishesFoodTypesTable extends Migration
     public function up()
     {
         Schema::create('dishes_food_types', function (Blueprint $table) {
-            $table->smallInteger('id_food_type')->unsigned();
-            $table->smallInteger('id_dish')->unsigned();
+            $table->tinyInteger('id_food_type')->unsigned();
+            $table->tinyInteger('id_dish')->unsigned();
 
             $table->primary(['id_food_type', 'id_dish']);
 

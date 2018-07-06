@@ -14,9 +14,9 @@ class CreateWineAgeTranslationsTable extends Migration
     public function up()
     {
         Schema::create('wine_age_translations', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('wine_age_id')->unsigned();
-            $table->smallInteger('language_id')->unsigned();
+            $table->tinyIncrements('id');
+            $table->tinyInteger('wine_age_id')->unsigned();
+            $table->tinyInteger('language_id')->unsigned();
             $table->foreign('wine_age_id')
                 ->references('id')->on('wine_ages')
                 ->onDelete('cascade');

@@ -14,7 +14,7 @@ class CreateDishesTable extends Migration
     public function up()
     {
         Schema::create('dishes', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->tinyIncrements('id');
             $table->string('ingredients')->nullable();
             $table->string('image');
         });

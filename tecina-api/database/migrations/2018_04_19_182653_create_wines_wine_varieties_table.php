@@ -14,8 +14,8 @@ class CreateWinesWineVarietiesTable extends Migration
     public function up()
     {
         Schema::create('wines_wine_varieties', function (Blueprint $table) {
-            $table->smallInteger('id_wine')->unsigned();
-            $table->smallInteger('id_wine_variety')->unsigned();
+            $table->tinyInteger('id_wine')->unsigned();
+            $table->tinyInteger('id_wine_variety')->unsigned();
 
             $table->primary(['id_wine', 'id_wine_variety']);
 

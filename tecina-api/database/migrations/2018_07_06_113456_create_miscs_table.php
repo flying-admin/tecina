@@ -16,7 +16,6 @@ class CreateMiscsTable extends Migration
         Schema::create('miscs', function (Blueprint $table) {
             $table->string('key');
             $table->string('value');
-            $table->primary('key');
         });
     }
 

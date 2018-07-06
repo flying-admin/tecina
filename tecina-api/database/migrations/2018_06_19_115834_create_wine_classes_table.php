@@ -14,7 +14,7 @@ class CreateWineClassesTable extends Migration
     public function up()
     {
         Schema::create('wine_classes', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->tinyIncrements('id');
         });
     }
 

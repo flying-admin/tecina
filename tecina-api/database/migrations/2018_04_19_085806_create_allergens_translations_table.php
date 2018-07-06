@@ -14,8 +14,8 @@ class CreateAllergensTranslationsTable extends Migration
     public function up()
     {
         Schema::create('allergens_translations', function (Blueprint $table) {
-            $table->smallInteger('id_allergen')->unsigned();
-            $table->smallInteger('id_language')->unsigned();
+            $table->tinyInteger('id_allergen')->unsigned();
+            $table->tinyInteger('id_language')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
 

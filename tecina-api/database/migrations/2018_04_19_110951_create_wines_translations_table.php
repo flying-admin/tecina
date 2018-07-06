@@ -14,8 +14,8 @@ class CreateWinesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('wines_translations', function (Blueprint $table) {
-            $table->smallInteger('id_wine')->unsigned();
-            $table->smallInteger('id_language')->unsigned();
+            $table->tinyInteger('id_wine')->unsigned();
+            $table->tinyInteger('id_language')->unsigned();
             $table->string('description');
 
             $table->primary(['id_wine','id_language'],'wine_language_primary');

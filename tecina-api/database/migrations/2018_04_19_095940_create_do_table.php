@@ -14,7 +14,7 @@ class CreateDoTable extends Migration
     public function up()
     {
         Schema::create('do', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->tinyIncrements('id');
             $table->string('name');
             $table->string('region')->nullable();
         });

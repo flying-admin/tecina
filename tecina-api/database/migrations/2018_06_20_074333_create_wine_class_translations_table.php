@@ -14,9 +14,9 @@ class CreateWineClassTranslationsTable extends Migration
     public function up()
     {
         Schema::create('wine_class_translations', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('wine_class_id')->unsigned();
-            $table->smallInteger('language_id')->unsigned();
+            $table->tinyIncrements('id');
+            $table->tinyInteger('wine_class_id')->unsigned();
+            $table->tinyInteger('language_id')->unsigned();
             $table->foreign('wine_class_id')
                 ->references('id')->on('wine_classes')
                 ->onDelete('cascade');

@@ -14,11 +14,11 @@ class CreateDrinkTypeTranslationsTable extends Migration
     public function up()
     {
         Schema::create('drink_type_translations', function (Blueprint $table) {
-            $table->smallIncrements('id');
+            $table->tinyIncrements('id');
             $table->string('name');
             $table->string('description');
-            $table->smallInteger('drink_type_id')->unsigned();
-            $table->smallInteger('language_id')->unsigned();
+            $table->tinyInteger('drink_type_id')->unsigned();
+            $table->tinyInteger('language_id')->unsigned();
             $table->foreign('drink_type_id')
                 ->references('id')->on('drink_types')
                 ->onDelete('cascade');

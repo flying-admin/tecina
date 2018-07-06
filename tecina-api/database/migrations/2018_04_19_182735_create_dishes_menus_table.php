@@ -14,8 +14,8 @@ class CreateDishesMenusTable extends Migration
     public function up()
     {
         Schema::create('dishes_menus', function (Blueprint $table) {
-            $table->smallInteger('id_dish')->unsigned();
-            $table->smallInteger('id_menu')->unsigned();
+            $table->tinyInteger('id_dish')->unsigned();
+            $table->tinyInteger('id_menu')->unsigned();
 
             $table->primary(['id_dish', 'id_menu']);
 

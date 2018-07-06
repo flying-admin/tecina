@@ -14,8 +14,8 @@ class CreateImagesTable extends Migration
     public function up()
     {
         Schema::create('images', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('id_dish')->unsigned();
+            $table->tinyIncrements('id');
+            $table->tinyInteger('id_dish')->unsigned();
             $table->string('name');
 
             $table->foreign('id_dish')

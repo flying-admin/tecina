@@ -14,8 +14,8 @@ class CreateMenusTranslationsTable extends Migration
     public function up()
     {
         Schema::create('menus_translations', function (Blueprint $table) {
-            $table->smallInteger('id_menu')->unsigned();
-            $table->smallInteger('id_language')->unsigned();
+            $table->tinyInteger('id_menu')->unsigned();
+            $table->tinyInteger('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 

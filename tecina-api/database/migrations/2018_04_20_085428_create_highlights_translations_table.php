@@ -14,8 +14,8 @@ class CreateHighlightsTranslationsTable extends Migration
     public function up()
     {
         Schema::create('highlights_translations', function (Blueprint $table) {
-            $table->smallInteger('id_highlight')->unsigned();
-            $table->smallInteger('id_language')->unsigned();
+            $table->tinyInteger('id_highlight')->unsigned();
+            $table->tinyInteger('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 
