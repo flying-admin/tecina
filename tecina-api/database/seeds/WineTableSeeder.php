@@ -309,7 +309,7 @@ $bebidas=[
 foreach($bebidas as $bebida){
   if($bebida['TIPO DE BEBIDA']=='Vino'){
 
-              $wineId = DB::table('wines')->insertGetId([
+        $wineId = DB::table('wines')->insertGetId([
         'image' => ($bebida['Imagen']=='')?'no-image.jpg':$bebida['Imagen'],
         'name' => $bebida['Nombre de la bebida'],
         'id_do' => App\DenominationOfOrigin::where('name',$bebida['D.O'])->first()->id,
@@ -342,15 +342,12 @@ foreach($bebidas as $bebida){
           }
         }
         try{
-
         DB::table('wines_wine_varieties')->insert([
           'id_wine'=>$wineId,
           'id_wine_variety'=>$id_variety
         ]);
       }catch(Exception $e){
         echo '
-
-
         ERROR:'.$e->getMessage();
         print_r($bebida);
       }
