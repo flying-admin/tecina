@@ -37,7 +37,7 @@
                 <div class="drinks-row__drink__info">
                   <p class="drinks-row__drink__info__name">{{ drink.translate[currentLang].name }}</p>
                   <p class="drinks-row__drink__info__type">{{ drink.drink_type[0].translate[currentLang].name }}</p>
-                  <p class="drinks-row__drink__info__desc">{{ drink.translate[currentLang].description }}</p>
+                  <p class="drinks-row__drink__info__desc" *ngIf="drink.translate[currentLang].description != drink.translate[currentLang].name ">{{ drink.translate[currentLang].description }}</p>
                 </div>
               </div>
             </div>
