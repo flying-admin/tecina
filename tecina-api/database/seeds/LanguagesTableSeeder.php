@@ -16,7 +16,7 @@ class LanguagesTableSeeder extends Seeder
                 'code' => 'es'
             ],
             [
-                'code' => 'fr',
+                'code' => 'de',
             ],
             [
                 'code' => 'en',

@@ -38,8 +38,8 @@ export class DishComponent implements OnInit {
     dish: {
       allergens_title: {
         es:"Alergenos",
-        de:"Alergenos - DE",
-        en:"Alergenos - EN"
+        en:"Allergens",
+        de:"Allergene",
       }
     }
    };

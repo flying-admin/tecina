@@ -7,8 +7,7 @@
     </a>
 
     <a class="intro__start" (click)="mainMenuStatus(true)">
-      <p>Toca la pantalla
-        <br>para comenzar</p>
+      <p  [innerHTML]="translations.init[currentLang]"></p>
       <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
     </a>
 

@@ -59,25 +59,25 @@ export class MenuComponent implements OnInit {
   translations = {
     menu: {
       page_title: {
-        es: "Menús",
-        de: "Menús - DE",
-        en: "Menús - EN"
+        es: 'Menus',
+        en: 'Menus',
+        de: 'Menüs',
       },
       pairing:{
         title: {
-          es: "Maridaje",
-          de: "Maridaje - DE",
-          en: "Maridaje - EN"
+          es: 'Maridaje',
+          en: 'Pairing',
+          de: 'Paarung',
         },
         subtitle: {
-          es: "Incluido en el menú",
-          de: "Incluido en el menú - DE",
-          en: "Incluido en el menú - EN"
+          es: 'Incluido en el menú',
+          en: 'Included in the menu',
+          de: 'Im Menü enthalten',
         },
         variety:{
           es: 'Variedad',
-          de: 'Variedad - DE',
-          en: 'Variedad - EN'
+          en: 'Variety',
+          de: 'Vielfalt',
         }
       }
     }

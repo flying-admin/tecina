@@ -19,20 +19,20 @@ export class DrinksComponent implements OnInit {
   translations = {
     drinks: {
       page_title:{
-        es: 'Carta de bebidas',
-        de: 'Carta de bebidas - DE',
-        en: 'Carta de bebidas - EN'
+        es: 'Carta de Bebidas',
+        en: 'Drinks menu',
+        de: 'Getränkekarte',
       },
       filters:{
         title:{
           es: 'Tipo de bebida',
-          de: 'Tipo de bebida - DE',
-          en: 'Tipo de bebida - EN'
+          en: 'Type of drink',
+          de: 'Art des trinkens',
         },
         button:{
           es: 'Limpiar filtros',
-          de: 'Limpiar filtros-DE',
-          en: 'Limpiar filtros-EN'
+          en: 'Clear filters',
+          de: 'Klare Filter',
         },
       }
     }

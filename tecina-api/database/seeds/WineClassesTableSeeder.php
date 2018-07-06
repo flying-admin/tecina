@@ -11,15 +11,17 @@ class WineClassesTableSeeder extends Seeder
      */
     public function run()
     {
-        $wineClasses=[
-          'Seco',
-          'Semiseco',
-          'Afrutado',
-          'Dulce',
-          'Semi dulce'
+        
+
+        $wine_class = [ 
+          'es' =>[ 'Seco', 'Semiseco', 'Afrutado', 'Dulce', 'Semi dulce' ], 
+          'en' => [ 'Dry', 'Medium', 'Fruty', 'Very sweet', 'Sweet'], 
+          'de' =>[ 'Trocken', 'Mittel', 'Fruty', 'Sehr süß', 'Süss' ], 
         ];
+
         $langs =  DB::table('languages')->get();
-        foreach($wineClasses as $wineClass){
+
+        foreach($wine_class['es'] as $index => $wineClass){
           $idWineClass = DB::table('wine_classes')->insertGetId([
               'id' => NULL
           ]);
@@ -28,7 +30,7 @@ class WineClassesTableSeeder extends Seeder
               'id'=>NULL,
               'wine_class_id'=>$idWineClass,
               'language_id'=>$lang->id,
-              'name'=>$wineClass
+              'name'=>$wine_class[$lang->code][$index]
             ]);
           }
         }

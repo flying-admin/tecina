@@ -43,46 +43,46 @@ export class DishesComponent implements OnInit {
   translations = {
     dishes: {
       title: {
-        es: "Platos",
-        de: "Platos - DE",
-        en: "Platos - EN"
+        es: 'Platos',
+        en: 'Dishes',
+        de: 'Geschirr'
       }
     },
     filters: {
       button: {
-        es: "Ver filtros",
-        de: "Ver filtros - DE",
-        en: "Ver filtros - EN"
+        es: 'Ver filtros',
+        en: 'See Filters',
+        de: 'Siehe Filter',
       },
       button_change: {
-        es: "Cambiar filtros",
-        de: "Cambiar filtros - DE",
-        en: "Cambiar filtros - EN"
+        es: 'Cambiar filtros',
+        en: 'Change filters',
+        de: 'Filter ändern',
       },
       button_clear:{
         es: 'Limpiar filtros',
-        de: 'Limpiar filtros-DE',
-        en: 'Limpiar filtros-EN'
+        en: 'Clear filters',
+        de: 'Klare Filter',
       },
       title: {
-        es: "Filtros",
-        de: "Filtros - DE",
-        en: "Filtros - EN"
+        es: 'Filtros',
+        en: 'Filters',
+        de: 'Filter',
       },
       allergen_title: {
-        es: "Tipo de alérgeno",
-        de: "Tipo de alérgeno - DE",
-        en: "Tipo de alérgeno - EN"
+        es: 'Tipo de alérgeno',
+        en: 'Type of allegry',
+        de: 'Art der Allergie',
       },
       foodtypes_title: {
-        es: "Tipo de comida",
-        de: "Tipo de comida  - DE",
-        en: "Tipo de comida  - EN"
+        es: 'Tipo de comida',
+        en: 'Type of food',
+        de: 'Art von Essen',
       },
       categores_title: {
-        es: "Tipo de plato",
-        de: "Tipo de plato - DE",
-        en: "Tipo de plato - EN"
+        es: 'Tipo de plato',
+        en: 'Type of dish',
+        de: 'Art des Gerichts',
       },
     }
   };

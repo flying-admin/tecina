@@ -27,45 +27,45 @@ export class WinesComponent implements OnInit {
   translations = {
     wines: {
       page_title:{
-        es: 'Carta de vinos',
-        de: 'Carta de vinos-DE',
-        en: 'Carta de vinos-EN'
+        es: 'Carta de Vinos',
+        en: 'Wine menu',
+        de: 'Weinkarte',
       },
       variety:{
         es: 'Variedad',
-        de: 'Variedad-DE',
-        en: 'Variedad-EN'
+        en: 'Variety',
+        de: 'Vielfalt',
       },
       do:{
         es: 'D. O.',
-        de: 'D. O.-DE',
-        en: 'D. O.-EN'
+        en: 'D. O.',
+        de: 'D. O.',
       },
       filters: {
         type:{
           es: 'Tipo de vino',
-          de: 'Tipo de vino-DE',
-          en: 'Tipo de vino-EN'
+          en: 'Type of wine',
+          de: 'Art des Weins',
         },
         do_title:{
           es: 'Denominaciones de origen',
-          de: 'Denominaciones de origen-DE',
-          en: 'Denominaciones de origen-EN'
+          en: 'Denominations of origin',
+          de: 'Herkunftsbezeichnungen',
         },
         do_section_1:{
-          es: 'Peninsula',
-          de: 'Peninsula-DE',
-          en: 'Peninsula-EN'
+          es: 'PENINSULA',
+          en: 'PENINSULA',
+          de: 'HALBINSEL',
         },
         do_section_2:{
-          es: 'Islas Canarias',
-          de: 'Islas Canarias-DE',
-          en: 'Islas Canarias-EN'
+          es: 'ISLAS CANARAIS',
+          en: 'CANARY ISLANDS',
+          de: 'KANARISCHE INSELN',
         },
         button:{
           es: 'Limpiar filtros',
-          de: 'Limpiar filtros-DE',
-          en: 'Limpiar filtros-EN'
+          en: 'Clear filters',
+          de: 'Klare Filter',
         },
       }
     },

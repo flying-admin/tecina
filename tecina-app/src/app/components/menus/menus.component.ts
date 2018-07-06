@@ -42,19 +42,19 @@ export class MenusComponent implements OnInit {
   translations = {
     menus: {
       title: {
-        es: "Menus",
-        de: "Menus - DE",
-        en: "Menus - EN"
+        es: 'Menus',
+        en: 'Menus',
+        de: 'Menüs',
       },
       pairing: {
-        es: "Maridaje",
-        de: "Maridaje - DE",
-        en: "Maridaje - EN"
+        es: 'Maridaje',
+        en: 'Pairing',
+        de: 'Paarung',
       },
       pairing_txt: {
-        es: "Incluido en el menú",
-        de: "Incluido en el menú - DE",
-        en: "Incluido en el menú - EN"
+        es: 'Incluido en el menú',
+        en: 'Included in the menu',
+        de: 'Im Menü enthalten',
       },
     }
   };

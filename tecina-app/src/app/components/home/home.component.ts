@@ -22,6 +22,14 @@ export class HomeComponent implements OnInit   {
       disableOnInteraction: !1
     }
   };
+
+  translations = {
+    init:{
+      es: 'Toca la pantalla<br>para comenzar',
+      en: 'TOUCH SCREEN<br>TO START',
+      de: 'Klicken Sie zum Starten<br>auf den Bildschirm'
+    }
+  }
   
   @ViewChild(SwiperDirective) swiperHighlights?: SwiperDirective;
 

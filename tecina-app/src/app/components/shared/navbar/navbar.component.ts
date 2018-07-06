@@ -25,54 +25,54 @@ export class NavbarComponent implements OnInit, OnDestroy {
   translations = {
    nav: {
      allergen_title: {
-       es:"Tipo de Alérgeno",
-       de:"Tipo de Alérgeno - DE",
-       en:"Tipo de Alérgeno - EN"
+       es: 'Tipo de alérgeno',
+       en: 'Type of allegry',
+       de: 'Art der Allergie',
      },
      foodtypes_title: {
-       es:"Tipo de comida",
-       de:"Tipo de comida - DE",
-       en:"Tipo de comida - EN"
+       es: 'Tipo de comida',
+       en: 'Type of food',
+       de: 'Art von Essen',
      },
      wine_title: {
-       es:"Carta de Vinos",
-       de:"Carta de Vinos - DE",
-       en:"Carta de Vinos - EN"
+       es: 'Carta de Vinos',
+       en: 'Wine menu',
+       de: 'Weinkarte',
      },
      drinks_title: {
-      es:"Carta de Bebidas",
-      de:"Carta de Bebidas - DE",
-      en:"Carta de Bebidas - EN"
+      es: 'Carta de Bebidas',
+      en: 'Drinks menu',
+      de: 'Getränkekarte',
     },
     variety:{
       es: 'Variedad',
-      de: 'Variedad-DE',
-      en: 'Variedad-EN'
+      en: 'Variety',
+      de: 'Vielfalt',
     },
     do:{
       es: 'D. O.',
-      de: 'D. O.-DE',
-      en: 'D. O.-EN'
+      en: 'D. O.',
+      de: 'D. O.',
     },
     menu_title: {
-       es:"Menus",
-       de:"Menus - DE",
-       en:"Menus - EN"
+       es: 'Menus',
+       en: 'Menus',
+       de: 'Menüs',
      },
     filter_title: {
-       es:"Filtros",
-       de:"Filtros - DE",
-       en:"Filtros - EN"
+       es: 'Filtros',
+       en: 'Filters',
+       de: 'Filter',
      },
     menu: {
-       es:"Ver Carta",
-       de:"Ver Carta - DE",
-       en:"Ver Carta - EN"
+       es: 'Ver Carta',
+       en: 'SEE MENU',
+       de: 'SIEHE MENÜ',
      },
      button:{
       es: 'Limpiar filtros',
-      de: 'Limpiar filtros - DE',
-      en: 'Limpiar filtros - EN'
+      en: 'Clear filters',
+      de: 'Klare Filter',
     }
    }
   };
