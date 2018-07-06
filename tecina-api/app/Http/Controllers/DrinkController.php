@@ -14,7 +14,12 @@ class DrinkController extends Controller
      */
     public function index()
     {
-        //
+      $data=[];
+      foreach(Drink::all() as $drink){
+        $drink->translation=prettyTranslate($drink->getTranslate()->get());
+        $data[]=$drink;
+      }
+      return $data;
     }
 
     /**

@@ -26,5 +26,8 @@ class Drink extends Model
   public function drinkType(){
       return $this->belongsTo('App\DrinkType');
   }
+  public function getTranslate() {
+    return $this->belongsToMany('App\Language', 'drink_translations')->withPivot('name', 'description');
+  }
 
 }
