@@ -1,119 +1,146 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    <div class="row justify-content-center">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
 
-  <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <strong>Edición de Vino</strong>
+        </div>
+        <div class="card-body">
+          <form action="/api/wines/{{$wine->id}}" method="POST">
+            <input name="_method" type="hidden" value="PUT">
 
-  <div class="card">
-    <div class="card-header">
-      <strong>Edición de Vino</strong>
-    </div>
-    <div class="card-body">
-      <form action="/api/wines/{{$wine->id}}" method="POST">
-        <input name="_method" type="hidden" value="PUT">
-        <span>Nombre del vino</span><input name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
-        <ul class="nav nav-tabs">
-          @foreach($langs =  DB::table('languages')->get() as $lang)
-            <li @if ($loop->first) class="active show" @endif><a data-toggle="tab" href="#{{$lang->code}}">{{$lang->code}}</a></li>
-          @endforeach
-        </ul>
-        <div class="tab-content">
-          @foreach($langs =  DB::table('languages')->get() as $lang)
-          <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
-            <label for="description_{{$lang->code}}">
-              <span>Descripción</span>
-              <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{ @$translation[$lang->code] }}"/>
-            </label>
-          </div>
-          @endforeach
-        </div>
-        <div>
-          <label for="year">
-            <span>Año</span>
-          <input type="number" min="1500" max="{{date('Y')}}" name="year" value="{{($wine->year)?$wine->year:''}}" />
-        </label>
-        </div>
-        <div>
-          <label for="active">
-            <span>Activo</span>
-          <input type="checkbox" name="active"{{($wine->active)?' checked':''}}  />
-        </label>
-        </div>
-        <div>
-          <label for="do">
-            <span>
-              Denominación de Origen
-            </span>
-          <select name="do" id="do">
-            @foreach($dos = DB::table('do')->get() as $my_do)
-              <option value="{{$my_do->id}}"{{($do->id==$my_do->id)?' selected':''}}>
-                {{$my_do->name}}
-              </option>
-            @endforeach
-          </select>
-        </label>
-        </div>
-        <div>
-          <label for="age">
-            <span>
-              Edad
-            </span>
-          <select name="age" id="age">
-            @foreach($ages = DB::table('wine_age_translations')->where('language_id',1)->get() as $my_age)
-              <option value="{{$my_age->wine_age_id}}"{{($age->id==$my_age->wine_age_id)?' selected':''}}>
-                {{$my_age->name}}
-              </option>
-            @endforeach
-          </select>
-        </label>
-        </div>
-        <div>
-          <label for="class">
-            <span>Clase</span>
-          <select name="class" id="class">
-            @foreach($classes = DB::table('wine_class_translations')->where('language_id',1)->get() as $my_class)
-              <option value="{{$my_class->wine_class_id}}"{{(@$class->id==$my_class->wine_class_id)?' selected':''}}>
-                {{$my_class->name}}
-              </option>
-            @endforeach
-          </select>
-        </label>
-        </div>
-        <input type="submit" value="Guardar cambios" />
-      </form>
-          <div>
-            <span>Variedades</span>
+            <section>
+              <p>Información general</p>
+              <label for="wineName">
+                <span>Nombre del vino:</span>
+                <input name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
+              </label><br />
+              <ul class="nav nav-tabs">
+                @foreach($langs =  DB::table('languages')->get() as $lang)
+                  <li><a data-toggle="tab" href="#{{$lang->code}}" @if ($loop->first) class="active show" @endif>{{$lang->code}}</a></li>
+                @endforeach
+              </ul>
+              <div class="tab-content">
+                @foreach($langs =  DB::table('languages')->get() as $lang)
+                <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
+                  <label for="description_{{$lang->code}}">
+                    <span>Descripción:</span>
+                    <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{ @$translation[$lang->code] }}"/>
+                  </label>
+                </div>
+                @endforeach
+              </div>
+            </section>
+
+            <section>
+              <p>Información detallada</p>
+              <label for="year">
+                <span>Año:</span>
+                <input type="number" min="1500" max="{{date('Y')}}" name="year" value="{{($wine->year)?$wine->year:''}}" />
+              </label>
+
+              <label for="active">
+                <span>Activo:</span>
+                <input type="checkbox" name="active"{{($wine->active)?' checked':''}}  />
+              </label>
+
+              <label for="do">
+                <span>Denominación de Origen:</span>
+                <select name="do" id="do">
+                  @foreach($dos = DB::table('do')->get() as $my_do)
+                    <option value="{{$my_do->id}}"{{($do->id==$my_do->id)?' selected':''}}>
+                      {{$my_do->name}}
+                    </option>
+                  @endforeach
+                </select>
+              </label>
+
+              <label for="age">
+                <span>Edad:</span>
+                <select name="age" id="age">
+                  @foreach($ages = DB::table('wine_age_translations')->where('language_id',1)->get() as $my_age)
+                    <option value="{{$my_age->wine_age_id}}"{{($age->id==$my_age->wine_age_id)?' selected':''}}>
+                      {{$my_age->name}}
+                    </option>
+                  @endforeach
+                </select>
+              </label>
+
+              <label for="class">
+                <span>Clase:</span>
+                <select name="class" id="class">
+                  @foreach($classes = DB::table('wine_class_translations')->where('language_id',1)->get() as $my_class)
+                    <option value="{{$my_class->wine_class_id}}"{{(@$class->id==$my_class->wine_class_id)?' selected':''}}>
+                      {{$my_class->name}}
+                    </option>
+                  @endforeach
+                </select>
+              </label>
+
+              <button type="submit" class="btn btn-primary">
+                <i class="material-icons">save</i>
+                <span>Guardar cambios</span>
+              </button>
+            </section>
+
+            <span></span>
+          </form>
+
+          <section>
+            <p>Variedades de uva</p>
             <ul id="wine_varieties">
               @foreach($varieties as $variety)
-                <li id="variety_{{$variety->id}}"><span class="varietyName">{{@$varietieTranslations[$variety->id]['es']}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineVariety({{$wine->id}},{{$variety->id}});">Eliminar</a></span></li>
+                <li id="variety_{{$variety->id}}">
+                  <span class="varietyName">{{@$varietieTranslations[$variety->id]['es']}}</span>
+                  <a href="#" onclick="deleteWineVariety({{$wine->id}},{{$variety->id}});" class="link">
+                    <i class="material-icons">delete</i>
+                    <span>Eliminar</span>
+                  </a>
+                </li>
               @endforeach
             </ul>
-          <label for="add_wine_variety">
-            <span>Selecciona una variedad</span>
-            <select id="add_wine_variety">
-              @foreach(db::table('wine_variety_translations')->whereNotIn('id_wine_variety',array_keys($varietieTranslations))->where('id_language',1)->get() as $variety)
-                <option value="{{$variety->id_wine_variety}}">
-                  {{$variety->name}}
-                </option>
-              @endforeach
-            </select>
-          </label>
-          <button type="button" name="button" id="add_wine_variety_button" onclick="addWineVariety({{$wine->id}})">Añadir variedad</button>
-          </div>
 
-          <img style="max-width:300px;max-height:300px;" id="wine_image" src="{{$wine->image}}" class="wine main admin" onclick="jQuery('#uploadWineImage').toggle();" />
-          <div id="uploadWineImage" style="display:none">
-            <input type="file" name="wineImage" id="wineImage" accept="image/x-png" placeholder="Imagen nueva" />
-              <button type="button" name="wineImage" id="upload_wine_image_button" onclick="uploadWineImage({{$wine->id}})">Cambiar imagen</button>
-          </div>
+            <label for="add_wine_variety">
+              <span>Selecciona una variedad</span>
+              <select id="add_wine_variety">
+                @foreach(db::table('wine_variety_translations')->whereNotIn('id_wine_variety',array_keys($varietieTranslations))->where('id_language',1)->get() as $variety)
+                  <option value="{{$variety->id_wine_variety}}">
+                    {{$variety->name}}
+                  </option>
+                @endforeach
+              </select>
+            </label>
+
+            <button type="button" class="btn btn-primary" id="add_wine_variety_button" onclick="addWineVariety({{$wine->id}})">
+              <i class="material-icons">add_circle</i>
+              <span>Añadir variedad</span>
+            </button>
+          </section>
+
+          <section>
+            <p>Imagen del vino</p>
+            <img style="max-width:300px;max-height:300px;" id="wine_image" src="{{$wine->image}}" class="wine main admin" onclick="jQuery('#uploadWineImage').toggle();" />
+            <div id="uploadWineImage" style="display:none">
+              <label for="wineImage">
+                <span>Selecciona una imagen:</span>
+                <input type="file" name="wineImage" id="wineImage" accept="image/x-png" placeholder="Imagen nueva" />
+              </label>
+              <button type="button" class="btn btn-primary" id="upload_wine_image_button" onclick="uploadWineImage({{$wine->id}})">
+                <i class="material-icons">photo_camera</i>
+                <span>Cambiar imagen</span>
+              </button>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
     </div>
-
-
-</div>
-</div>
-</div>
+  </div>
 </div>
 <script type="text/javascript">
   function addWineVariety(wineId){
