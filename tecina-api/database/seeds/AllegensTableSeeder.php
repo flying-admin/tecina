@@ -14,58 +14,28 @@ class AllegensTableSeeder extends Seeder
 
         $lang =  DB::table('languages')->get();
 
-        $cant = 14;
-
-        $allergens = [
-            'crustaceos',
-            'moluscos',
-            'dióxido de azufre y sulfitos',
-            'altramuces',
-            'pescado',
-            'contiene Gluten',
-            'apio',
-            'cacahuetes',
-            'frutos de cascara',
-            'huevos',
-            'soja' ,
-            'mostaza' ,
-            'granos de sésamo',
-            'lácteos'
+        $allergens = [ 
+            'es' =>[ 'crustáceos', 'moluscos', 'dióxido de azufre y sulfitos', 'altramuces', 'pescado', 'gluten', 'apio','frutos de cáscara', 'huevos', 'soja', 'mostaza', 'granos de sésamo', 'lácteos', ], 
+            'en' =>[ 'seafood', 'shellfish', 'sulfurdioxide and sulfites', 'lupins', 'fish', 'gluten', 'celery', 'nuts', 'egg', 'soya', 'mustard', 'sesame seeds', 'dairy products',], 
+            'de' =>[ 'Meeresfrüchte', 'Schaltier', 'Schwefeldioxid und Sulfite', 'Lupinen', 'Fisch', 'Gluten', 'Sellerie', 'Nüsse','Ei', 'Soja', 'Senf', 'Sesamsamen', 'Milchprodukte', ] 
         ];
 
-        $allergens_icons = [
-            'crustaceos',
-            'moluscos',
-            'sulfitos',
-            'altramuces',
-            'pescado',
-            'gluten',
-            'apio',
-            'cacahuetes',
-            'frutos_cascara',
-            'huevos',
-            'soja' ,
-            'mostaza' ,
-            'sesamo',
-            'lacteos'
-        ];
+        $allergens_icons = ['crustaceos', 'moluscos', 'sulfitos', 'altramuces', 'pescado', 'gluten', 'apio', 'frutos_cascara', 'huevos', 'soja' , 'mostaza', 'sesamo', 'lacteos'];
 
-        for ($i = 0 ; $i < $cant ; $i++){
+        for ($i = 0 ; $i < count($allergens_icons) ; $i++){
             DB::table('allergens')->insert([
                 [
                     'icon' => $allergens_icons[$i]
                 ]
             ]);
-        }
-
-        for ($i = 0 ; $i < $cant ; $i++) {
+  
             foreach ($lang as $lan) {
                 DB::table('allergens_translations')->insert([
                     [
                         'id_allergen' => $i+1,
                         'id_language' => $lan->id,
-                        'name' =>$lan->code .'_'.$allergens[$i],
-                        'description' =>  $lan->code.'_'.$allergens[$i].' description'
+                        'name' => $allergens[$lan->code][$i],
+                        'description' => $allergens[$lan->code][$i]
                     ]
                 ]);
             }
