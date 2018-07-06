@@ -17,8 +17,8 @@ class CreateWinesTable extends Migration
             $table->smallIncrements('id');
             $table->string('image')->nullable();
             $table->string('name');
-            $table->integer('id_wine_type')->unsigned()->nullable();
-            $table->integer('id_do')->unsigned()->nullable();
+            $table->smallInteger('id_wine_type')->unsigned()->nullable();
+            $table->smallInteger('id_do')->unsigned()->nullable();
             $table->string('year')->nullable();
 
             $table->foreign('id_wine_type')

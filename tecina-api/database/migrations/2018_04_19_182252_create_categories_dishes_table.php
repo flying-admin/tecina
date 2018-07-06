@@ -14,8 +14,8 @@ class CreateCategoriesDishesTable extends Migration
     public function up()
     {
         Schema::create('categories_dishes', function (Blueprint $table) {
-            $table->integer('id_category')->unsigned();
-            $table->integer('id_dish')->unsigned();
+            $table->smallInteger('id_category')->unsigned();
+            $table->smallInteger('id_dish')->unsigned();
 
             $table->primary(['id_category', 'id_dish']);
 

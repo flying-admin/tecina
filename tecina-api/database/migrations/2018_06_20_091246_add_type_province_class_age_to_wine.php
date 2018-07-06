@@ -14,15 +14,15 @@ class AddTypeProvinceClassAgeToWine extends Migration
     public function up()
     {
         Schema::table('wines', function (Blueprint $table) {
-          $table->integer('province_id')->unsigned()->nullable();
+          $table->smallInteger('province_id')->unsigned()->nullable();
           $table->foreign('province_id')
               ->references('id')->on('provinces');
 
-          $table->integer('wine_age_id')->unsigned()->nullable();
+          $table->smallInteger('wine_age_id')->unsigned()->nullable();
           $table->foreign('wine_age_id')
               ->references('id')->on('wine_ages');
 
-          $table->integer('wine_class_id')->unsigned()->nullable();
+          $table->smallInteger('wine_class_id')->unsigned()->nullable();
           $table->foreign('wine_class_id')
               ->references('id')->on('wine_classes');
         });

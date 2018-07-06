@@ -14,8 +14,8 @@ class CreateDishesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('dishes_translations', function (Blueprint $table) {
-            $table->integer('id_dish')->unsigned();
-            $table->integer('id_language')->unsigned();
+            $table->smallInteger('id_dish')->unsigned();
+            $table->smallInteger('id_language')->unsigned();
             $table->string('name');
             $table->string('description');
 

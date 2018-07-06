@@ -15,7 +15,7 @@ class CreateDrinksTable extends Migration
     {
         Schema::create('drinks', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->integer('drink_type_id')->unsigned();
+            $table->smallInteger('drink_type_id')->unsigned();
             $table->string('image')->nullable();
             $table->float('price')->nullable();
             $table->foreign('drink_type_id')

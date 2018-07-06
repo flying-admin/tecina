@@ -14,8 +14,8 @@ class CreateCategoriesTranslationsTable extends Migration
     public function up()
     {
         Schema::create('categories_translations', function (Blueprint $table) {
-            $table->integer('id_category')->unsigned();
-            $table->integer('id_language')->unsigned();
+            $table->smallInteger('id_category')->unsigned();
+            $table->smallInteger('id_language')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
 

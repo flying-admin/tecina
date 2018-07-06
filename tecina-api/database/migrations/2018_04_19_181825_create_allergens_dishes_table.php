@@ -14,8 +14,8 @@ class CreateAllergensDishesTable extends Migration
     public function up()
     {
         Schema::create('allergens_dishes', function (Blueprint $table) {
-            $table->integer('id_allergen')->unsigned();
-            $table->integer('id_dish')->unsigned();
+            $table->smallInteger('id_allergen')->unsigned();
+            $table->smallInteger('id_dish')->unsigned();
 
             $table->primary(['id_allergen', 'id_dish']);
 

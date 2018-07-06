@@ -15,7 +15,7 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->smallIncrements('id');
-            $table->integer('id_dish')->unsigned();
+            $table->smallInteger('id_dish')->unsigned();
             $table->string('name');
 
             $table->foreign('id_dish')

@@ -14,8 +14,8 @@ class CreateDrinkTranslationsTable extends Migration
     public function up()
     {
         Schema::create('drink_translations', function (Blueprint $table) {
-            $table->integer('drink_id')->unsigned();
-            $table->integer('language_id')->unsigned();
+            $table->smallInteger('drink_id')->unsigned();
+            $table->smallInteger('language_id')->unsigned();
             $table->string('name');
             $table->string('description')->nullable();
 

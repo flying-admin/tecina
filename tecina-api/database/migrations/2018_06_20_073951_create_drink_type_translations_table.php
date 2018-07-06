@@ -17,8 +17,8 @@ class CreateDrinkTypeTranslationsTable extends Migration
             $table->smallIncrements('id');
             $table->string('name');
             $table->string('description');
-            $table->integer('drink_type_id')->unsigned();
-            $table->integer('language_id')->unsigned();
+            $table->smallInteger('drink_type_id')->unsigned();
+            $table->smallInteger('language_id')->unsigned();
             $table->foreign('drink_type_id')
                 ->references('id')->on('drink_types')
                 ->onDelete('cascade');
