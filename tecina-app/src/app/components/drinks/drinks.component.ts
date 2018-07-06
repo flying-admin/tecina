@@ -69,10 +69,9 @@ export class DrinksComponent implements OnInit {
       
     this._tecinaApi.getDrinks().subscribe(
       drinks => {
-        console.log("drinks",drinks);
         this.allDrinks = drinks;
         this.drinks = this._tecinaApi.subArray(drinks, 2);
-        
+
         if(drinks.length != 0 ){
           this.goToIndex(0);
           this.no_results= false;
@@ -158,6 +157,5 @@ export class DrinksComponent implements OnInit {
       }
     );
   }
-
 
 }

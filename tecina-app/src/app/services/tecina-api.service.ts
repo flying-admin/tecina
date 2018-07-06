@@ -312,6 +312,10 @@ export class TecinaApiService {
   getWines(){return this._wines;}
   setWines(): Observable<any>{return this.http.get(this.api + "/wines" ,this.httpOptions );}
  
+  getHighLightedWine(){
+    return this.http.get(this.api + "/misc/highlighted_wine" ,this.httpOptions );
+  }
+
   getWinesVarieties(){return this._winesVarieties;}
   setWinesVarieties(): Observable<any>{return this.http.get(this.api + "/wine-varieties" ,this.httpOptions );}
   
@@ -357,7 +361,6 @@ export class TecinaApiService {
       let drink_types: any[] = data[1];
 
       this.drinkTypes.next(drink_types);
-      console.log(drink_types);
       
       for (let D = 0; D < drinks.length; D++) {
         var drink_type = []
