@@ -2,13 +2,16 @@
   "name": "tecina-app",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "electron-build": "ng build --prod && electron ." 
   },
   "private": true,
   "dependencies": {
@@ -35,6 +38,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.113",
     "codelyzer": "^4.4.2",
+    "electron": "^2.0.4",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^2.0.4",

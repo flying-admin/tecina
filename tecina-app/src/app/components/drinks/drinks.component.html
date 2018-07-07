@@ -1,6 +1,6 @@
 <div class="beverages" >
     <p class="beverages__title">
-      <img src="../assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+      <img src="assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
       <span>{{ translations.drinks.page_title[currentLang] }}</span>
     </p>
     <div class="beverages__filters">
@@ -32,7 +32,7 @@
             <div class="drinks-row">
               <div class="drinks-row__drink" *ngFor="let drink of droup">
                 <div class="drinks-row__drink__image">
-                  <img [src]="imagesPath + drink.image"  src-fallback="{{ '../assets/images/shared/default_drink.png' }}"  alt="Menu bottle" />
+                  <img [src]="imagesPath + drink.image"  [default]="'assets/images/shared/default_drink.png'"  alt="Menu bottle" />
                 </div>
                 <div class="drinks-row__drink__info">
                   <p class="drinks-row__drink__info__name">{{ drink.translate[currentLang].name }}</p>

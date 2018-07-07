@@ -59,6 +59,7 @@ export class DrinksComponent implements OnInit {
     this.imagesPath = this._tecinaApi.imagesPath + "/drinks/";
   }
   
+
   initialiseState(){
 
     this._tecinaApi.getDrinkTypes().subscribe(

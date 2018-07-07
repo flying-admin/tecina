@@ -25,6 +25,7 @@ import { MenusComponent } from './components/menus/menus.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { WinesComponent } from './components/wines/wines.component';
 import { DrinksComponent } from './components/drinks/drinks.component';
+import { DefaultImageDirective } from './directives/default-image.directive';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   speed: 500
@@ -42,7 +43,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MenusComponent,
     MenuComponent,
     WinesComponent,
-    DrinksComponent
+    DrinksComponent,
+    DefaultImageDirective
   ],
   imports: [
     BrowserModule,
