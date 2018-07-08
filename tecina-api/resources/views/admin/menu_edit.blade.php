@@ -34,6 +34,10 @@
                 </div>
                 @endforeach
               </div>
+              <label for="active">
+                <span>Activo:</span>
+                <input type="checkbox" name="active"{{($menu->active)?' checked':''}}  />
+              </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
                 <span>Guardar cambios</span>

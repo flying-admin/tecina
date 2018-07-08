@@ -317,6 +317,7 @@ $bebidas=[
           Creamos el tipo de bebida '.$bebida['TIPO DE BEBIDA'];
           $typeId=DB::table('drink_types')->insertGetId(['id'=>null]);
           foreach ($langs as $lan) {
+            $my_drink_type=($drinkTypeTranslation[$bebida['TIPO DE BEBIDA']][$lan->code])?$drinkTypeTranslation[$bebida['TIPO DE BEBIDA']][$lan->code]:$bebida['TIPO DE BEBIDA'];
             DB::table('drink_type_translations')->insert([
               'drink_type_id' => $typeId,
               'language_id'   => $lan->id,
