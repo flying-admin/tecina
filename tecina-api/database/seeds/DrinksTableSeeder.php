@@ -306,7 +306,7 @@ class DrinksTableSeeder extends Seeder
       ];
 
     foreach($bebidas as $bebida){
-      if(($bebida['TIPO DE BEBIDA'] != 'Vino') && ($bebida['TIPO DE BEBIDA'] != '')){
+      if(($bebida['TIPO DE BEBIDA'] != 'Vino') && ($bebida['TIPO DE BEBIDA'] != '') && $bebida['TASCA']=='SI'){
         // we get the DrinkType or create it
         $typeId=null;
         if(DB::table('drink_type_translations')->where('name',$bebida['TIPO DE BEBIDA'])->first()){

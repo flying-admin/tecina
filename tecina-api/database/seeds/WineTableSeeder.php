@@ -307,7 +307,7 @@ class WineTableSeeder extends Seeder
         ];
 
 foreach($bebidas as $bebida){
-  if($bebida['TIPO DE BEBIDA']=='Vino'){
+  if($bebida['TIPO DE BEBIDA']=='Vino' && $bebida['TASCA']=='SI'){
 
         $wineId = DB::table('wines')->insertGetId([
         'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
