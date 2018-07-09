@@ -17,10 +17,10 @@
           @endif
             <div class="card">
               <div class="card-header">
-                <strong>Listado de platos</strong>
+                <strong>Listado de destacados</strong>
               </div>
               <div class="card-body">
-                   {{ $dishes->links('pagination::bootstrap-4') }}
+                   {{ $highlights->links('pagination::bootstrap-4') }}
                 <table>
                   <thead>
                     <tr>
@@ -30,12 +30,12 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($dishes as $dish)
+                  @foreach ($highlights as $highlight)
                     <tr>
-                      <td>#{{$dish->id}}</td>
-                      <td>{{$dish->name}}</td>
+                      <td>#{{$highlight->id}}</td>
+                      <td>{{$highlight->name}}</td>
                       <td>
-                        <a href="/api/dishes/{{$dish->id}}/edit" class="btn btn-primary">
+                        <a href="/api/highlights/{{$highlight->id}}/edit" class="btn btn-primary">
                           <i class="material-icons">edit</i>
                           <span>Editar</span>
                         </a>
@@ -44,15 +44,15 @@
                   @endforeach
                 </tbody>
                 </table>
-                   {{ $dishes->links('pagination::bootstrap-4') }}
+                   {{ $highlights->links('pagination::bootstrap-4') }}
               </div>
             </div>
             <div class="card">
               <div class="card-header">
-                <strong>Nuevo Plato</strong>
+                <strong>Nuevo Destacado</strong>
               </div>
               <div class="card-body">
-                <form class="menus create" action="/api/dishes/create" method="post">
+                <form class="menus create" action="/api/highlights/create" method="post">
 
                 </form>
               </div>

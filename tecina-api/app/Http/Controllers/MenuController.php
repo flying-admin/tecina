@@ -19,7 +19,7 @@ class MenuController extends Controller
     public function index()
     {
 		$data = [];
-		foreach(Menu::all() as $menu)
+		foreach(Menu::all()->where('active',true) as $menu)
 		{
 			$menu->translate = prettyTranslate($menu->getTranslate()->get());
 			$menu->dishes = $menu->dishes()->get()->pluck('id')->toArray();
@@ -96,6 +96,7 @@ class MenuController extends Controller
           $my_wines[$wine->id]=$wine['name'];
         }
         $values=[
+          'menu'=>$menu,
           'id'=>$menu->id,
           'image'=>$menu->image,
           'translation'=>prettyTranslate($menu->getTranslate()->get()),
@@ -118,6 +119,7 @@ class MenuController extends Controller
           $menu = \App\Menu::find($id);
           $langs=\App\Language::all();
           $translates = prettyTranslate($menu->getTranslate()->get());
+          DB::table('menus')->where('id',$id)->update(['active'=>($request['active']=='on')?1:0]);
           foreach($langs as $lang){
             $translate=$translates[$lang->code];
             $respuesta[$lang->code]=$translate;

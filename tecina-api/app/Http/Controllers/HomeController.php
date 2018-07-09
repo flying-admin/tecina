@@ -76,4 +76,14 @@ class HomeController extends Controller
       }
       return view('admin.dish', ['dishes'=>$dishes]);
     }
+    public function listHighlight(request $request)
+    {
+      $langs=getLangs();
+      $highlights=\App\Highlight::paginate(20);
+      foreach($highlights as $order=>$highlight){
+        $highlight->name=prettyTranslate($highlight->getTranslate()->get())['es']['name'];
+        $highlight[$order]=$highlight;
+      }
+      return view('admin.highlight', ['highlights'=>$highlights]);
+    }
 }

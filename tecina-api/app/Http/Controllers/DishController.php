@@ -19,7 +19,7 @@ class DishController extends Controller
     public function index()
     {
         $data = [];
-		foreach(Dish::all() as $dish)
+		foreach(Dish::all()->where('active',true) as $dish)
 		{
 			$dish->translate = prettyTranslate($dish->getTranslate()->get());
 			$images = [];

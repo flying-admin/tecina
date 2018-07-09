@@ -18,7 +18,7 @@ class WineController extends Controller
     public function index()
     {
       $data = [];
-      foreach(Wine::all() as $wine)
+      foreach(Wine::all()->where('active',true) as $wine)
       {
         // dd ($wine->getTranslate()->get());
         $wine->translate = prettyTranslate($wine->getTranslate()->get());
