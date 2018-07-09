@@ -17,6 +17,7 @@ class CreateDoTable extends Migration
             $table->tinyIncrements('id');
             $table->string('name');
             $table->string('region')->nullable();
+            $table->boolean('canarias')->default(FALSE);
         });
     }
 
