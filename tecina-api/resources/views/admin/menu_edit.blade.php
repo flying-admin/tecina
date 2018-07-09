@@ -125,24 +125,24 @@
   </div>
 </div>
 <script type="text/javascript">
-  function addDishMenu(dishId){
-    var menuId=$('#add_menu_dish').val();
+  function addDishMenu(menuId){
+    var dishId=$('#add_menu_dish').val();
     jQuery.ajax({
-      url:'/addDishFromMenu/'+menuId+'/'+dishId,
+      url:'/addDishFromMenu/'+dishId+'/'+menuId,
     }).done(function(data){
     if(data){
-      jQuery('#menu_dishes').append('<li id="dish_'+data.dishId+'"><span class="dishName">'+data.dishName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishMenu('+data.dishId+','+data.menuId+');">Eliminar</a></span></li>');
+      jQuery('#menu_dishes').append('<li id="dish_'+data.dishId+'"><span class="dishName">'+data.dishName+'</span><a href="#" onclick="deleteDishMenu('+data.dishId+','+menuId+');" class="link"><i class="material-icons">delete</i>Eliminar</a></li>');
       jQuery('#add_menu_dish>option[value="'+data.dishId+'"]').remove();
     }
     });
   }
-  function addWineMenu(wineId){
-    var menuId=$('#add_menu_wine').val();
+  function addWineMenu(menuId){
+    var wineId=$('#add_menu_wine').val();
     jQuery.ajax({
-      url:'/addWineFromMenu/'+menuId+'/'+wineId,
+      url:'/addWineFromMenu/'+wineId+'/'+menuId,
     }).done(function(data){
     if(data){
-      jQuery('#menu_wines').append('<li id="wine_'+data.wineId+'"><span class="wineName">'+data.wineName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineMenu('+data.wineId+','+data.menuId+');">Eliminar</a></span></li>');
+      jQuery('#menu_wines').append('<li id="wine_'+data.wineId+'"><span class="wineName">'+data.wineName+'</span><a href="#" onclick="deleteWineMenu('+data.wineId+','+menuId+');" class="link"><i class="material-icons">delete</i>Eliminar</a></li>');
       jQuery('#add_menu_wine>option[value="'+data.wineId+'"]').remove();
     }
     });
@@ -154,7 +154,7 @@
       data:{'dishId':dishId, 'menuId':menuId}
     }).done(function(data){
     if(data){
-      jQuery('#dish_'+data).fadeOut();
+      jQuery('#dish_'+data).fadeOut().remove();
       jQuery('#add_menu_dish').prepend('<option selected value="'+data+'">'+name+'</option>');
     }
     });
@@ -166,7 +166,7 @@
       data:{'wineId':wineId, 'menuId':menuId}
     }).done(function(data){
     if(data){
-      jQuery('#wine_'+data).fadeOut();
+      jQuery('#wine_'+data).fadeOut().remove();
       jQuery('#add_menu_wine').prepend('<option selected value="'+data+'">'+name+'</option>');
     }
     });
