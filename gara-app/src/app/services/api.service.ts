@@ -8,6 +8,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class ApiService {
 
+  pageRoot = "https://gara.flyingpigs.es/";
+  //pageRoot = "https://tecina.flyingpigs.es/";
+  //pageRoot = "http://tecina-api.local/";
+
   private lang = new BehaviorSubject('es');
   currentLang = this.lang.asObservable();
 
@@ -77,12 +81,6 @@ export class ApiService {
   private drinkTypes = new BehaviorSubject([]);
   _drinkTypes = this.drinkTypes.asObservable();
 
-  
-  //pageRoot = "https://gara.flyingpigs.es/fandango/";
-  pageRoot = "https://tecina.flyingpigs.es/";
-
- // pageRoot = "http://gara-api.local/";
-  //public pageRoot = "http://gara-api.local:8000/";
 
   public imagesPath = this.pageRoot + "img";
   public api = this.pageRoot + 'api';

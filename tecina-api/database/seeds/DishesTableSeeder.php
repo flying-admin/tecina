@@ -20,7 +20,7 @@ class DishesTableSeeder extends Seeder
             DB::table('dishes')->insert([
                 'ingredients' => 'ingredients_:' . $i. str_random(15),
                 'active'=> TRUE,
-                'image'=>'no-image.png',
+                'image'=>'',
             ]);
         }
 

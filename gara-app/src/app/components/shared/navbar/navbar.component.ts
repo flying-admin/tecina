@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   menus:any[] = [];
   wines:any[] = [];
   drinks:any[] = [];
-  wineHighlight;
+  wineHighlight = {};
   imagesPath:string;
   mainMenu:boolean = false;
   translations = {
@@ -120,7 +120,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }).subscribe(
         wineHighlight => {
           if((this.wines).length > 0 ){
-            this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);
+            this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);            
           }
       });
 
@@ -139,6 +139,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       dishes => { 
         this.dishes = dishes;
     });
+  }
+
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
   }
 
   getFilteredDishes ( _categories ){

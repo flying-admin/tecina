@@ -31,7 +31,8 @@
               </div>
             </div>
             <div class="col-xs-7">
-              <img [src]="imagesPath + dish.image" [default]="'assets/images/shared/default_dish.png'" class="dish-item__image" alt="Intro dish1" />
+              <img *ngIf="dish.image != ''" [src]="imagesPath + dish.image" [default]="'assets/images/shared/default_dish.png'" class="dish-item__image" alt="Intro dish1" />
+              <img *ngIf="dish.image == ''" [src]="'assets/images/shared/default_dish.png'" [default]="'assets/images/shared/default_dish.png'" class="dish-item__image" alt="Intro dish1" />
             </div>
           </div>
           <div class="dish-item__counter">

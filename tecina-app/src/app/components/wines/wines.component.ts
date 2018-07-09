@@ -87,7 +87,6 @@ export class WinesComponent implements OnInit {
   };
 
 
-
   @ViewChild(SwiperDirective) swiperWines?: SwiperDirective;
 
   constructor( private _api: ApiService) {
@@ -97,18 +96,22 @@ export class WinesComponent implements OnInit {
   initialiseState() {
     this._api.getWinesDO().flatMap(
       (winesDO: any) => {
-        return this._api.getWines()
+        return this._api.getWines() 
           .map((wines: any) => {
             (winesDO.length > 25 )? this.block_lange = true: this.block_lange = false;
             this.allWines = wines;
             let wines_do = [];
-            let used_do = [];
+            let used_do = [[],[]];
             for (let w = 0; w < wines.length; w++) {
               if( wines_do.indexOf(wines[w].id_do) == -1){
                 wines_do.push(wines[w].id_do);
                 var el = this._api.getObjectBy(winesDO,wines[w].id_do)
                 if( el  !== []){
-                  used_do.push(el);
+                  if(el.canarias == 0){
+                    used_do[0].push(el);
+                  }else{
+                    used_do[1].push(el);
+                  }
                 }
               }
             }
@@ -150,7 +153,6 @@ export class WinesComponent implements OnInit {
     );
   }
 
- 
   clearFilters(){
     this.winesFilters.wineTypes = [] ;
     this.no_results = false;

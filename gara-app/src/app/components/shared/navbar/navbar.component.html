@@ -42,10 +42,11 @@
                   <sup>({{ wines.length }})</sup>
                 </a>
               </li>
-              <li class="header__menu__nav__feature">
-                <a [routerLink]="['/wines']" class="feat" *ngIf="wineHighlight">
+              <li class="header__menu__nav__feature" *ngIf="hasProp(wineHighlight, 'id')">
+                <a [routerLink]="['/wines']" class="feat">
                   <div class="feat__image">
-                    <img [src]="wineHighlight.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                    <img *ngIf="wine.image != ''" [src]="wineHighlight.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                    <img *ngIf="wine.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">{{ wineHighlight.name }} <br>

@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   menus:any[] = [];
   wines:any[] = [];
   drinks:any[] = [];
-  wineHighlight;
+  wineHighlight = {};
   imagesPath:string;
   mainMenu:boolean = false;
   translations = {
@@ -191,6 +191,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   mainMenuStatus( open ){
     this._api.setMainMenu(open);
+  }
+
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
   }
 
   inArray( value , args ){

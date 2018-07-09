@@ -32,7 +32,8 @@
             <div class="drinks-row">
               <div class="drinks-row__drink" *ngFor="let drink of droup">
                 <div class="drinks-row__drink__image">
-                  <img [src]="imagesPath + drink.image"  [default]="'assets/images/shared/default_drink.png'"  alt="Menu bottle" />
+                  <img *ngIf="drink.image != ''" [src]="imagesPath + drink.image"  [default]="'assets/images/shared/default_drink.png'"  alt="Menu bottle" />
+                  <img *ngIf="drink.image == ''" [src]="'assets/images/shared/default_drink.png'"  [default]="'assets/images/shared/default_drink.png'"  alt="Menu bottle" />
                 </div>
                 <div class="drinks-row__drink__info">
                   <p class="drinks-row__drink__info__name">{{ drink.translate[currentLang].name }}</p>

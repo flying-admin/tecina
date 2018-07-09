@@ -60,7 +60,8 @@
               </div>
             </div>
             <div class="menu-dish__image">
-              <img [src]="imagesPath +'/dishes/'+ dish.image" [default]="'assets/images/shared/default_dish.png'" class="dishes-row__dish__image" alt="Intro dish1" />
+              <img *ngIf="dish.image != ''" [src]="imagesPath +'/dishes/'+ dish.image" [default]="'assets/images/shared/default_dish.png'" class="dishes-row__dish__image" alt="Intro dish1" />
+              <img *ngIf="dish.image == ''" [src]="'assets/images/shared/default_dish.png'" [default]="'assets/images/shared/default_dish.png'" class="dishes-row__dish__image" alt="Intro dish1" />
             </div>
           </div>
         </div>
@@ -85,7 +86,8 @@
             <div class="wines-row">
               <div class="wines-row__wine" *ngFor="let wine of wines_group" >
                 <div class="wines-row__wine__image">
-                  <img [src]="imagesPath +'/wines/'+ wine.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                  <img *ngIf="wine.image != ''" [src]="imagesPath +'/wines/'+ wine.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                  <img *ngIf="wine.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
                 </div>
                 <div class="wines-row__wine__info">
                     <p class="wines-row__wine__info__name">{{ wine.name}}</p>
