@@ -1,0 +1,98 @@
+<div class="wines">
+  <p class="wines__title">
+    <img src="assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+    <span>{{ translations.wines.page_title[currentLang] }}</span>
+  </p>
+  <div class="wines__filters">
+      <div class="wines__filters__block" *ngIf="winesReady">
+        <p class="wines__filters__block__title">{{ translations.wines.filters.type[currentLang] }}</p>
+        <ul class="wines__filters__block__list" *ngIf="wineTypes.length > 0">
+          <li *ngFor="let wineType of wineTypes" >
+            <input type="checkbox" [value]="wineType.id" 
+              [id]="'wineType-'+ wineType.id" 
+              [checked]="inArray(winesFilters.wineTypes ,wineType.id)"
+              (change)="changeWinesFilters('wineTypes', wineType.id, $event.target.checked)">
+            <label [for]="'wineType-' + wineType.id">
+              <span>{{ wineType.translate[currentLang] }}</span>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="wines__filters__block" [ngClass]="{'wines__filters__block--large': block_lange }"  *ngIf="winesReady">
+        <p class="wines__filters__block__title">{{ translations.wines.filters.do_title[currentLang] }}</p>
+        <div class="wines__filters__block--sub-block">
+          <p class="wines__filters__block__title wines__filters__block__title--sub">{{ translations.wines.filters.do_section_1[currentLang] }}</p>
+          <ul class="wines__filters__block__list wines__filters__block__list--half" *ngIf="wineDO.length != 0">
+            <li *ngFor="let wine_do of wineDO[0];" >
+                <input type="checkbox" [value]="wine_do.id" 
+                  [id]="'wineDO-'+wine_do.id" 
+                  [checked]="inArray(winesFilters.wineDO ,wine_do.id)"
+                  (change)="changeWinesFilters('wineDO', wine_do.id, $event.target.checked)">
+                <label [for]="'wineDO-'+wine_do.id">
+                  <span>{{ wine_do.name }}</span>
+                </label>
+              </li>
+          </ul>
+          <p class="wines__filters__block__title wines__filters__block__title--sub">{{ translations.wines.filters.do_section_2[currentLang] }}</p>
+          <ul class="wines__filters__block__list wines__filters__block__list--half">
+              <li *ngFor="let wine_do of wineDO[1];" >
+                  <input type="checkbox" [value]="wine_do.id" 
+                    [id]="'wineDO-'+wine_do.id" 
+                    [checked]="inArray(winesFilters.wineDO ,wine_do.id)"
+                    (change)="changeWinesFilters('wineDO', wine_do.id, $event.target.checked)">
+                  <label [for]="'wineDO-'+wine_do.id">
+                    <span>{{ wine_do.name }}</span>
+                  </label>
+                </li>
+          </ul>
+        </div>
+      </div>
+      <div class="wines__filters__clear" (click)="clearFilters()" *ngIf="(winesFilters.wineTypes).length > 0 || (winesFilters.wineDO).length > 0">
+          <span class="wines__filters__clear__link">
+            <span class="icon-trash"></span>
+            <span>{{ translations.wines.filters.button[currentLang] }}</span>
+          </span>
+        </div>
+  </div>
+  <div class="wines__list" *ngIf="!no_results">
+    <div class="swiper-container wine-list wines__list__slider" [swiper]="currentConfig" >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide wine-list__item" *ngFor="let group of wines">
+          <div class="wines-row">
+            <div class="wines-row__wine" *ngFor="let wine of group">
+              <div class="wines-row__wine__image">
+                <img  *ngIf="wine.image != ''" [src]="imagesPath + wine.image"  [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                <img  *ngIf="wine.image == ''" [src]="'assets/images/shared/default_drink.png'"  [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+              </div>
+              <div class="wines-row__wine__info">
+                <p class="wines-row__wine__info__name">{{ wine.name }}</p>
+                <p class="wines-row__wine__info__type" *ngIf="wine.wine_type.length != 0"> {{ wine.wine_type[0].translate[currentLang] }}</p>
+                <p class="wines-row__wine__info__origin" *ngIf="wine.wine_do.length != 0">
+                  <strong>{{ translations.wines.do[currentLang] }}</strong> {{ wine.wine_do[0].name  }}</p>
+                <p class="wines-row__wine__info__variety" *ngIf="(wine.wine_varieties).length != 0">
+                  <span class="wines-row__wine__info__variety--label">{{ translations.wines.variety[currentLang] }}:</span>
+                  <span class="wines-row__wine__info__variety--value"> 
+                    <span  *ngFor="let wine_variety of wine.wine_varieties ; let last = last"> 
+                      {{ wine_variety.translate[currentLang] }}{{ (last)? '' : ','  }}  
+                    </span>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-prev wine-list__nav wine-list__nav--prev">
+        <span class="icon-chevron-up"></span>
+      </div>
+      <div class="swiper-button-next wine-list__nav wine-list__nav--next">
+        <span class="icon-chevron-down"></span>
+      </div>
+    </div>
+  </div>
+  <div class="noresults noresults--wines" *ngIf="no_results">
+    <div class="noresults__wrapper">
+      <img src="assets/images/shared/no-results_{{currentLang}}.png" class="noresults__wrapper__image" alt="No results es" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<header class="header " [ngClass]="{'active': mainMenu}">
+  <div class="header--inner">
+    <div class="header__menu">
+      <div class="row">
+        <div class="col-xs-12">
+          <a [routerLink]="['home']" (click)="mainMenuStatus(false)" >
+            <img src="assets/images/shared/logo.png" class="header__menu__logo" alt="Logo" />
+          </a>
+        </div>
+      </div>
+      <div class="row"  *ngIf="dishes.length != 0 ">
+        <div class="col-xs-7">
+          <div class="header__menu__nav header__menu__nav--left">
+            <ul>
+              <li *ngFor="let category  of categories">
+                <a  (click)="goToDishes(category.id) ;mainMenuStatus(false)"  >{{ category.translate[currentLang].name }}
+                  <sup>({{ (getFilteredDishes( [category.id] )).length }})</sup>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="header__menu__nav header__menu__nav--left" *ngIf="menus.length > 0">
+            <ul>
+              <li *ngIf="menus.length > 0">
+                <a [routerLink]="['/menus']" (click)="mainMenuStatus(false)" >{{ translations.nav.menu_title[currentLang] }}
+                <sup>({{ menus.length }})</sup>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-5">
+          <div class="header__menu__nav">
+            <ul>
+              <li *ngIf="drinks.length > 0">
+                <a [routerLink]="['/drinks']" (click)="mainMenuStatus(false)">{{ translations.nav.drinks_title[currentLang] }}
+                  <sup>({{ drinks.length }})</sup>
+                </a>
+              </li>
+              <li *ngIf="wines.length > 0">
+                <a [routerLink]="['/wines']" (click)="mainMenuStatus(false)">{{ translations.nav.wine_title[currentLang] }}
+                  <sup>({{ wines.length }})</sup>
+                </a>
+              </li>
+              <li class="header__menu__nav__feature">
+                <a [routerLink]="['/wines']" class="feat" *ngIf="hasProp(wineHighlight , 'id')">
+                  <div class="feat__image">
+                    <img *ngIf="wineHighlight.image != ''" [src]="wineHighlight.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                    <img *ngIf="wineHighlight.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                  </div>
+                  <p class="feat__text">
+                    <span class="feat__text__name">{{ wineHighlight.name }} <br>
+                        {{ wineHighlight.wine_type[0].translate[currentLang]}}</span>
+                    <span class="feat__text__info">{{ translations.nav.do[currentLang] }} : {{ wineHighlight.wine_do[0].name}}
+                      <br>{{ translations.nav.variety[currentLang] }}: 
+                        <span  *ngFor="let wine_variety of wineHighlight.wine_varieties ; let last = last"> 
+                          {{ wine_variety.translate[currentLang] }}{{ (last)? '' : ','  }}  
+                        </span>
+                    </span>
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-9" *ngIf="dishes.length != 0">
+          <div class="header__menu__filter">
+            <p class="header__menu__filter__title header__menu__filter__title--main">{{ translations.nav.filter_title[currentLang] }}:</p>
+            <p class="header__menu__filter__title">{{ translations.nav.allergen_title[currentLang] }}</p>
+            <ul class="header__menu__filter__alergen">
+              <li *ngFor="let allergen of allergens" >
+                <input type="checkbox" [value]="allergen.id"
+                [checked]="inArray( currentFilters.allergens , allergen.id)" 
+                [id]="'allergen-'+allergen.id" (change)="changeFilter('allergens', allergen.id, $event.target.checked)">
+                <label [for]="'allergen-'+allergen.id">
+                  <span [class]="'icon-'+allergen.icon"></span>
+                  <span>{{ allergen.translate[currentLang].name }}</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xs-3" *ngIf="dishes.length != 0">
+          <div class="header__menu__filter">
+            <p class="header__menu__filter__title header__menu__filter__title--main">&nbsp;</p>
+            <p class="header__menu__filter__title">{{ translations.nav.foodtypes_title[currentLang] }}</p>
+            <ul class="header__menu__filter__food">
+              <li *ngFor="let foodType of foodTypes" >
+                <input type="checkbox" [value]="foodType.id" 
+                [checked]="inArray( currentFilters.foodTypes , foodType.id)"
+                (change)="changeFilter('foodTypes', foodType.id, $event.target.checked)" name="foodtype" [id]="'foodtype-'+foodType.id">
+                <label [for]="'foodtype-'+foodType.id">
+                  <span>{{ foodType.translate[currentLang] }} </span>
+                </label>
+              </li>
+            </ul>
+            <div class="header__menu__filter__clear"  *ngIf="dishes.length != 0">
+                <span class="header__menu__filter__clear__link" (click)="clearFilters()">
+                  <span class="icon-trash"></span>
+                  <span>{{ translations.nav.button[currentLang] }}</span>
+                </span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header__bar">
+      <a class="header__bar__burguer" (click)="filtersMenuStatus(false); mainMenuStatus(!mainMenu)">
+        <span></span>
+      </a>
+      <div class="header__bar__langs">
+        <ul>
+          <li *ngFor="let lang of langs" >
+            <span (click)="changeLang( lang.code )" [class.active]="currentLang == lang.code" > {{lang.code}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="header__bar__tag" >
+        <span>{{ translations.nav.menu[currentLang] }}</span>
+      </div>
+    </div>
+  </div>
+</header>

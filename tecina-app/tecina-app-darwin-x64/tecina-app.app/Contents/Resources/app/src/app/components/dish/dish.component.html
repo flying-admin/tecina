@@ -1,0 +1,65 @@
+<div class="dish " *ngIf="!no_results">
+  <img src="assets/images/shared/logo.png" alt="Tasca Fandango" class="dish__logo" />
+  <a [routerLink]="['/dishes']" class="dish__return">
+    <span class="icon-return"></span>
+  </a>
+  <div class="swiper-container dish__slider" [swiper]="currentConfig" >
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <div class="swiper-slide dish__slider__item" *ngFor="let dish of dishes; index as i">
+        <div class="dish-item">
+          <div class="row">
+            <div class="col-xs-5">
+              <p class="dish-item__title">{{ dish.translate[currentLang].name }}</p>
+              <p class="dish-item__desc">{{ dish.translate[currentLang].description }}</p>
+              <div class="dish-item__allergens">
+                <p class="dish-item__allergens__title" *ngIf="dish.allergens.length > 0">{{ translations.dish.allergens_title[currentLang] }}:</p>
+                <ul class="dish-item__allergens__list">
+                  <li *ngFor="let allergen of dish.dish_allergens ">
+                    <span [class]="'icon-'+ allergen.icon "></span>
+                  </li>
+                </ul>
+                <ul class="dish-item__allergens__list dish-item__allergens__list--border">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xs-7">
+              <img *ngIf="dish.image != ''" [src]="imagesPath + dish.image" [default]="'assets/images/shared/default_dish.png'" class="dish-item__image" alt="Intro dish1" />
+              <img *ngIf="dish.image == ''" [src]="'assets/images/shared/default_dish.png'" [default]="'assets/images/shared/default_dish.png'" class="dish-item__image" alt="Intro dish1" />
+            </div>
+          </div>
+          <div class="dish-item__counter">
+            <span class="dish-item__counter__current">
+            {{ i+1 | number:'2.0-0'   }} 
+            </span>
+            <span class="dish-item__counter__total">
+              {{ dishes.length | number:'2.0-0'  }} 
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-prev dish__slider__nav dish__slider__nav--prev">
+      <span class="icon-chevron-up"></span>
+    </div>
+    <div class="swiper-button-next dish__slider__nav dish__slider__nav--next">
+      <span class="icon-chevron-down"></span>
+    </div>
+  </div>
+</div>
+<div class="noresults" *ngIf="no_results">
+  <p class="noresults__title">
+    <img src="assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+    <span>uups</span>
+  </p>
+  <div class="noresults__wrapper">
+    <img src="assets/images/shared/no-results_{{currentLang}}.png" class="noresults__wrapper__image" alt="No results es" />
+  </div>
+</div>
