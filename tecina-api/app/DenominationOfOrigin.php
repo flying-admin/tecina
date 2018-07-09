@@ -20,7 +20,7 @@ class DenominationOfOrigin extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'region'
+        'name', 'region', 'canarias'
     ];
 
     /**

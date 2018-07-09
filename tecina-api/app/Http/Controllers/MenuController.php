@@ -37,7 +37,23 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        return response()->json(['probando'=>$request],200);
+      $lang =  DB::table('languages')->get();
+      $menuID = DB::table('menus')->insertGetId([
+          'image' => 'no-image.png',
+          'active'=> FALSE
+      ]);
+      foreach ($lang as $lan) {
+          DB::table('menus_translations')->insert([
+              [
+                  'id_menu' => $menuID,
+                  'id_language' => $lan->id,
+                  'name' =>$lan->code .'_name',
+                  'description' =>$lan->code .'-description'
+              ]
+          ]);
+      }
+
+        return redirect('api/menus/'.$menuID.'/edit');
     }
 
     /**
