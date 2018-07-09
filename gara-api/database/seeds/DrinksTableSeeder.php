@@ -306,7 +306,7 @@ class DrinksTableSeeder extends Seeder
       ];
 
     foreach($bebidas as $bebida){
-      if(($bebida['TIPO DE BEBIDA'] != 'Vino') && ($bebida['TIPO DE BEBIDA'] != '' && $bebida['GARA']=='SI' )){
+      if(($bebida['TIPO DE BEBIDA'] != 'Vino') && ($bebida['TIPO DE BEBIDA'] != '')){
         // we get the DrinkType or create it
         $typeId=null;
         if(DB::table('drink_type_translations')->where('name',$bebida['TIPO DE BEBIDA'])->first()){
@@ -326,18 +326,20 @@ class DrinksTableSeeder extends Seeder
             ]);
           }
         }
-        $drinkId=DB::table('drinks')->insertGetId([
-          'drink_type_id' => $typeId,
-          'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
-          'price' => str_replace(',','.', $bebida['PRECIO'])
-        ]);
-        foreach($langs as $lang){
-          DB::table('drink_translations')->insert([
-            'language_id'=>$lang->id,
-            'drink_id'=>$drinkId,
-            'name'=>$bebida['Nombre de la bebida'],
-            'description'=>$bebida['Nombre de la bebida']
+        if( $bebida['GARA']=='SI' ){
+          $drinkId=DB::table('drinks')->insertGetId([
+            'drink_type_id' => $typeId,
+            'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
+            'price' => str_replace(',','.', $bebida['PRECIO'])
           ]);
+          foreach($langs as $lang){
+            DB::table('drink_translations')->insert([
+              'language_id'=>$lang->id,
+              'drink_id'=>$drinkId,
+              'name'=>$bebida['Nombre de la bebida'],
+              'description'=>$bebida['Nombre de la bebida']
+            ]);
+          }
         }
       }
     }

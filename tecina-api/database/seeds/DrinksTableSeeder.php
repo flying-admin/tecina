@@ -326,18 +326,20 @@ class DrinksTableSeeder extends Seeder
             ]);
           }
         }
-        $drinkId=DB::table('drinks')->insertGetId([
-          'drink_type_id' => $typeId,
-          'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
-          'price' => str_replace(',','.', $bebida['PRECIO'])
-        ]);
-        foreach($langs as $lang){
-          DB::table('drink_translations')->insert([
-            'language_id'=>$lang->id,
-            'drink_id'=>$drinkId,
-            'name'=>$bebida['Nombre de la bebida'],
-            'description'=>$bebida['Nombre de la bebida']
+        if($bebida['TASCA']=='SI'){
+          $drinkId=DB::table('drinks')->insertGetId([
+            'drink_type_id' => $typeId,
+            'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
+            'price' => str_replace(',','.', $bebida['PRECIO'])
           ]);
+          foreach($langs as $lang){
+            DB::table('drink_translations')->insert([
+              'language_id'=>$lang->id,
+              'drink_id'=>$drinkId,
+              'name'=>$bebida['Nombre de la bebida'],
+              'description'=>$bebida['Nombre de la bebida']
+            ]);
+          }
         }
       }
     }
