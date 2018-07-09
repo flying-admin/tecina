@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class ApiService {
 
-  pageRoot = "https://fandango.flyingpigs.es/";
+  pageRoot = "https://tecina-fandango.flyingpigs.es/";
   //pageRoot = "http://tecina-api.local/";
   //public pageRoot = "http://tecina-api.local:8000/";
 
