@@ -43,6 +43,7 @@ export class DishComponent implements OnInit {
       }
     }
    };
+   
 
   @ViewChild(SwiperDirective) swiperDish?: SwiperDirective;
 

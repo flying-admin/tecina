@@ -1,0 +1,31 @@
+
+<div class="intro ">
+
+    <a href="/" class="intro__logo">
+      <img src="assets/images/shared/logo_white.png" alt="Tasca Fandango" />
+    </a>
+
+    <a class="intro__start" (click)="mainMenuStatus(true)">
+      <p  [innerHTML]="translations.init[currentLang]"></p>
+      <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
+    </a>
+
+    <div class="swiper-container intro__slider" [swiper]="currentConfig">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <div class="swiper-slide intro__slider__item" *ngFor="let highlight of highlights; let last = last" >
+          <div class="intro__dish">
+            <div class="intro__dish--inner">
+              <img src="{{ imagesPath + highlight.image }}"  [default]="'assets/images/shared/default_dish.png'" class="intro__dish__image" alt="Intro dish1" />
+              <div class="intro__dish__info">
+                <p class="intro__dish__info__category">{{ highlight.lang[currentLang]['name'] }}</p>
+                <p class="intro__dish__info__name">{{ highlight.lang[currentLang]['description'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="swiper-pagination"></div> -->
+    </div >
+
+  </div>
