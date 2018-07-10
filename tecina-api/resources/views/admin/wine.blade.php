@@ -18,6 +18,12 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de vinos</strong>
+                <div style="float:right">
+                  <a href="/api/wines/create" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Crear Vino</span>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
                    {{ $wines->links('pagination::bootstrap-4') }}

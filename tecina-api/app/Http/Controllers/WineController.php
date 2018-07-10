@@ -25,7 +25,7 @@ class WineController extends Controller
         $wine->wineVarieties = $wine->wineVarieties()->get()->pluck('id')->toArray();
         $data[] = $wine;
       }
-          return response()->json($data,200);
+      return response()->json($data,200);
     }
 
     /**
@@ -35,7 +35,15 @@ class WineController extends Controller
      */
     public function create()
     {
-        //
+      $wineID = DB::table('wines')->insertGetId([
+          'image' => 'no-image.png',
+          'name' => 'nombre',
+          'id_wine_type' => 1,
+          'id_do' => 1,
+          'wine_age_id' => 1,
+          'active'=> FALSE
+      ]);
+        return redirect('api/wines/'.$wineID.'/edit');
     }
 
     /**

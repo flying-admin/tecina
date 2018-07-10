@@ -18,6 +18,12 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de platos</strong>
+                <div style="float:right">
+                  <a href="/api/dishes/create" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Crear Plato</span>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
                    {{ $dishes->links('pagination::bootstrap-4') }}

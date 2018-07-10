@@ -18,6 +18,12 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de destacados</strong>
+                <div style="float:right">
+                  <a href="/api/highlights/create" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Crear Destacado</span>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
                    {{ $highlights->links('pagination::bootstrap-4') }}

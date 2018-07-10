@@ -19,12 +19,11 @@
               <div class="card-header">
                 <strong>Listado de menús</strong>
                 <div style="float:right">
-
-                <a href="/api/menus/create" class="btn btn-primary">
-                  <i class="material-icons">create</i>
-                  <span>Crear Menú</span>
-                </a>
-              </div>
+                  <a href="/api/menus/create" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Crear Menú</span>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
                 {{ $menus_2->links('pagination::bootstrap-4') }}
