@@ -42,11 +42,11 @@
                   <sup>({{ wines.length }})</sup>
                 </a>
               </li>
-              <li class="header__menu__nav__feature" *ngIf="hasProp(wineHighlight, 'id')">
-                <a [routerLink]="['/wines']" class="feat">
+              <li class="header__menu__nav__feature">
+                <a [routerLink]="['/wines']" class="feat" *ngIf="hasProp(wineHighlight , 'id')">
                   <div class="feat__image">
-                    <img *ngIf="wine.image != ''" [src]="wineHighlight.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
-                    <img *ngIf="wine.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                    <img *ngIf="wineHighlight.image != ''" [src]="imagesPath + wineHighlight.image" [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
+                    <img *ngIf="wineHighlight.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Imagen por defecto" />
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">{{ wineHighlight.name }} <br>
@@ -123,3 +123,5 @@
     </div>
   </div>
 </header>
+<div class="header-backdrop" *ngIf="mainMenu" (click)="mainMenuStatus(false)">
+</div>

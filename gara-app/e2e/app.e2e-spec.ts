@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('gara-app App', () => {
+describe('tecina-app App', () => {
   let page: AppPage;
 
   beforeEach(() => {

@@ -12,15 +12,14 @@ class DrinkTypesTableSeeder extends Seeder
     public function run()
     {
         $drinkTypes=[
-          'Vino',
           'Sangria',
           'Cerveza',
           'Refresco',
           'Agua Mineral',
           'Zumo'
         ];
+        
         $drinkTypesTranslations=[
-          'Vino'=>['es'=>'Vino','en'=>'Wine','de'=>'Wein'],
           'Sangria'=>['es'=>'Sangria','en'=>'Sangria','de'=>'Sangria'],
           'Cerveza'=>['es'=>'Cerveza','en'=>'Beer','de'=>'Bier'],
           'Refresco'=>['es'=>'Refresco','en'=>'Drink','de'=>'Getränk'],

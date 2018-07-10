@@ -10,6 +10,7 @@ export class ApiService {
 
   pageRoot = "https://tecina-gara.flyingpigs.es/";
   //pageRoot = "http://tecina-api.local/";
+  //public pageRoot = "http://tecina-api.local:8000/";
 
   private lang = new BehaviorSubject('es');
   currentLang = this.lang.asObservable();
@@ -79,7 +80,6 @@ export class ApiService {
 
   private drinkTypes = new BehaviorSubject([]);
   _drinkTypes = this.drinkTypes.asObservable();
-
 
   public imagesPath = this.pageRoot + "img";
   public api = this.pageRoot + 'api';

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: []
+  styles: ['.header-backdrop{display: block;position: fixed;top: 0;right: 0;bottom: 0;z-index: 10;height: 100vh;width: 50vw;}']
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
@@ -121,6 +121,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         wineHighlight => {
           if((this.wines).length > 0 ){
             this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);
+            console.log(this.wineHighlight);
           }
       });
 

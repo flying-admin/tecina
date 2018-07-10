@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: []
+  styles: ['.header-backdrop{display: block;position: fixed;top: 0;right: 0;bottom: 0;z-index: 10;height: 100vh;width: 50vw;}']
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {
@@ -120,7 +120,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       }).subscribe(
         wineHighlight => {
           if((this.wines).length > 0 ){
-            this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);            
+            this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);
+            console.log(this.wineHighlight);
           }
       });
 
@@ -139,10 +140,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       dishes => { 
         this.dishes = dishes;
     });
-  }
-
-  hasProp(o, name) {
-    return o.hasOwnProperty(name);
   }
 
   getFilteredDishes ( _categories ){
@@ -195,6 +192,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   mainMenuStatus( open ){
     this._api.setMainMenu(open);
+  }
+
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
   }
 
   inArray( value , args ){

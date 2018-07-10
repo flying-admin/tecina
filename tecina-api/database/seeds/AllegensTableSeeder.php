@@ -15,12 +15,12 @@ class AllegensTableSeeder extends Seeder
         $lang =  DB::table('languages')->get();
 
         $allergens = [
-            'es' =>[ 'crustáceos', 'moluscos', 'dióxido de azufre y sulfitos', 'altramuces', 'pescado', 'gluten', 'apio','frutos de cáscara', 'huevos', 'soja', 'mostaza', 'granos de sésamo', 'lácteos', ],
-            'en' =>[ 'seafood', 'shellfish', 'sulfurdioxide and sulfites', 'lupins', 'fish', 'gluten', 'celery', 'nuts', 'egg', 'soya', 'mustard', 'sesame seeds', 'dairy products',],
-            'de' =>[ 'Meeresfrüchte', 'Schaltier', 'Schwefeldioxid und Sulfite', 'Lupinen', 'Fisch', 'Gluten', 'Sellerie', 'Nüsse','Ei', 'Soja', 'Senf', 'Sesamsamen', 'Milchprodukte', ]
+            'es' =>[ 'crustáceos', 'moluscos', 'dióxido de azufre y sulfitos', 'altramuces', 'pescado', 'gluten', 'apio','frutos de cáscara','cacahuetes' ,'huevos', 'soja', 'mostaza', 'granos de sésamo', 'lácteos', ],
+            'en' =>[ 'seafood', 'shellfish', 'sulfurdioxide and sulfites', 'lupins', 'fish', 'gluten', 'celery', 'nuts','peanuts', 'egg', 'soya', 'mustard', 'sesame seeds', 'dairy products',],
+            'de' =>[ 'Meeresfrüchte', 'Schaltier', 'Schwefeldioxid und Sulfite', 'Lupinen', 'Fisch', 'Gluten', 'Sellerie', 'Nüsse','Erdnüsse','Ei', 'Soja', 'Senf', 'Sesamsamen', 'Milchprodukte', ]
         ];
 
-        $allergens_icons = ['crustaceos', 'moluscos', 'sulfitos', 'altramuces', 'pescado', 'gluten', 'apio', 'frutos_cascara', 'huevos', 'soja' , 'mostaza', 'sesamo', 'lacteos'];
+        $allergens_icons = ['crustaceos', 'moluscos', 'sulfitos', 'altramuces', 'pescado', 'gluten', 'apio', 'frutos_cascara','cacahuetes' , 'huevos', 'soja' , 'mostaza', 'sesamo', 'lacteos'];
 
         for ($i = 0 ; $i < count($allergens_icons) ; $i++){
             $allergenId = DB::table('allergens')->insertGetId([

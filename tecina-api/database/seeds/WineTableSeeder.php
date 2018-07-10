@@ -307,8 +307,8 @@ class WineTableSeeder extends Seeder
         ];
 
 foreach($bebidas as $bebida){
-  if($bebida['TIPO DE BEBIDA']=='Vino' ){
-    if($bebida['TASCA']=='SI'){
+  if($bebida['TIPO DE BEBIDA']=='Vino' && ($bebida['TASCA']=='SI') ){
+
         $wineId = DB::table('wines')->insertGetId([
             'image' => ($bebida['Imagen']=='')?'':$bebida['Imagen'],
             'name' => $bebida['Nombre de la bebida'],
@@ -320,7 +320,6 @@ foreach($bebidas as $bebida){
             'year' => NULL,
             'active'=>($bebida['TASCA']=='SI')
         ]);
-    }
     for($i=1;$i<8;$i++){
       if(trim($bebida['VARIEDAD_'.$i])!=''){
         $id_variety=NULL;
@@ -343,12 +342,10 @@ foreach($bebidas as $bebida){
           }
         }
         try{
-            if($bebida['TASCA']=='SI'){
-                DB::table('wines_wine_varieties')->insert([
+            DB::table('wines_wine_varieties')->insert([
                 'id_wine'=>$wineId,
                 'id_wine_variety'=>$id_variety
-                ]);
-            }
+            ]);
       }catch(Exception $e){
         echo '
         ERROR:'.$e->getMessage();

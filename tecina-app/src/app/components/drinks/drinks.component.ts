@@ -61,17 +61,28 @@ export class DrinksComponent implements OnInit {
   
   initialiseState(){
 
-    this._api.getDrinkTypes().subscribe(
-      drinkTypes => {
-         this.drinkTypes = drinkTypes;
-        }
-    );
-      
-    this._api.getDrinks().subscribe(
+    this._api.getDrinkTypes().flatMap(
+      (drinkTypes: any) => {
+        return this._api.getDrinks() 
+          .map((drinks: any) => {
+            this.allDrinks = drinks;
+            let drinks_types = [];
+            let used_types = [];
+            for (let D = 0; D < drinks.length; D++) {
+              if( drinks_types.indexOf(drinks[D].drink_type_id) == -1){
+                drinks_types.push(drinks[D].drink_type_id);
+                var el = this._api.getObjectBy(drinkTypes,drinks[D].drink_type_id)
+                if( el  !== []){
+                  used_types.push(el);
+                } 
+              }
+            }
+            this.drinkTypes = used_types;
+            return this._api.subArray(drinks, 2);
+          });
+    }).subscribe(
       drinks => {
-        this.allDrinks = drinks;
-        this.drinks = this._api.subArray(drinks, 2);
-
+        this.drinks = drinks
         if(drinks.length != 0 ){
           this.goToIndex(0);
           this.no_results= false;
