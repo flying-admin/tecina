@@ -42,6 +42,8 @@ class DatabaseSeeder extends Seeder
         DB::table('drink_type_translations')->truncate();
         DB::table('wine_class_translations')->truncate();
         DB::table('wine_classes')->truncate();
+        DB::table('drinks')->truncate();
+
 
 
         DB::table('drink_types')->truncate();
