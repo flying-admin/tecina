@@ -168,7 +168,7 @@
     }).done(function(data){
       console.log('El nombre de la variedad es '+name);
       if(data){
-        jQuery('#variety_'+data).fadeOut();
+        jQuery('#variety_'+data).fadeOut().remove();
         jQuery('#add_wine_variety').prepend('<option selected value="'+data+'">'+name+'</option>');
       }
     });
