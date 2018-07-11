@@ -11,13 +11,13 @@
       <p class="menu__summary__menu__name" >
        {{ menu.translate[currentLang].name}}
       </p>
-      <p class="menu__summary__menu__note">
+      <p class="menu__summary__menu__note" *ngIf="menu.translate[currentLang].name != menu.translate[currentLang].description">
           {{ menu.translate[currentLang].description}}
       </p>
       <p class="menu__summary__menu__text" *ngFor="let dish of menu.menu_dishes; index as i " (click)="goToIndexDishes(i,300)" >
           {{ dish.translate[currentLang].name }}
       </p>
-      <span class="menu__summary__menu__wines" (click)="pairingStatus(true)">
+      <span class="menu__summary__menu__wines" (click)="pairingStatus(true)" *ngIf="wines.length != 0">
         <p class="menu__summary__menu__wines__text">
           {{ translations.menu.pairing.title[currentLang] }}
         </p>

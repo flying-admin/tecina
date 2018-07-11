@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,QueryList,ViewChildren } from '@angular/core';
+import { Component, OnInit,QueryList,ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from "../../services/api.service";
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';

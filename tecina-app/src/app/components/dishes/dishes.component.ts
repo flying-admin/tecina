@@ -7,7 +7,7 @@ import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 @Component({
   selector: 'app-dishes',
   templateUrl: './dishes.component.html',
-  styles: []
+  styles: ['.filters-backdrop{ display: block;position: fixed;top: 0;bottom: 0;right: 0;width:100vw ;height:100vh;z-index: 1;}']
 })
 
 export class DishesComponent implements OnInit {

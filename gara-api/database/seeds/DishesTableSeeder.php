@@ -19,7 +19,7 @@ class DishesTableSeeder extends Seeder
                     ['Imagen'=>'crematomate.png',	'Ingredientes'=>'TOMATE PARRILLA, CEBOLLA BLANCA, PUERROS DEL PAIS, PAPAS DEL PAIS, PIÑA MILLO FRESCA, ACEITE DE OLIVA, POLLO,CILANTRO, FIDEOS FINOS, ZANAHORIA, CILANTRO, AJOS PELADOS, PIMIENTA PALMERA, HUEVOS, PIMIENTOS ROJOS. ',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'No','altramuces'=>'No','pescado'=>'No','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'No','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'BRANCH TOMATOES CREAM','de'=>'STRAUCHTOMATEN-CREME','es'=>'CREMA DE TOMATITOS DE RAMA CON CRUJIENTE DE MILLO',],	'foodTypes'=>['Comida vegana'=>'Sí',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'Sí','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
                     ['Imagen'=>'papas_bonitas.png',	'Ingredientes'=>'PAPAS BONITAS, PIMIENTA PALMERA, AJOS PELADOS, ACEITE CORRIENTE, CAYENA RAMA, COMINOS, SAL GRUESA, VINAGRE JEREZ',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'No','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'“PAPAS BONITAS” MINIATURE (CANARIAN VARIETY OF POTATOES)','de'=>'KLEINE ”PAPAS BONITAS” (KARTOFFELSORTE AUS TENERIFFA)','es'=>'PAPAS BONITAS MINIATURAS',],	'foodTypes'=>['Comida vegana'=>'Sí',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'Sí','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
                     ['Imagen'=>'escaldon_pescado.png',	'Ingredientes'=>'PAPAS DEL PAIS, PIMIENTA PALMERA, AJOS PELADOS, CAYENA RAMA, COMINOS, SAL GRUESA, VINAGRE JEREZ, CEBOLLAS ROJAS, PUERROS DEL PAIS, PIMIENTOS ROJOS, PAMPANO CONGELADO, GOFIO 7 CEREALES, CILANTRO',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'Sí','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'CASSEROLE OF “FISH ESCALDÓN” (TIPICAL MIX OF GOFIO AND FISH BROTH)','de'=>'CASSEROLE VOM ”FISCH ESCALDÓN” (TRADITIONELLE MISCHUNG AUS GOFIO UND FISCHFOND)','es'=>'CAZUELITA DE ESCALDÓN DE PESCADO',],	'foodTypes'=>['Comida vegana'=>'No',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'Sí','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
-                    ['Imagen'=>'',	'Ingredientes'=>'PAPAS DEL PAIS, PIMIENTA PALMERA, AJOS PELADOS, ACEITE DE OLIVA, CAYENA RAMA, COMINOS, SAL GRUESA, HARINA DE TRIGO, CEBOLLA ROJA, PUERROS DEL PAIS, PIMIENTOS ROJOS, HUEVAS DE CABALLA, PAN RALLADO, LECHE DE SOJA',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'Sí','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'CRUNCHY DELIGHT OF CAVIAR GOMERO','de'=>'KNUSPRIGE KÖSTLICHKEITEN AUS KAVIAR GOMERO','es'=>'DELICIAS CRUJIENTES DE CAVIAR GOMERO',],	'foodTypes'=>['Comida vegana'=>'No',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'No','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
+                    ['Imagen'=>'delicias_crujientes.png',	'Ingredientes'=>'PAPAS DEL PAIS, PIMIENTA PALMERA, AJOS PELADOS, ACEITE DE OLIVA, CAYENA RAMA, COMINOS, SAL GRUESA, HARINA DE TRIGO, CEBOLLA ROJA, PUERROS DEL PAIS, PIMIENTOS ROJOS, HUEVAS DE CABALLA, PAN RALLADO, LECHE DE SOJA',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'Sí','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'CRUNCHY DELIGHT OF CAVIAR GOMERO','de'=>'KNUSPRIGE KÖSTLICHKEITEN AUS KAVIAR GOMERO','es'=>'DELICIAS CRUJIENTES DE CAVIAR GOMERO',],	'foodTypes'=>['Comida vegana'=>'No',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'No','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
                     ['Imagen'=>'ensalada_tomate_rama.png',	'Ingredientes'=>'TOMATE EN RAMA, VINAGRE DE JEREZ, AJOS PELADOS, ACEITE DE OLIVA VIRGEN EXTRA,MIEL PALMA, COMINOS, SAL GRUESA, ALMENDRAS FILETEADAS, CABOLLA ROJA',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'No','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'BRANCH TOMATOES SALAD','de'=>'STRAUCHTOMATEN SALAT','es'=>'ENSALADA DE TOMATES DE RAMA',],	'foodTypes'=>['Comida vegana'=>'Sí',],	'categories'=>['Entrantes fríos'=>'Sí','Entrantes calientes'=>'No','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
                     ['Imagen'=>'ensalada_queso.png',	'Ingredientes'=>'LECHUGA HOJA ROBLE, LECHUGAS PAIS, RUCULA, TOMATE CHERRY, TOMATE PARRILLA, MIEL PALMA, ACEITE EXTRA VIRGEN, ACETO BALSAMICO DUCA, ALMENDRAS FILETEADAS, QUESO BLANCO GUARAPO, CEBOLLAS ROJAS',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'Sí','altramuces'=>'No','pescado'=>'No','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'Sí','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'WARM SALAD OF MAJORERA GOAT CHEESE','de'=>'WARMER SALAT VON MAJORERA ZIEGENKÄSE','es'=>'ENSALADA TEMPLADA DE QUESO DE CABRA MAJORERA',],	'foodTypes'=>['Comida vegana'=>'No',],	'categories'=>['Entrantes fríos'=>'Sí','Entrantes calientes'=>'No','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
                     ['Imagen'=>'montaditos_batata_cherne.png',	'Ingredientes'=>'LECHUGA HOJA ROBLE, LECHUGAS PAIS, RUCULA, TOMATE CHERRY, TOMATE PARRILLA, AJOS PELADOS, ACEITE EXTRA VIRGEN, ACETO BALSAMICO DUCA, BATATA BLANCA, CILANTRO, CEBOLLA ROJA, PAMPANO CONGELADO, LIMONES',	'allergens'=>['crustáceos'=>'No','moluscos'=>'No','dióxido de azufre y sulfitos'=>'No','altramuces'=>'No','pescado'=>'Sí','gluten'=>'Sí','apio'=>'No','frutos de cáscara'=>'No','cacahuetes'=>'No','huevos'=>'No','soja'=>'No','mostaza'=>'No','granos de sésamo'=>'No',],	'translate'=>['en'=>'SWEET POTATO SANDWICHES WITH WRECKFISH CRUMBS 2 UNITS','de'=>'SÜßKARTOFFEL-KANAPEES MIT WRACKBARSCH BRÖSELN 2 ST','es'=>'MONTADITOS DE BATATA CON MIGAS DE CHERNE 2U',],	'foodTypes'=>['Comida vegana'=>'No',],	'categories'=>['Entrantes fríos'=>'No','Entrantes calientes'=>'No','Carnes'=>'No','Pescados'=>'No','Postres'=>'No',],],
@@ -97,10 +97,9 @@ class DishesTableSeeder extends Seeder
 
         foreach($platos as $plato){
 
-
             $dishId = DB::table('dishes')->insertGetId([
                 "ingredients"=> $plato['Ingredientes'],
-                "image"=> $plato['Imagen'],
+                "image"=> trim($plato['Imagen'], " \t\n\r"),
                 "active"=> 1,
             ]);
 
@@ -110,7 +109,7 @@ class DishesTableSeeder extends Seeder
                         'id_dish' => $dishId,
                         'id_language' => $lan->id,
                         'name' => $plato['translate'][$lan->code],
-                        'description' => ''
+                        'description' => $plato['translate'][$lan->code],
                     ]
                 );
             }
@@ -129,7 +128,7 @@ class DishesTableSeeder extends Seeder
                     }catch(Exception $e){
                         echo '
                         ERROR:'.$e->getMessage();
-                        print_r($bebida);
+                        print_r($plato);
                     }
                 }
             }
@@ -147,7 +146,7 @@ class DishesTableSeeder extends Seeder
                     }catch(Exception $e){
                         echo '
                         ERROR:'.$e->getMessage();
-                        print_r($bebida);
+                        print_r($plato);
                     }
                 }
             }
@@ -165,7 +164,7 @@ class DishesTableSeeder extends Seeder
                     }catch(Exception $e){
                         echo '
                         ERROR:'.$e->getMessage();
-                        print_r($bebida);
+                        print_r($plato);
                     }
                 }
             }

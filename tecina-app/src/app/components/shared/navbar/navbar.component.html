@@ -120,6 +120,7 @@
       <div class="header__bar__tag" >
         <span>{{ translations.nav.menu[currentLang] }}</span>
       </div>
+      <div class="header__bar__open" *ngIf="!mainMenu" (click)="filtersMenuStatus(false); mainMenuStatus(true)"></div>
     </div>
   </div>
 </header>

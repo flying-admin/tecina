@@ -83,6 +83,8 @@ export class MenusComponent implements OnInit {
       resp => { return resp }
     ).subscribe(
       menus => {
+        console.log(menus);
+        
         this.menus = this._api.subArray(menus, 3);
         this.goToIndex(0, 500);
       });
@@ -95,6 +97,10 @@ export class MenusComponent implements OnInit {
         this.initialiseState();
       }
     );
+  }
+
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
   }
 
   goToIndex(i, delay = 1000) {

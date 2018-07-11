@@ -8,9 +8,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class ApiService {
 
-  pageRoot = "https://tecina-gara.flyingpigs.es/";
+  //pageRoot = "https://tecina-gara.flyingpigs.es/";
   //pageRoot = "http://tecina-api.local/";
-  //public pageRoot = "http://tecina-api.local:8000/";
+  public pageRoot = "http://127.0.0.1:8000/";
 
   private lang = new BehaviorSubject('es');
   currentLang = this.lang.asObservable();

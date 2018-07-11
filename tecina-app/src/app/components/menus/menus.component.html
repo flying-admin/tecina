@@ -14,16 +14,18 @@
                 <span class="menus-row__menu__name--number">
                   {{ ((  3 * i + j)+1) | number:'2.0-0'  }} 
                 </span>
-                <span class="menus-row__menu__name--text" >{{ menu.translate[currentLang].name + " " + menu.id }}</span>
+                <span class="menus-row__menu__name--text" >{{ menu.translate[currentLang].name }}</span>
               </p>
-              <p class="menus-row__menu__note" >
+              <p class="menus-row__menu__note" *ngIf="menu.translate[currentLang].name != menu.translate[currentLang].description" >
                 {{ menu.translate[currentLang].description }}
               </p>
             </a>
-            <p class="menus-row__menu__text" *ngFor="let dish of menu.menu_dishes;">
-              {{ dish.translate[ currentLang ].name }}
-            </p>
-            <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(true)" class="menus-row__menu__wines">
+            <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(false)" >
+              <p class="menus-row__menu__text" *ngFor="let dish of menu.menu_dishes;">
+                {{ dish.translate[ currentLang ].name }}
+              </p>
+            </a>
+            <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(true)" *ngIf="(menu.wines).length != 0" class="menus-row__menu__wines">
               <p class="menus-row__menu__wines__text">
                 {{ translations.menus.pairing[currentLang] }}
               </p>
