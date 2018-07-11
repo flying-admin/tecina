@@ -18,6 +18,16 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de destacados</strong>
+                <form action="#" method="GET" style="display:inline">
+                  <input type="text" name="filter" value="{{@$_GET['filter']}}" />
+                  <input type="submit" value="filtrar" />
+                </form>
+                <div style="float:right">
+                  <a href="/api/highlights/create" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Crear Destacado</span>
+                  </a>
+                </div>
               </div>
               <div class="card-body">
                    {{ $highlights->links('pagination::bootstrap-4') }}
@@ -27,6 +37,7 @@
                       <th>ID</th>
                       <th>Nombre</th>
                       <th></th>
+                      <th style="text-align:right">Orden (cero equivale a desactivado)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,6 +51,9 @@
                           <span>Editar</span>
                         </a>
                       </td>
+                      <td>
+                        <input onchange="update_status({{$highlight->id}})" style="width:45px; text-align:center;" type="number" value="{{$highlight->order}}" />
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>
@@ -47,17 +61,6 @@
                    {{ $highlights->links('pagination::bootstrap-4') }}
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <strong>Nuevo Destacado</strong>
-              </div>
-              <div class="card-body">
-                <form class="menus create" action="/api/highlights/create" method="post">
-
-                </form>
-              </div>
-            </div>
-
         </div>
     </div>
 </div>

@@ -32,7 +32,22 @@ class HighlightController extends Controller
      */
     public function create()
     {
-        //
+      $highlightID = DB::table('highlights')->insertGetId([
+          'image' => 'no-image.png',
+          'order' => 0
+      ]);
+      $lang =  DB::table('languages')->get();
+      foreach ($lang as $lan) {
+          DB::table('highlights_translations')->insert([
+              [
+                  'id_highlight' => $highlightID,
+                  'id_language' => $lan->id,
+                  'name' =>$lan->code .'_name',
+                  'description' =>$lan->code .'-description'
+              ]
+          ]);
+      }
+        return redirect('api/highlights/'.$highlightID.'/edit');
     }
 
     /**

@@ -67,7 +67,24 @@ class DishController extends Controller
      */
     public function create()
     {
-        //
+      $lang =  DB::table('languages')->get();
+      $dishID = DB::table('dishes')->insertGetId([
+          'image' => 'no-image.png',
+          'ingredients' => 'ingredientes',
+          'active'=> FALSE
+      ]);
+      foreach ($lang as $lan) {
+          DB::table('dishes_translations')->insert([
+              [
+                  'id_dish' => $dishID,
+                  'id_language' => $lan->id,
+                  'name' =>$lan->code .'_name',
+                  'description' =>$lan->code .'-description'
+              ]
+          ]);
+      }
+
+        return redirect('api/dishes/'.$dishID.'/edit');
     }
 
     /**

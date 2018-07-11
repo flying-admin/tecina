@@ -35,9 +35,9 @@
                 </div>
                 @endforeach
               </div>
-              <label for="active">
-                <span>Activo:</span>
-                <input type="checkbox" name="active"{{($highlight->active)?' checked':''}}  />
+              <label for="order">
+                <span>Orden (cero para desactivar):</span>
+                <input type="number" name="order" value="{{$highlight->active}}" />
               </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
