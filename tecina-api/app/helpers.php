@@ -4,7 +4,7 @@ function prettyTranslate($datas)
 	$translate = [];
 	foreach($datas as $data)
 	{
-		$claves=array_keys($data['pivot']);
+		$claves=array_keys($data['pivot']->toArray());
 		if(in_array('name',$claves)&&in_array('description',$claves)){
 			$translate[$data['code']] = [
 				'name'        => $data['pivot']['name'],
