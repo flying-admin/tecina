@@ -108,7 +108,7 @@ class MenusTableSeeder extends Seeder
                         'id_menu' => $menuId,
                         'id_language' => $lan->id,
                         'name' => $menu['translate'][$lan->code],
-                        'description' =>  $menu['translate'][$lan->code],
+                        'description' => '',
                     ]
                 );
             }

@@ -109,7 +109,7 @@ class DishesTableSeeder extends Seeder
                         'id_dish' => $dishId,
                         'id_language' => $lan->id,
                         'name' => $plato['translate'][$lan->code],
-                        'description' => $plato['translate'][$lan->code],
+                        'description' => '',
                     ]
                 );
             }

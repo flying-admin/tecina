@@ -28,7 +28,7 @@ class CategoriesTableSeeder extends Seeder
                         'id_category' => $categoryID,
                         'id_language' => $lan->id,
                         'name' =>$dish_types[$lan->code][$i],
-                        'description' => $dish_types[$lan->code][$i]
+                        'description' => ''
                 ]);
             }
         }
