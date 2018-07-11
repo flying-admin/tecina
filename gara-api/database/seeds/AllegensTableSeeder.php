@@ -32,7 +32,7 @@ class AllegensTableSeeder extends Seeder
                         'id_allergen' => $allergenId,
                         'id_language' => $lan->id,
                         'name' => $allergens[$lan->code][$i],
-                        'description' => $allergens[$lan->code][$i]
+                        'description' => ''
                 ]);
             }
         }

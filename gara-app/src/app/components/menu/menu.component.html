@@ -11,7 +11,7 @@
       <p class="menu__summary__menu__name" >
        {{ menu.translate[currentLang].name}}
       </p>
-      <p class="menu__summary__menu__note" *ngIf="menu.translate[currentLang].name != menu.translate[currentLang].description">
+      <p class="menu__summary__menu__note" *ngIf="'' != menu.translate[currentLang].description">
         {{ menu.translate[currentLang].description }}
       </p>
       <p class="menu__summary__menu__text" *ngFor="let dish of menu.menu_dishes; index as i " (click)="goToIndexDishes(i,300)" >

@@ -322,7 +322,7 @@ class DrinksTableSeeder extends Seeder
               'drink_type_id' => $typeId,
               'language_id'   => $lan->id,
               'name'          => $bebida['TIPO DE BEBIDA'],
-              'description'   => $bebida['TIPO DE BEBIDA']
+              'description'   => ''
             ]);
           }
         }
@@ -337,7 +337,7 @@ class DrinksTableSeeder extends Seeder
               'language_id'=>$lang->id,
               'drink_id'=>$drinkId,
               'name'=>$bebida['Nombre de la bebida'],
-              'description'=>$bebida['Nombre de la bebida']
+              'description'=>''
             ]);
           }
         }

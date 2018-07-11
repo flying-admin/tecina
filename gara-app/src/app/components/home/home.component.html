@@ -1,5 +1,5 @@
 
-<div class="intro ">
+<div class="intro " (click)="mainMenuStatus(true)">
 
     <a href="/" class="intro__logo">
       <img src="assets/images/shared/logo.png" alt="Tasca Fandango" />
@@ -20,7 +20,7 @@
               <img *ngIf="highlight.image == ''" [src]="'assets/images/shared/default_dish.png'"  [default]="'assets/images/shared/default_dish.png'" class="intro__dish__image" alt="Intro dish1" />
               <div class="intro__dish__info">
                 <p class="intro__dish__info__category">{{ highlight.lang[currentLang]['name'] }}</p>
-                <p class="intro__dish__info__name">{{ highlight.lang[currentLang]['description'] }}</p>
+                <p class="intro__dish__info__name" *ngIf="highlight.lang[currentLang]['description']  != ''" >{{ highlight.lang[currentLang]['description'] }}</p>
               </div>
             </div>
           </div>

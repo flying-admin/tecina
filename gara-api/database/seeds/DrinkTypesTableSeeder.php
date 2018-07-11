@@ -39,7 +39,7 @@ class DrinkTypesTableSeeder extends Seeder
               [
                 'id'=> NULL,
                 'name'=>$drinkTypesTranslations[$drinkType][$lang->code],
-                'description'=>$drinkTypesTranslations[$drinkType][$lang->code],
+                'description'=>'',
                 'drink_type_id'=>$idDrinkType,
                 'language_id'=>$lang->id
               ]

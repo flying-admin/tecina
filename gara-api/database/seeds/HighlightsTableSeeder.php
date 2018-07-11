@@ -107,7 +107,7 @@ class HighlightsTableSeeder extends Seeder
                         'id_highlight' => $highlightId,
                         'id_language' => $lan->id,
                         'name' => $menu['translate'][$lan->code],
-                        'description' =>  $menu['translate'][$lan->code],
+                        'description' => '',
                     ]
                 );
             }
