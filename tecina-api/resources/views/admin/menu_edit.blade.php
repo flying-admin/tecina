@@ -60,7 +60,10 @@
             </ul>
             <label for="add_menu_dish">
               <span>Selecciona un plato:</span>
-              <select id="add_menu_dish">
+              <select id="add_menu_dish" style="width:500px;">
+                <option value="" required>
+Seleccione un plato
+                </option>
                 @foreach(db::table('dishes_translations')->whereNotIn('id_dish',array_keys($dishes))->where('id_language',1)->get() as $dish)
                   <option value="{{$dish->id_dish}}">
                     {{$dish->name}}
@@ -89,7 +92,10 @@
             </ul>
             <label for="add_menu_wine">
               <span>Selecciona un vino:</span>
-              <select id="add_menu_wine">
+              <select id="add_menu_wine" style="width:500px">
+                <option value="" required>
+Seleccione un vino
+                </option>
                 @foreach(db::table('wines')->whereNotIn('id',array_keys($wines))->get() as $wine)
                   <option value="{{$wine->id}}">
                     {{$wine->name}}
@@ -125,6 +131,30 @@
   </div>
 </div>
 <script type="text/javascript">
+ // setTimeout(function(){
+ //    jQuery('#add_menu_dish').selectize({
+ //        create: true,
+ //        sortField: 'text'
+ //    });
+ //     },2000);
+  setTimeout(function(){
+$('#add_menu_dish').selectize({
+    create: true,
+    sortField: {
+        field: 'text',
+        direction: 'asc'
+    },
+    dropdownParent: 'body'
+});
+$('#add_menu_wine').selectize({
+    create: true,
+    sortField: {
+        field: 'text',
+        direction: 'asc'
+    },
+    dropdownParent: 'body'
+});
+     },2000);
   function addDishMenu(menuId){
     var dishId=$('#add_menu_dish').val();
     jQuery.ajax({
@@ -189,4 +219,6 @@
        });
    }
 </script>
+<style>input[type=select-one].width:100%;</style>
+    <link href="/css/selectize.default.css" rel="stylesheet" type="text/css">
 @endsection
