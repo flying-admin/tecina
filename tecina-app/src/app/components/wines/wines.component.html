@@ -65,7 +65,7 @@
                 <img  *ngIf="wine.image == ''" [src]="'assets/images/shared/default_drink.png'"  [default]="'assets/images/shared/default_drink.png'" alt="Menu bottle" />
               </div>
               <div class="wines-row__wine__info">
-                <p class="wines-row__wine__info__name">{{ wine.name }}</p>
+                <p class="wines-row__wine__info__name">{{ (( wine.name ).length > 38)? (wine.name  | slice:0:32)+'..':(wine.name )}}</p>
                 <p class="wines-row__wine__info__type" *ngIf="wine.wine_type.length != 0"> {{ wine.wine_type[0].translate[currentLang] }}</p>
                 <p class="wines-row__wine__info__origin" *ngIf="wine.wine_do.length != 0">
                   <strong>{{ translations.wines.do[currentLang] }}</strong> {{ wine.wine_do[0].name  }}</p>

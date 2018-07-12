@@ -55,7 +55,7 @@
           pointer-events: all;
 
           &.active {
-            background-color: white;
+            background-color: $white;
           }
           &:not(.active) {
             opacity: 1;
@@ -80,6 +80,14 @@
     padding: 0;
     background-color: $primary;
     transition: all $transition;
+
+    &__open {
+      width: 100%;
+      background: transparent;
+      position: absolute;
+      bottom: -67px;
+      height: 100%;
+    }
 
     &__burguer {
       display: block;
@@ -334,7 +342,7 @@
               top: 0;
             }
             &__name {
-              font-weight: 400;
+              font-weight: 700;
               color: $primary;
               text-transform: uppercase;
             }
@@ -583,5 +591,16 @@
         }
       }
     }
+  }
+
+  &-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 50vw;
+    z-index: 10;
   }
 }

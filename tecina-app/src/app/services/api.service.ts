@@ -8,8 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable()
 export class ApiService {
 
-  pageRoot = "https://tecina-fandango.flyingpigs.es/";
-  //pageRoot = "http://tecina-api.local/";
+  //pageRoot = "https://tecina-fandango.flyingpigs.es/";
+  pageRoot = "http://tecina-api.local/";
   //public pageRoot = "http://tecina-api.local:8000/";
 
   private lang = new BehaviorSubject('es');
@@ -107,7 +107,7 @@ export class ApiService {
     this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
     //this.setDrinkTypes().subscribe((resp:any[]) => { this.drinkTypes.next(resp);});
    // this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
-   this.setCompleteDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
+    this.setCompleteDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
   }
 
 
@@ -268,12 +268,9 @@ export class ApiService {
   getHighlights(){
     return this._highlights;
   }
+
   setHighlights(): Observable<any>{
-    return this.http.get(this.api + "/highlights" ,this.httpOptions ).map(
-      (res) => {
-        return res;
-      }
-    ); 
+    return this.http.get(this.api + "/highlights" ,this.httpOptions );
   }
 
   // Languages

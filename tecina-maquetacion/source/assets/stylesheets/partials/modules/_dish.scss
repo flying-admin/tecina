@@ -89,11 +89,13 @@
       position: relative;
       font-family: $font_default;
       font-weight: 800;
-      font-size: 60px;
-      line-height: 62px;
+      font-size: 58px;
+      line-height: 60px;
       color: $white;
       text-transform: uppercase;
       margin: 0 0 40px;
+      max-height: 240px;
+      overflow: hidden;
       z-index: 2;
     }
 
