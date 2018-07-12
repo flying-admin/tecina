@@ -102,7 +102,7 @@
               <span>Añadir vino</span>
             </button>
           </section>
-
+<!--
           <section>
             <p>Imagen del menu <small>(opcional)</small></p>
             <img style="max-width:300px;max-height:300px;" id="menu_image" src="/img/menus/{{$image}}" class="menu main admin" onclick="jQuery('#uploadMenuImage').toggle();" />
@@ -117,7 +117,7 @@
               </button>
             </div>
           </section>
-
+-->
         </div>
       </div>
 
