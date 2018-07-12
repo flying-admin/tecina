@@ -322,7 +322,7 @@ class WineTableSeeder extends Seeder
                 ]);
             
             for($i=1;$i<8;$i++){
-            if(trim($bebida['VARIEDAD_'.$i])!=''){
+            if(trim(@$bebida['VARIEDAD_'.$i])!=''){
                 $id_variety=NULL;
                 if(App\WineVarietyTranslation::where('name',$bebida['VARIEDAD_'.$i])->first()){
                 $id_variety=App\WineVarietyTranslation::where('name',$bebida['VARIEDAD_'.$i])->first()->id_wine_variety;
