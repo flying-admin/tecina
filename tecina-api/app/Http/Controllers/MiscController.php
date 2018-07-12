@@ -46,7 +46,11 @@ class MiscController extends Controller
      */
     public function show($key)
     {
+      if(Misc::where('key',$key)->first()){
         return (Misc::where('key',$key)->first()->value);
+      }else{
+        return json_encode(false);
+      }
     }
 
     /**
