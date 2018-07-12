@@ -37,9 +37,11 @@
                   </p>
                 <% end %>
                 <% menu[:menu].each do |menu_text| %>
-                  <p class="menus-row__menu__text">
-                    <%= menu_text %>
-                  </p>
+                  <% link_to menu[:link], :relative => true, :class => 'menus-row__menu--link' do %>
+                    <p class="menus-row__menu__text">
+                      <%= menu_text %>
+                    </p>
+                  <% end %>
                 <% end %>
                 <% link_to menu[:wines][:link], :relative => true, :class => 'menus-row__menu__wines' do %>
                   <p class="menus-row__menu__wines__text">

@@ -97,16 +97,21 @@
       &__name {
         display: block;
         position: relative;
-        width: 100%;
+        width: calc(100% + 33px);
+        left: -33px;
+        padding-left: 33px;
+        height: 96px;
         min-height: 96px;
+        max-height: 96px;
         font-family: $font_default;
         color: $white;
         text-transform: uppercase;
+        overflow: hidden;
 
         &--number {
           position: absolute;
           top: 0;
-          left: -33px;
+          left: 0;
           font-weight: 300;
           font-size: 18px;
           line-height: 28px;
