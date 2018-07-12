@@ -68,6 +68,10 @@
                 <i class="material-icons">photo_camera</i>
                 <span>Cambiar imagen</span>
               </button>
+              <button type="button" class="btn btn-danger" id="delete_drink_image_button" onclick="deletedrinkImage({{$drink->id}})">
+                <i class="material-icons">delete</i>
+                <span>Eliminar imagen</span>
+              </button>
             </div>
           </section>
 
@@ -82,8 +86,28 @@
 
   function uploaddrinkImage(iddrink){
     var file_data = $('#drinkImage').prop('files')[0];
+    if(file_data){
     var form_data = new FormData();
     form_data.append('file', file_data);
+    $.ajax({
+          url: '/uploadDrinkImage/'+iddrink, // point to server-side PHP script
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function(php_script_response){
+              $('#drink_image').attr('src',php_script_response['img']);
+              $('#uploaddrinkImage').fadeOut();
+          },
+       });
+     }else{
+              alert('No has seleccionado ninguna imagen.');
+     }
+   }
+
+  function deletedrinkImage(iddrink){
+    var form_data = new FormData();
     $.ajax({
           url: '/uploadDrinkImage/'+iddrink, // point to server-side PHP script
           cache: false,

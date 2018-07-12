@@ -58,6 +58,10 @@
                 <i class="material-icons">photo_camera</i>
                 <span>Cambiar imagen</span>
               </button>
+              <button type="button" class="btn btn-danger" id="delete_highlight_image_button" onclick="deleteHighlightImage({{$highlight->id}})">
+                <i class="material-icons">delete</i>
+                <span>Eliminar imagen</span>
+              </button>
             </div>
           </section>
 
@@ -71,8 +75,29 @@
 
   function uploadHighlightImage(idHighlight){
     var file_data = $('#highlightImage').prop('files')[0];
+    if(file_data){
+
     var form_data = new FormData();
     form_data.append('file', file_data);
+    $.ajax({
+          url: '/uploadHighlightImage/'+idHighlight, // point to server-side PHP script
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function(php_script_response){
+              $('#highlight_image').attr('src',php_script_response['img']);
+              $('#uploadHighlightImage').fadeOut();
+          },
+       });
+     }else{
+         alert('No has seleccionado ninguna imagen.');
+     }
+   }
+
+  function deleteHighlightImage(idHighlight){
+    var form_data = new FormData();
     $.ajax({
           url: '/uploadHighlightImage/'+idHighlight, // point to server-side PHP script
           cache: false,

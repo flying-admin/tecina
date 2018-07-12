@@ -152,6 +152,10 @@ class DrinkController extends Controller
         $drink->save();
         $respuesta ['img'] = $img_route;
         }else{
+
+          $drink = \App\Drink::find($drinkId);
+          $drink->image='';
+          $drink->save();
           $respuesta ['img'] = 'not-found.jpg';
         }
 

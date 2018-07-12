@@ -129,14 +129,18 @@
           <section>
             <p>Imagen del plato</p>
             <img style="max-width:300px;max-height:300px;" id="dish_image" src="/img/dishes/{{$dish->image}}" class="dish main admin" onclick="jQuery('#uploadDishImage').toggle();" />
-            <div id="uploadDishImage" style="display:none">
+            <div id="uploadDishImage">
               <label for="dishImage">
                 <span>Selecciona una imagen:</span>
-                <input type="file" name="dishImage" id="dishImage" accept="image/x-png" placeholder="Imagen nueva" />
+                <input required type="file" name="dishImage" id="dishImage" accept="image/x-png" placeholder="Imagen nueva" />
               </label>
               <button type="button" class="btn btn-primary" id="upload_dish_image_button" onclick="uploadDishImage({{$dish->id}})">
                 <i class="material-icons">photo_camera</i>
                 <span>Cambiar imagen</span>
+              </button>
+              <button type="button" class="btn btn-danger" id="delete_dish_image_button" onclick="deleteDishImage({{$dish->id}})">
+                <i class="material-icons">delete</i>
+                <span>Eliminar imagen</span>
               </button>
             </div>
           </section>
@@ -226,6 +230,8 @@
 
   function uploadDishImage(idDish){
     var file_data = $('#dishImage').prop('files')[0];
+    if(file_data){
+
     var form_data = new FormData();
     form_data.append('file', file_data);
     $.ajax({
@@ -240,6 +246,25 @@
               $('#uploadDishImage').fadeOut();
           },
        });
+     }else{
+       alert('No has seleccionado ninguna imagen.');
+     }
    }
+
+  function deleteDishImage(idDish){
+    var form_data = new FormData();
+    $.ajax({
+          url: '/uploadDishImage/'+idDish, // point to server-side PHP script
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function(php_script_response){
+              $('#dish_image').attr('src',php_script_response['img']);
+              $('#uploadDishImage').fadeOut();
+          },
+       });
+     }
 </script>
 @endsection

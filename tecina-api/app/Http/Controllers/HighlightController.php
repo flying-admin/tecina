@@ -137,6 +137,9 @@ class HighlightController extends Controller
       $highlight->save();
       $respuesta ['img'] = $img_route;
       }else{
+        $highlight = \App\Highlight::find($highlightId);
+        $highlight->image='';
+        $highlight->save();
         $respuesta ['img'] = 'not-found.jpg';
       }
       // hay que redimensionarla a este tamaño: 1760 × 960
