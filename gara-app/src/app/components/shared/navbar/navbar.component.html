@@ -49,7 +49,7 @@
                     <img *ngIf="wineHighlight.image == ''" [src]="'assets/images/shared/default_drink.png'" [default]="'assets/images/shared/default_drink.png'" alt="Imagen por defecto" />
                   </div>
                   <p class="feat__text">
-                    <span class="feat__text__name">{{ wineHighlight.name }} <br>
+                    <span class="feat__text__name">{{ (( wineHighlight.name ).length > 40)? (wineHighlight.name  | slice:0:37)+'...':(wineHighlight.name ) }} <br>
                         {{ wineHighlight.wine_type[0].translate[currentLang]}}</span>
                     <span class="feat__text__info">{{ translations.nav.do[currentLang] }} : {{ wineHighlight.wine_do[0].name}}
                       <br>{{ translations.nav.variety[currentLang] }}: 

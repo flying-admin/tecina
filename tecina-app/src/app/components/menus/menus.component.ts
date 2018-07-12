@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from "../../services/api.service";
+import { Router } from '@angular/router';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -61,7 +62,8 @@ export class MenusComponent implements OnInit {
 
   @ViewChild(SwiperDirective) swiperMenus?: SwiperDirective;
 
-  constructor(private _api: ApiService) {
+  constructor(private _api: ApiService,    private router: Router,
+  ) {
 
     this._api.getCategories().subscribe(categories => {
       this.categories = categories;
@@ -83,6 +85,8 @@ export class MenusComponent implements OnInit {
       resp => { return resp }
     ).subscribe(
       menus => {
+        console.log(menus);
+        
         this.menus = this._api.subArray(menus, 3);
         this.goToIndex(0, 500);
       });
@@ -97,6 +101,10 @@ export class MenusComponent implements OnInit {
     );
   }
 
+  hasProp(o, name) {
+    return o.hasOwnProperty(name);
+  }
+
   goToIndex(i, delay = 1000) {
     setTimeout(() => {
       this.swiperMenus.setIndex(i);
@@ -105,5 +113,9 @@ export class MenusComponent implements OnInit {
 
   pairingStatus(open) {
     this._api.setPairing(open);
+  }
+
+  goToMenu(id: number) {
+    this.router.navigate(['/menu', id]);
   }
 }

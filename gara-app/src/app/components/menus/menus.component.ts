@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from "../../services/api.service";
+import { Router } from '@angular/router';
 import { SwiperDirective, SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 @Component({
@@ -61,7 +62,8 @@ export class MenusComponent implements OnInit {
 
   @ViewChild(SwiperDirective) swiperMenus?: SwiperDirective;
 
-  constructor(private _api: ApiService) {
+  constructor(private _api: ApiService,    private router: Router,
+  ) {
 
     this._api.getCategories().subscribe(categories => {
       this.categories = categories;
@@ -111,5 +113,9 @@ export class MenusComponent implements OnInit {
 
   pairingStatus(open) {
     this._api.setPairing(open);
+  }
+
+  goToMenu(id: number) {
+    this.router.navigate(['/menu', id]);
   }
 }

@@ -13,7 +13,7 @@
                     <span class="dishes-row__dish__name--number">
                         {{   3 * i + j + 1 | number:'2.0-0'  }} 
                     </span>
-                    <span class="dishes-row__dish__name--text"> {{ dish.translate[currentLang]['name'] }} </span>
+                    <span class="dishes-row__dish__name--text"> {{ (( dish.translate[currentLang]['name']).length > 80)? (dish.translate[currentLang]['name'] | slice:0:77)+'..':(dish.translate[currentLang]['name'])  }} </span>
                   </p>
                   <img *ngIf="dish.image != ''"  [src]="imagesPath + dish.image" [default]="'assets/images/shared/default_dish.png'" class="dishes-row__dish__image" alt="Intro dish1" />
                   <img *ngIf="dish.image == ''"  [src]="'assets/images/shared/default_dish.png'" [default]="'assets/images/shared/default_dish.png'" class="dishes-row__dish__image" alt="Intro dish1" />

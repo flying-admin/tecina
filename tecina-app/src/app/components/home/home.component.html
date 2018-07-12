@@ -1,15 +1,12 @@
 
  <div class="intro " (click)="mainMenuStatus(true)">
-
-    <a href="/" class="intro__logo">
+    <a [routerLink]="['home']" class="intro__logo">
       <img src="assets/images/shared/logo.png" alt="Tasca Fandango" />
     </a>
-
     <a class="intro__start" (click)="mainMenuStatus(true)">
       <p  [innerHTML]="translations.init[currentLang]"></p>
       <img src="assets/images/content/home/intro_start.png" alt="Intro start" />
     </a>
-
     <div class="swiper-container intro__slider" [swiper]="currentConfig">
       <!-- Additional required wrapper -->
       <div class="swiper-wrapper">
@@ -19,8 +16,8 @@
               <img *ngIf="highlight.image != ''" [src]="imagesPath + highlight.image"  [default]="'assets/images/shared/default_dish.png'" class="intro__dish__image" alt="Intro dish1" />
               <img *ngIf="highlight.image == ''" [src]="'assets/images/shared/default_dish.png'"  [default]="'assets/images/shared/default_dish.png'" class="intro__dish__image" alt="Intro dish1" />
               <div class="intro__dish__info">
-                <p class="intro__dish__info__category">{{ highlight.lang[currentLang]['name'] }}</p>
-                <p class="intro__dish__info__name">{{ highlight.lang[currentLang]['description'] }}</p>
+                <p class="intro__dish__info__category">{{ (( highlight.lang[currentLang]['name']).length> 50)? (highlight.lang[currentLang]['name'] | slice:0:48)+'..':(highlight.lang[currentLang]['name']) }} </p>                 
+                <p class="intro__dish__info__name">{{ (( highlight.lang[currentLang]['description']).length> 50)? (highlight.lang[currentLang]['description'] | slice:0:48)+'..':(highlight.lang[currentLang]['description']) }}</p>
               </div>
             </div>
           </div>
