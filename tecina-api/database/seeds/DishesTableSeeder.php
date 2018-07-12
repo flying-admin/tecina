@@ -124,6 +124,7 @@ class DishesTableSeeder extends Seeder
 
             foreach( $plato['foodTypes'] as $key => $value){
                 if( $value == 'Sí' ){
+                    
                     $id_food_type = DB::table('food_types_translations')->where('name', $key)->first()->id_food_type ;
                     try{
                         DB::table('dishes_food_types')->insert(
@@ -142,6 +143,8 @@ class DishesTableSeeder extends Seeder
 
             foreach( $plato['categories'] as $key => $value){
                 if( $value == 'Sí' ){
+                    print_r($plato['translate']['es']);
+                    print_r($value." ".$key);
                     $id_category = DB::table('categories_translations')->where('name', $key)->first()->id_category;
                     try{
                         DB::table('categories_dishes')->insert(

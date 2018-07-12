@@ -12,26 +12,26 @@ class DishesMenusTableSeeder extends Seeder
     public function run()
     {
 
-        $menus =  DB::table('menus')->get();
+        // $menus =  DB::table('menus')->get();
 
-        foreach ($menus as $menu) {
+        // foreach ($menus as $menu) {
 
-            $dishes_numb = 5;
-            $dishes = DB::table('dishes')->inRandomOrder()->take($dishes_numb)->get();
+        //     $dishes_numb = 5;
+        //     $dishes = DB::table('dishes')->inRandomOrder()->take($dishes_numb)->get();
 
-            for ($j= 0 ; $j < $dishes_numb ;$j++){
-                try{
+        //     for ($j= 0 ; $j < $dishes_numb ;$j++){
+        //         try{
 
-                    DB::table('dishes_menus')->insert([
-                        'id_dish' =>  $dishes[$j]->id,
-                        'id_menu' => $menu->id
-                    ]);
-                }catch( Exception $exception){
+        //             DB::table('dishes_menus')->insert([
+        //                 'id_dish' =>  $dishes[$j]->id,
+        //                 'id_menu' => $menu->id
+        //             ]);
+        //         }catch( Exception $exception){
 
-                }
-            }
+        //         }
+        //     }
 
-        }
+        // }
 
     }
 }

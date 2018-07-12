@@ -121,7 +121,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         wineHighlight => {
           if((this.wines).length > 0 ){
             this.wineHighlight = this._api.getObjectBy(this.wines,wineHighlight);
-            console.log(this.wineHighlight);
           }
       });
 

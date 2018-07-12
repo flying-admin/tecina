@@ -68,7 +68,21 @@ export class DishComponent implements OnInit {
     this._api.currentFilters.flatMap( 
       filters => {
         this.currentFilters = filters;
-        return this._api.getDishes( filters );
+        return this._api.getDishes( filters ).map(
+          dishes => {
+            // for (let D = 0; D < dishes.length; D++) {
+            //   var object = dishes[D]['translate'];
+            //   for (const key in object) {
+            //       for (const _key in object[key]) {
+            //        if(( typeof object[key][_key] !== 'undefined' && object[key][_key]).length > 80  ){
+            //         object[key][_key] = ((object[key][_key]).substring(0, 75)) + " ...";
+            //        }
+            //       }
+            //   }
+            // }
+            return dishes;
+          }
+        );
     })
     .subscribe(
       dishes => { 

@@ -9,7 +9,7 @@ function createWindow () {
     height: 1080,
     minimizable: false,
     backgroundColor: '#141414',
-    icon: `file://${__dirname}/dist/assets/icono_tasca.icns`
+    icon: `file://${__dirname}/dist/assets/logo.ico`
   })
 
 
