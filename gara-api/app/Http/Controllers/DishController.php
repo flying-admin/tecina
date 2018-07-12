@@ -230,10 +230,13 @@ class DishController extends Controller
       $img_route='/img/dishes/'. $image_name;
       $file->move('img/dishes', $image_name);
       $dish = \App\Dish::find($dishId);
-      $dish->image=$img_name;
+      $dish->image=$image_name;
       $dish->save();
       $respuesta ['img'] = $img_route;
       }else{
+        $dish = \App\Dish::find($dishId);
+        $dish->image='';
+        $dish->save();
         $respuesta ['img'] = 'not-found.jpg';
       }
       // hay que redimensionarla a este tamaño: 1760 × 960
