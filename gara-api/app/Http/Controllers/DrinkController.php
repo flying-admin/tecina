@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Drink;
+use App\DrinkType;
+use DB;
 use Illuminate\Http\Request;
 
 class DrinkController extends Controller
@@ -29,7 +31,23 @@ class DrinkController extends Controller
      */
     public function create()
     {
-        //
+      $lang =  DB::table('languages')->get();
+      $drinkId = DB::table('drinks')->insertGetId([
+          'image' => 'no-image.png',
+          'drink_type_id' => 1,
+      ]);
+      foreach ($lang as $lan) {
+          DB::table('drink_translations')->insert([
+              [
+                  'drink_id' => $drinkId,
+                  'language_id' => $lan->id,
+                  'name' =>$lan->code .'_name',
+                  'description' =>$lan->code .'-description'
+              ]
+          ]);
+      }
+
+        return redirect('api/drinks/'.$drinkId.'/edit');
     }
 
     /**
@@ -62,7 +80,21 @@ class DrinkController extends Controller
      */
     public function edit(Drink $drink)
     {
-        //
+
+      $translations = prettyTranslate($drink->getTranslate()->get());
+          $resultado=[
+            'drink'=>$drink,
+            'translations'=>$translations,
+            'drink_type' => $drink->drink_type_id,
+          ];
+          $drinkTypes = DrinkType::all();
+          $drinkTypeTranslations=[];
+          foreach($drinkTypes as $drinkType){
+            $drinkTypeTranslations[$drinkType->id]=prettyTranslate($drinkType->getTranslate()->get());
+          }
+          $resultado['drinkTypeTranslations']=$drinkTypeTranslations;
+
+          return view('admin.drink_edit', $resultado);
     }
 
     /**
@@ -74,7 +106,23 @@ class DrinkController extends Controller
      */
     public function update(Request $request, Drink $drink)
     {
-        //
+      $id=$drink->id;
+      $langs=\App\Language::all();
+      foreach($langs as $lang){
+        $descripcion='description_'.$lang->code;
+        $name='name_'.$lang->code;
+        if(DB::table('drink_translations')->where('drink_id',$id)->where('language_id',$lang->id)->count()){
+          DB::table('drink_translations')->where('drink_id',$id)->where('language_id',$lang->id)->update(['description'=>($request->$descripcion)?$request->$descripcion:' ', 'name'=>($request->$name)?$request->$name:' ']);
+        }else{
+          DB::table('drink_translations')->insert(['drink_id'=>$id,'language_id'=>$lang->id,'description'=>($request->$descripcion)?$request->$descripcion:' ','name'=>($request->$name)?$request->$name:' ']);
+        }
+      }
+      DB::table('drinks')->where('id',$id)->update([
+          'drink_type_id'=>$request->drink_type,
+          // 'active'=>($request->active == 'on')?true:false,
+          ]);
+          // dd($request);
+      return redirect('api/drinks/'.$id.'/edit');
     }
 
     /**
@@ -90,22 +138,23 @@ class DrinkController extends Controller
 
 
 
-    // public function uploadDrinkImage(Request $request, $drinkId){
-    //     $respuesta=['drinkId'=>$drinkId];
-    //     if ($request->hasFile('file'))
-    //     {
-    //     $file = $request->file('file');
-    //     $image_name = time()."-".$file->getClientOriginalName();
-    //     $img_route='/img/drinks/'. $image_name;
-    //     $file->move('img/drinks', $image_name);
-    //     $drink = \App\Drink::find($drinkId);
-    //     $drink->image=$img_route;
-    //     $drink->save();
-    //     $respuesta ['img'] = $img_route;
-    //     }else{
-    //       $respuesta ['img'] = 'not-found.jpg';
-    //     }
-    //     // hay que redimensionarla a este tamaño: 1760 × 960
-    //     return response()->json($respuesta,200);
-    //   }
+    public function uploadDrinkImage(Request $request, $drinkId){
+      // dd([$request,$drinkId]);
+        $respuesta=['drinkId'=>$drinkId];
+        if ($request->hasFile('file'))
+        {
+        $file = $request->file('file');
+        $image_name = time()."-".$file->getClientOriginalName();
+        $img_route='/img/drinks/'. $image_name;
+        $file->move('img/drinks', $image_name);
+        $drink = \App\Drink::find($drinkId);
+        $drink->image=$img_route;
+        $drink->save();
+        $respuesta ['img'] = $img_route;
+        }else{
+          $respuesta ['img'] = 'not-found.jpg';
+        }
+
+        return response()->json($respuesta,200);
+      }
 }

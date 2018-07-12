@@ -22,6 +22,7 @@ Route::get('/menu', 'HomeController@listMenu')->name('menu');
 Route::get('/wine', 'HomeController@listWine')->name('wine');
 Route::get('/dish', 'HomeController@listDish')->name('dish');
 Route::get('/highlight', 'HomeController@listHighlight')->name('highlight');
+Route::get('/drink', 'HomeController@listDrink')->name('drink');
 
 
 /*Menu admin*/
@@ -48,3 +49,4 @@ Route::post('/uploadDishImage/{dishId}','DishController@uploadDishImage')->middl
 
 /*Highlight admin*/
 Route::post('/uploadHighlightImage/{highlightId}','HighlightController@uploadHighlightImage')->middleware('api','auth')->name('uploadHighlightImage');
+Route::post('/uploadDrinkImage/{drinkId}','DrinkController@uploadDrinkImage')->middleware('api','auth')->name('uploadDrinktImage');
