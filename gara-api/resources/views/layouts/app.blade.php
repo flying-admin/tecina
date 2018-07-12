@@ -59,6 +59,9 @@
                               <a class="nav-link" href="{{ route('wine') }}">Vinos</a>
                           </li>
                           <li class="nav-item">
+                              <a class="nav-link" href="{{ route('drink') }}">Bebidas</a>
+                          </li>
+                          <li class="nav-item">
                               <a class="nav-link" href="{{ route('highlight') }}">Destacados</a>
                           </li>
                           <li class="nav-item">

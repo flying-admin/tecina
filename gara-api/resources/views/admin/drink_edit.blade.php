@@ -28,7 +28,7 @@
                     <span>Nombre:</span>
                     <input maxlength="40" placeholder="máximo 40 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$translations[$lang->code]['name'] }}"/>
                   </label>
-                  ```<small class="form-text text-muted">Introducir un máximo de 40 caracteres</small>```
+                  <small class="form-text text-muted">Introducir un máximo de 40 caracteres</small>
                   <label for="description_{{$lang->code}}">
                     <span>Descripción:</span>
                     <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{ @$translations[$lang->code]['description'] }}"/>
