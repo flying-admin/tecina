@@ -59,12 +59,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvincesTableSeeder::class);
         $this->call(DishesTableSeeder::class);
         $this->call(MenusTableSeeder::class);
-        $this->call(AllergensDishesTableSeeder::class);
-        $this->call(DishesFoodTypesTableSeeder::class);
-        $this->call(CategoriesDishesTableSeeder::class);
-        $this->call(WinesWineVarietiesTableSeeder::class);
-        $this->call(DishesMenusTableSeeder::class);
-        $this->call(ImagesTableSeeder::class);
+        // $this->call(AllergensDishesTableSeeder::class);
+        // $this->call(DishesFoodTypesTableSeeder::class);
+        // $this->call(CategoriesDishesTableSeeder::class);
+        // $this->call(WinesWineVarietiesTableSeeder::class);
+        // $this->call(DishesMenusTableSeeder::class);
+        //$this->call(ImagesTableSeeder::class);
         $this->call(HighlightsTableSeeder::class);
         $this->call(WineAgesTableSeeder::class);
         $this->call(WineClassesTableSeeder::class);

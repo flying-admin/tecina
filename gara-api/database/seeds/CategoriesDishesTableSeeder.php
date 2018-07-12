@@ -11,24 +11,24 @@ class CategoriesDishesTableSeeder extends Seeder
      */
     public function run()
     {
-        $dishes =  DB::table('dishes')->get();
+        // $dishes =  DB::table('dishes')->get();
 
-        foreach ($dishes as $dish) {
+        // foreach ($dishes as $dish) {
 
-            $category_numb = rand(1 ,2 );
-            $category =  DB::table('categories')->inRandomOrder()->take($category_numb)->get();
+        //     $category_numb = rand(1 ,2 );
+        //     $category =  DB::table('categories')->inRandomOrder()->take($category_numb)->get();
 
-            for ($j= 0 ; $j <= $category_numb ;$j++){
-                try{
-                    DB::table('categories_dishes')->insert([
-                        'id_category' =>  $category[$j]->id,
-                        'id_dish' => $dish->id
-                    ]);
-                }catch( Exception $exception){
+        //     for ($j= 0 ; $j <= $category_numb ;$j++){
+        //         try{
+        //             DB::table('categories_dishes')->insert([
+        //                 'id_category' =>  $category[$j]->id,
+        //                 'id_dish' => $dish->id
+        //             ]);
+        //         }catch( Exception $exception){
 
-                }
-            }
+        //         }
+        //     }
 
-        }
+        // }
     }
 }
