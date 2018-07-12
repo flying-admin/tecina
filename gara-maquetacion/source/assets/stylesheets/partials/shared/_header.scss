@@ -81,6 +81,14 @@
     background-color: $primary;
     transition: all $transition;
 
+    &__open {
+      width: 100%;
+      background: transparent;
+      position: absolute;
+      bottom: -67px;
+      height: 100%;
+    }
+
     &__burguer {
       display: block;
       position: relative;
@@ -594,5 +602,16 @@
         }
       }
     }
+  }
+
+  &-backdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 50vw;
+    z-index: 10;
   }
 }

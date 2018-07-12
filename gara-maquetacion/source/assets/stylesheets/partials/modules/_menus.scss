@@ -96,6 +96,10 @@
       &--link {
         display: block;
         text-decoration: none;
+
+        &:nth-last-of-type(2) .menus-row__menu__text {
+          border: none;
+        }
       }
 
       &__name {
@@ -164,10 +168,6 @@
         margin: 0;
         padding: 5px 0;
         border-bottom: 1px dotted $white;
-
-        &:last-of-type {
-          border-bottom: none;
-        }
       }
 
       &__wines {

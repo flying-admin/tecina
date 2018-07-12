@@ -111,6 +111,10 @@
         color: $darkgrey-b;
         margin: 0;
         padding: 5px 0;
+
+        &::before {
+          content: '\2022'
+        }
       }
 
       &__wines {

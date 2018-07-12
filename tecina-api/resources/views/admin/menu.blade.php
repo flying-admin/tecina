@@ -18,6 +18,10 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de menús</strong>
+                <form action="#" method="GET" style="display:inline">
+                  <input type="text" name="filter" value="{{@$_GET['filter']}}" />
+                  <input type="submit" value="filtrar" />
+                </form>
                 <div style="float:right">
                   <a href="/api/menus/create" class="btn btn-primary">
                     <i class="material-icons">create</i>

@@ -18,6 +18,10 @@
             <div class="card">
               <div class="card-header">
                 <strong>Listado de vinos</strong>
+                <form action="#" method="GET" style="display:inline">
+                  <input type="text" name="filter" value="{{@$_GET['filter']}}" />
+                  <input type="submit" value="filtrar" />
+                </form>
                 <div style="float:right">
                   <a href="/api/wines/create" class="btn btn-primary">
                     <i class="material-icons">create</i>
@@ -61,17 +65,6 @@
                    {{ $wines->links('pagination::bootstrap-4') }}
               </div>
             </div>
-            <div class="card">
-              <div class="card-header">
-                <strong>Nuevo Vino</strong>
-              </div>
-              <div class="card-body">
-                <form class="menus create" action="/api/wines/create" method="post">
-
-                </form>
-              </div>
-            </div>
-
         </div>
     </div>
 </div>

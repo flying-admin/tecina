@@ -37,7 +37,7 @@
               </div>
               <label for="order">
                 <span>Orden (cero para desactivar):</span>
-                <input type="number" name="order" value="{{$highlight->active}}" />
+                <input style="width: 55px;" type="number" min="0" name="order" value="{{$highlight->order}}" />
               </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
