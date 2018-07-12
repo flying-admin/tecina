@@ -17,7 +17,7 @@
               <p>Información general</p>
               <label for="wineName">
                 <span>Nombre del vino:</span>
-                <input name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
+                <input maxlength="30" placeholder="máximo 30 caracteres" name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
               </label><br />
               <ul class="nav nav-tabs">
                 @foreach($langs =  DB::table('languages')->get() as $lang)
@@ -149,7 +149,7 @@
       url:'/addWineVariety/'+wineId+'/'+varietyId,
     }).done(function(data){
     if(data){
-      jQuery('#wine_varieties').append('<li id="variety_'+data.varietyId+'"><span class="varietyName">'+data.varietyName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteWineVariety('+wineId+','+data.varietyId+');">Eliminar</a></span></li>');
+      jQuery('#wine_varieties').append('<li id="variety_'+data.varietyId+'"><span class="varietyName">'+data.varietyName+'</span><a href="#" onclick="deleteWineVariety('+wineId+','+data.varietyId+');" class="link"><i class="material-icons">delete</i><span>Eliminar</span></a></li>');
       jQuery('#add_wine_variety>option[value="'+data.varietyId+'"]').remove();
     }
     });

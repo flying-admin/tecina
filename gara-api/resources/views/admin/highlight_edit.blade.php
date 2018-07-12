@@ -26,7 +26,7 @@
                 <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
                   <label for="name_{{$lang->code}}">
                     <span>Nombre:</span>
-                    <input type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$highlight->translations[$lang->code]['name'] }}"/>
+                    <input maxlength="30" placeholder="máximo 30 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$highlight->translations[$lang->code]['name'] }}"/>
                   </label>
                   <label for="description_{{$lang->code}}">
                     <span>Descripción:</span>
@@ -47,7 +47,7 @@
           </section>
           <section>
             <p>Imagen del destacado</p>
-            <img style="max-width:300px;max-height:300px;" id="highlight_image" src="{{$highlight->image}}" class="highlight main admin" onclick="jQuery('#uploadHighlightImage').toggle();" />
+            <img style="max-width:300px;max-height:300px;" id="highlight_image" src="/img/highlights/{{$highlight->image}}" class="highlight main admin" onclick="jQuery('#uploadHighlightImage').toggle();" />
             <div id="uploadHighlightImage" style="display:none">
               <label for="highlightImage">
                 <span>Selecciona una imagen:</span>
