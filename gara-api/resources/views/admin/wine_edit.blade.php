@@ -17,8 +17,10 @@
               <p>Información general</p>
               <label for="wineName">
                 <span>Nombre del vino:</span>
-                <input maxlength="30" placeholder="máximo 30 caracteres" name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
-              </label><br />
+                <input maxlength="40" placeholder="máximo 40 caracteres" name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
+              </label>
+              <small class="form-text text-muted">Introducir un máximo de 40 caracteres</small>
+              <br />
               <ul class="nav nav-tabs">
                 @foreach($langs =  DB::table('languages')->get() as $lang)
                   <li><a data-toggle="tab" href="#{{$lang->code}}" @if ($loop->first) class="active show" @endif>{{$lang->code}}</a></li>

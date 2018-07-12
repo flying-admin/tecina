@@ -26,8 +26,9 @@
                 <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
                   <label for="name_{{$lang->code}}">
                     <span>Nombre:</span>
-                    <input maxlength="30" placeholder="máximo 30 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$translations[$lang->code]['name'] }}"/>
+                    <input maxlength="130" placeholder="máximo 130 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$translations[$lang->code]['name'] }}"/>
                   </label>
+                  <small class="form-text text-muted">Introducir un máximo de 130 caracteres</small>
                   <label for="description_{{$lang->code}}">
                     <span>Descripción:</span>
                     <input type="text" id="description_{{$lang->code}}" name="description_{{$lang->code}}" value="{{ @$translations[$lang->code]['description'] }}"/>

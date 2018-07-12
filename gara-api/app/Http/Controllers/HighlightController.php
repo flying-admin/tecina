@@ -15,7 +15,7 @@ class HighlightController extends Controller
      */
     public function index()
     {
-        $data = Highlight::orderBy('order')->get();
+        $data = Highlight::orderBy('order')->get()->where('order', '>', 0);
 		$highlights=[];
 		foreach($data as $highlight){
 			$highlight->lang=prettyTranslate($highlight->getTranslate()->get());

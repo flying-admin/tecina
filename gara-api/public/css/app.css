@@ -10545,6 +10545,12 @@ a.text-dark:focus {
   padding: 5px 10px;
 }
 
+.card-body section small.form-text {
+  text-align: right;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
 .card-body section img {
   display: block;
   width: auto;
