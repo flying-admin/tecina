@@ -14,7 +14,7 @@
             <input name="_method" type="hidden" value="PUT">
 
             <section>
-              <p>Información general</p>
+              <p>Información del vino</p>
               <label for="wineName">
                 <span>Nombre del vino:</span>
                 <input maxlength="40" placeholder="máximo 40 caracteres" name="wineName" type="text" value="{{$wine->name}}" placeholder="Nombre del vino" />
@@ -36,10 +36,8 @@
                 </div>
                 @endforeach
               </div>
-            </section>
-
-            <section>
-              <p>Información detallada</p>
+              <br>
+              <p>Detalles del vino</p>
               <label for="year">
                 <span>Año:</span>
                 <input type="number" min="1500" max="{{date('Y')}}" name="year" value="{{($wine->year)?$wine->year:''}}" />
@@ -85,7 +83,7 @@
 
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
-                <span>Guardar cambios</span>
+                <span>Actualizar información</span>
               </button>
             </section>
 

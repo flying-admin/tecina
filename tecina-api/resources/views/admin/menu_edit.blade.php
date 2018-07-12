@@ -40,7 +40,7 @@
               </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
-                <span>Guardar cambios</span>
+                <span>Actualizar información</span>
               </button>
             </form>
           </section>

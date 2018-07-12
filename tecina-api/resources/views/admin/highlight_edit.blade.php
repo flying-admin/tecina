@@ -13,7 +13,7 @@
         <div class="card-body">
 
           <section>
-            <p>Información general</p>
+            <p>Información del destacado</p>
             <form action="/api/highlights/{{$highlight->id}}" method="POST">
               <input name="_method" type="hidden" value="PUT">
               <ul class="nav nav-tabs">
@@ -42,7 +42,7 @@
               </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
-                <span>Guardar cambios</span>
+                <span>Actualizar información</span>
               </button>
             </form>
           </section>
