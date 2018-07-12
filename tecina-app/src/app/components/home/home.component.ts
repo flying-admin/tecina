@@ -15,11 +15,13 @@ export class HomeComponent implements OnInit   {
   mainMenu = false;
 
   currentConfig: SwiperConfigInterface = {
-    speed: 500,
-    loop: !0,
+    observer: true,
+    observeParents:true,
+    a11y: true,
+    speed: 2000,
+    loop: true,
     autoplay: {
-      delay: 7e3,
-      disableOnInteraction: !1
+      delay: 2000
     }
   };
 
@@ -43,12 +45,7 @@ export class HomeComponent implements OnInit   {
     );
   }
 
-  goToIndex( i ){
-    setTimeout(() => {
-      this.swiperHighlights.setIndex(i);
-    }, 1000);
-  }
-  
+ 
   initialiseState(){
     this._api.getHighlights().map(
       (resp: any) => {
@@ -57,10 +54,20 @@ export class HomeComponent implements OnInit   {
     )
     .subscribe( (resp: any) => {
       this.highlights = resp;
-      this.goToIndex( 0 );
+      if((this.highlights).length != 0 ){
+       window.dispatchEvent(new Event('resize'));
+      }
     });
   }
   
+
+  goToIndex( i ){
+    setTimeout(() => {
+      this.swiperHighlights.setIndex(i);
+    }, 3000);
+  }
+  
+
   ngOnInit() {
     this._api.currentLang.subscribe(
       resp => {

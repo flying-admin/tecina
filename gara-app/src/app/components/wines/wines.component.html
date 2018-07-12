@@ -21,8 +21,8 @@
       <div class="wines__filters__block" [ngClass]="{'wines__filters__block--large': block_lange }"  *ngIf="winesReady">
         <p class="wines__filters__block__title">{{ translations.wines.filters.do_title[currentLang] }}</p>
         <div class="wines__filters__block--sub-block">
-          <p class="wines__filters__block__title wines__filters__block__title--sub">{{ translations.wines.filters.do_section_1[currentLang] }}</p>
-          <ul class="wines__filters__block__list wines__filters__block__list--half" *ngIf="wineDO.length != 0">
+          <p class="wines__filters__block__title wines__filters__block__title--sub" *ngIf="(wineDO[0]).length != 0" >{{ translations.wines.filters.do_section_1[currentLang] }}</p>
+          <ul class="wines__filters__block__list wines__filters__block__list--half" *ngIf="(wineDO[0]).length != 0">
             <li *ngFor="let wine_do of wineDO[0];" >
                 <input type="checkbox" [value]="wine_do.id" 
                   [id]="'wineDO-'+wine_do.id" 
@@ -33,8 +33,8 @@
                 </label>
               </li>
           </ul>
-          <p class="wines__filters__block__title wines__filters__block__title--sub">{{ translations.wines.filters.do_section_2[currentLang] }}</p>
-          <ul class="wines__filters__block__list wines__filters__block__list--half">
+          <p class="wines__filters__block__title wines__filters__block__title--sub" *ngIf="(wineDO[1]).length != 0">{{ translations.wines.filters.do_section_2[currentLang] }}</p>
+          <ul class="wines__filters__block__list wines__filters__block__list--half" *ngIf="(wineDO[1]).length != 0">
               <li *ngFor="let wine_do of wineDO[1];" >
                   <input type="checkbox" [value]="wine_do.id" 
                     [id]="'wineDO-'+wine_do.id" 

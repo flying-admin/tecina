@@ -50,7 +50,7 @@
                   </div>
                   <p class="feat__text">
                     <span class="feat__text__name">{{ (( wineHighlight.name ).length > 40)? (wineHighlight.name  | slice:0:37)+'...':(wineHighlight.name ) }} <br>
-                        {{ wineHighlight.wine_type[0].translate[currentLang]}}</span>
+                    <span class="feat__text__type">{{ wineHighlight.wine_type[0].translate[currentLang]}}</span></span>
                     <span class="feat__text__info">{{ translations.nav.do[currentLang] }} : {{ wineHighlight.wine_do[0].name}}
                       <br>{{ translations.nav.variety[currentLang] }}: 
                         <span  *ngFor="let wine_variety of wineHighlight.wine_varieties ; let last = last"> 
