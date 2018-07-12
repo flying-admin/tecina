@@ -5,6 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+require('./jquery');
 require('./bootstrap');
 require('./selectize');
 
