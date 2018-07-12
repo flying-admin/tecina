@@ -93,6 +93,21 @@ class HomeController extends Controller
       }
       return view('admin.dish', ['dishes'=>$dishes]);
     }
+    public function listDrink(request $request)
+    {
+      $langs=getLangs();
+      if($request->filter){
+        $drinks_ids=array_unique(DB::table('drink_translations')->where('name', 'like', "%$request->filter%")->pluck('drink_id')->toArray());
+        $drinks=\App\Drink::whereIn('id', $drinks_ids)->paginate(2000);
+      }else {
+        $drinks=\App\Drink::paginate(20);
+      }
+      foreach($drinks as $order=>$drink){
+        $drink->name=prettyTranslate($drink->getTranslate()->get())['es']['name'];
+        $drinks[$order]=$drink;
+      }
+      return view('admin.drink', ['drinks'=>$drinks]);
+    }
     public function listHighlight(request $request)
     {
       $langs=getLangs();
