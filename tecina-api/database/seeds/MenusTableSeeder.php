@@ -98,6 +98,7 @@ class MenusTableSeeder extends Seeder
             
             foreach( $menu['dishes'] as $plato){
 
+                    print_r($plato['translate']['es']);
                     $id_dish =  DB::table('dishes_translations')->where('name', $plato['translate']['es'])->first()->id_dish;
                 
                     try{    
