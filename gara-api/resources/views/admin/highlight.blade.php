@@ -19,8 +19,10 @@
               <div class="card-header">
                 <strong>Listado de destacados</strong>
                 <form action="#" method="GET" style="display:inline">
-                  <input type="text" name="filter" value="{{@$_GET['filter']}}" />
-                  <input type="submit" value="filtrar" />
+                  <label>
+                    <input type="text" name="filter" value="{{@$_GET['filter']}}" />
+                  </label>
+                  <button type="submit" class="btn btn-primary">filtrar</button>
                 </form>
                 <div style="float:right">
                   <a href="/api/highlights/create" class="btn btn-primary">

@@ -58,7 +58,7 @@ export class WinesComponent implements OnInit {
           de: 'HALBINSEL',
         },
         do_section_2:{
-          es: 'ISLAS CANARAIS',
+          es: 'ISLAS CANARIAS',
           en: 'CANARY ISLANDS',
           de: 'KANARISCHE INSELN',
         },

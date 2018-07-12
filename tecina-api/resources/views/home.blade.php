@@ -14,7 +14,10 @@
                         </div>
                     @endif
 
-
+                  <a href="http://tecina.flyingpigs.es" class="link">
+                    <i class="material-icons">arrow_back</i>
+                    <span>Volver al distribuidor</span>
+                  </a>
                 </div>
             </div>
         </div>

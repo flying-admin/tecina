@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styles: ['.header-backdrop{display: block;position: fixed;top: 0;right: 0;bottom: 0;z-index: 10;height: 100vh;width: 50vw;} .header__bar__open{    width: 100%;background: transparent;position: absolute;bottom: -67px;height: 100%;}']
+  styles: ['.header-backdrop{display: block;position: fixed;top: 0;right: 0;bottom: 0;z-index: 10;height: 100vh;width: 50vw;} .header__bar__open{    width: 100%;background: transparent;position: absolute;bottom: -67px;height: 100%;}.feat__text__type{font-weight:normal!important;}']
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {

@@ -10454,6 +10454,36 @@ a.text-dark:focus {
   background-color: #F8F8F8;
 }
 
+.card-header label {
+  display: inline-block;
+  margin: 0;
+}
+
+.card-header label span {
+  padding-right: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.card-header label input,
+.card-header label select {
+  width: auto;
+  height: 34px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.card-header label + .btn {
+  margin-top: -4px;
+  text-transform: uppercase;
+}
+
+.card-header .btn {
+  padding: 4px 6px;
+}
+
 .card-body section {
   display: block;
   position: relative;
@@ -10464,8 +10494,20 @@ a.text-dark:focus {
   background-color: #F8F8F8;
 }
 
+.card-body section::before,
+.card-body section::after {
+  content: '';
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
 .card-body section:last-child {
   margin: 0;
+}
+
+.card-body section .btn {
+  float: right;
 }
 
 .card-body section p {
@@ -10587,6 +10629,7 @@ a.text-dark:focus {
 
 .card-body table tbody tr td:last-child {
   text-align: right;
+  width: 19%;
 }
 
 .card-body table tbody tr td .btn {

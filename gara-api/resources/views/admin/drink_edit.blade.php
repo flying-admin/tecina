@@ -13,7 +13,7 @@
         <div class="card-body">
 
           <section>
-            <p>Información general</p>
+            <p>Información de la bebida</p>
             <form action="/api/drinks/{{$drink->id}}" method="POST">
               <input name="_method" type="hidden" value="PUT">
               <ul class="nav nav-tabs">
@@ -49,7 +49,7 @@
 
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
-                <span>Guardar cambios</span>
+                <span>Actualizar información</span>
               </button>
             </form>
           </section>
