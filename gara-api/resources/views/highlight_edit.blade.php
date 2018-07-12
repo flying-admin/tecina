@@ -26,7 +26,7 @@
                 <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
                   <label for="name_{{$lang->code}}">
                     <span>Nombre:</span>
-                    <input maxlength="30" placeholder="máximo 30 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$highlight->translations[$lang->code]['name'] }}"/>
+                    <input type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$highlight->translations[$lang->code]['name'] }}"/>
                   </label>
                   <label for="description_{{$lang->code}}">
                     <span>Descripción:</span>

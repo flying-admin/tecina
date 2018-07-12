@@ -26,7 +26,7 @@
                 <div id="{{$lang->code}}" class="tab-pane fade in @if ($loop->first) active show @endif">
                   <label for="name_{{$lang->code}}">
                     <span>Nombre:</span>
-                    <input type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$translations[$lang->code]['name'] }}"/>
+                    <input maxlength="30" placeholder="máximo 30 caracteres" type="text" id="name_{{$lang->code}}" name="name_{{$lang->code}}" value="{{ @$translations[$lang->code]['name'] }}"/>
                   </label>
                   <label for="description_{{$lang->code}}">
                     <span>Descripción:</span>
@@ -54,7 +54,7 @@
             <p>Categoría de plato</p>
             <ul id="dish_category">
               @foreach($categories as $category)
-                <li id="category_{{$category->id}}"><span class="categoryName">{{@$categoryTranslations[$category->id]['es']['name']}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishCategory({{$dish->id}},{{$category->id}});">Eliminar</a></span></li>
+                <li id="category_{{$category->id}}"><span class="categoryName">{{@$categoryTranslations[$category->id]['es']['name']}}</span><a href="#" onclick="deleteDishCategory({{$dish->id}},{{$category->id}});" class="link"><i class="material-icons">delete</i>Eliminar</span></a></li>
               @endforeach
             </ul>
             <label for="add_dish_category">
@@ -77,7 +77,7 @@
             <p>Tipo de plato</p>
             <ul id="dish_food_type">
               @foreach($foodTypes as $food_type)
-                <li id="food_type_{{$food_type->id}}"><span class="foodTypeName">{{@$foodTypeTranslations[$food_type->id]['es']}}</span> <span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishFoodType({{$dish->id}},{{$food_type->id}});">Eliminar</a></span></li>
+                <li id="food_type_{{$food_type->id}}"><span class="foodTypeName">{{@$foodTypeTranslations[$food_type->id]['es']}}</span> <a href="#" onclick="deleteDishFoodType({{$dish->id}},{{$food_type->id}});" class="link"><i class="material-icons">delete</i><span>Eliminar</span></a></li>
               @endforeach
             </ul>
             <label for="add_dish_food_type">
@@ -127,7 +127,7 @@
 
           <section>
             <p>Imagen del plato</p>
-            <img style="max-width:300px;max-height:300px;" id="dish_image" src="{{$dish->image}}" class="dish main admin" onclick="jQuery('#uploadDishImage').toggle();" />
+            <img style="max-width:300px;max-height:300px;" id="dish_image" src="/img/dishes/{{$dish->image}}" class="dish main admin" onclick="jQuery('#uploadDishImage').toggle();" />
             <div id="uploadDishImage" style="display:none">
               <label for="dishImage">
                 <span>Selecciona una imagen:</span>
@@ -153,7 +153,7 @@
       url:'/addDishAllergen/'+dishId+'/'+allergenId,
     }).done(function(data){
     if(data){
-      jQuery('#dish_allergens').append('<li id="allergen_'+data.allergenId+'"><span class="allergenName">'+data.allergenName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishAllergen('+dishId+','+data.allergenId+');">Eliminar</a></span></li>');
+      jQuery('#dish_allergens').append('<li id="allergen_'+data.allergenId+'"><span class="allergenName">'+data.allergenName+'</span><a href="#" onclick="deleteDishAllergen('+dishId+','+data.allergenId+');" class="link"><i class="material-icons">delete</i><span>Eliminar</span></a></li>');
       jQuery('#add_dish_allergen>option[value="'+data.allergenId+'"]').remove();
     }
     });
@@ -179,7 +179,7 @@
       url:'/addDishFoodType/'+dishId+'/'+foodTypeId,
     }).done(function(data){
     if(data){
-      jQuery('#dish_food_type').append('<li id="food_type_'+data.foodTypeId+'"><span class="foodTypeName">'+data.foodTypeName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishFoodType('+dishId+','+data.foodTypeId+');">Eliminar</a></span></li>');
+      jQuery('#dish_food_type').append('<li id="food_type_'+data.foodTypeId+'"><span class="foodTypeName">'+data.foodTypeName+'</span><a href="#" onclick="deleteDishFoodType('+dishId+','+data.foodTypeId+');" class="link"><i class="material-icons">delete</i><span>Eliminar</span></a></li>');
       jQuery('#add_dish_food_type>option[value="'+data.foodTypeId+'"]').remove();
     }
     });
@@ -204,7 +204,7 @@
       url:'/addDishCategory/'+dishId+'/'+categoryId,
     }).done(function(data){
     if(data){
-      jQuery('#dish_category').append('<li id="category_'+data.categoryId+'"><span class="categoryName">'+data.categoryName+'</span><span class="glyphicon glyphicon-remove-circle"><a href="#" onclick="deleteDishCategory('+dishId+','+data.categoryId+');">Eliminar</a></span></li>');
+      jQuery('#dish_category').append('<li id="category_'+data.categoryId+'"><span class="categoryName">'+data.categoryName+'</span><a href="#" onclick="deleteDishCategory('+dishId+','+data.categoryId+');" class="link"><i class="material-icons">delete</i><span>Eliminar</span></a></li>');
       jQuery('#add_dish_category>option[value="'+data.categoryId+'"]').remove();
     }
     });

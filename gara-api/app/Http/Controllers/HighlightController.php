@@ -133,7 +133,7 @@ class HighlightController extends Controller
       $img_route='/img/highlights/'. $image_name;
       $file->move('img/highlights', $image_name);
       $highlight = \App\Highlight::find($highlightId);
-      $highlight->image=$img_route;
+      $highlight->image=$image_name;
       $highlight->save();
       $respuesta ['img'] = $img_route;
       }else{

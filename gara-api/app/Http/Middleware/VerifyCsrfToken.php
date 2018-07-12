@@ -17,5 +17,6 @@ class VerifyCsrfToken extends Middleware
         'uploadWineImage/*',
         'uploadDishImage/*',
         'uploadHighlightImage/*',
+        'uploadDrinkImage/*',
     ];
 }

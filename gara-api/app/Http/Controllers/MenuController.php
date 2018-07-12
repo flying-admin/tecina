@@ -208,7 +208,7 @@ class MenuController extends Controller
       $img_route='/img/menus/'. $image_name;
       $file->move('img/menus', $image_name);
       $menu = \App\Menu::find($menuId);
-      $menu->image=$img_route;
+      $menu->image=$image_name;
       $menu->save();
       $respuesta ['img'] = $img_route;
       }else{
