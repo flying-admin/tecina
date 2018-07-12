@@ -68,8 +68,8 @@
 
           <section>
             <p>Imagen de la Bebida</p>
-            <img style="max-width:300px;max-height:300px;" id="drink_image" src="/img/drinks/{{$drink->image}}" class="drink main admin" onclick="jQuery('#uploaddrinkImage').toggle();" />
-            <div id="uploaddrinkImage" style="display:none">
+            <img style="max-width:300px;max-height:300px;" id="drink_image" src="/img/drinks/{{$drink->image}}" class="drink main admin" />
+            <div id="uploaddrinkImage">
               <label for="drinkImage">
                 <span>Selecciona una imagen:</span>
                 <input type="file" name="drinkImage" id="drinkImage" accept="image/x-png" placeholder="Imagen nueva" />

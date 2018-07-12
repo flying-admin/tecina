@@ -57,8 +57,8 @@
           </section>
           <section>
             <p>Imagen del destacado</p>
-            <img style="max-width:300px;max-height:300px;" id="highlight_image" src="/img/highlights/{{$highlight->image}}" class="highlight main admin" onclick="jQuery('#uploadHighlightImage').toggle();" />
-            <div id="uploadHighlightImage" style="display:none">
+            <img style="max-width:300px;max-height:300px;" id="highlight_image" src="/img/highlights/{{$highlight->image}}" class="highlight main admin" />
+            <div id="uploadHighlightImage">
               <label for="highlightImage">
                 <span>Selecciona una imagen:</span>
                 <input type="file" name="highlightImage" id="highlightImage" accept="image/x-png" placeholder="Imagen nueva" />

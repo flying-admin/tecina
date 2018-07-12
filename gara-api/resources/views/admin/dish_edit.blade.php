@@ -137,7 +137,7 @@
 
           <section>
             <p>Imagen del plato</p>
-            <img style="max-width:300px;max-height:300px;" id="dish_image" src="/img/dishes/{{$dish->image}}" class="dish main admin" onclick="jQuery('#uploadDishImage').toggle();" />
+            <img style="max-width:300px;max-height:300px;" id="dish_image" src="/img/dishes/{{$dish->image}}" class="dish main admin" />
             <div id="uploadDishImage">
               <label for="dishImage">
                 <span>Selecciona una imagen:</span>

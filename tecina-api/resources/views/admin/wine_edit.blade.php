@@ -132,8 +132,8 @@
 
           <section>
             <p>Imagen del vino</p>
-            <img style="max-width:300px;max-height:300px;" id="wine_image" src="/img/wines/{{$wine->image}}" class="wine main admin" onclick="jQuery('#uploadWineImage').toggle();" />
-            <div id="uploadWineImage" style="display:none">
+            <img style="max-width:300px;max-height:300px;" id="wine_image" src="/img/wines/{{$wine->image}}" class="wine main admin" />
+            <div id="uploadWineImage">
               <label for="wineImage">
                 <span>Selecciona una imagen:</span>
                 <input required type="file" name="wineImage" id="wineImage" accept="image/x-png" placeholder="Imagen nueva" />
