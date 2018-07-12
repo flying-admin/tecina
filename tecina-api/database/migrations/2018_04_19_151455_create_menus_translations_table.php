@@ -17,7 +17,7 @@ class CreateMenusTranslationsTable extends Migration
             $table->tinyInteger('id_menu')->unsigned();
             $table->tinyInteger('id_language')->unsigned();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
 
             $table->primary(['id_menu','id_language'],'menu_language_primary');
 
