@@ -70,8 +70,8 @@ class HighlightController extends Controller
     public function show($id)
     {
         $Highlight = Highlight::find($id);
-		$Highlight->Translate = prettyTranslate($Highlight->getTranslate()->get());
-		return response()->json($Highlight,200);
+		    $Highlight->Translate = prettyTranslate($Highlight->getTranslate()->get());
+		    return response()->json($Highlight,200);
     }
 
     /**
@@ -107,9 +107,9 @@ class HighlightController extends Controller
           DB::table('highlights_translations')->insert(['id_highlight'=>$id,'id_language'=>$lang->id,'description'=>($request->$descripcion)?$request->$descripcion:' ','name'=>($request->$name)?$request->$name:' ']);
         }
       }
-      // DB::table('highlights')->where('id',$id)->update([
-          // 'active'=>($request->active == 'on')?true:false,
-          // ]);
+      DB::table('highlights')->where('id',$id)->update([
+          'order'=> $request->order
+          ]);
       return redirect('api/highlights/'.$id.'/edit');
     }
 

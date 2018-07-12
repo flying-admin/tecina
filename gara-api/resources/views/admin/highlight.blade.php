@@ -37,7 +37,6 @@
                       <th>ID</th>
                       <th>Nombre</th>
                       <th></th>
-                      <th style="text-align:right">Orden (cero equivale a desactivado)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -50,9 +49,6 @@
                           <i class="material-icons">edit</i>
                           <span>Editar</span>
                         </a>
-                      </td>
-                      <td>
-                        <input onchange="update_status({{$highlight->id}})" style="width:45px; text-align:center;" type="number" value="{{$highlight->order}}" />
                       </td>
                     </tr>
                   @endforeach
