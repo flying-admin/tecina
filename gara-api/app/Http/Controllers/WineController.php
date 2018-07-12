@@ -184,7 +184,7 @@ class WineController extends Controller
       $img_route='/img/wines/'. $image_name;
       $file->move('img/wines', $image_name);
       $wine = \App\Wine::find($wineId);
-      $wine->image=$img_route;
+      $wine->image=$image_name;
       $wine->save();
       $respuesta ['img'] = $img_route;
       }else{

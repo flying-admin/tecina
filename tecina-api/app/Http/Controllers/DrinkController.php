@@ -148,7 +148,7 @@ class DrinkController extends Controller
         $img_route='/img/drinks/'. $image_name;
         $file->move('img/drinks', $image_name);
         $drink = \App\Drink::find($drinkId);
-        $drink->image=$img_route;
+        $drink->image=$image_name;
         $drink->save();
         $respuesta ['img'] = $img_route;
         }else{

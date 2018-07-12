@@ -230,7 +230,7 @@ class DishController extends Controller
       $img_route='/img/dishes/'. $image_name;
       $file->move('img/dishes', $image_name);
       $dish = \App\Dish::find($dishId);
-      $dish->image=$img_route;
+      $dish->image=$img_name;
       $dish->save();
       $respuesta ['img'] = $img_route;
       }else{
