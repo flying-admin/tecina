@@ -8,6 +8,15 @@
       <div class="card">
         <div class="card-header">
           <strong>Edición de Vino</strong>
+          <div style="float:right">
+            <form action="/api/wines/{{$wine->id}}" method="POST">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="btn btn-danger">
+                <i class="material-icons">delete</i>
+                <span>Eliminar Vino</span>
+              </button>
+            </form>
+        </div>
         </div>
         <div class="card-body">
           <form action="/api/wines/{{$wine->id}}" method="POST">

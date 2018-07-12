@@ -153,12 +153,13 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Menu $menu)
     {
-        //
+      $menu->delete();
+      return redirect('/menu');
     }
 
     public function deleteDishMenu($dishId, $menuId)

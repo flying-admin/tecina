@@ -145,12 +145,13 @@ class WineController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Wine  $wine
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Wine $wine)
     {
-        //
+        $wine->delete();
+        return redirect('/wine');
     }
 
     public function addWineVariety($id, $varietyId){

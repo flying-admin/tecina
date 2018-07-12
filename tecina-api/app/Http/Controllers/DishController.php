@@ -245,12 +245,13 @@ class DishController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Dish $dish)
     {
-        //
+      $dish->delete();
+      return redirect('/dish');
     }
 
 

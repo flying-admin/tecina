@@ -53,8 +53,15 @@
                       <td>
                         <a href="/api/menus/{{$menu['id']}}/edit" class="btn btn-primary">
                           <i class="material-icons">edit</i>
-                          <span>Editar</span>
                         </a>
+                        <div style="float:right;margin-left:5px;">
+                          <form action="/api/menus/{{$menu['id']}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger">
+                              <i class="material-icons">delete</i>
+                            </button>
+                          </form>
+                        </div>
                       </td>
                     </tr>
                   @endforeach

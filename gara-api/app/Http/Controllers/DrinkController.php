@@ -133,7 +133,8 @@ class DrinkController extends Controller
      */
     public function destroy(Drink $drink)
     {
-        //
+        $drink->delete();
+        return redirect('/drink');
     }
 
 

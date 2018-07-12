@@ -8,6 +8,14 @@
       <div class="card">
         <div class="card-header">
           <strong>Edición de menú</strong>
+          <div style="float:right">
+            <form action="/api/menus/{{$id}}" method="POST">
+              <input type="hidden" name="_method" value="DELETE" />
+              <button type="submit" class="btn btn-danger">
+                <i class="material-icons">delete</i>
+                <span>Eliminar Menu</span>
+              </button>
+            </form>
         </div>
         <div class="card-body">
 

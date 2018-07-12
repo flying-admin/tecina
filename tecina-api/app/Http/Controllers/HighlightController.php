@@ -116,12 +116,13 @@ class HighlightController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Highlight  $highlight
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Highlight $highlight)
     {
-        //
+        $highlight->delete();
+        return redirect('/highlight');
     }
 
     public function uploadHighlightImage(Request $request, $highlightId){
