@@ -10437,9 +10437,14 @@ a.text-dark:focus {
   line-height: 1.6;
 }
 
-.btn .material-icons,
-.link .material-icons {
-  margin-right: 4px;
+.btn .material-icons + span,
+.link .material-icons + span {
+  margin-left: 4px;
+}
+
+.btn + .btn,
+.link + .btn {
+  margin-right: 5px;
 }
 
 .card {

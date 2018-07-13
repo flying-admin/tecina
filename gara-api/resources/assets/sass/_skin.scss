@@ -19,8 +19,12 @@
     line-height: $line-height-base;
   }
 
-  .material-icons {
-    margin-right: 4px;
+  .material-icons + span{
+    margin-left: 4px;
+  }
+
+  & + .btn {
+    margin-right: 5px;
   }
 }
 
