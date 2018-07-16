@@ -40,7 +40,8 @@ class MenuController extends Controller
       $lang =  DB::table('languages')->get();
       $menuID = DB::table('menus')->insertGetId([
           'image' => 'no-image.png',
-          'active'=> FALSE
+          'active'=> FALSE,
+          'pairing_included'=> FALSE
       ]);
       foreach ($lang as $lan) {
           DB::table('menus_translations')->insert([
@@ -136,6 +137,7 @@ class MenuController extends Controller
           $langs=\App\Language::all();
           $translates = prettyTranslate($menu->getTranslate()->get());
           DB::table('menus')->where('id',$id)->update(['active'=>($request['active']=='on')?1:0]);
+          DB::table('menus')->where('id',$id)->update(['pairing_included'=>($request['pairing_included']=='on')?1:0]);
           foreach($langs as $lang){
             $translate=$translates[$lang->code];
             $respuesta[$lang->code]=$translate;

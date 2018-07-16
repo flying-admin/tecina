@@ -46,6 +46,10 @@
                 <span>Activo:</span>
                 <input type="checkbox" name="active"{{($menu->active)?' checked':''}}  />
               </label>
+              <label for="pairing_included">
+                <span>Maridaje Incluido:</span>
+                <input type="checkbox" name="pairing_included"{{($menu->pairing_included)?' checked':''}}  />
+              </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
                 <span>Actualizar información</span>

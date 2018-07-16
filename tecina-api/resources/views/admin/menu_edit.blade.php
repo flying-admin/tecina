@@ -46,6 +46,10 @@
                 <span>Activo:</span>
                 <input type="checkbox" name="active"{{($menu->active)?' checked':''}}  />
               </label>
+              <label for="pairing_included">
+                <span>Maridaje Incluido:</span>
+                <input type="checkbox" name="pairing_included"{{($menu->pairing_included)?' checked':''}}  />
+              </label>
               <button type="submit" class="btn btn-primary">
                 <i class="material-icons">save</i>
                 <span>Actualizar información</span>
@@ -70,7 +74,7 @@
               <span>Selecciona un plato:</span>
               <select id="add_menu_dish" style="width:500px;">
                 <option value="" required>
-Seleccione un plato
+                  Seleccione un plato
                 </option>
                 @foreach(db::table('dishes_translations')->whereNotIn('id_dish',array_keys($dishes))->where('id_language',1)->get() as $dish)
                   <option value="{{$dish->id_dish}}">

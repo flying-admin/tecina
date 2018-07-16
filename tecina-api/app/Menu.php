@@ -19,7 +19,7 @@ class Menu extends Model
      * @var array
      */
     protected $fillable = [
-        'image'
+        'image','pairing_included','active'
     ];
 
 
@@ -29,8 +29,10 @@ class Menu extends Model
 
     // A Menu appears in many Dishes
     public function dishes(){
+        //return $this->belongsToMany('App\Dish', 'dishes_menus','id_menu','id_dish')->withPivot('order')->orderBy('order', 'asc');
         return $this->belongsToMany('App\Dish', 'dishes_menus','id_menu','id_dish');
     }
+
 
     // A Menu appears in many Wines
     public function wines(){
