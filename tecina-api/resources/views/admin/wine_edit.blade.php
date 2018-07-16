@@ -79,6 +79,17 @@
                 </select>
               </label>
 
+              <label for="type">
+                <span>Tipo:</span>
+                <select name="type" id="type">
+                  @foreach($types = DB::table('wine_type_translations')->where('id_language',1)->get() as $my_type)
+                    <option value="{{$my_type->id_wine_type}}"{{($type->id==$my_type->id_wine_type)?' selected':''}}>
+                      {{$my_type->name}}
+                    </option>
+                  @endforeach
+                </select>
+              </label>
+
               <label for="class">
                 <span>Clase:</span>
                 <select name="class" id="class">

@@ -117,7 +117,7 @@ class WineController extends Controller
     {
       $respuesta=[];
       $wine = \App\Wine::find($id);
-      $langs=\App\Language::all();
+      $langs= \App\Language::all();
       $translates = prettyTranslate($wine->getTranslate()->get());
       foreach($langs as $lang){
         $translate=@$translates[$lang->code];
@@ -136,6 +136,7 @@ class WineController extends Controller
             'wine_age_id'=>$request->age,
             'active'=>($request->active == 'on')?true:false,
             'id_do'=> $request->do,
+            'id_wine_type'=> $request->type,
             'wine_age_id'=>$request->age,
             'wine_class_id'=>$request->class
           ]);

@@ -136,6 +136,7 @@ class WineController extends Controller
             'wine_age_id'=>$request->age,
             'active'=>($request->active == 'on')?true:false,
             'id_do'=> $request->do,
+            'id_wine_type'=> $request->type,
             'wine_age_id'=>$request->age,
             'wine_class_id'=>$request->class
           ]);

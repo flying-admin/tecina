@@ -21,7 +21,6 @@
         <div class="card-body">
           <form action="/api/wines/{{$wine->id}}" method="POST">
             <input name="_method" type="hidden" value="PUT">
-
             <section>
               <p>Información del vino</p>
               <label for="wineName">
@@ -74,6 +73,17 @@
                   @foreach($ages = DB::table('wine_age_translations')->where('language_id',1)->get() as $my_age)
                     <option value="{{$my_age->wine_age_id}}"{{($age->id==$my_age->wine_age_id)?' selected':''}}>
                       {{$my_age->name}}
+                    </option>
+                  @endforeach
+                </select>
+              </label>
+
+              <label for="type">
+                <span>Tipo:</span>
+                <select name="type" id="type">
+                  @foreach($types = DB::table('wine_type_translations')->where('id_language',1)->get() as $my_type)
+                    <option value="{{$my_type->id_wine_type}}"{{($type->id==$my_type->id_wine_type)?' selected':''}}>
+                      {{$my_type->name}}
                     </option>
                   @endforeach
                 </select>

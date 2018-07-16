@@ -1,6 +1,6 @@
       <div class="dishes" *ngIf="!no_results">
         <p class="dishes__title">
-          <img src="assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+          <img src="assets/images/shared/logo.svg" alt="Restaurante Gara" />
           <span>{{  ((currentFilters.categories).length == 1)? title_category[currentLang]['name'] :  title_category[currentLang] }}</span>
         </p>
         <div class="swiper-container dishes__slider" [swiper]="currentConfig"  >
@@ -45,7 +45,7 @@
       </div>
       <div class="noresults" *ngIf="no_results">
         <p class="noresults__title">
-          <img src="assets/images/shared/logo_mini.png" alt="Tasca Fandango" />
+          <img src="assets/images/shared/logo.svg" alt="Restaurante Gara" />
           <span>uups</span>
         </p>
         <div class="noresults__wrapper">
@@ -61,7 +61,7 @@
         </span>
         <div class="filters__section">
           <p class="filters__section__title">
-            <img src="assets/images/shared/logo_mini_dark.png" alt="Tasca Fandango" />
+            <img src="assets/images/shared/logo.svg" alt="Restaurante Gara" />
             <span>{{ translations.filters.title[currentLang] }}</span>
           </p>
 
