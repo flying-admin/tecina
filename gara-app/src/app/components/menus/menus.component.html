@@ -23,14 +23,24 @@
               <p class="menus-row__menu__text" *ngFor="let dish of menu.menu_dishes;" (click)="pairingStatus(false) ; goToMenu(menu.id)">
                 {{ dish.translate[ currentLang ].name }}
               </p>
-            <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(true)" *ngIf="(menu.wines).length != 0" class="menus-row__menu__wines">
-              <p class="menus-row__menu__wines__text">
-                {{ translations.menus.pairing[currentLang] }}
-              </p>
-              <p class="menus-row__menu__wines__note">
-                {{ translations.menus.pairing_txt[currentLang] }}
-              </p>
-            </a>
+              <a [routerLink]="['/menu',menu.id]" (click)="pairingStatus(true)" *ngIf="(menu.wines).length != 0" class="menus-row__menu__wines">
+                <div  *ngIf="menu?.pairing_included == 1">
+                  <p class="menus-row__menu__wines__text">
+                    {{ translations.menus.pairing[currentLang] }}
+                  </p>
+                  <p class="menus-row__menu__wines__note">
+                    {{ translations.menus.pairing_txt[currentLang] }}
+                  </p>
+                </div>
+                <div  *ngIf="menu?.pairing_included == 0">
+                  <p class="menus-row__menu__wines__text">
+                    {{ translations.menus.pairing_0[currentLang] }}
+                  </p>
+                  <p class="menus-row__menu__wines__note">
+                    {{ translations.menus.pairing_txt_0[currentLang] }}
+                  </p>
+                </div>
+              </a>
           </div>
         </div>
       </div>

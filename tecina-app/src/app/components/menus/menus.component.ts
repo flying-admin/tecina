@@ -49,13 +49,23 @@ export class MenusComponent implements OnInit {
       },
       pairing: {
         es: 'Maridaje',
-        en: 'Pairing',
-        de: 'Paarung',
+        en: 'Wine pairings',
+        de: 'Wein Paarungen',
       },
       pairing_txt: {
-        es: 'Incluido en el menú',
-        en: 'Included in the menu',
-        de: 'Im Menü enthalten',
+        es: 'Incluida una copa del vino recomendado',
+        en: 'Incl. a glass of the recommended wine',
+        de: 'Inkl. ein Glas des empfohlenen Weines',
+      },
+      pairing_0: {
+        es: 'Recomendación de vinos',
+        en: 'Wine Recommendations',
+        de: 'Weinempfehlungen',
+      },
+      pairing_txt_0: {
+        es: 'No incluidos en el menú',
+        en: 'Not included with the set menus',
+        de: 'Nicht in den Menüs enthalten',
       },
     }
   };
@@ -85,8 +95,6 @@ export class MenusComponent implements OnInit {
       resp => { return resp }
     ).subscribe(
       menus => {
-        console.log(menus);
-        
         this.menus = this._api.subArray(menus, 3);
         this.goToIndex(0, 500);
       });

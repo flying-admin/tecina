@@ -130,17 +130,6 @@ export class DishesComponent implements OnInit {
 
         return this._api.getDishes(filters).map(
           dishes => {
-            // for (let D = 0; D < dishes.length; D++) {
-            //   var object = dishes[D]['translate'];
-            //   for (const key in object) {
-            //       for (const _key in object[key]) {
-            //        console.log( _key," ",object[key][_key]);
-            //        if(( typeof object[key][_key] !== 'undefined' && object[key][_key]).length > 80  ){
-            //         object[key][_key] = ((object[key][_key]).substring(0, 75)) + " ...";
-            //        }
-            //       }
-            //   }
-            // }
             return this._api.subArray(dishes, 3);
           }
         )

@@ -17,14 +17,24 @@
       <p class="menu__summary__menu__text" *ngFor="let dish of menu.menu_dishes; index as i " (click)="goToIndexDishes(i,300)" >
           {{ dish.translate[currentLang].name }}
       </p>
-      <span class="menu__summary__menu__wines" (click)="pairingStatus(true)" *ngIf="wines.length != 0">
-        <p class="menu__summary__menu__wines__text">
-          {{ translations.menu.pairing.title[currentLang] }}
-        </p>
-        <p class="menu__summary__menu__wines__note">
-            {{ translations.menu.pairing.subtitle[currentLang] }}
-        </p>
-      </span>
+      <div *ngIf="wines.length != 0">
+          <span class="menu__summary__menu__wines" (click)="pairingStatus(true)" *ngIf="menu?.pairing_included == 1">
+            <p class="menu__summary__menu__wines__text">
+              {{ translations.menu.pairing.title[currentLang] }}
+            </p>
+            <p class="menu__summary__menu__wines__note">
+                {{ translations.menu.pairing.subtitle[currentLang] }}
+            </p>
+          </span>
+          <span class="menu__summary__menu__wines" (click)="pairingStatus(true)" *ngIf="menu?.pairing_included == 0">
+            <p class="menu__summary__menu__wines__text">
+              {{ translations.menu.pairing.title_0[currentLang] }}
+            </p>
+            <p class="menu__summary__menu__wines__note">
+                {{ translations.menu.pairing.subtitle_0[currentLang] }}
+            </p>
+          </span>
+        </div>
     </div>
   </div>
   <div class="menu__details" *ngIf="hasProp(menu, 'menu_dishes')">

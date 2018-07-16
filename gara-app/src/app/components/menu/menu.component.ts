@@ -66,13 +66,23 @@ export class MenuComponent implements OnInit {
       pairing:{
         title: {
           es: 'Maridaje',
-          en: 'Pairing',
-          de: 'Paarung',
+          en: 'Wine pairings',
+          de: 'Wein Paarungen',
         },
         subtitle: {
-          es: 'Incluido en el menú',
-          en: 'Included in the menu',
-          de: 'Im Menü enthalten',
+          es: 'Incluida una copa del vino recomendado',
+          en: 'Incl. a glass of the recommended wine',
+          de: 'Inkl. ein Glas des empfohlenen Weines',
+        },
+        title_0: {
+          es: 'Recomendación de vinos',
+          en: 'Wine Recommendations',
+          de: 'Weinempfehlungen',
+        },
+        subtitle_0: {
+          es: 'No incluidos en el menú',
+          en: 'Not included with the set menus',
+          de: 'Nicht in den Menüs enthalten',
         },
         variety:{
           es: 'Variedad',
