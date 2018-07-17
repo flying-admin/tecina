@@ -145,7 +145,7 @@
               </label>
               <button type="button" class="btn btn-primary" id="upload_dish_image_button" onclick="uploadDishImage({{$dish->id}})">
                 <i class="material-icons">photo_camera</i>
-                <span>Cambiar imagen</span>
+                <span>Cargar imagen</span>
               </button>
               <button type="button" class="btn btn-danger" id="delete_dish_image_button" onclick="deleteDishImage({{$dish->id}})">
                 <i class="material-icons">delete</i>

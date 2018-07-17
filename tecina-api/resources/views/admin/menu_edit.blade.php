@@ -131,7 +131,7 @@ Seleccione un vino
               </label>
               <button type="button" class="btn btn-primary" id="upload_menu_image_button" onclick="uploadMenuImage({{$id}})">
                 <i class="material-icons">photo_camera</i>
-                <span>Cambiar imagen</span>
+                <span>Cargar imagen</span>
               </button>
             </div>
           </section>

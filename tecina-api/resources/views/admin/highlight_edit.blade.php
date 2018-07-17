@@ -65,7 +65,7 @@
               </label>
               <button type="button" class="btn btn-primary" id="upload_highlight_image_button" onclick="uploadHighlightImage({{$highlight->id}})">
                 <i class="material-icons">photo_camera</i>
-                <span>Cambiar imagen</span>
+                <span>Cargar imagen</span>
               </button>
               <button type="button" class="btn btn-danger" id="delete_highlight_image_button" onclick="deleteHighlightImage({{$highlight->id}})">
                 <i class="material-icons">delete</i>

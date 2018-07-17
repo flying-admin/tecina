@@ -8,7 +8,6 @@ import { WinesComponent } from './components/wines/wines.component'
 import { DrinksComponent } from './components/drinks/drinks.component'
 
 const appRoutes: Routes = [
- // { path: 'menus/', component: MenusComponent },
   { path: 'home',      component: HomeComponent,   runGuardsAndResolvers: 'always'},
   { path: 'dishes', component: DishesComponent, runGuardsAndResolvers: 'always'},
   { path: 'dish/:id', component: DishComponent, runGuardsAndResolvers: 'always'},

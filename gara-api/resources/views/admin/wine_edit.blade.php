@@ -150,7 +150,7 @@
               </label>
               <button type="button" class="btn btn-primary" id="upload_wine_image_button" onclick="uploadWineImage({{$wine->id}})">
                 <i class="material-icons">photo_camera</i>
-                <span>Cambiar imagen</span>
+                <span>Cargar imagen</span>
               </button>
               <button type="button" class="btn btn-danger" id="delete_wine_image_button" onclick="deleteWineImage({{$wine->id}})">
                 <i class="material-icons">delete</i>

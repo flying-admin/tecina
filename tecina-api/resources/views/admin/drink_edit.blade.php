@@ -76,7 +76,7 @@
               </label>
               <button type="button" class="btn btn-primary" id="upload_drink_image_button" onclick="uploaddrinkImage({{$drink->id}})">
                 <i class="material-icons">photo_camera</i>
-                <span>Cambiar imagen</span>
+                <span>Cargar imagen</span>
               </button>
               <button type="button" class="btn btn-danger" id="delete_drink_image_button" onclick="deletedrinkImage({{$drink->id}})">
                 <i class="material-icons">delete</i>

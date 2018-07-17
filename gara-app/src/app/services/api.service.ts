@@ -9,8 +9,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ApiService {
 
   pageRoot = "https://tecina-gara.flyingpigs.es/";
-  //pageRoot = "http://tecina-api.local/";
-  //public pageRoot = "http://127.0.0.1:8000/";
 
   private lang = new BehaviorSubject('es');
   currentLang = this.lang.asObservable();
@@ -92,26 +90,12 @@ export class ApiService {
   };
 
   constructor( public http:HttpClient) {
-
-    // this.setAllergens().subscribe((resp:any[]) => { this.allergens.next(resp);});
-    // this.setCategories().subscribe((resp:any[]) => { this.categories.next(resp);});
-    // this.setFoodTypes().subscribe((resp:any[]) => { this.foodTypes.next(resp);});
     this.setLanguages().subscribe((resp:any[]) => { this.languages.next(resp);});
     this.setHighlights().subscribe((resp:any[]) => { this.highlights.next(resp);});
-    // this.setWinesDO().subscribe((resp:any[]) => { this.winesDO.next(resp);});
-    // this.setWinesTypes().subscribe((resp:any[]) => { this.winesTypes.next(resp);});
-    // this.setWinesVarieties().subscribe((resp:any[]) => { this.winesVarieties.next(resp);});
-
-    //this.setCompleteDishes().subscribe((resp:any[]) => { this.dishes.next(resp); ;});
-   // this.setCompleteWines().subscribe((resp:any[]) => { this.wines.next(resp);});
     this.setCompleteMenus().subscribe((resp:any[]) => { this.menus.next(resp);});
-    //this.setDrinkTypes().subscribe((resp:any[]) => { this.drinkTypes.next(resp);});
-   // this.setDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
-   this.setCompleteDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
+    this.setCompleteDrinks().subscribe((resp:any[]) => { this.drinks.next(resp);});
   }
 
-
- 
 
   // Get sub array 
   subArray(array:any[] , size:number){
@@ -215,7 +199,7 @@ export class ApiService {
           }
       }
 
-      if(addDish){
+      if(addDish && _dishes[D].categories.length != 0){
         _filteredDishes.push(_dishes[D]);
       }
     }  
