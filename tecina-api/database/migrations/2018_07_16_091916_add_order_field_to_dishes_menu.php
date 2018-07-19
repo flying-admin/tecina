@@ -14,7 +14,7 @@ class AddOrderFieldToDishesMenu extends Migration
     public function up()
     {
         Schema::table('dishes_menus', function (Blueprint $table) {
-            $table->smallInteger('order')->nullable();
+            $table->tinyInteger('position')->nullable()->default(0);
           });
     }
 
