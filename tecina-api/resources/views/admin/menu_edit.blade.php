@@ -67,6 +67,9 @@
                     <i class="material-icons">delete</i>
                     <span>Eliminar</span>
                   </a>
+                  <div style="float:right;">
+                    <span><input onchange="updatePosition(this,{{$dishId}},{{$id}})" type="number" value="{{$dish['position']}}" style="max-width:3em; float:right;" min="1"></span>
+                  </div>
                 </li>
               @endforeach
             </ul>
@@ -230,6 +233,18 @@ $('#add_menu_wine').selectize({
           },
        });
    }
+
+   function updatePosition(that,menuId, dishId){
+     var position = $(that).val();
+     jQuery.ajax({
+       url:'/updatePositionDishFromMenu/'+menuId+'/'+dishId+'/'+position,
+     }).done(function(data){
+     if(data){
+       location.reload();
+     }
+     });
+   }
+
 </script>
 <style>input[type=select-one].width:100%;</style>
     <link href="/css/selectize.default.css" rel="stylesheet" type="text/css">
