@@ -104,6 +104,7 @@ class MenuController extends Controller
         foreach($dishes as $dish){
           $translation=prettyTranslate($dish->getTranslate()->get());
           $my_dishes[$dish->id]=$translation['es'];
+          $my_dishes[$dish->id]['position']=$dish->pivot->position;
         }
         $wines=$menu->wines()->get();
 
@@ -120,6 +121,7 @@ class MenuController extends Controller
           'dishes'=>$my_dishes,
           'wines'=>$my_wines
         ];
+        // dd($my_dishes);
         return view('admin.menu_edit', $values);
     }
 
@@ -176,7 +178,8 @@ class MenuController extends Controller
     public function addDishMenu($dishId, $menuId)
     {
       $data=false;
-      if(DB::table('dishes_menus')->insert(['id_dish'=>$dishId,'id_menu'=>$menuId])){
+      $position = DB::table('dishes_menus')->where('id_menu', $menuId)->orderBy('position')->last()->position + 1;
+      if(DB::table('dishes_menus')->insert(['id_dish'=>$dishId,'id_menu'=>$menuId,'position'=>$position])){
         $dishName= DB::table('dishes_translations')->where('id_dish',$dishId)->where('id_language',1)->first()->name;
         $data=['dishId'=>$dishId,'dishName'=>$dishName];
       }
@@ -219,6 +222,14 @@ class MenuController extends Controller
       }
       // hay que redimensionarla a este tamaño: 1760 × 960
       return response()->json($respuesta,200);
+    }
+    public function updateDishPosition($dishId, $menuId, $position){
+      if(DB::table('dishes_menus')->where('id_menu', $menuId)->where('id_dish',$dishId)->update(['position'=>$position])){
+        $respuesta = true;
+      }else{
+        $respuesta = false;
+      }
+      return response()->json($respuesta);
     }
 
 }
