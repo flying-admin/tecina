@@ -178,7 +178,7 @@ class MenuController extends Controller
     public function addDishMenu($dishId, $menuId)
     {
       $data=false;
-      $position = DB::table('dishes_menus')->where('id_menu', $menuId)->orderBy('position')->last()->position + 1;
+      $position = DB::table('dishes_menus')->where('id_menu', $menuId)->orderBy('position', 'desc')->first()->position + 1;
       if(DB::table('dishes_menus')->insert(['id_dish'=>$dishId,'id_menu'=>$menuId,'position'=>$position])){
         $dishName= DB::table('dishes_translations')->where('id_dish',$dishId)->where('id_language',1)->first()->name;
         $data=['dishId'=>$dishId,'dishName'=>$dishName];
